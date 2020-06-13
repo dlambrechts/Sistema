@@ -117,6 +117,27 @@ namespace DAL
 
         }
 
+        public void GuardarPermisos(UsuarioBE Usuario)
 
+        {
+            Acceso nAcceso = new Acceso();
+            string ConsultaDel = "sp_BorrarPermisosUsuario"; // Primero borro los permisos que tenía el usuario
+            Hashtable ParametrosDel = new Hashtable();
+            ParametrosDel.Add("IdUsuario", Usuario.Id);
+            nAcceso.Escribir(ConsultaDel, ParametrosDel);
+
+            string ConsultaAdd = "sp_GuardarPermisosUsuario"; // Luego guardo los nuevos permisos
+            Hashtable ParametrosAdd = new Hashtable();
+            ParametrosAdd.Add("IdUsuario", Usuario.Id);
+
+            foreach (var item in Usuario.Permisos)
+            {
+
+                ParametrosAdd.Add("IdPermiso", item.Id);
+                nAcceso.Escribir(ConsultaAdd, ParametrosAdd);
+                ParametrosAdd.Remove("IdPermiso");
+
+            }
+        }
     }
 }

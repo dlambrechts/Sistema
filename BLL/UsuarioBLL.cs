@@ -51,6 +51,13 @@ namespace BLL
  
         }
 
+        public void GuardarPermisos(UsuarioBE Usuario)
+
+        {
+            UsuarioDAL uDal = new UsuarioDAL();
+            uDal.GuardarPermisos(Usuario);
+        }
+
         public void ABM (UsuarioBE Usuario, int Operacion) //  1- Alta, Baja o Modificación
         {
             UsuarioDAL dUsuario = new UsuarioDAL();

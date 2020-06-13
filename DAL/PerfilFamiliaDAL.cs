@@ -48,7 +48,7 @@ namespace DAL
             ParametrosDel.Add("Id", Fam.Id);
             nAcceso.Escribir(ConsultaDel, ParametrosDel);
 
-            string ConsultaAdd = "sp_GuardarFamilia"; // Luego la Guardo
+            string ConsultaAdd = "sp_GuardarFamilia"; // Luego guardo la familia actualizada
             Hashtable ParametrosAdd = new Hashtable();
             ParametrosAdd.Add("IdPadre", Fam.Id);
            

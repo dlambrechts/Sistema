@@ -18,25 +18,33 @@ namespace UI
         public UsuarioBLL bllUsuario;
         public UsuarioBE beUsuario;
         public PerfilComponenteBLL bllComp;
-      
+        public PerfilFamilaBLL bllFam;
+        public PerfilPatenteBLL bllPat;
+        UsuarioBE tmpUs;
+
         public FormPerfilUsuario()
         {
             InitializeComponent();
             bllComp = new PerfilComponenteBLL();
+            bllUsuario = new UsuarioBLL();
+            bllFam = new PerfilFamilaBLL();
+            bllPat = new PerfilPatenteBLL();
+            comboUsuario.DataSource = bllUsuario.ListarUsuarios();
+            comboGrupos.DataSource = bllFam.ObtenerFamilias();
+            comboPermisos.DataSource = bllPat.ObtenerPatentes();
         }
 
 
         private void FormPerfilUsuario_Load(object sender, EventArgs e)
         {
-            bllUsuario = new UsuarioBLL();
-            comboUsuario.DataSource = bllUsuario.ListarUsuarios();
+
         }
 
         private void buttonConfig_Click(object sender, EventArgs e)
         {
             beUsuario = (UsuarioBE)this.comboUsuario.SelectedItem;
 
-            UsuarioBE tmpUs = new UsuarioBE();
+            tmpUs = new UsuarioBE();
             tmpUs.Id = beUsuario.Id;
             tmpUs.Nombre = beUsuario.Nombre;
             tmpUs.Apellido = beUsuario.Apellido;
@@ -70,5 +78,83 @@ namespace UI
             }
         }
 
+        private void buttonAddGrupo_Click(object sender, EventArgs e)
+        {
+            if (tmpUs != null)
+            {
+                var Grupo = (PerfilFamiliaBE)comboGrupos.SelectedItem;
+                if (Grupo != null)
+                {
+                    var existe = false;
+                   
+                    foreach (var item in tmpUs.Permisos)
+                    {
+                        if (bllComp.Existe(item, Grupo.Id))
+                        {
+                            existe = true;
+                        }
+                    }
+
+                    if (existe)
+                        MessageBox.Show("El usuario ya tiene la familia indicada");
+                    else
+                    {
+                        {
+                            bllComp.CompletarComponentesFamilia(Grupo);
+                            tmpUs.Permisos.Add(Grupo);
+                            MostrarPerfil(tmpUs);
+                        }
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Seleccione un usuario");
+        }
+
+        private void buttonAddPerm_Click(object sender, EventArgs e)
+        {
+            if (tmpUs != null)
+            {
+                var Permiso = (PerfilPatenteBE)comboPermisos.SelectedItem;
+                if (Permiso != null)
+                {
+                    var existe = false;
+
+                    foreach (var item in tmpUs.Permisos)
+                    {
+                        if (bllComp.Existe(item, Permiso.Id))
+                        {
+                            existe = true;
+                            break;
+                        }
+                    }
+                    if (existe)
+                        MessageBox.Show("El usuario ya posee el Permiso");
+                    else
+                    {
+                        {
+                            tmpUs.Permisos.Add(Permiso);
+                            MostrarPerfil(tmpUs);
+                        }
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Seleccione un Usuario");
+        }
+
+        private void buttonGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bllUsuario.GuardarPermisos(tmpUs);
+                MessageBox.Show("Perfil de Usuario Guardado Correctamente");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al Guarda Perfil de Usuario");
+            }
+        }
     }
 }

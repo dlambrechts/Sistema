@@ -135,6 +135,7 @@
             this.buttonAddGrupo.TabIndex = 6;
             this.buttonAddGrupo.Text = "Agregar >>";
             this.buttonAddGrupo.UseVisualStyleBackColor = true;
+            this.buttonAddGrupo.Click += new System.EventHandler(this.buttonAddGrupo_Click);
             // 
             // comboPermisos
             // 
@@ -152,6 +153,7 @@
             this.buttonAddPerm.TabIndex = 8;
             this.buttonAddPerm.Text = "Agregar >>";
             this.buttonAddPerm.UseVisualStyleBackColor = true;
+            this.buttonAddPerm.Click += new System.EventHandler(this.buttonAddPerm_Click);
             // 
             // treeArbolPermisos
             // 
@@ -168,6 +170,7 @@
             this.buttonGuardar.TabIndex = 1;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // FormPerfilUsuario
             // 
