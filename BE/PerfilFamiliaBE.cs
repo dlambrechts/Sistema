@@ -30,5 +30,10 @@ namespace BE
         {
             _hijos.Add(Comp);
         }
+        public override void QuitarHijo (PerfilComponenteBE Comp)
+
+        {
+            _hijos.Remove(Hijos.Where(_hijos => _hijos.Id == Comp.Id).First());
+        }
     }
 }

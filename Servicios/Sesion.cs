@@ -37,5 +37,44 @@ namespace Servicios
         {
             return _usuario != null;
         }
+
+        bool isInRole(PerfilComponenteBE Comp, PerfilTipoPermisoBE Permiso, bool existe)
+        {
+
+
+            if (Comp.Permiso.Equals(Permiso))
+                existe = true;
+            else
+            {
+                foreach (var item in Comp.Hijos)
+                {
+                    existe = isInRole(item, Permiso, existe);
+                    if (existe) return true;
+                }
+
+
+
+            }
+
+            return existe;
+        }
+
+        public bool IsInRole(PerfilTipoPermisoBE Permiso)
+        {
+            bool existe = false;
+            foreach (var item in _usuario.Permisos)
+            {
+                if (item.Permiso.Equals(Permiso))
+                    return true;
+                else
+                {
+                    existe = isInRole(item, Permiso, existe);
+                    if (existe) return true;
+                }
+
+            }
+
+            return existe;
+        }
     }
 }

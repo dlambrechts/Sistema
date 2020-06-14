@@ -18,6 +18,9 @@ namespace BE
 
         }
         public override void AgregarHijo(PerfilComponenteBE Comp) {}
+
+        public override void QuitarHijo(PerfilComponenteBE Comp) {}
+
         public override void VaciarHijos() {}
     }
 }

@@ -67,12 +67,21 @@ namespace UI
             if (SesionSingleton.Instancia.IsLogged())
             {
                 this.UsuarioBarraEstado.Text = SesionSingleton.Instancia.Usuario.Nombre + " "+ SesionSingleton.Instancia.Usuario.Apellido;
-                
+                ValidarPermisos();
 
             }
             else { this.UsuarioBarraEstado.Text = "Aún no ha iniciado sesión"; }
+
+            
         }
 
+        public void ValidarPermisos ()
+        
+        {
+            this.usuariosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(BE.PerfilTipoPermisoBE.PermisoA); // ABM Usuarios
+            this.permisosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(BE.PerfilTipoPermisoBE.PermisoB); // Perfiles de Acceso
+            this.permisoPorUsuarioToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(BE.PerfilTipoPermisoBE.PermisoC); // Asignacion de Perfil a Usuarios
+        }
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Está seguro que desea cerrar la sesión?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)

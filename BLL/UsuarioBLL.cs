@@ -34,7 +34,9 @@ namespace BLL
                 throw new Exception("La sesión ya está iniciada");
 
             UsuarioBE oUsuario = new UsuarioBE();
+            PerfilComponenteBLL bllComp = new PerfilComponenteBLL();
             oUsuario = GetUsuarioLogin(Mail);
+            bllComp.CargarPerfilUsuario(oUsuario);
 
             if (oUsuario.Mail == null) throw new ExceptionLogin(ResultadoLogin.UsuarioInvalido);
 

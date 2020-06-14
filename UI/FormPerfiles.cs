@@ -131,9 +131,32 @@ namespace UI
                         MessageBox.Show("Ya exsite el Grupo");
                     else
                     {
-
                         bllComp.CompletarComponentesFamilia(familia);
                         beFamSeleccion.AgregarHijo(familia);
+                        MostrarFamilia(false);
+                    }
+
+
+                }
+            }
+        }
+
+        private void buttonQuitarGrupo_Click(object sender, EventArgs e)
+        {
+            if (beFamSeleccion != null)
+            {
+                var familia = (PerfilFamiliaBE)comboGrupos.SelectedItem;
+                if (familia != null)
+                {
+
+                    var esta = bllComp.Existe(beFamSeleccion, familia.Id);
+                    if (!esta)
+                        MessageBox.Show("El Grupo No está Agregado");
+                    else
+                    {
+
+                        bllComp.CompletarComponentesFamilia(familia);
+                        beFamSeleccion.QuitarHijo(familia);
                         MostrarFamilia(false);
                     }
 
@@ -164,6 +187,26 @@ namespace UI
             }
         }
 
+        private void buttonPermisoQuitar_Click(object sender, EventArgs e)
+        {
+            if (beFamSeleccion != null)
+            {
+                var patente = (PerfilPatenteBE)comboPermisos.SelectedItem;
+                if (patente != null)
+                {
+                    var esta = bllComp.Existe(beFamSeleccion, patente.Id);
+                    if (!esta)
+                        MessageBox.Show("El permiso no pertenece al Grupo");
+                    else
+                    {
+                        {
+                            beFamSeleccion.QuitarHijo(patente);
+                            MostrarFamilia(false);
+                        }
+                    }
+                }
+            }
+        }
         private void button1_Click_1(object sender, EventArgs e)
         {
             try
@@ -178,5 +221,7 @@ namespace UI
             }
 
         }
+
+
     }
 }

@@ -8,10 +8,10 @@ namespace BE
 {
     public enum PerfilTipoPermisoBE
     {
-        PermisoA,
-        PermisoB,
-        PermisoC,
-        PermiosoD,
+        PermisoA, // ABM Usuarios
+        PermisoB, // Gestión de Perfiles de Acceso
+        PermisoC, // Asignar Perfiles a Usuarios
+        PermiooD,
         PermisoE,
         PermisoF,
         PermisoG,

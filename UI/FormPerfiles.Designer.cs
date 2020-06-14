@@ -46,8 +46,10 @@
             this.textBoxNombreGrupo = new System.Windows.Forms.TextBox();
             this.comboGrupos = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.treeFam = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
+            this.treeFam = new System.Windows.Forms.TreeView();
+            this.buttonQuitarGrupo = new System.Windows.Forms.Button();
+            this.buttonPermisoQuitar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,10 +59,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonPermisoQuitar);
             this.groupBox1.Controls.Add(this.buttonAgregarPermiso);
             this.groupBox1.Controls.Add(this.comboPermisos);
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Location = new System.Drawing.Point(13, 209);
+            this.groupBox1.Location = new System.Drawing.Point(11, 247);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(337, 226);
             this.groupBox1.TabIndex = 0;
@@ -73,7 +76,7 @@
             this.buttonAgregarPermiso.Name = "buttonAgregarPermiso";
             this.buttonAgregarPermiso.Size = new System.Drawing.Size(106, 23);
             this.buttonAgregarPermiso.TabIndex = 2;
-            this.buttonAgregarPermiso.Text = "Agregar >>>>";
+            this.buttonAgregarPermiso.Text = "Agregar >>>";
             this.buttonAgregarPermiso.UseVisualStyleBackColor = true;
             this.buttonAgregarPermiso.Click += new System.EventHandler(this.buttonAgregarPermiso_Click);
             // 
@@ -144,13 +147,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonQuitarGrupo);
             this.groupBox2.Controls.Add(this.buttonAgrgarGrupo);
             this.groupBox2.Controls.Add(this.buttonConfig);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.comboGrupos);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(11, 24);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(338, 191);
+            this.groupBox2.Size = new System.Drawing.Size(338, 224);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Grupos";
@@ -161,7 +165,7 @@
             this.buttonAgrgarGrupo.Name = "buttonAgrgarGrupo";
             this.buttonAgrgarGrupo.Size = new System.Drawing.Size(106, 23);
             this.buttonAgrgarGrupo.TabIndex = 3;
-            this.buttonAgrgarGrupo.Text = "Agregar >>>>";
+            this.buttonAgrgarGrupo.Text = "Agregar >>>";
             this.buttonAgrgarGrupo.UseVisualStyleBackColor = true;
             this.buttonAgrgarGrupo.Click += new System.EventHandler(this.buttonAgrgarGrupo_Click);
             // 
@@ -180,7 +184,7 @@
             this.groupBox5.Controls.Add(this.buttonGuardarGrupo);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.textBoxNombreGrupo);
-            this.groupBox5.Location = new System.Drawing.Point(7, 82);
+            this.groupBox5.Location = new System.Drawing.Point(7, 104);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(325, 103);
             this.groupBox5.TabIndex = 1;
@@ -232,16 +236,9 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Configuración del Grupo";
             // 
-            // treeFam
-            // 
-            this.treeFam.Location = new System.Drawing.Point(6, 19);
-            this.treeFam.Name = "treeFam";
-            this.treeFam.Size = new System.Drawing.Size(289, 311);
-            this.treeFam.TabIndex = 0;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(220, 339);
+            this.button1.Location = new System.Drawing.Point(226, 385);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -249,11 +246,38 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // treeFam
+            // 
+            this.treeFam.Location = new System.Drawing.Point(6, 19);
+            this.treeFam.Name = "treeFam";
+            this.treeFam.Size = new System.Drawing.Size(289, 360);
+            this.treeFam.TabIndex = 0;
+            // 
+            // buttonQuitarGrupo
+            // 
+            this.buttonQuitarGrupo.Location = new System.Drawing.Point(220, 75);
+            this.buttonQuitarGrupo.Name = "buttonQuitarGrupo";
+            this.buttonQuitarGrupo.Size = new System.Drawing.Size(105, 23);
+            this.buttonQuitarGrupo.TabIndex = 4;
+            this.buttonQuitarGrupo.Text = "Quitar <<<";
+            this.buttonQuitarGrupo.UseVisualStyleBackColor = true;
+            this.buttonQuitarGrupo.Click += new System.EventHandler(this.buttonQuitarGrupo_Click);
+            // 
+            // buttonPermisoQuitar
+            // 
+            this.buttonPermisoQuitar.Location = new System.Drawing.Point(220, 75);
+            this.buttonPermisoQuitar.Name = "buttonPermisoQuitar";
+            this.buttonPermisoQuitar.Size = new System.Drawing.Size(105, 23);
+            this.buttonPermisoQuitar.TabIndex = 3;
+            this.buttonPermisoQuitar.Text = "Quitar <<<";
+            this.buttonPermisoQuitar.UseVisualStyleBackColor = true;
+            this.buttonPermisoQuitar.Click += new System.EventHandler(this.buttonPermisoQuitar_Click);
+            // 
             // FormPerfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 447);
+            this.ClientSize = new System.Drawing.Size(681, 485);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -293,5 +317,7 @@
         private System.Windows.Forms.TextBox textBoxNombreGrupo;
         private System.Windows.Forms.TreeView treeFam;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonQuitarGrupo;
+        private System.Windows.Forms.Button buttonPermisoQuitar;
     }
 }

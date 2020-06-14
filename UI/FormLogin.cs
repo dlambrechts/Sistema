@@ -19,7 +19,7 @@ namespace UI
         {
             InitializeComponent();
         }
-
+        PerfilComponenteBLL bllComp;
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -27,13 +27,13 @@ namespace UI
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            UsuarioBE oUsuario = new UsuarioBE();
+            //UsuarioBE oUsuario = new UsuarioBE();
             UsuarioBLL bllUsuario = new UsuarioBLL();
 
             try
             {
                 var Resultado = bllUsuario.Login(textEmail.Text.Trim(), textPass.Text.Trim()) ;
-                FormPrincipal Form = (FormPrincipal)this.MdiParent;
+                FormPrincipal Form = (FormPrincipal)this.MdiParent;                          
                 Form.ValidarFormulario();
                 this.Close();
             }

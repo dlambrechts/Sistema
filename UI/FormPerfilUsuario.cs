@@ -96,12 +96,12 @@ namespace UI
                     }
 
                     if (existe)
-                        MessageBox.Show("El usuario ya tiene la familia indicada");
+                        MessageBox.Show("El usuario ya pertenece al Grupo");
                     else
                     {
                         {
                             bllComp.CompletarComponentesFamilia(Grupo);
-                            tmpUs.Permisos.Add(Grupo);
+                            tmpUs.AgregarPermiso(Grupo);
                             MostrarPerfil(tmpUs);
                         }
                     }
@@ -111,6 +111,38 @@ namespace UI
                 MessageBox.Show("Seleccione un usuario");
         }
 
+        private void buttonQuitarGrupo_Click(object sender, EventArgs e)
+        {
+            if (tmpUs != null)
+            {
+                var Grupo = (PerfilFamiliaBE)comboGrupos.SelectedItem;
+                if (Grupo != null)
+                {
+                    var existe = false;
+
+                    foreach (var item in tmpUs.Permisos)
+                    {
+                        if (bllComp.Existe(item, Grupo.Id))
+                        {
+                            existe = true;
+                        }
+                    }
+
+                    if (!existe)
+                        MessageBox.Show("El Usuario no pertenece al Grupo");
+                    else
+                    {
+                        {
+                            bllComp.CompletarComponentesFamilia(Grupo);
+                            tmpUs.QuitarPermiso(Grupo);                                                       
+                            MostrarPerfil(tmpUs);
+                        }
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Seleccione un usuario");
+        }
         private void buttonAddPerm_Click(object sender, EventArgs e)
         {
             if (tmpUs != null)
@@ -133,7 +165,7 @@ namespace UI
                     else
                     {
                         {
-                            tmpUs.Permisos.Add(Permiso);
+                            tmpUs.AgregarPermiso(Permiso);
                             MostrarPerfil(tmpUs);
                         }
                     }
@@ -143,6 +175,37 @@ namespace UI
                 MessageBox.Show("Seleccione un Usuario");
         }
 
+        private void buttonQuitarPermiso_Click(object sender, EventArgs e)
+        {
+            if (tmpUs != null)
+            {
+                var Permiso = (PerfilPatenteBE)comboPermisos.SelectedItem;
+                if (Permiso != null)
+                {
+                    var existe = false;
+
+                    foreach (var item in tmpUs.Permisos)
+                    {
+                        if (bllComp.Existe(item, Permiso.Id))
+                        {
+                            existe = true;
+                            break;
+                        }
+                    }
+                    if (!existe)
+                        MessageBox.Show("El usuario no posee el Permiso");
+                    else
+                    {
+                        {
+                            tmpUs.QuitarPermiso(Permiso);
+                            MostrarPerfil(tmpUs);
+                        }
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Seleccione un Usuario");
+        }
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -156,5 +219,7 @@ namespace UI
                 MessageBox.Show("Error al Guarda Perfil de Usuario");
             }
         }
+
+
     }
 }
