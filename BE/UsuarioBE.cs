@@ -18,7 +18,7 @@ namespace BE
         List<PerfilComponenteBE> permisos;
         public UsuarioBE() { permisos = new List<PerfilComponenteBE>(); }
         public List<PerfilComponenteBE> Permisos {  get { return permisos; }   }
-
+        public bool ExistePermisoExplisito (PerfilComponenteBE Perm){ if (permisos.Exists(permisos => permisos.Id == Perm.Id))  return true;  else return false; } // Verifico que el permiso esté de forma directa en el Usuario, para poder eliminarlo luego
         public void AgregarPermiso (PerfilComponenteBE Perm) { permisos.Add(Perm); }
         public void QuitarPermiso (PerfilComponenteBE Perm) { permisos.Remove(permisos.Where(permisos => permisos.Id == Perm.Id).First()); }
         public override string ToString()

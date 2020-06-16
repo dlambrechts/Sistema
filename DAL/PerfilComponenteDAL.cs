@@ -48,7 +48,6 @@ namespace DAL
                     int id_padre = 0;
                     if (Item["IdPadre"] != DBNull.Value)
                     {
-
                         id_padre = Convert.ToInt32(Item["IdPadre"]);
                     }
 
@@ -149,6 +148,7 @@ namespace DAL
                         PerfilPatenteBE Patente= new PerfilPatenteBE();
                         Patente.Id = IdPermiso;
                         Patente.Descripcion = DescPermiso;
+                        Patente.Permiso = (PerfilTipoPermisoBE)Enum.Parse(typeof(PerfilTipoPermisoBE), Permiso);
                         Us.Permisos.Add(Patente);
                         }
 
@@ -156,6 +156,7 @@ namespace DAL
 
                         {
                             PerfilFamiliaBE Familia = new PerfilFamiliaBE();
+                        Familia.Permiso = (PerfilTipoPermisoBE)Enum.Parse(typeof(PerfilTipoPermisoBE), "Ninguno"); // Se hace esto porque al instanciar la familia asigna un permiso enum automáticamente
                             Familia.Id = IdPermiso;
                             Familia.Descripcion = DescPermiso;
 

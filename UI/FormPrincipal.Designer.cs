@@ -39,6 +39,14 @@
             this.BarraDeEstado = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.UsuarioBarraEstado = new System.Windows.Forms.ToolStripStatusLabel();
+            this.presupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emitirPresupuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualizarPresupuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aprobarPresupuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aprobaciónComercialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.anularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.BarraDeEstado.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +55,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sesiónToolStripMenuItem,
+            this.presupuestosToolStripMenuItem,
+            this.pedidosToolStripMenuItem,
+            this.clientesToolStripMenuItem,
             this.administradorToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -93,21 +104,21 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // permisosToolStripMenuItem
             // 
             this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
-            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.permisosToolStripMenuItem.Text = "Perfiles";
             this.permisosToolStripMenuItem.Click += new System.EventHandler(this.permisosToolStripMenuItem_Click);
             // 
             // permisoPorUsuarioToolStripMenuItem
             // 
             this.permisoPorUsuarioToolStripMenuItem.Name = "permisoPorUsuarioToolStripMenuItem";
-            this.permisoPorUsuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.permisoPorUsuarioToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.permisoPorUsuarioToolStripMenuItem.Text = "Perfil por Usuario";
             this.permisoPorUsuarioToolStripMenuItem.Click += new System.EventHandler(this.permisoPorUsuarioToolStripMenuItem_Click);
             // 
@@ -134,6 +145,62 @@
             this.UsuarioBarraEstado.Name = "UsuarioBarraEstado";
             this.UsuarioBarraEstado.Size = new System.Drawing.Size(143, 17);
             this.UsuarioBarraEstado.Text = "Aún no ha iniciado sesión";
+            // 
+            // presupuestosToolStripMenuItem
+            // 
+            this.presupuestosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emitirPresupuestoToolStripMenuItem,
+            this.aprobarPresupuestoToolStripMenuItem,
+            this.aprobaciónComercialToolStripMenuItem,
+            this.visualizarPresupuestoToolStripMenuItem,
+            this.anularToolStripMenuItem});
+            this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
+            this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.presupuestosToolStripMenuItem.Text = "Presupuestos";
+            // 
+            // pedidosToolStripMenuItem
+            // 
+            this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.pedidosToolStripMenuItem.Text = "Pedidos";
+            // 
+            // emitirPresupuestoToolStripMenuItem
+            // 
+            this.emitirPresupuestoToolStripMenuItem.Name = "emitirPresupuestoToolStripMenuItem";
+            this.emitirPresupuestoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.emitirPresupuestoToolStripMenuItem.Text = "Nuevo";
+            // 
+            // visualizarPresupuestoToolStripMenuItem
+            // 
+            this.visualizarPresupuestoToolStripMenuItem.Name = "visualizarPresupuestoToolStripMenuItem";
+            this.visualizarPresupuestoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.visualizarPresupuestoToolStripMenuItem.Text = "Visualizar";
+            // 
+            // aprobarPresupuestoToolStripMenuItem
+            // 
+            this.aprobarPresupuestoToolStripMenuItem.Name = "aprobarPresupuestoToolStripMenuItem";
+            this.aprobarPresupuestoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.aprobarPresupuestoToolStripMenuItem.Text = "Aprobación Técnica";
+            this.aprobarPresupuestoToolStripMenuItem.Click += new System.EventHandler(this.aprobarPresupuestoToolStripMenuItem_Click);
+            // 
+            // aprobaciónComercialToolStripMenuItem
+            // 
+            this.aprobaciónComercialToolStripMenuItem.Name = "aprobaciónComercialToolStripMenuItem";
+            this.aprobaciónComercialToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.aprobaciónComercialToolStripMenuItem.Text = "Aprobación Comercial";
+            this.aprobaciónComercialToolStripMenuItem.Click += new System.EventHandler(this.aprobaciónComercialToolStripMenuItem_Click);
+            // 
+            // anularToolStripMenuItem
+            // 
+            this.anularToolStripMenuItem.Name = "anularToolStripMenuItem";
+            this.anularToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.anularToolStripMenuItem.Text = "Anular";
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // FormPrincipal
             // 
@@ -170,6 +237,14 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel UsuarioBarraEstado;
         private System.Windows.Forms.ToolStripMenuItem permisoPorUsuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem emitirPresupuestoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aprobarPresupuestoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aprobaciónComercialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem visualizarPresupuestoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem anularToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
     }
 }
 

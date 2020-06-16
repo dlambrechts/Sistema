@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BE;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -63,24 +64,29 @@ namespace UI
             this.iniciarSesiónToolStripMenuItem.Enabled = !SesionSingleton.Instancia.IsLogged();
             this.cerrarSesiónToolStripMenuItem.Enabled= SesionSingleton.Instancia.IsLogged();
             this.administradorToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+            this.presupuestosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+            this.pedidosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+            this.clientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
 
             if (SesionSingleton.Instancia.IsLogged())
             {
                 this.UsuarioBarraEstado.Text = SesionSingleton.Instancia.Usuario.Nombre + " "+ SesionSingleton.Instancia.Usuario.Apellido;
                 ValidarPermisos();
-
             }
             else { this.UsuarioBarraEstado.Text = "Aún no ha iniciado sesión"; }
-
-            
+         
         }
-
         public void ValidarPermisos ()
         
         {
-            this.usuariosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(BE.PerfilTipoPermisoBE.PermisoA); // ABM Usuarios
-            this.permisosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(BE.PerfilTipoPermisoBE.PermisoB); // Perfiles de Acceso
-            this.permisoPorUsuarioToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(BE.PerfilTipoPermisoBE.PermisoC); // Asignacion de Perfil a Usuarios
+            this.usuariosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoA); // ABM Usuarios
+            this.permisosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoB); // Perfiles de Acceso
+            this.permisoPorUsuarioToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoC); // Asignacion de Perfil a Usuarios
+            this.emitirPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoD); // Emitir Presupuestos
+            this.aprobarPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoE); // Aprobacion Tecnica
+            this.aprobaciónComercialToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoF); // Aprobacion Comercial
+            this.visualizarPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoG); // Visualizar Presupuesto
+            this.anularToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoH); // Anular Presupuesto
         }
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -110,6 +116,16 @@ namespace UI
             FormPerfilUsuario frmPerfUs = new FormPerfilUsuario();
             frmPerfUs.MdiParent = this;
             frmPerfUs.Show();
+        }
+
+        private void aprobaciónComercialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aprobarPresupuestoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

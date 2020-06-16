@@ -99,11 +99,11 @@ namespace UI
                         MessageBox.Show("El usuario ya pertenece al Grupo");
                     else
                     {
-                        {
+                        
                             bllComp.CompletarComponentesFamilia(Grupo);
                             tmpUs.AgregarPermiso(Grupo);
                             MostrarPerfil(tmpUs);
-                        }
+                        
                     }
                 }
             }
@@ -132,11 +132,13 @@ namespace UI
                         MessageBox.Show("El Usuario no pertenece al Grupo");
                     else
                     {
-                        {
-                            bllComp.CompletarComponentesFamilia(Grupo);
-                            tmpUs.QuitarPermiso(Grupo);                                                       
+                        if (tmpUs.ExistePermisoExplisito(Grupo) == true)
+                        {                            
+                            tmpUs.QuitarPermiso(Grupo);
                             MostrarPerfil(tmpUs);
                         }
+
+                        else MessageBox.Show("No se puede Quitar el Grupo. El Usuario no pertenece al Grupo seleccionado de forma directa.");
                     }
                 }
             }
@@ -197,8 +199,13 @@ namespace UI
                     else
                     {
                         {
-                            tmpUs.QuitarPermiso(Permiso);
-                            MostrarPerfil(tmpUs);
+                            if (tmpUs.ExistePermisoExplisito(Permiso) == true)
+                            {
+                                tmpUs.QuitarPermiso(Permiso);
+                                MostrarPerfil(tmpUs);
+                            }
+
+                            else MessageBox.Show("No se puede Quitar el Permiso. El Usuario no tiene asignado el permiso de forma directa.");
                         }
                     }
                 }

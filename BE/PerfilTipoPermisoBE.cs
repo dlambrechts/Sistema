@@ -11,9 +11,11 @@ namespace BE
         PermisoA, // ABM Usuarios
         PermisoB, // Gestión de Perfiles de Acceso
         PermisoC, // Asignar Perfiles a Usuarios
-        PermiooD,
-        PermisoE,
-        PermisoF,
-        PermisoG,
+        PermisoD, // Puede Emitir Presupuestos
+        PermisoE, // Puede realizar Aprobacion Técnica de Presupuesto
+        PermisoF, // Puede Realizar Aprobación Comercial de Presupuesto
+        PermisoG, // Visualizar Presupuestos
+        PermisoH, // Puede Anular Presupuestos
+        Ninguno, // No borrar esto (usado en PerfilComponenteDAL)
     }
 }
