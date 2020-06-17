@@ -45,12 +45,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboIdioma = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboIdioma);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.buttonUPD);
             this.groupBox1.Controls.Add(this.buttonDEL);
             this.groupBox1.Controls.Add(this.buttonCRE);
@@ -75,7 +79,7 @@
             // 
             // buttonUPD
             // 
-            this.buttonUPD.Location = new System.Drawing.Point(91, 194);
+            this.buttonUPD.Location = new System.Drawing.Point(87, 227);
             this.buttonUPD.Name = "buttonUPD";
             this.buttonUPD.Size = new System.Drawing.Size(75, 23);
             this.buttonUPD.TabIndex = 14;
@@ -84,7 +88,7 @@
             // 
             // buttonDEL
             // 
-            this.buttonDEL.Location = new System.Drawing.Point(10, 194);
+            this.buttonDEL.Location = new System.Drawing.Point(6, 227);
             this.buttonDEL.Name = "buttonDEL";
             this.buttonDEL.Size = new System.Drawing.Size(75, 23);
             this.buttonDEL.TabIndex = 13;
@@ -93,7 +97,7 @@
             // 
             // buttonCRE
             // 
-            this.buttonCRE.Location = new System.Drawing.Point(203, 194);
+            this.buttonCRE.Location = new System.Drawing.Point(203, 227);
             this.buttonCRE.Name = "buttonCRE";
             this.buttonCRE.Size = new System.Drawing.Size(75, 23);
             this.buttonCRE.TabIndex = 12;
@@ -206,6 +210,23 @@
             this.dataGridView1.Size = new System.Drawing.Size(547, 349);
             this.dataGridView1.TabIndex = 1;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 192);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Idioma";
+            // 
+            // comboIdioma
+            // 
+            this.comboIdioma.FormattingEnabled = true;
+            this.comboIdioma.Location = new System.Drawing.Point(144, 184);
+            this.comboIdioma.Name = "comboIdioma";
+            this.comboIdioma.Size = new System.Drawing.Size(134, 21);
+            this.comboIdioma.TabIndex = 16;
+            // 
             // FormUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,5 +263,7 @@
         private System.Windows.Forms.Button buttonDEL;
         private System.Windows.Forms.Button buttonCRE;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox comboIdioma;
+        private System.Windows.Forms.Label label7;
     }
 }

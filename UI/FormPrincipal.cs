@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class FormPrincipal : Form
+    public partial class FormPrincipal : Form,IIdiomaObserver
     {
 
         UsuarioBLL bllUsuario;
@@ -21,18 +21,108 @@ namespace UI
         {
             InitializeComponent();
             ValidarFormulario();
+            MostrarIdiomas();
+            MarcarIdioma();
+            Traducir();
+            
             bllUsuario = new UsuarioBLL();
         }
 
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        public void UpdateLanguage(IdiomaBE idioma)
         {
+            MarcarIdioma();
+            Traducir();
+        }
+
+        private void Traducir()
+
+        {
+            IdiomaBE Idioma = null;
+
+            if (SesionSingleton.Instancia.IsLogged()) Idioma = SesionSingleton.Instancia.Usuario.Idioma;
+
+            var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
+
+            if (sesiónToolStripMenuItem.Tag != null && Traducciones.ContainsKey(sesiónToolStripMenuItem.Tag.ToString()))
+            this.sesiónToolStripMenuItem.Text = Traducciones[sesiónToolStripMenuItem.Tag.ToString()].Texto;
+
+            if (presupuestosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(presupuestosToolStripMenuItem.Tag.ToString()))
+                this.presupuestosToolStripMenuItem.Text = Traducciones[presupuestosToolStripMenuItem.Tag.ToString()].Texto;
+
+            if (pedidosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(pedidosToolStripMenuItem.Tag.ToString()))
+                this.pedidosToolStripMenuItem.Text = Traducciones[pedidosToolStripMenuItem.Tag.ToString()].Texto;
+
+            if (clientesToolStripMenuItem.Tag != null && Traducciones.ContainsKey(clientesToolStripMenuItem.Tag.ToString()))
+                this.clientesToolStripMenuItem.Text = Traducciones[clientesToolStripMenuItem.Tag.ToString()].Texto;
+
+            if (administradorToolStripMenuItem.Tag != null && Traducciones.ContainsKey(administradorToolStripMenuItem.Tag.ToString()))
+                this.administradorToolStripMenuItem.Text = Traducciones[administradorToolStripMenuItem.Tag.ToString()].Texto;
+
+            if (sesiónToolStripMenuItem.Tag != null && Traducciones.ContainsKey(sesiónToolStripMenuItem.Tag.ToString()))
+                this.sesiónToolStripMenuItem.Text = Traducciones[sesiónToolStripMenuItem.Tag.ToString()].Texto;
+
+            if (cerrarSesiónToolStripMenuItem.Tag != null && Traducciones.ContainsKey(cerrarSesiónToolStripMenuItem.Tag.ToString()))
+                this.cerrarSesiónToolStripMenuItem.Text = Traducciones[cerrarSesiónToolStripMenuItem.Tag.ToString()].Texto;
+
+            if (idiomaToolStripMenuItem.Tag != null && Traducciones.ContainsKey(idiomaToolStripMenuItem.Tag.ToString()))
+                this.idiomaToolStripMenuItem.Text = Traducciones[idiomaToolStripMenuItem.Tag.ToString()].Texto;
+
+            if (iniciarSesiónToolStripMenuItem.Tag != null && Traducciones.ContainsKey(iniciarSesiónToolStripMenuItem.Tag.ToString()))
+                this.iniciarSesiónToolStripMenuItem.Text = Traducciones[iniciarSesiónToolStripMenuItem.Tag.ToString()].Texto;
+           
+
+
+        }
+        private void MostrarIdiomas()
+
+        {
+            var idiomas = TraductorBLL.ObtenerIdiomas();
+
+            foreach(var item in idiomas)
+
+            {
+                var t = new ToolStripMenuItem();
+                t.Text = item.Nombre;
+                t.Tag = item;
+                this.idiomaToolStripMenuItem.DropDownItems.Add(t);
+                t.Click += idioma_Click;
+
+            }
+
+        }
+        private void idioma_Click(object sender, EventArgs e)
+        {
+            SesionSingleton.Instancia.CambiarIdioma((IdiomaBE)((ToolStripMenuItem)sender).Tag);
+            
+            MarcarIdioma();
+        }
+        void MarcarIdioma()
+        {
+
+            if (!SesionSingleton.Instancia.IsLogged())
+            {
+                foreach (var item in idiomaToolStripMenuItem.DropDownItems)
+                {
+
+                    var i = ((IdiomaBE)((ToolStripMenuItem)item).Tag);
+
+                    ((ToolStripMenuItem)item).Checked = i.Default;
+                    ((ToolStripMenuItem)item).Enabled = false;
+
+                }
+            }
+            else
+            {
+                foreach (var item in idiomaToolStripMenuItem.DropDownItems)
+                {
+
+                    ((ToolStripMenuItem)item).Enabled = true;
+                    ((ToolStripMenuItem)item).Checked = SesionSingleton.Instancia.Usuario.Idioma.Id.Equals(((IdiomaBE)((ToolStripMenuItem)item).Tag).Id);
+                }
+            }
 
         }
 
-        private void sesiónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void iniciarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -41,10 +131,6 @@ namespace UI
             frmlogin.Show();
         }
 
-        private void administradorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -55,10 +141,10 @@ namespace UI
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-
+            SesionSingleton.Instancia.SuscribirObs(this);
         }
 
-        public void ValidarFormulario() 
+        public void ValidarFormulario()
         
         {
             this.iniciarSesiónToolStripMenuItem.Enabled = !SesionSingleton.Instancia.IsLogged();
@@ -67,6 +153,9 @@ namespace UI
             this.presupuestosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.pedidosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.clientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+            this.idiomaToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+            MarcarIdioma();
+            Traducir();
 
             if (SesionSingleton.Instancia.IsLogged())
             {
@@ -106,10 +195,7 @@ namespace UI
             fPerf.Show();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
 
-        }
 
         private void permisoPorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -126,6 +212,39 @@ namespace UI
         private void aprobarPresupuestoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void sesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void administradorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void etiquetasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormIdiomaEtiqueta formEt = new FormIdiomaEtiqueta();
+            formEt.MdiParent = this;
+            formEt.Show();
+        }
+
+        private void traduccionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormIdiomaTraducciones formTrad = new FormIdiomaTraducciones();
+            formTrad.MdiParent = this;
+            formTrad.Show();
         }
     }
 }

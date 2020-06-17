@@ -46,6 +46,7 @@
     <Compile Include="PerfilFamiliaDAL.cs" />
     <Compile Include="PerfilPatenteDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TraductorDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
   <ItemGroup>

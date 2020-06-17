@@ -13,10 +13,10 @@ namespace DAL
 {
     public class UsuarioDAL
     {
-        public List<BE.UsuarioBE> ListarUsuarios() 
+        public List<UsuarioBE> ListarUsuarios() 
         
         {
-            List<BE.UsuarioBE> ListaUsuarios = new List<BE.UsuarioBE>();
+            List<UsuarioBE> ListaUsuarios = new List<UsuarioBE>();
 
             Acceso AccesoDB = new Acceso();
             DataSet DS = new DataSet();
@@ -26,7 +26,7 @@ namespace DAL
             {
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
-                    BE.UsuarioBE oUsuario = new BE.UsuarioBE();
+                    UsuarioBE oUsuario = new UsuarioBE();
                     oUsuario.Id = Convert.ToInt32(Item[0]);
                     oUsuario.Mail = Item[1].ToString().Trim();
                     oUsuario.Nombre = Item[2].ToString().Trim();
@@ -43,7 +43,7 @@ namespace DAL
             }
         }
 
-        public UsuarioBE LeerUsuario(string Mail)
+        public UsuarioBE LeerUsuario(string Mail)  
 
         {
             Acceso AccesoDB = new Acceso();
@@ -64,6 +64,12 @@ namespace DAL
                     oUsuario.Apellido = Item["Apellido"].ToString().Trim();
                     oUsuario.Mail = Item["Mail"].ToString().Trim();
                     oUsuario.Password = Item["Password"].ToString().Trim();
+
+                    IdiomaBE Idioma = new IdiomaBE();
+                    Idioma.Id= Convert.ToInt32(Item["IdIdioma"]);
+                    Idioma.Nombre= Item["NombreIdioma"].ToString().Trim();
+
+                    oUsuario.Idioma = Idioma;
 
                 }
                 
