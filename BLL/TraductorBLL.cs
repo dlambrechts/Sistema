@@ -33,7 +33,33 @@ namespace BLL
 
         }
 
+      public static void InsertarEditarTraduccion(IdiomaBE Idioma, IdiomaTraduccionBE Traduccion, int Operacion)
 
+        {
+            TraductorDAL dalTraduc = new TraductorDAL();
+
+            dalTraduc.InsertarEditarTraduccion(Idioma, Traduccion, Operacion);
+        }
+
+        public static void EditarIdioma(IdiomaBE Idioma, bool SetDefault) 
+        
+        {
+            TraductorDAL dalTrad = new TraductorDAL();
+            dalTrad.EditarIdioma(Idioma, SetDefault);    
+        }
+        public static void Insetaridioma(IdiomaBE Idioma, bool SetDefault)
+
+        {
+            TraductorDAL dalTrad = new TraductorDAL();
+            dalTrad.Insetaridioma(Idioma, SetDefault);
+        }
+
+        public static void EliminarIdioma(IdiomaBE Idioma)
+
+        {
+            TraductorDAL dalTrad = new TraductorDAL();
+            dalTrad.EliminarIdioma(Idioma);
+        }
 
     }
 }

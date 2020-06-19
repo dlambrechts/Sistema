@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BE;
 using System.Data;
 using System.Collections;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DAL
 {
@@ -149,5 +150,75 @@ namespace DAL
             nAcceso.Escribir(Consulta, Parametros);
 
         }
+
+        public void InsertarEditarTraduccion(IdiomaBE Idioma, IdiomaTraduccionBE Traduccion, int Operacion)
+        {
+            string Consulta;
+            Hashtable Parametros = new Hashtable();
+            Parametros.Add("@IdEtiqueta", Traduccion.Etiqueta.Id);
+            Parametros.Add("@Texto", Traduccion.Texto);
+            Parametros.Add("@IdIdioma", Idioma.Id);
+            switch (Operacion)
+            {
+                case 1:
+                    Consulta = "sp_InsertarTraduccion";           
+                    break;
+                case 2:
+                    Consulta = "sp_EditarTraduccion";
+                    break;
+                default:
+                    Consulta = null;
+                    break;
+            }
+         
+            Acceso nAcceso = new Acceso();
+            nAcceso.Escribir(Consulta, Parametros);
+
+        }
+
+        public void Insetaridioma (IdiomaBE Idioma,bool SetDefault) 
+        
+        {
+            Hashtable Parametros = new Hashtable();
+            Parametros.Add("@Nombre", Idioma.Nombre);
+            Parametros.Add("@Defecto", SetDefault);
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_InsertarIdioma",Parametros);
+        }
+
+        public void EditarIdioma(IdiomaBE Idioma,bool SetDefault)
+
+        {
+            
+            Hashtable Parametros = new Hashtable();
+            Parametros.Add("@Id", Idioma.Id);
+            Acceso AccesoDB = new Acceso();
+
+            if (SetDefault==true)
+
+            {                
+                AccesoDB.Escribir("sp_CambiarIdiomaDefecto",Parametros);
+                
+                Parametros.Add("@Nombre", Idioma.Nombre);
+                AccesoDB.Escribir("sp_EditarIdioma", Parametros);
+            }
+            
+            else
+            {
+                Parametros.Add("@Nombre", Idioma.Nombre);
+                AccesoDB.Escribir("sp_EditarIdioma", Parametros);
+
+            }         
+        }
+
+        public void EliminarIdioma (IdiomaBE Idioma)
+        {
+            Hashtable Parametros = new Hashtable();
+            Parametros.Add("@Id", Idioma.Id);
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_BorrarIdioma", Parametros);
+
+        }
+
     }
 }

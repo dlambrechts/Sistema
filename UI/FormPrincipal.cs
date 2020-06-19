@@ -246,5 +246,12 @@ namespace UI
             formTrad.MdiParent = this;
             formTrad.Show();
         }
+
+        private void idiomasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormIdioma frmIdio = new FormIdioma();
+            frmIdio.MdiParent = this;
+            frmIdio.Show();
+        }
     }
 }
