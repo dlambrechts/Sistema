@@ -38,20 +38,31 @@ namespace UI
             LeerCombos();
             var Traducciones=TraductorBLL.ObtenerTraducciones(beIdioma);
 
-            if (Traducciones.ContainsKey(beEt.Nombre))
-
+            if(Traducciones==null)  // Traducciones va a ser null cuando se cree un idioma nuevo y no tenga traducciones cargadas para las etiquetas
             {
-                textTraduccion.Text = Traducciones[beEt.Nombre].Texto;
-            }
-
-            else 
-            
-            {
-                MessageBox.Show("Aún no existe la traducción");
+                MessageBox.Show("Aún no existen la traducción para el Idioma seleccionado");
                 textTraduccion.Text = "";
             }
-            Traducciones.Clear();
-            Traducciones = TraductorBLL.ObtenerTraducciones(beIdioma);
+
+            else
+            { 
+                 if (Traducciones.ContainsKey(beEt.Nombre) )
+
+                   {
+                         textTraduccion.Text = Traducciones[beEt.Nombre].Texto;
+                   }
+
+                   else 
+            
+                   {
+                         MessageBox.Show("Aún no existen la traducción para el Idioma seleccionado");
+                         textTraduccion.Text = "";
+                   }
+
+                Traducciones.Clear();
+                Traducciones = TraductorBLL.ObtenerTraducciones(beIdioma);
+            }
+
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)

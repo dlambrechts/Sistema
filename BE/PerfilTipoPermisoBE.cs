@@ -16,6 +16,7 @@ namespace BE
         PermisoF, // Puede Realizar Aprobación Comercial de Presupuesto
         PermisoG, // Visualizar Presupuestos
         PermisoH, // Puede Anular Presupuestos
+        PermisoJ, // Gestión de Idioma y Traducciones
         Ninguno, // No borrar esto (usado en PerfilComponenteDAL)
     }
 }

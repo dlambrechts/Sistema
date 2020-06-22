@@ -50,6 +50,8 @@ namespace Servicios
         static IList<IIdiomaObserver> _observers = new List<IIdiomaObserver>();
         public void SuscribirObs(IIdiomaObserver Obs) { _observers.Add(Obs);}
 
+        public void DesuscribirObs(IIdiomaObserver Obs) { _observers.Remove(Obs); }
+
         public void CambiarIdioma (IdiomaBE Idioma) 
         
         { 

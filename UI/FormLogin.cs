@@ -13,13 +13,55 @@ using Servicios;
 
 namespace UI
 {
-    public partial class FormLogin : Form
+    public partial class FormLogin : Form,IIdiomaObserver
     {
         public FormLogin()
         {
             InitializeComponent();
+            Traducir();
         }
-        PerfilComponenteBLL bllComp;
+       // PerfilComponenteBLL bllComp;
+
+        public void UpdateLanguage(IdiomaBE idioma)
+        {           
+            Traducir();
+        }
+
+        private void Traducir()
+
+        {
+            IdiomaBE Idioma = null;
+
+            if (SesionSingleton.Instancia.IsLogged()) Idioma = SesionSingleton.Instancia.Usuario.Idioma;
+
+            var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
+
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
+            {
+
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
+                    this.Text = Traducciones[this.Tag.ToString()].Texto;
+
+                foreach (Control x in this.Controls) // Todos los controles
+
+                {
+                    if (x.Tag != null && Traducciones.ContainsKey(x.Tag.ToString()))
+                        x.Text = Traducciones[x.Tag.ToString()].Texto;
+
+                }
+
+                
+            }
+
+        }
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            SesionSingleton.Instancia.SuscribirObs(this);
+        }
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SesionSingleton.Instancia.DesuscribirObs(this);
+        }
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -55,5 +97,7 @@ namespace UI
                 }
             }
         }
+
+
     }
 }

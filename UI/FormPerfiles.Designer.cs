@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonPermisoQuitar = new System.Windows.Forms.Button();
             this.buttonAgregarPermiso = new System.Windows.Forms.Button();
             this.comboPermisos = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -38,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonQuitarGrupo = new System.Windows.Forms.Button();
             this.buttonAgrgarGrupo = new System.Windows.Forms.Button();
             this.buttonConfig = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -48,8 +50,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.treeFam = new System.Windows.Forms.TreeView();
-            this.buttonQuitarGrupo = new System.Windows.Forms.Button();
-            this.buttonPermisoQuitar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,7 +68,19 @@
             this.groupBox1.Size = new System.Drawing.Size(337, 226);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "Permisos";
             this.groupBox1.Text = "Permisos";
+            // 
+            // buttonPermisoQuitar
+            // 
+            this.buttonPermisoQuitar.Location = new System.Drawing.Point(220, 75);
+            this.buttonPermisoQuitar.Name = "buttonPermisoQuitar";
+            this.buttonPermisoQuitar.Size = new System.Drawing.Size(105, 23);
+            this.buttonPermisoQuitar.TabIndex = 3;
+            this.buttonPermisoQuitar.Tag = "Quitar";
+            this.buttonPermisoQuitar.Text = "Quitar <<<";
+            this.buttonPermisoQuitar.UseVisualStyleBackColor = true;
+            this.buttonPermisoQuitar.Click += new System.EventHandler(this.buttonPermisoQuitar_Click);
             // 
             // buttonAgregarPermiso
             // 
@@ -76,6 +88,7 @@
             this.buttonAgregarPermiso.Name = "buttonAgregarPermiso";
             this.buttonAgregarPermiso.Size = new System.Drawing.Size(106, 23);
             this.buttonAgregarPermiso.TabIndex = 2;
+            this.buttonAgregarPermiso.Tag = "Agregar";
             this.buttonAgregarPermiso.Text = "Agregar >>>";
             this.buttonAgregarPermiso.UseVisualStyleBackColor = true;
             this.buttonAgregarPermiso.Click += new System.EventHandler(this.buttonAgregarPermiso_Click);
@@ -100,6 +113,7 @@
             this.groupBox4.Size = new System.Drawing.Size(325, 115);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
+            this.groupBox4.Tag = "Nuevo";
             this.groupBox4.Text = "Nuevo Permiso";
             // 
             // buttonGuardarPermiso
@@ -108,6 +122,7 @@
             this.buttonGuardarPermiso.Name = "buttonGuardarPermiso";
             this.buttonGuardarPermiso.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardarPermiso.TabIndex = 4;
+            this.buttonGuardarPermiso.Tag = "Guardar";
             this.buttonGuardarPermiso.Text = "Guardar";
             this.buttonGuardarPermiso.UseVisualStyleBackColor = true;
             this.buttonGuardarPermiso.Click += new System.EventHandler(this.buttonGuardarPermiso_Click);
@@ -134,6 +149,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 1;
+            this.label2.Tag = "Descripción";
             this.label2.Text = "Descripción";
             // 
             // label1
@@ -143,6 +159,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 0;
+            this.label1.Tag = "Permiso atómico";
             this.label1.Text = "Permiso Atómico";
             // 
             // groupBox2
@@ -157,7 +174,19 @@
             this.groupBox2.Size = new System.Drawing.Size(338, 224);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Tag = "Grupos";
             this.groupBox2.Text = "Grupos";
+            // 
+            // buttonQuitarGrupo
+            // 
+            this.buttonQuitarGrupo.Location = new System.Drawing.Point(220, 75);
+            this.buttonQuitarGrupo.Name = "buttonQuitarGrupo";
+            this.buttonQuitarGrupo.Size = new System.Drawing.Size(105, 23);
+            this.buttonQuitarGrupo.TabIndex = 4;
+            this.buttonQuitarGrupo.Tag = "Quitar";
+            this.buttonQuitarGrupo.Text = "Quitar <<<";
+            this.buttonQuitarGrupo.UseVisualStyleBackColor = true;
+            this.buttonQuitarGrupo.Click += new System.EventHandler(this.buttonQuitarGrupo_Click);
             // 
             // buttonAgrgarGrupo
             // 
@@ -165,6 +194,7 @@
             this.buttonAgrgarGrupo.Name = "buttonAgrgarGrupo";
             this.buttonAgrgarGrupo.Size = new System.Drawing.Size(106, 23);
             this.buttonAgrgarGrupo.TabIndex = 3;
+            this.buttonAgrgarGrupo.Tag = "Agregar";
             this.buttonAgrgarGrupo.Text = "Agregar >>>";
             this.buttonAgrgarGrupo.UseVisualStyleBackColor = true;
             this.buttonAgrgarGrupo.Click += new System.EventHandler(this.buttonAgrgarGrupo_Click);
@@ -175,6 +205,7 @@
             this.buttonConfig.Name = "buttonConfig";
             this.buttonConfig.Size = new System.Drawing.Size(75, 23);
             this.buttonConfig.TabIndex = 2;
+            this.buttonConfig.Tag = "Configurar";
             this.buttonConfig.Text = "Configurar";
             this.buttonConfig.UseVisualStyleBackColor = true;
             this.buttonConfig.Click += new System.EventHandler(this.buttonConfig_Click);
@@ -189,7 +220,8 @@
             this.groupBox5.Size = new System.Drawing.Size(325, 103);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Nuevo Grupo";
+            this.groupBox5.Tag = "Nuevo";
+            this.groupBox5.Text = "Nuevo";
             // 
             // buttonGuardarGrupo
             // 
@@ -197,6 +229,7 @@
             this.buttonGuardarGrupo.Name = "buttonGuardarGrupo";
             this.buttonGuardarGrupo.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardarGrupo.TabIndex = 2;
+            this.buttonGuardarGrupo.Tag = "Guardar";
             this.buttonGuardarGrupo.Text = "Guardar";
             this.buttonGuardarGrupo.UseVisualStyleBackColor = true;
             this.buttonGuardarGrupo.Click += new System.EventHandler(this.button1_Click);
@@ -208,6 +241,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 1;
+            this.label3.Tag = "Descripción";
             this.label3.Text = "Descripción";
             // 
             // textBoxNombreGrupo
@@ -234,14 +268,16 @@
             this.groupBox3.Size = new System.Drawing.Size(301, 423);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Tag = "Configuración del grupo";
             this.groupBox3.Text = "Configuración del Grupo";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(226, 385);
+            this.button1.Location = new System.Drawing.Point(220, 385);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
+            this.button1.Tag = "Guardar";
             this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
@@ -253,26 +289,6 @@
             this.treeFam.Size = new System.Drawing.Size(289, 360);
             this.treeFam.TabIndex = 0;
             // 
-            // buttonQuitarGrupo
-            // 
-            this.buttonQuitarGrupo.Location = new System.Drawing.Point(220, 75);
-            this.buttonQuitarGrupo.Name = "buttonQuitarGrupo";
-            this.buttonQuitarGrupo.Size = new System.Drawing.Size(105, 23);
-            this.buttonQuitarGrupo.TabIndex = 4;
-            this.buttonQuitarGrupo.Text = "Quitar <<<";
-            this.buttonQuitarGrupo.UseVisualStyleBackColor = true;
-            this.buttonQuitarGrupo.Click += new System.EventHandler(this.buttonQuitarGrupo_Click);
-            // 
-            // buttonPermisoQuitar
-            // 
-            this.buttonPermisoQuitar.Location = new System.Drawing.Point(220, 75);
-            this.buttonPermisoQuitar.Name = "buttonPermisoQuitar";
-            this.buttonPermisoQuitar.Size = new System.Drawing.Size(105, 23);
-            this.buttonPermisoQuitar.TabIndex = 3;
-            this.buttonPermisoQuitar.Text = "Quitar <<<";
-            this.buttonPermisoQuitar.UseVisualStyleBackColor = true;
-            this.buttonPermisoQuitar.Click += new System.EventHandler(this.buttonPermisoQuitar_Click);
-            // 
             // FormPerfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,7 +298,9 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPerfiles";
+            this.Tag = "Perfiles";
             this.Text = "Perfiles de Acceso";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPerfiles_FormClosing);
             this.Load += new System.EventHandler(this.FormPerfiles_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);

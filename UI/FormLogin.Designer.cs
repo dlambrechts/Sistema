@@ -45,6 +45,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 0;
+            this.label1.Tag = "Email";
             this.label1.Text = "Email";
             // 
             // label2
@@ -54,6 +55,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 1;
+            this.label2.Tag = "Password";
             this.label2.Text = "Password";
             // 
             // btnIniciar
@@ -62,6 +64,7 @@
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(96, 23);
             this.btnIniciar.TabIndex = 2;
+            this.btnIniciar.Tag = "Login";
             this.btnIniciar.Text = "Iniciar Sesión";
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
@@ -72,6 +75,7 @@
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 3;
+            this.btnSalir.Tag = "Salir";
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -95,6 +99,7 @@
             this.groupBox1.Size = new System.Drawing.Size(318, 100);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "Ingrese sus datos";
             this.groupBox1.Text = "Ingrese sus datos:";
             // 
             // textPass
@@ -114,7 +119,10 @@
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIniciar);
             this.Name = "FormLogin";
+            this.Tag = "Login";
             this.Text = "Iniciar Sesión";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
