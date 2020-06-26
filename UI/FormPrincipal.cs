@@ -322,5 +322,12 @@ namespace UI
             frmGesCli.MdiParent = this;
             frmGesCli.Show();
         }
+
+        private void emitirPresupuestoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPresupuestoGestion frmPrg = new FormPresupuestoGestion();
+            frmPrg.MdiParent = this;
+            frmPrg.Show();
+        }
     }
 }

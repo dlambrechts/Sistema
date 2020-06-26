@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteBE.cs" />
     <Compile Include="IdiomaBE.cs" />
     <Compile Include="IdiomaEtiquetaBE.cs" />
     <Compile Include="IdiomaTraduccionBE.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="PerfilFamiliaBE.cs" />
     <Compile Include="PerfilPatenteBE.cs" />
     <Compile Include="PerfilTipoPermisoBE.cs" />
+    <Compile Include="PresupuestoBE.cs" />
     <Compile Include="UsuarioBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
