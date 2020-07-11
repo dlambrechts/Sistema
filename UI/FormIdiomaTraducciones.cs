@@ -73,7 +73,7 @@ namespace UI
             nTraduc.Etiqueta = beEt;
             nTraduc.Texto = textTraduccion.Text;
 
-            if (Traducciones.ContainsKey(beEt.Nombre)) // Si existe entonces la modifico
+            if (Traducciones!=null && Traducciones.ContainsKey(beEt.Nombre)) // Si existe entonces la modifico
 
             {
                 TraductorBLL.InsertarEditarTraduccion(beIdioma, nTraduc, 2);

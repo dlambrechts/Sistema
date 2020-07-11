@@ -114,14 +114,16 @@ namespace UI
                 if(traduccionesToolStripMenuItem.Tag != null && Traducciones.ContainsKey(traduccionesToolStripMenuItem.Tag.ToString()))
                     this.traduccionesToolStripMenuItem.Text = Traducciones[traduccionesToolStripMenuItem.Tag.ToString()].Texto;
 
-                if (SesionSingleton.Instancia.IsLogged())
-                {
-                    this.toolStripStatusLabel2.Text = SesionSingleton.Instancia.Usuario.Nombre + " " + SesionSingleton.Instancia.Usuario.Apellido;
-                    ValidarPermisos();
-                }
+
+
+
             }
 
-
+            if (SesionSingleton.Instancia.IsLogged())
+            {
+                this.toolStripStatusLabel2.Text = SesionSingleton.Instancia.Usuario.Nombre + " " + SesionSingleton.Instancia.Usuario.Apellido;
+               ValidarPermisos();
+            }
 
         }
         private void MostrarIdiomas()
@@ -231,6 +233,7 @@ namespace UI
             this.aprobaciónComercialToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoF); // Aprobacion Comercial
             this.visualizarPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoG); // Visualizar Presupuesto
             this.anularToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoH); // Anular Presupuesto
+            this.gestiónDeClientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoK); // ABM Clientes
         }
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -328,6 +331,13 @@ namespace UI
             FormPresupuestoGestion frmPrg = new FormPresupuestoGestion();
             frmPrg.MdiParent = this;
             frmPrg.Show();
+        }
+
+        private void gestiónDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormProductoGestion frmGesProd = new FormProductoGestion();
+            frmGesProd.MdiParent = this;
+            frmGesProd.Show();
         }
     }
 }

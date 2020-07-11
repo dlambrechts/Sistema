@@ -42,6 +42,10 @@
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónDeProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajustesDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +69,8 @@
             this.presupuestosToolStripMenuItem,
             this.pedidosToolStripMenuItem,
             this.clientesToolStripMenuItem,
+            this.productosToolStripMenuItem,
+            this.metricasToolStripMenuItem,
             this.administradorToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -179,8 +185,37 @@
             // 
             this.gestiónDeClientesToolStripMenuItem.Name = "gestiónDeClientesToolStripMenuItem";
             this.gestiónDeClientesToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.gestiónDeClientesToolStripMenuItem.Tag = "Gestión de clientes";
             this.gestiónDeClientesToolStripMenuItem.Text = "Gestión de Clientes";
             this.gestiónDeClientesToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeClientesToolStripMenuItem_Click);
+            // 
+            // productosToolStripMenuItem
+            // 
+            this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestiónDeProductosToolStripMenuItem,
+            this.ajustesDeStockToolStripMenuItem});
+            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.productosToolStripMenuItem.Text = "Productos";
+            // 
+            // gestiónDeProductosToolStripMenuItem
+            // 
+            this.gestiónDeProductosToolStripMenuItem.Name = "gestiónDeProductosToolStripMenuItem";
+            this.gestiónDeProductosToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.gestiónDeProductosToolStripMenuItem.Text = "Gestión de Productos";
+            this.gestiónDeProductosToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeProductosToolStripMenuItem_Click);
+            // 
+            // ajustesDeStockToolStripMenuItem
+            // 
+            this.ajustesDeStockToolStripMenuItem.Name = "ajustesDeStockToolStripMenuItem";
+            this.ajustesDeStockToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.ajustesDeStockToolStripMenuItem.Text = "Ajustes de Stock";
+            // 
+            // metricasToolStripMenuItem
+            // 
+            this.metricasToolStripMenuItem.Name = "metricasToolStripMenuItem";
+            this.metricasToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.metricasToolStripMenuItem.Text = "Métricas";
             // 
             // administradorToolStripMenuItem
             // 
@@ -341,6 +376,10 @@
         private System.Windows.Forms.ToolStripMenuItem traduccionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripMenuItem gestiónDeClientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestiónDeProductosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ajustesDeStockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem metricasToolStripMenuItem;
     }
 }
 

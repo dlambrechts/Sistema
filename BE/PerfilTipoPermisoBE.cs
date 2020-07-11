@@ -17,6 +17,7 @@ namespace BE
         PermisoG, // Visualizar Presupuestos
         PermisoH, // Puede Anular Presupuestos
         PermisoJ, // Gestión de Idioma y Traducciones
+        PermisoK, // Gestión de Clientes ABM
         Ninguno, // No borrar esto (usado en PerfilComponenteDAL)
     }
 }

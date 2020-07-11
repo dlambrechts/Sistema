@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteBLL.cs" />
     <Compile Include="IdiomaEtiquetaBLL.cs" />
+    <Compile Include="ProductoBLL.cs" />
     <Compile Include="TraductorBLL.cs" />
     <Compile Include="PerfilComponenteBLL.cs" />
     <Compile Include="PerfilFamilaBLL.cs" />
