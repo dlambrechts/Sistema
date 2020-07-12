@@ -43,7 +43,7 @@ namespace DAL
             }
         }
 
-        public UsuarioBE LeerUsuario(string Mail)  
+        public UsuarioBE LeerUsuario(string Mail)  // Para Login, selecciona por mail
 
         {
             Acceso AccesoDB = new Acceso();
@@ -73,6 +73,34 @@ namespace DAL
 
                 }
                 
+            }
+            return oUsuario;
+        }
+
+        public UsuarioBE SeleccionarUsuarioPorId(int Id)
+
+        {
+            Acceso AccesoDB = new Acceso();
+            Hashtable Param = new Hashtable();
+            DataSet Ds = new DataSet();
+            UsuarioBE oUsuario = new UsuarioBE();
+            Param.Add("@Id", Id);
+
+            Ds = AccesoDB.LeerDatos("sp_SeleccionarUsuarioPorId", Param);
+
+            if (Ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow Item in Ds.Tables[0].Rows)
+                {
+
+                    oUsuario.Id = Convert.ToInt32(Item["Id"]);
+                    oUsuario.Nombre = Item["Nombre"].ToString().Trim();
+                    oUsuario.Apellido = Item["Apellido"].ToString().Trim();
+                    oUsuario.Mail = Item["Mail"].ToString().Trim();
+                    
+                  
+                }
+
             }
             return oUsuario;
         }

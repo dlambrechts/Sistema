@@ -19,5 +19,10 @@ namespace BE
         public string Contacto { get; set; }
         public string CondicionPago { get; set; }
         public bool Activo { get; set; }
+
+        public override string ToString()
+        {
+            return RazonSocial;
+        }
     }
 }

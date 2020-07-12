@@ -11,7 +11,40 @@ namespace DAL
 {
     public class ClienteDAL
     {
+        public ClienteBE SeleccionarPorId(int Id)
 
+        {
+            Acceso AccesoDB = new Acceso();
+            Hashtable Param = new Hashtable();
+            DataSet Ds = new DataSet();
+            ClienteBE oCliente = new ClienteBE();
+            Param.Add("@Id", Id);
+
+            Ds = AccesoDB.LeerDatos("sp_SeleccionarClientePorId", Param);
+
+            if (Ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow Item in Ds.Tables[0].Rows)
+                {
+
+                    oCliente.Id = Convert.ToInt32(Item["Id"]);
+                    oCliente.RazonSocial = Item["RazonSocial"].ToString().Trim();
+                    oCliente.Direccion = Item["Direccion"].ToString().Trim();
+                    oCliente.CodigoPostal = Convert.ToInt32(Item["CodigoPostal"]);
+                    oCliente.Telefono = Item["Telefono"].ToString().Trim();
+                    oCliente.Mail = Item["Mail"].ToString().Trim();
+                    oCliente.Tipo = Item["Tipo"].ToString().Trim();
+                    oCliente.Cuit = Item["Cuit"].ToString().Trim();
+                    oCliente.Contacto = Item["Contacto"].ToString().Trim();
+                    oCliente.CondicionPago= Item["CondicionPago"].ToString().Trim();
+                    oCliente.Activo = Convert.ToBoolean(Item["Activo"]);
+
+                }
+
+            }
+            return oCliente;
+
+        }
         public List<ClienteBE> ListarClientes()
 
         {

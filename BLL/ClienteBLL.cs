@@ -10,7 +10,12 @@ namespace BLL
 {
     public class ClienteBLL
     {
-
+        public ClienteBE SeleccionarPorId(int Id) 
+        
+        {
+            ClienteDAL dCliente = new ClienteDAL();
+            return dCliente.SeleccionarPorId(Id);
+        }
         public List<ClienteBE> ListarClientes ()
 
         {

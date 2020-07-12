@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FormProductoAlta
+    partial class FormProductoEditar
     {
         /// <summary>
         /// Required designer variable.
@@ -36,16 +36,15 @@
             this.buttonConfirmar = new System.Windows.Forms.Button();
             this.textPrecio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericStock = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.textDescrip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericStock)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.comboUnMedi);
             this.groupBox1.Controls.Add(this.comboTipo);
             this.groupBox1.Controls.Add(this.label5);
@@ -53,16 +52,14 @@
             this.groupBox1.Controls.Add(this.buttonConfirmar);
             this.groupBox1.Controls.Add(this.textPrecio);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.numericStock);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textDescrip);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(346, 218);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Nuevo";
+            this.groupBox1.Text = "Editar";
             // 
             // comboUnMedi
             // 
@@ -100,7 +97,7 @@
             // 
             // buttonConfirmar
             // 
-            this.buttonConfirmar.Location = new System.Drawing.Point(251, 161);
+            this.buttonConfirmar.Location = new System.Drawing.Point(251, 147);
             this.buttonConfirmar.Name = "buttonConfirmar";
             this.buttonConfirmar.Size = new System.Drawing.Size(75, 23);
             this.buttonConfirmar.TabIndex = 6;
@@ -110,7 +107,7 @@
             // 
             // textPrecio
             // 
-            this.textPrecio.Location = new System.Drawing.Point(226, 132);
+            this.textPrecio.Location = new System.Drawing.Point(227, 106);
             this.textPrecio.Name = "textPrecio";
             this.textPrecio.Size = new System.Drawing.Size(100, 20);
             this.textPrecio.TabIndex = 5;
@@ -118,27 +115,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 135);
+            this.label3.Location = new System.Drawing.Point(7, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Precio";
-            // 
-            // numericStock
-            // 
-            this.numericStock.Location = new System.Drawing.Point(206, 106);
-            this.numericStock.Name = "numericStock";
-            this.numericStock.Size = new System.Drawing.Size(120, 20);
-            this.numericStock.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 108);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Stock Inicial";
             // 
             // textDescrip
             // 
@@ -156,18 +137,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Descripción";
             // 
-            // FormProductoAlta
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(162, 151);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(56, 17);
+            this.checkBox1.TabIndex = 11;
+            this.checkBox1.Text = "Activo";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // FormProductoEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 252);
+            this.ClientSize = new System.Drawing.Size(374, 242);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FormProductoAlta";
-            this.Text = "Alta de Producto";
-            this.Load += new System.EventHandler(this.FormProductoAlta_Load);
+            this.Name = "FormProductoEditar";
+            this.Text = "Editar Producto";
+            this.Load += new System.EventHandler(this.FormProductoEditar_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericStock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,16 +165,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textDescrip;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonConfirmar;
-        private System.Windows.Forms.TextBox textPrecio;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericStock;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox comboUnMedi;
         private System.Windows.Forms.ComboBox comboTipo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button buttonConfirmar;
+        private System.Windows.Forms.TextBox textPrecio;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textDescrip;
+        private System.Windows.Forms.Label label1;
     }
 }

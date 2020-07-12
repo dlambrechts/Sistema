@@ -56,7 +56,7 @@ namespace UI
             frmEdit.Cli = beCli;
             frmEdit.MdiParent = this.ParentForm;
             frmEdit.FormClosed += new FormClosedEventHandler(frmEdit_FormClosed);
-                frmEdit.Show();
+            frmEdit.Show();
 
             }
         }

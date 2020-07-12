@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboIdioma = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.buttonUPD = new System.Windows.Forms.Button();
             this.buttonDEL = new System.Windows.Forms.Button();
             this.buttonCRE = new System.Windows.Forms.Button();
@@ -45,8 +47,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboIdioma = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +77,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Usuario";
             // 
+            // comboIdioma
+            // 
+            this.comboIdioma.FormattingEnabled = true;
+            this.comboIdioma.Location = new System.Drawing.Point(144, 184);
+            this.comboIdioma.Name = "comboIdioma";
+            this.comboIdioma.Size = new System.Drawing.Size(134, 21);
+            this.comboIdioma.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 192);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Idioma";
+            // 
             // buttonUPD
             // 
             this.buttonUPD.Location = new System.Drawing.Point(87, 227);
@@ -94,6 +111,7 @@
             this.buttonDEL.TabIndex = 13;
             this.buttonDEL.Text = "Eliminar";
             this.buttonDEL.UseVisualStyleBackColor = true;
+            this.buttonDEL.Click += new System.EventHandler(this.buttonDEL_Click);
             // 
             // buttonCRE
             // 
@@ -209,23 +227,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(547, 349);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 192);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Idioma";
-            // 
-            // comboIdioma
-            // 
-            this.comboIdioma.FormattingEnabled = true;
-            this.comboIdioma.Location = new System.Drawing.Point(144, 184);
-            this.comboIdioma.Name = "comboIdioma";
-            this.comboIdioma.Size = new System.Drawing.Size(134, 21);
-            this.comboIdioma.TabIndex = 16;
             // 
             // FormUsuarios
             // 

@@ -44,7 +44,7 @@
             this.groupBox1.Controls.Add(this.buttonEliminar);
             this.groupBox1.Controls.Add(this.buttonEditar);
             this.groupBox1.Controls.Add(this.buttonNuevo);
-            this.groupBox1.Location = new System.Drawing.Point(22, 29);
+            this.groupBox1.Location = new System.Drawing.Point(22, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(284, 54);
             this.groupBox1.TabIndex = 0;
@@ -54,9 +54,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(22, 112);
+            this.groupBox2.Location = new System.Drawing.Point(22, 72);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(632, 285);
+            this.groupBox2.Size = new System.Drawing.Size(621, 285);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos";
@@ -64,10 +64,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 32);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(589, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(589, 249);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // buttonNuevo
             // 
@@ -87,6 +88,7 @@
             this.buttonEditar.TabIndex = 1;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // buttonEliminar
             // 
@@ -101,11 +103,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 407);
+            this.ClientSize = new System.Drawing.Size(655, 407);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormProductoGestion";
             this.Text = "Gestión de Productos";
+            this.Load += new System.EventHandler(this.FormProductoGestion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

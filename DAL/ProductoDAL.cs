@@ -18,7 +18,7 @@ namespace DAL
 
             Acceso AccesoDB = new Acceso();
             DataSet DS = new DataSet();
-            DS = AccesoDB.LeerDatos("sp_ListarProductos", null);
+            DS = AccesoDB.LeerDatos("sp_ListaProductos", null);
 
             if (DS.Tables[0].Rows.Count > 0)
             {
@@ -45,16 +45,32 @@ namespace DAL
         {
             Hashtable Parametros = new Hashtable();
 
-            Parametros.Add("@Razon", nProd.Descripcion);
-            Parametros.Add("@Direccion", nProd.Tipo);
-            Parametros.Add("@CodigoPostal", nProd.UnidadMedida);
-            Parametros.Add("@Tel", nProd.Stock);
-            Parametros.Add("@Mail", nProd.Precio);
-
-        
+            Parametros.Add("@Descripcion", nProd.Descripcion);
+            Parametros.Add("@Tipo", nProd.Tipo);
+            Parametros.Add("@UnidadMedida", nProd.UnidadMedida);
+            Parametros.Add("@Stock", nProd.Stock);
+            Parametros.Add("@Precio", nProd.Precio);
+      
             Acceso AccesoDB = new Acceso();
-        AccesoDB.Escribir("sp_InsertarProducto", Parametros);
+            AccesoDB.Escribir("sp_InsertarProducto", Parametros);
         
+        }
+
+        public void EditarProducto(ProductoBE eProd)
+
+        {
+            Hashtable Parametros = new Hashtable();
+
+            Parametros.Add("@Id", eProd.Id);
+            Parametros.Add("@Descripcion", eProd.Descripcion);
+            Parametros.Add("@Tipo", eProd.Tipo);
+            Parametros.Add("@UnidadMedida", eProd.UnidadMedida);
+            Parametros.Add("@Precio", eProd.Precio);
+            Parametros.Add("@Activo", eProd.Activo);
+
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_EditarProducto", Parametros);
+
         }
 
     }

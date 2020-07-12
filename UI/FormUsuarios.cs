@@ -53,5 +53,10 @@ namespace UI
             dataGridView1.DataSource = bUsuario.ListarUsuarios();
 
         }
+
+        private void buttonDEL_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

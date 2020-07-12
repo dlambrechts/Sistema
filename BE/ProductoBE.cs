@@ -15,5 +15,10 @@ namespace BE
         public int Stock { get; set; }
         public float Precio { get; set; }
         public bool Activo { get; set; }
+
+        public override string ToString()
+        {
+            return "("+ Id +") "+" "+Descripcion;
+        }
     }
 }

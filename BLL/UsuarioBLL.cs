@@ -27,6 +27,12 @@ namespace BLL
             return oUsuario;
         
         }
+
+        public UsuarioBE SeleccionarUsuarioPorId(int Id) 
+        {
+            UsuarioDAL dUsuario = new UsuarioDAL();
+            return dUsuario.SeleccionarUsuarioPorId(Id);
+        }
         public ResultadoLogin Login (string Mail, string Password) 
         
         {

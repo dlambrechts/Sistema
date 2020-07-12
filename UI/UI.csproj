@@ -94,6 +94,12 @@
     <Compile Include="FormPerfilUsuario.Designer.cs">
       <DependentUpon>FormPerfilUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPresupuestoAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresupuestoAlta.Designer.cs">
+      <DependentUpon>FormPresupuestoAlta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPresupuestoGestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,12 @@
     </Compile>
     <Compile Include="FormProductoAlta.Designer.cs">
       <DependentUpon>FormProductoAlta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProductoEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProductoEditar.Designer.cs">
+      <DependentUpon>FormProductoEditar.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProductoGestion.cs">
       <SubType>Form</SubType>
@@ -156,6 +168,9 @@
     <EmbeddedResource Include="FormPerfilUsuario.resx">
       <DependentUpon>FormPerfilUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPresupuestoAlta.resx">
+      <DependentUpon>FormPresupuestoAlta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPresupuestoGestion.resx">
       <DependentUpon>FormPresupuestoGestion.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormProductoAlta.resx">
       <DependentUpon>FormProductoAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProductoEditar.resx">
+      <DependentUpon>FormProductoEditar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProductoGestion.resx">
       <DependentUpon>FormProductoGestion.cs</DependentUpon>

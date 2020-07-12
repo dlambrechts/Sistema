@@ -50,6 +50,7 @@
     <Compile Include="PerfilPatenteBE.cs" />
     <Compile Include="PerfilTipoPermisoBE.cs" />
     <Compile Include="PresupuestoBE.cs" />
+    <Compile Include="PresupuestoItemBE.cs" />
     <Compile Include="ProductoBE.cs" />
     <Compile Include="UsuarioBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
