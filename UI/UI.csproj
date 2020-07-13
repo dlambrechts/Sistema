@@ -100,11 +100,35 @@
     <Compile Include="FormPresupuestoAlta.Designer.cs">
       <DependentUpon>FormPresupuestoAlta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPresupuestoAnalisisTecnico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresupuestoAnalisisTecnico.Designer.cs">
+      <DependentUpon>FormPresupuestoAnalisisTecnico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPresupuestoAnalisisTecnicoEjecutar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresupuestoAnalisisTecnicoEjecutar.Designer.cs">
+      <DependentUpon>FormPresupuestoAnalisisTecnicoEjecutar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPresupuestoApTecnica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresupuestoApTecnica.Designer.cs">
+      <DependentUpon>FormPresupuestoApTecnica.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPresupuestoGestion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormPresupuestoGestion.Designer.cs">
       <DependentUpon>FormPresupuestoGestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPresupuestoVisualizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresupuestoVisualizar.Designer.cs">
+      <DependentUpon>FormPresupuestoVisualizar.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
@@ -171,8 +195,20 @@
     <EmbeddedResource Include="FormPresupuestoAlta.resx">
       <DependentUpon>FormPresupuestoAlta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPresupuestoAnalisisTecnico.resx">
+      <DependentUpon>FormPresupuestoAnalisisTecnico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPresupuestoAnalisisTecnicoEjecutar.resx">
+      <DependentUpon>FormPresupuestoAnalisisTecnicoEjecutar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPresupuestoApTecnica.resx">
+      <DependentUpon>FormPresupuestoApTecnica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPresupuestoGestion.resx">
       <DependentUpon>FormPresupuestoGestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPresupuestoVisualizar.resx">
+      <DependentUpon>FormPresupuestoVisualizar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>

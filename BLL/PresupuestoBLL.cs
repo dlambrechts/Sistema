@@ -11,7 +11,9 @@ namespace BLL
 {
     public class PresupuestoBLL
     {
-        public float CalcularSubTotal(BindingList<PresupuestoItemBE> Items)
+
+
+        public float CalcularSubTotal(List<PresupuestoItemBE> Items)
 
         {
             float subtotal = 0;
@@ -49,11 +51,27 @@ namespace BLL
 
         }
 
-        public List<PresupuestoBE> ListarPresupuestos() 
+        public List<PresupuestoBE> ListarPresupuestos() // Listar Cabecera de Presupuestos
         
         {
             PresupuestoDAL dPresup = new PresupuestoDAL();
             return dPresup.ListarPresupuestos();
+        }
+
+        public PresupuestoBE SeleccionarPresupuestoPorId(int Id)
+
+        {
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            return dPresup.SeleccionarPresupuestoPorId(Id);
+
+        }
+
+        public void AnalisisTecnico(PresupuestoAprobacionBE Resultado)
+
+        {
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            dPresup.AnalisisTecnico(Resultado);
+
         }
     }
 }

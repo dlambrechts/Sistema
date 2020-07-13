@@ -22,7 +22,7 @@ namespace UI
 
         }
 
-        enum TipoProd : int { Terminado = 1, Repuesto = 2, Insumo = 3, SemiElaborado = 4 }
+        enum TipoProd : int { Terminado = 1, Repuesto = 2, Insumo = 3, SemiElaborado = 4,Servicio=5 }
         enum UnidadMedida : int { Unidad = 1, Metro = 2, Kg = 3, Litro = 4 }
 
         public ProductoBE eProd = new ProductoBE();
@@ -59,6 +59,11 @@ namespace UI
             comboUnMedi.Text = eProd.UnidadMedida;
             textPrecio.Text = Convert.ToString(eProd.Precio);
             checkBox1.Checked = eProd.Activo;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

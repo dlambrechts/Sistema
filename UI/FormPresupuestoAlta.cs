@@ -22,13 +22,11 @@ namespace UI
             ActualizarGrillaItems();
             comboDescuento.SelectedItem = 0;
             dateTimePicker1.Value = DateTime.Now.AddDays(15);
+            dateTimePickerVal.Value = DateTime.Now.AddDays(30);
         }
-
-        
-
+ 
         PresupuestoBE nPresupuesto = new PresupuestoBE();
-        PresupuestoBLL bllPresupuesto = new PresupuestoBLL();
-        BindingList<PresupuestoItemBE> Items = new BindingList<PresupuestoItemBE>();
+        PresupuestoBLL bllPresupuesto = new PresupuestoBLL();     
         float subtotal=0;
         float valordesc = 0;
         float total = 0;
@@ -36,25 +34,22 @@ namespace UI
         public void ActualizarGrillaItems() 
         
         {
-           
-            this.dataGridViewItems.DataSource = null;
-            this.dataGridViewItems.DataSource = Items;
-            this.dataGridViewItems.Columns[0].HeaderText = "Item";
-            this.dataGridViewItems.Columns[0].Width = 250;
-          
-        }
-        
+            BindingList<PresupuestoItemBE> ListaItems = new BindingList<PresupuestoItemBE>(nPresupuesto.Items);
 
+            this.dataGridViewItems.DataSource = null;
+            this.dataGridViewItems.DataSource = ListaItems;
+            this.dataGridViewItems.Columns[0].HeaderText = "Item";
+            this.dataGridViewItems.Columns[0].Width = 250;       
+        }
         public void ActualizarTotales() 
         
         {
-            subtotal = bllPresupuesto.CalcularSubTotal(Items);
+            subtotal = bllPresupuesto.CalcularSubTotal(nPresupuesto.Items);
             valordesc = bllPresupuesto.CalcularDescuento(subtotal, Convert.ToInt32(comboDescuento.Text));
             total = bllPresupuesto.CalcularTotal(valordesc,subtotal);
             labelSubt.Text = "$ " + Convert.ToString(subtotal);
             labelDesc.Text = "$ " + Convert.ToString(valordesc);
             labelTot.Text = "$ " + Convert.ToString(total);
-
         }
 
         private void FormPresupuestoAlta_Load(object sender, EventArgs e)
@@ -70,8 +65,7 @@ namespace UI
             comboCliente.DataSource = bllCli.ListarClientes();
         }
 
-        public void ObtenerProductos() 
-        
+        public void ObtenerProductos()        
         {
             ProductoBLL bllProd = new ProductoBLL();
             comboProducto.DataSource = null;
@@ -80,34 +74,40 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             PresupuestoItemBE nItem = new PresupuestoItemBE();
             ProductoBE selProd = new ProductoBE();
             
             selProd = (ProductoBE)comboProducto.SelectedItem;
 
-            int cantidad = Convert.ToInt32(numericCant.Value);
+            if (nPresupuesto.ExisteItem(selProd) == true) { MessageBox.Show("El Item ya fue cargado");}
 
-            if  (selProd.Stock < cantidad)
+            else
+            {
+
+                int cantidad = Convert.ToInt32(numericCant.Value);
+
+
+                if (selProd.Stock < cantidad)
                 {
-                    MessageBox.Show("No hay Stock suficiente");
+                    DialogResult Respuesta = MessageBox.Show("Actualmente no hay Stock suficiente. ¿Agregar Item de todas formas?", "Advertencia Stock", MessageBoxButtons.YesNo);
+
+                    if (Respuesta == DialogResult.Yes)
+                    {
+                        nPresupuesto.AgregarItems(selProd, cantidad);
+                        ActualizarGrillaItems();
+                        ActualizarTotales();
+                    }
                 }
+                else
 
-                else 
-                
                 {
-                    nItem.Cantidad = cantidad;
-                    nItem.Producto = selProd;
-                    nItem.PrecioUnitario = selProd.Precio;
-                    nItem.TotalItem = selProd.Precio*nItem.Cantidad;
-
-                    Items.Add(nItem);
-                    
-                    
+                    nPresupuesto.AgregarItems(selProd, cantidad);
                     ActualizarGrillaItems();
-                    ActualizarTotales();                   
+                    ActualizarTotales();
                 }
-            
+
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -116,15 +116,15 @@ namespace UI
             
             if (Respuesta == DialogResult.Yes)
             {
-                nPresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;
-                nPresupuesto.Items = new List<PresupuestoItemBE>();
-                nPresupuesto.Items = Items.ToList();
+                nPresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;                      
                 nPresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
                 nPresupuesto.FechaEmision = DateTime.Now;
                 nPresupuesto.Estado = "Emitido";
                 nPresupuesto.FechaEntrega = dateTimePicker1.Value;
+                nPresupuesto.FechaValidez = dateTimePickerVal.Value;
                 nPresupuesto.Descuento = valordesc;
                 nPresupuesto.Total = total;
+                nPresupuesto.Observaciones = textBoxObs.Text;
 
                 bllPresupuesto.AltaPresupuesto(nPresupuesto);
 
@@ -146,11 +146,41 @@ namespace UI
         public void ReiniciarValores() 
         
         {
-            Items.Clear();
+            nPresupuesto.Items.Clear();
             comboDescuento.SelectedItem = 0;
-            dateTimePicker1.Value = DateTime.Now.AddDays(15);
+            dateTimePicker1.Value = DateTime.Now.AddDays(15);           
+            dateTimePickerVal.Value = DateTime.Now.AddDays(30);
+            textBoxObs.Text = "";
             ObtenerProductos();
             ObtenerClientes();
+            ActualizarGrillaItems();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ProductoBE tempProd = new ProductoBE();
+            tempProd =(ProductoBE)comboProducto.SelectedItem;
+            MessageBox.Show("La cantidad Actual para " + tempProd.Descripcion + " es: " + tempProd.Stock + " " + tempProd.UnidadMedida);
+        }
+
+        private void buttonQuitarItem_Click(object sender, EventArgs e)
+        {
+
+            if (nPresupuesto.Items.Count > 0) 
+            
+            { 
+                PresupuestoItemBE tempItem = new PresupuestoItemBE();
+                tempItem = (PresupuestoItemBE)dataGridViewItems.CurrentRow.DataBoundItem;
+                nPresupuesto.QuitarItem(tempItem.Producto);
+                ActualizarGrillaItems();
+                ActualizarTotales();
+
+            }
+        }
+
+        private void dataGridViewItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

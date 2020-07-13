@@ -49,6 +49,7 @@
     <Compile Include="PerfilFamiliaBE.cs" />
     <Compile Include="PerfilPatenteBE.cs" />
     <Compile Include="PerfilTipoPermisoBE.cs" />
+    <Compile Include="PresupuestoAprobacionBE.cs" />
     <Compile Include="PresupuestoBE.cs" />
     <Compile Include="PresupuestoItemBE.cs" />
     <Compile Include="ProductoBE.cs" />

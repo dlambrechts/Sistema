@@ -66,6 +66,7 @@ namespace UI
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             beProd.Id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
             beProd.Descripcion = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
             beProd.Tipo = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[2].Value);

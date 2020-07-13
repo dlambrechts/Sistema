@@ -21,7 +21,7 @@ namespace UI
             comboUnMedi.DataSource = Enum.GetValues(typeof(UnidadMedida));
         }
 
-        enum TipoProd:int {Terminado=1,Repuesto=2,Insumo=3,SemiElaborado=4 }
+        enum TipoProd:int {Terminado=1,Repuesto=2,Insumo=3,SemiElaborado=4,Servicio=5 }
         enum UnidadMedida : int { Unidad=1,Metro=2,Kg=3,Litro=4}
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
@@ -49,6 +49,11 @@ namespace UI
         }
 
         private void FormProductoAlta_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

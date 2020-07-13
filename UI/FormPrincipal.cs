@@ -271,7 +271,9 @@ namespace UI
 
         private void aprobarPresupuestoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormPresupuestoAnalisisTecnico frmApTec = new FormPresupuestoAnalisisTecnico();
+            frmApTec.MdiParent = this;
+            frmApTec.Show();
         }
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {

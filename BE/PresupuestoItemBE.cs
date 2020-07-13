@@ -13,5 +13,7 @@ namespace BE
         public int Cantidad { get; set; }
         public float PrecioUnitario { get; set; }
         public float TotalItem { get; set; }
+
+ 
     }
 }
