@@ -266,7 +266,9 @@ namespace UI
 
         private void aprobaciónComercialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormPresupuestoAnalisisComercial frmCom = new FormPresupuestoAnalisisComercial();
+            frmCom.MdiParent = this;
+            frmCom.Show();
         }
 
         private void aprobarPresupuestoToolStripMenuItem_Click(object sender, EventArgs e)

@@ -62,7 +62,8 @@ namespace UI
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            selPres.Id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            selPres = (PresupuestoBE)dataGridView1.CurrentRow.DataBoundItem;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -78,6 +79,29 @@ namespace UI
             }
 
             else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
+        }
+
+        private void buttonCierre_Click(object sender, EventArgs e)
+        {
+            if (selPres.Id != 0)
+
+            {
+                if(selPres.AprobacionTecnica==false || selPres.AprobacionComercial == false) { MessageBox.Show("El Presupuesto debe tener Aprobación Técnica y Comercial"); }
+
+                else 
+                { 
+
+                        FormPresupuestoCierre FormC = new FormPresupuestoCierre();
+                        FormC.cPresup = selPres;
+                        FormC.MdiParent = this.ParentForm;
+                        FormC.FormClosed += new FormClosedEventHandler(fNuevo_FormClosed);
+                        FormC.Show();
+
+                }
+            }
+
+            else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
+
         }
     }
 }

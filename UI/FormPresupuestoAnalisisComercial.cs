@@ -9,26 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
 using BLL;
-
 namespace UI
 {
-    public partial class FormPresupuestoAnalisisTecnico : Form
+    public partial class FormPresupuestoAnalisisComercial : Form
     {
-        public FormPresupuestoAnalisisTecnico()
+        public FormPresupuestoAnalisisComercial()
         {
             InitializeComponent();
+
         }
+
         PresupuestoBLL bllPresup = new PresupuestoBLL();
         List<PresupuestoBE> ListaPresupuestos = new List<PresupuestoBE>();
         PresupuestoBE selPres = new PresupuestoBE();
-        private void FormPresupuestoAnalisisTecnico_Load(object sender, EventArgs e)
+        private void FormPresupuestoAnalisisComercial_Load(object sender, EventArgs e)
         {
             ObtenerPresupuestos();
             CargarGrilla();
         }
+        public void ObtenerPresupuestos()
 
-        public void ObtenerPresupuestos() 
-        
         {
             ListaPresupuestos = bllPresup.ListarPresupuestos();
             ClienteBLL bllCli = new ClienteBLL();
@@ -45,21 +45,21 @@ namespace UI
         {
             dataGridViewPresup.DataSource = null;
 
-            if (radioPendientes.Checked==true)
+            if (radioPendientes.Checked == true)
             {
                 List<PresupuestoBE> ListaFiltrada = new List<PresupuestoBE>();
-                ListaFiltrada = ListaPresupuestos.Where(x => x.AprobacionTecnica == false).ToList();
+                ListaFiltrada = ListaPresupuestos.Where(x => x.AprobacionComercial == false).ToList();
                 BindingList<PresupuestoBE> bList = new BindingList<PresupuestoBE>(ListaFiltrada);
                 dataGridViewPresup.DataSource = bList;
             }
 
-            else 
-            
+            else
+
             {
                 BindingList<PresupuestoBE> bList = new BindingList<PresupuestoBE>(ListaPresupuestos);
                 dataGridViewPresup.DataSource = bList;
             }
-            
+
         }
 
         private void radioPendientes_CheckedChanged(object sender, EventArgs e)
@@ -72,37 +72,50 @@ namespace UI
             CargarGrilla();
         }
 
-        private void buttonAp_Click(object sender, EventArgs e)
+        private void buttonAp_Click_1(object sender, EventArgs e)
         {
-            if (selPres.Id == 0) { MessageBox.Show("Por favor, selecciones un Presupuesto"); }
-
+            if (selPres.Id == 0) 
+                
+            { MessageBox.Show("Por favor, seleccione un Presupuesto"); }
            
-            else
-          
-            { 
-            FormPresupuestoAnalisisTecnicoEjecutar frPreAprob = new FormPresupuestoAnalisisTecnicoEjecutar();
-            frPreAprob.oPresup = selPres;
-            frPreAprob.MdiParent = this.ParentForm;
-            frPreAprob.FormClosed += new FormClosedEventHandler(frPrepAprob_FormClosed);
-                                
-            frPreAprob.Show();
+            else 
+                {
+                if (selPres.AprobacionTecnica == false)
+                {
+                    MessageBox.Show("Primero debe realizarse la Aprobación Técnica");
+                }
+                else
+                {
+                    FormPresupuestoAnalisisComercialEjecutar frPreAprob = new FormPresupuestoAnalisisComercialEjecutar();
+                    frPreAprob.oPresup = selPres;
+                    frPreAprob.MdiParent = this.ParentForm;
+                    frPreAprob.FormClosed += new FormClosedEventHandler(frPreAprob_FormClosed);
+                    frPreAprob.Show();
 
+                }
             }
         }
 
-        private void frPrepAprob_FormClosed(object sende, EventArgs e)
+        private void frPreAprob_FormClosed(object sender,EventArgs e) 
         
         {
             ObtenerPresupuestos();
             CargarGrilla();
         }
-
-        private void dataGridViewPresup_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewPresup_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            
-            selPres = (PresupuestoBE)dataGridViewPresup.CurrentRow.DataBoundItem;
-           
+            selPres=(PresupuestoBE)dataGridViewPresup.CurrentRow.DataBoundItem;
+        }
+
+        private void radioPendientes_CheckedChanged_1(object sender, EventArgs e)
+        {
+            CargarGrilla();
+        }
+
+        private void radioButtonTodos_CheckedChanged_1(object sender, EventArgs e)
+        {
+            CargarGrilla();
         }
 
         private void buttonVis_Click(object sender, EventArgs e)
@@ -121,3 +134,4 @@ namespace UI
         }
     }
 }
+

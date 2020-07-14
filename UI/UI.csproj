@@ -100,6 +100,18 @@
     <Compile Include="FormPresupuestoAlta.Designer.cs">
       <DependentUpon>FormPresupuestoAlta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPresupuestoAnalisisComercial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresupuestoAnalisisComercial.Designer.cs">
+      <DependentUpon>FormPresupuestoAnalisisComercial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPresupuestoAnalisisComercialEjecutar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresupuestoAnalisisComercialEjecutar.Designer.cs">
+      <DependentUpon>FormPresupuestoAnalisisComercialEjecutar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPresupuestoAnalisisTecnico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +129,12 @@
     </Compile>
     <Compile Include="FormPresupuestoApTecnica.Designer.cs">
       <DependentUpon>FormPresupuestoApTecnica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPresupuestoCierre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPresupuestoCierre.Designer.cs">
+      <DependentUpon>FormPresupuestoCierre.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPresupuestoGestion.cs">
       <SubType>Form</SubType>
@@ -195,6 +213,12 @@
     <EmbeddedResource Include="FormPresupuestoAlta.resx">
       <DependentUpon>FormPresupuestoAlta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPresupuestoAnalisisComercial.resx">
+      <DependentUpon>FormPresupuestoAnalisisComercial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPresupuestoAnalisisComercialEjecutar.resx">
+      <DependentUpon>FormPresupuestoAnalisisComercialEjecutar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPresupuestoAnalisisTecnico.resx">
       <DependentUpon>FormPresupuestoAnalisisTecnico.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPresupuestoApTecnica.resx">
       <DependentUpon>FormPresupuestoApTecnica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPresupuestoCierre.resx">
+      <DependentUpon>FormPresupuestoCierre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPresupuestoGestion.resx">
       <DependentUpon>FormPresupuestoGestion.cs</DependentUpon>

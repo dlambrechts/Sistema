@@ -12,11 +12,42 @@ namespace DAL
     public class PresupuestoDAL
     {
 
+        public List<PresupuestoAprobacionBE> HistorialAnalisis(PresupuestoBE Presupuesto) 
+        
+        {
+            List<PresupuestoAprobacionBE> Historial = new List<PresupuestoAprobacionBE>();
+
+            Acceso AccesoDB = new Acceso();
+            DataSet DS = new DataSet();
+            Hashtable Parametros = new Hashtable();
+            Parametros.Add("@IdPresup", Presupuesto.Id);
+            DS = AccesoDB.LeerDatos("sp_ListarPresupuestoHistorialAprobacion", Parametros);
+
+            if (DS.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow Item in DS.Tables[0].Rows)
+                {
+                    PresupuestoAprobacionBE oAprob = new PresupuestoAprobacionBE();
+                    
+                    oAprob.Fecha = Convert.ToDateTime(Item["Fecha"]); oAprob.Fecha.ToShortDateString();
+                    oAprob.Aprobador.Nombre = Convert.ToString(Item["Nombre"]).Trim();
+                    oAprob.Aprobador.Apellido = Convert.ToString(Item["Apellido"]).Trim();
+                    oAprob.TipoAprobacion = Convert.ToString(Item["TipoAprobacion"]).Trim();
+                    oAprob.Accion = Convert.ToString(Item["Accion"]).Trim();
+                    oAprob.Observaciones = Convert.ToString(Item["Observaciones"]).Trim();
+                   
+
+                    Historial.Add(oAprob);
+                }
+
+            }
+            return Historial;
+        }
+
         public List<PresupuestoBE> ListarPresupuestos() // Solo muestra la cabecera para el listado
         
         {
             List<PresupuestoBE> ListaPresupuestos = new List<PresupuestoBE>();
-
             Acceso AccesoDB = new Acceso();
             DataSet DS = new DataSet();
             DS = AccesoDB.LeerDatos("sp_ListarPresupuestosCabecera", null);
@@ -145,10 +176,42 @@ namespace DAL
             ParamCabecera.Add("@Accion", Resultado.Accion);
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
-
             Acceso AccesoDB = new Acceso();
-            AccesoDB.Escribir("sp_InsertarPresupuestoAprobacion", ParamCabecera);
+            AccesoDB.Escribir("sp_InsertarPresupuestoAprobacionTec", ParamCabecera);
 
         }
+
+        public void AnalisisComercial(PresupuestoAprobacionBE Resultado)
+
+        {
+            Hashtable ParamCabecera = new Hashtable();
+            ParamCabecera.Add("@IdPresupuesto", Resultado.Presupuesto.Id);
+            ParamCabecera.Add("@IdAprobador", Resultado.Aprobador.Id);
+            ParamCabecera.Add("@Fecha", Resultado.Fecha);
+            ParamCabecera.Add("@TipoAprobacion", Resultado.TipoAprobacion);
+            ParamCabecera.Add("@Accion", Resultado.Accion);
+            ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
+
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_InsertarPresupuestoAprobacionCom", ParamCabecera);
+
+        }
+
+        public void Cierre(PresupuestoAprobacionBE Resultado)
+
+        {
+            Hashtable ParamCabecera = new Hashtable();
+            ParamCabecera.Add("@IdPresupuesto", Resultado.Presupuesto.Id);
+            ParamCabecera.Add("@IdAprobador", Resultado.Aprobador.Id);
+            ParamCabecera.Add("@Fecha", Resultado.Fecha);
+            ParamCabecera.Add("@TipoAprobacion", Resultado.TipoAprobacion);
+            ParamCabecera.Add("@Accion", Resultado.Accion);
+            ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
+
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_InsertarPresupuestoCierre", ParamCabecera);
+
+        }
+
     }
 }

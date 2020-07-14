@@ -71,7 +71,25 @@ namespace BLL
         {
             PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.AnalisisTecnico(Resultado);
+        }
 
+        public void AnalisisComercial(PresupuestoAprobacionBE Resultado)
+
+        {
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            dPresup.AnalisisComercial(Resultado);
+        }
+
+        public void Cierre(PresupuestoAprobacionBE Resultado)
+        {
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            dPresup.Cierre(Resultado);
+        }
+        public List<PresupuestoAprobacionBE> HistorialAnalisis(PresupuestoBE Presupuesto)
+        {
+
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            return dPresup.HistorialAnalisis(Presupuesto);
         }
     }
 }

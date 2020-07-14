@@ -24,7 +24,7 @@ namespace UI
         private void FormPresupuestoVisualizar_Load(object sender, EventArgs e)
         {
             CompletarDatosPresupuesto();
-            labelNum.Text = Convert.ToString(vPresup.Id);
+            groupBoxCabecera.Text += " " +Convert.ToString(vPresup.Id);
             labelCli.Text = Convert.ToString(vPresup.Cliente.RazonSocial) + " (" + vPresup.Cliente.Id + ")";
             labelVen.Text = vPresup.Vendedor.ToString();
             labelDesc.Text = "$ "+ Convert.ToString(vPresup.Descuento);
@@ -38,6 +38,7 @@ namespace UI
             textBoxObs.Text = vPresup.Observaciones;
 
             CargarItemsEnGrilla();
+            CargarHitorial();
         }
 
 
@@ -60,6 +61,32 @@ namespace UI
             dataGridViewItems.DataSource = Items;
             this.dataGridViewItems.Columns[0].HeaderText = "Item";
             this.dataGridViewItems.Columns[0].Width = 250;
+        }
+
+        public void CargarHitorial() 
+        
+        {
+            PresupuestoBLL bllPresup = new PresupuestoBLL();
+            List<PresupuestoAprobacionBE> Historial = new List<PresupuestoAprobacionBE>();
+            Historial = bllPresup.HistorialAnalisis(vPresup);
+            BindingList<PresupuestoAprobacionBE> hist = new BindingList<PresupuestoAprobacionBE>(Historial);
+            this.dataGridViewAprob.DataSource = null;
+            this.dataGridViewAprob.DataSource = hist;
+
+            this.dataGridViewAprob.Columns[0].Visible = false;
+            this.dataGridViewAprob.Columns[2].HeaderText = "Aprobador";
+            this.dataGridViewAprob.Columns[5].Width = 250;
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

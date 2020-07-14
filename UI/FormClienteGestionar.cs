@@ -70,6 +70,7 @@ namespace UI
 
         private void dataGridClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             beCli.Id = Convert.ToInt32(dataGridClientes.Rows[e.RowIndex].Cells[0].Value);
             beCli.RazonSocial = Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[1].Value);
             beCli.Direccion = Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[2].Value);

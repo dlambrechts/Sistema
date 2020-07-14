@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FormPresupuestoAnalisisTecnicoEjecutar
+    partial class FormPresupuestoAnalisisComercialEjecutar
     {
         /// <summary>
         /// Required designer variable.
@@ -51,7 +51,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(275, 213);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Aprobar/Rechazar";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -118,15 +118,16 @@
             this.textBoxObs.Size = new System.Drawing.Size(241, 74);
             this.textBoxObs.TabIndex = 0;
             // 
-            // FormPresupuestoAnalisisTecnicoEjecutar
+            // FormPresupuestoAnalisisComercialEjecutar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 240);
+            this.ClientSize = new System.Drawing.Size(296, 236);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FormPresupuestoAnalisisTecnicoEjecutar";
-            this.Text = "Aprobación Técnica";
-            this.Load += new System.EventHandler(this.FormPresupuestoAnalisisTecnicoEjecutar_Load);
+            this.Name = "FormPresupuestoAnalisisComercialEjecutar";
+            this.Text = "Aprobación Comercial";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormPresupuestoAnalisisComercialEjecutar_FormClosed);
+            this.Load += new System.EventHandler(this.FormPresupuestoAnalisisComercialEjecutar_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -138,12 +139,12 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBoxPresup;
+        private System.Windows.Forms.ComboBox comboBoxAccion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonConfirmar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxObs;
-        private System.Windows.Forms.TextBox textBoxPresup;
-        private System.Windows.Forms.ComboBox comboBoxAccion;
     }
 }

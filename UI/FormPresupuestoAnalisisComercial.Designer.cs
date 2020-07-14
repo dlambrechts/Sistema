@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FormPresupuestoAnalisisTecnico
+    partial class FormPresupuestoAnalisisComercial
     {
         /// <summary>
         /// Required designer variable.
@@ -46,10 +46,10 @@
             // 
             this.groupBox2.Controls.Add(this.buttonVis);
             this.groupBox2.Controls.Add(this.buttonAp);
-            this.groupBox2.Location = new System.Drawing.Point(7, 9);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(259, 54);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Acciones";
             // 
@@ -71,16 +71,16 @@
             this.buttonAp.TabIndex = 0;
             this.buttonAp.Text = "Aprobar/Rechazar";
             this.buttonAp.UseVisualStyleBackColor = true;
-            this.buttonAp.Click += new System.EventHandler(this.buttonAp_Click);
+            this.buttonAp.Click += new System.EventHandler(this.buttonAp_Click_1);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.dataGridViewPresup);
-            this.groupBox1.Location = new System.Drawing.Point(7, 69);
+            this.groupBox1.Location = new System.Drawing.Point(12, 72);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(859, 349);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.Size = new System.Drawing.Size(880, 349);
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Presupuestos";
             // 
@@ -90,7 +90,7 @@
             this.groupBox3.Controls.Add(this.radioButtonTodos);
             this.groupBox3.Location = new System.Drawing.Point(20, 19);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(335, 40);
+            this.groupBox3.Size = new System.Drawing.Size(292, 40);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filtrar";
@@ -106,18 +106,18 @@
             this.radioPendientes.TabStop = true;
             this.radioPendientes.Text = "Pendientes de Aprobación";
             this.radioPendientes.UseVisualStyleBackColor = true;
-            this.radioPendientes.CheckedChanged += new System.EventHandler(this.radioPendientes_CheckedChanged);
+            this.radioPendientes.CheckedChanged += new System.EventHandler(this.radioPendientes_CheckedChanged_1);
             // 
             // radioButtonTodos
             // 
             this.radioButtonTodos.AutoSize = true;
-            this.radioButtonTodos.Location = new System.Drawing.Point(184, 16);
+            this.radioButtonTodos.Location = new System.Drawing.Point(200, 16);
             this.radioButtonTodos.Name = "radioButtonTodos";
             this.radioButtonTodos.Size = new System.Drawing.Size(55, 17);
             this.radioButtonTodos.TabIndex = 0;
             this.radioButtonTodos.Text = "Todos";
             this.radioButtonTodos.UseVisualStyleBackColor = true;
-            this.radioButtonTodos.CheckedChanged += new System.EventHandler(this.radioButtonTodos_CheckedChanged);
+            this.radioButtonTodos.CheckedChanged += new System.EventHandler(this.radioButtonTodos_CheckedChanged_1);
             // 
             // dataGridViewPresup
             // 
@@ -129,20 +129,20 @@
             this.dataGridViewPresup.Name = "dataGridViewPresup";
             this.dataGridViewPresup.ReadOnly = true;
             this.dataGridViewPresup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPresup.Size = new System.Drawing.Size(835, 278);
+            this.dataGridViewPresup.Size = new System.Drawing.Size(844, 278);
             this.dataGridViewPresup.TabIndex = 0;
-            this.dataGridViewPresup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPresup_CellContentClick);
+            this.dataGridViewPresup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPresup_CellContentClick_1);
             // 
-            // FormPresupuestoAnalisisTecnico
+            // FormPresupuestoAnalisisComercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 433);
+            this.ClientSize = new System.Drawing.Size(904, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FormPresupuestoAnalisisTecnico";
-            this.Text = "Análisis Técnico de Presupuestos";
-            this.Load += new System.EventHandler(this.FormPresupuestoAnalisisTecnico_Load);
+            this.Name = "FormPresupuestoAnalisisComercial";
+            this.Text = "Análisis Comercial de Presupuestos";
+            this.Load += new System.EventHandler(this.FormPresupuestoAnalisisComercial_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

@@ -18,7 +18,7 @@ namespace BE
 
         public override string ToString()
         {
-            return "("+ Id +") "+" "+Descripcion;
+            return "(Código: " + Id +") "+" "+Descripcion;
         }
     }
 }
