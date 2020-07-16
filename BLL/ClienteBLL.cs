@@ -36,5 +36,29 @@ namespace BLL
             ClienteDAL CliDal = new ClienteDAL();
             CliDal.EditarCliente(nCliente);
         }
+
+        public void EliminarCliente(ClienteBE eCli)
+        {
+            ClienteDAL CliDal = new ClienteDAL();
+            CliDal.EliminarCliente(eCli);
+        }
+
+        public bool ExisteClienteEnPresupuesto(ClienteBE Cli)
+
+        {
+            PresupuestoBLL bllPres = new PresupuestoBLL();
+            List<PresupuestoBE> ListaPresup = new List<PresupuestoBE>(bllPres.ListarPresupuestos());
+            bool Existe = false;
+            foreach (PresupuestoBE Presup in ListaPresup)
+
+            {
+                if (Presup.Cliente.Id == Cli.Id)
+                Existe = true;
+                break;
+             
+            }
+
+            return Existe;
+        }
     }
 }

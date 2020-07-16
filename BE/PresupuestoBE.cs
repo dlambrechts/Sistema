@@ -17,12 +17,15 @@ namespace BE
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaValidez { get; set; }
         public bool AprobacionTecnica { get; set; }
-        public bool AprobacionComercial { get; set; }    
-        public string Estado { get; set; }
-        public float Descuento { get; set; }
-        public float Total { get; set; }
+        public bool AprobacionComercial { get; set; }
+        public PresupuestoEstadoBE Estado { get { return estado; } }      
+        public int PorcDescuento { get; set; }
+        public decimal Descuento { get; set; }
+        public decimal Iva { get; set; }
+        public decimal Total { get; set; }
         public string Observaciones { get; set; }
 
+        public PresupuestoEstadoBE estado = new PresupuestoEstadoBE();
         public bool ExisteItem (ProductoBE Prod){return this.Items.Exists(x => x.Producto.Id == Prod.Id);}
         public void AgregarItems(ProductoBE Prod, int Cant)
 
@@ -31,7 +34,9 @@ namespace BE
             nItem.Cantidad = Cant;
             nItem.Producto = Prod;
             nItem.PrecioUnitario = Prod.Precio;
-            nItem.TotalItem = Prod.Precio * nItem.Cantidad;
+            nItem.PorcIVA = Prod.Iva;
+            nItem.IvaItem = ((nItem.PrecioUnitario*nItem.PorcIVA)/100) *nItem.Cantidad;
+            nItem.TotalItem = (Prod.Precio * nItem.Cantidad)+nItem.IvaItem;
             this.Items.Add(nItem);
         }
         public void QuitarItem(ProductoBE Prod)        

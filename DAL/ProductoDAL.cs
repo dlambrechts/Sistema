@@ -31,8 +31,9 @@ namespace DAL
                     oProd.Tipo = Convert.ToString(Item[2]).Trim();
                     oProd.UnidadMedida = Convert.ToString(Item[3]);
                     oProd.Stock = Convert.ToInt32(Item[4]);
-                    oProd.Precio = (float)Convert.ToDouble(Item[5]);
+                    oProd.Precio = Convert.ToDecimal(Item[5]);
                     oProd.Activo = Convert.ToBoolean(Item[6]);
+                    oProd.Iva = Convert.ToDecimal(Item[7]);
 
                     ListaProductos.Add(oProd);
                 }
@@ -50,6 +51,7 @@ namespace DAL
             Parametros.Add("@UnidadMedida", nProd.UnidadMedida);
             Parametros.Add("@Stock", nProd.Stock);
             Parametros.Add("@Precio", nProd.Precio);
+            Parametros.Add("@Iva", nProd.Iva);
       
             Acceso AccesoDB = new Acceso();
             AccesoDB.Escribir("sp_InsertarProducto", Parametros);
@@ -67,10 +69,21 @@ namespace DAL
             Parametros.Add("@UnidadMedida", eProd.UnidadMedida);
             Parametros.Add("@Precio", eProd.Precio);
             Parametros.Add("@Activo", eProd.Activo);
+            Parametros.Add("@Iva", eProd.Iva);
 
             Acceso AccesoDB = new Acceso();
             AccesoDB.Escribir("sp_EditarProducto", Parametros);
 
+        }
+
+        public void EliminarProducto(ProductoBE eProd)
+
+        {
+            Hashtable Parametros = new Hashtable();
+            Parametros.Add("@Id", eProd.Id);
+
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_EliminarProducto", Parametros);
         }
 
     }

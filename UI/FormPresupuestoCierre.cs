@@ -32,7 +32,7 @@ namespace UI
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if (cPresup.Estado=="Aprobado Cliente" || cPresup.Estado == "Rechazado Cliente") { MessageBox.Show("El Presupuesto ya está Cerrado"); }
+            if (cPresup.Estado.Id==8 || cPresup.Estado.Id == 7) { MessageBox.Show("El Presupuesto ya está Cerrado"); }
 
             else
             {

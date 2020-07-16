@@ -36,7 +36,6 @@ namespace UI
         {
             LeerProductos();
         }
-
         public void LeerProductos()
 
         {
@@ -67,13 +66,35 @@ namespace UI
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            beProd.Id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-            beProd.Descripcion = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
-            beProd.Tipo = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
-            beProd.UnidadMedida = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
-            beProd.Precio = (float)Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
-            beProd.Activo=Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[6].Value);
+            beProd = (ProductoBE)dataGridView1.CurrentRow.DataBoundItem;
         }
 
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            if (beProd.Id == 0) { MessageBox.Show("Debe seleccionar un Producto para Eliminar"); }
+
+            else
+            {
+
+             DialogResult Respuesta = MessageBox.Show("¿Eliminar Producto "+ beProd.Id +"?", "Eliminar Producto"  , MessageBoxButtons.YesNo);
+
+                if (Respuesta == DialogResult.Yes)
+                {
+
+                    if (bllProd.ExisteProductoEnPresupuesto(beProd) == true)
+
+                    {
+                        MessageBox.Show("No es posible Eliminar. El Producto tiene Presupuestos asociados");
+                    }
+                    else
+                    {
+                        bllProd.EliminarProducto(beProd);
+                        MessageBox.Show("Producto Eliminado");
+                        LeerProductos();
+                    }
+                }  
+                
+            }
+        }
     }
 }

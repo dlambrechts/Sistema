@@ -59,6 +59,7 @@
             this.dataGridClientes.MultiSelect = false;
             this.dataGridClientes.Name = "dataGridClientes";
             this.dataGridClientes.ReadOnly = true;
+            this.dataGridClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridClientes.Size = new System.Drawing.Size(732, 258);
             this.dataGridClientes.TabIndex = 0;
             this.dataGridClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridClientes_CellContentClick);
@@ -83,6 +84,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Eliminar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 

@@ -127,6 +127,7 @@
             // 
             this.textPass2.Location = new System.Drawing.Point(144, 158);
             this.textPass2.Name = "textPass2";
+            this.textPass2.PasswordChar = '*';
             this.textPass2.Size = new System.Drawing.Size(134, 20);
             this.textPass2.TabIndex = 11;
             // 
@@ -134,6 +135,7 @@
             // 
             this.textPass1.Location = new System.Drawing.Point(144, 132);
             this.textPass1.Name = "textPass1";
+            this.textPass1.PasswordChar = '*';
             this.textPass1.Size = new System.Drawing.Size(134, 20);
             this.textPass1.TabIndex = 10;
             // 
@@ -222,17 +224,21 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(336, 28);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(547, 349);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(547, 266);
             this.dataGridView1.TabIndex = 1;
             // 
             // FormUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 395);
+            this.ClientSize = new System.Drawing.Size(895, 315);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormUsuarios";

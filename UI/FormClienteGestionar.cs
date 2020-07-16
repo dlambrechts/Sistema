@@ -65,23 +65,38 @@ namespace UI
         {
             dataGridClientes.DataSource = null;
             dataGridClientes.DataSource = bllCli.ListarClientes();
-
         }
 
         private void dataGridClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            beCli.Id = Convert.ToInt32(dataGridClientes.Rows[e.RowIndex].Cells[0].Value);
-            beCli.RazonSocial = Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[1].Value);
-            beCli.Direccion = Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[2].Value);
-            beCli.CodigoPostal = Convert.ToInt32(dataGridClientes.Rows[e.RowIndex].Cells[3].Value);
-            beCli.Telefono = Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[4].Value);
-            beCli.Mail = Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[5].Value);
-            beCli.Tipo= Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[6].Value);
-            beCli.Cuit = Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[7].Value);
-            beCli.Contacto= Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[8].Value);
-            beCli.CondicionPago = Convert.ToString(dataGridClientes.Rows[e.RowIndex].Cells[9].Value);
-            beCli.Activo = Convert.ToBoolean(dataGridClientes.Rows[e.RowIndex].Cells[10].Value);
+            beCli = (ClienteBE)dataGridClientes.CurrentRow.DataBoundItem;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (beCli.Id == 0) { MessageBox.Show("Debe seleccionar un Cliente para Eliminar"); }
+
+            else
+            {
+
+                DialogResult Respuesta = MessageBox.Show("¿Eliminar Cliente " + beCli.Id + "?", "Eliminar Cliente", MessageBoxButtons.YesNo);
+
+                if (Respuesta == DialogResult.Yes)
+                {
+                    if (bllCli.ExisteClienteEnPresupuesto(beCli) == true) 
+                    
+                        { MessageBox.Show("No es posible Eliminar. El Cliente tiene Presupuestos asociados "); }
+
+                    else 
+                        {
+                        bllCli.EliminarCliente(beCli);
+                        MessageBox.Show("Cliente Eliminado");
+                        LeerClientes();
+                    }
+
+                }
+            }
         }
     }
 }

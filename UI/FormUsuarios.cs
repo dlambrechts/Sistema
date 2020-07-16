@@ -22,18 +22,36 @@ namespace UI
 
         UsuarioBLL bUsuario = new UsuarioBLL();
         UsuarioBE oUsuario = new UsuarioBE();
+       
 
         private void buttonCRE_Click(object sender, EventArgs e)
         {
-            Asignar();
-            bUsuario.ABM(oUsuario, 1);
-            CargarGrilla();
+            if(textMail.Text=="" || textPass1.Text=="" ||textPass2.Text=="" || textNombre.Text=="") 
+            
+            { MessageBox.Show("Complete lo campos obligatorios"); }
 
+            else 
+            
+            { 
+            
+              if(textPass1.Text!=textPass2.Text) { MessageBox.Show("Las contraseñas no coinciden"); }
+
+                else 
+                { 
+           
+                    Asignar();
+                    bUsuario.ABM(oUsuario, 1);
+                    CargarGrilla();
+                }
+            }
         }
 
         private void FormUsuarios_Load(object sender, EventArgs e)
         {
             CargarGrilla();
+            List<IdiomaBE> Idiomas = new List<IdiomaBE>();
+            Idiomas = TraductorBLL.ObtenerIdiomas();
+            comboIdioma.DataSource = Idiomas;
         }
 
         public void Asignar() 
@@ -43,6 +61,7 @@ namespace UI
             oUsuario.Apellido = textApellido.Text.Trim();
             oUsuario.Mail = textMail.Text.Trim();
             oUsuario.Password = Encriptador.Hash(textPass1.Text);
+            oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
         
         }
 

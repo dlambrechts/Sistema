@@ -37,7 +37,8 @@ namespace UI
                 nProducto.Tipo = comboTipo.Text;
                 nProducto.UnidadMedida = comboUnMedi.Text;
                 nProducto.Stock = Convert.ToInt32(numericStock.Value);
-                nProducto.Precio = (float)Convert.ToDouble(textPrecio.Text);
+                nProducto.Precio = Convert.ToDecimal(textPrecio.Text);
+                nProducto.Iva = Convert.ToDecimal(comboIva.Text);
 
                 ProductoBLL bllProd = new ProductoBLL();
                 bllProd.AltaProducto(nProducto);

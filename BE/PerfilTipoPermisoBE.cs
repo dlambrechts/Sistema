@@ -18,6 +18,9 @@ namespace BE
         PermisoH, // Puede Anular Presupuestos
         PermisoJ, // Gestión de Idioma y Traducciones
         PermisoK, // Gestión de Clientes ABM
+        PermisoL, // Gestion de Productos ABM
+        PermisoM, // Visualiza Indicadores
+        PermisoN, // Puede hacer movimientos de stock
         Ninguno, // No borrar esto (usado en PerfilComponenteDAL)
     }
 }

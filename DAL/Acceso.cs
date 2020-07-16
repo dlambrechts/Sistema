@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Collections;
+using System.Windows.Forms;
+
 
 namespace DAL
 {
@@ -74,10 +76,10 @@ namespace DAL
                 int respuesta = ComandoSQL.ExecuteNonQuery();
                 Transaccion.Commit();
                 
-
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 Transaccion.Rollback();
                
             }

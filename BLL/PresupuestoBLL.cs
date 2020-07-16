@@ -12,11 +12,25 @@ namespace BLL
     public class PresupuestoBLL
     {
 
-
-        public float CalcularSubTotal(List<PresupuestoItemBE> Items)
+        public decimal CalcularTotalIva(PresupuestoBE Presup)
 
         {
-            float subtotal = 0;
+            decimal TotalIva = 0;
+
+            foreach (PresupuestoItemBE item in Presup.Items)
+            
+            {
+                TotalIva += item.IvaItem;
+            }
+
+            return TotalIva;
+        }
+
+        public decimal CalcularSubTotal(List<PresupuestoItemBE> Items)
+
+        {
+            decimal subtotal = 0;
+
             foreach (PresupuestoItemBE item in Items)
             {
                 subtotal += item.TotalItem;
@@ -24,10 +38,10 @@ namespace BLL
             return subtotal;
         }
 
-        public float CalcularTotal(float descuento, float subtotal)
+        public decimal CalcularTotal(decimal descuento, decimal subtotal)
 
         {
-            float total = 0;
+            decimal total = 0;
 
             total = subtotal - descuento;
 
@@ -35,9 +49,9 @@ namespace BLL
 
         }
         
-        public float CalcularDescuento(float subtotal,int desc)
+        public decimal CalcularDescuento(decimal subtotal,int desc)
         {
-            float descuento = 0;
+            decimal descuento = 0;
             descuento = (subtotal * desc) / 100;
             return descuento;
 
@@ -48,6 +62,14 @@ namespace BLL
         {
             PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.AltaPresupuesto(nPresupuesto);
+
+        }
+
+        public void EditarPresupuesto(PresupuestoBE nPresupuesto)
+
+        {
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            dPresup.EditarPresupuesto(nPresupuesto);
 
         }
 

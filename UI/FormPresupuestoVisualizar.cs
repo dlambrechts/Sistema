@@ -27,12 +27,13 @@ namespace UI
             groupBoxCabecera.Text += " " +Convert.ToString(vPresup.Id);
             labelCli.Text = Convert.ToString(vPresup.Cliente.RazonSocial) + " (" + vPresup.Cliente.Id + ")";
             labelVen.Text = vPresup.Vendedor.ToString();
-            labelDesc.Text = "$ "+ Convert.ToString(vPresup.Descuento);
+            labelDesc.Text = "$ "+ Convert.ToString(vPresup.Descuento) + "("+vPresup.PorcDescuento+"%)";
+            labelIva.Text = "$ " + Convert.ToString(vPresup.Iva);
             labelTot.Text = "$ " +Convert.ToString(vPresup.Total);
             labelEmis.Text = Convert.ToString(vPresup.FechaEmision.Date.ToShortDateString()) ;
             labelVal.Text = Convert.ToString(vPresup.FechaValidez.Date.ToShortDateString());
             labelEnt.Text = Convert.ToString(vPresup.FechaEntrega.Date.ToShortDateString());
-            labelEst.Text = vPresup.Estado;
+            labelEst.Text = vPresup.Estado.ToString();
             checkBoxApTec.Checked = vPresup.AprobacionTecnica;
             checkBoxApCom.Checked = vPresup.AprobacionComercial;
             textBoxObs.Text = vPresup.Observaciones;

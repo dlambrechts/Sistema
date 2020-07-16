@@ -40,7 +40,8 @@ namespace UI
                 eProducto.Descripcion = textDescrip.Text;
                 eProducto.Tipo = comboTipo.Text;
                 eProducto.UnidadMedida = comboUnMedi.Text;
-                eProducto.Precio = (float)Convert.ToDouble(textPrecio.Text);
+                eProducto.Precio = Convert.ToDecimal(textPrecio.Text);
+                eProducto.Iva = Convert.ToDecimal(comboIva.Text);
                 eProducto.Activo = checkBox1.Checked;
 
                 ProductoBLL bllProd = new ProductoBLL();
@@ -59,6 +60,7 @@ namespace UI
             comboUnMedi.Text = eProd.UnidadMedida;
             textPrecio.Text = Convert.ToString(eProd.Precio);
             checkBox1.Checked = eProd.Activo;
+            comboIva.Text = eProd.Iva.ToString(); ;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

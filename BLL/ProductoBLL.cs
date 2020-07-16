@@ -31,5 +31,33 @@ namespace BLL
             dProd.EditarProducto(eProd);
         }
 
+        public void EliminarProducto(ProductoBE eProd)
+        {
+            ProductoDAL dProd = new ProductoDAL();
+            dProd.EliminarProducto(eProd);
+        }
+
+        public bool ExisteProductoEnPresupuesto(ProductoBE Prod)
+
+        {
+            PresupuestoBLL bllPres = new PresupuestoBLL();
+            List<PresupuestoBE> ListaPresup = new List<PresupuestoBE>(bllPres.ListarPresupuestos());
+            bool Existe = false;
+            foreach (PresupuestoBE Presup in ListaPresup)
+
+            {
+                PresupuestoBE checkPres = new PresupuestoBE();
+                checkPres = bllPres.SeleccionarPresupuestoPorId(Presup.Id);
+                if (checkPres.Items.Exists(x => x.Producto.Id == Prod.Id))
+
+                {
+                    Existe = true;
+                    break;
+                }
+
+            }
+
+            return Existe;
+        }
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePickerVal = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.comboDescuento = new System.Windows.Forms.ComboBox();
@@ -45,6 +47,8 @@
             this.comboProducto = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelTotIva = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.labelTot = new System.Windows.Forms.Label();
             this.labelDesc = new System.Windows.Forms.Label();
             this.labelSubt = new System.Windows.Forms.Label();
@@ -54,8 +58,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBoxObs = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePickerVal = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
@@ -74,12 +76,29 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.comboCliente);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(21, 12);
+            this.groupBox1.Location = new System.Drawing.Point(9, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(733, 66);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cabecera del Presupuesto";
+            // 
+            // dateTimePickerVal
+            // 
+            this.dateTimePickerVal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerVal.Location = new System.Drawing.Point(629, 26);
+            this.dateTimePickerVal.Name = "dateTimePickerVal";
+            this.dateTimePickerVal.Size = new System.Drawing.Size(94, 20);
+            this.dateTimePickerVal.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(584, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Validez";
             // 
             // dateTimePicker1
             // 
@@ -150,7 +169,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.comboProducto);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(21, 99);
+            this.groupBox2.Location = new System.Drawing.Point(9, 86);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(733, 265);
             this.groupBox2.TabIndex = 1;
@@ -238,6 +257,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.labelTotIva);
+            this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.labelTot);
             this.groupBox3.Controls.Add(this.labelDesc);
             this.groupBox3.Controls.Add(this.labelSubt);
@@ -245,12 +266,30 @@
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(305, 370);
+            this.groupBox3.Location = new System.Drawing.Point(293, 357);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(329, 91);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Totales";
+            // 
+            // labelTotIva
+            // 
+            this.labelTotIva.AutoSize = true;
+            this.labelTotIva.Location = new System.Drawing.Point(90, 61);
+            this.labelTotIva.Name = "labelTotIva";
+            this.labelTotIva.Size = new System.Drawing.Size(16, 18);
+            this.labelTotIva.TabIndex = 7;
+            this.labelTotIva.Text = "$";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 61);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(33, 18);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "IVA:";
             // 
             // labelTot
             // 
@@ -264,7 +303,7 @@
             // labelDesc
             // 
             this.labelDesc.AutoSize = true;
-            this.labelDesc.Location = new System.Drawing.Point(90, 55);
+            this.labelDesc.Location = new System.Drawing.Point(90, 43);
             this.labelDesc.Name = "labelDesc";
             this.labelDesc.Size = new System.Drawing.Size(16, 18);
             this.labelDesc.TabIndex = 4;
@@ -291,7 +330,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 55);
+            this.label8.Location = new System.Drawing.Point(6, 43);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 18);
             this.label8.TabIndex = 1;
@@ -309,7 +348,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(641, 381);
+            this.button2.Location = new System.Drawing.Point(629, 368);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 37);
             this.button2.TabIndex = 3;
@@ -328,35 +367,18 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.textBoxObs);
-            this.groupBox4.Location = new System.Drawing.Point(21, 370);
+            this.groupBox4.Location = new System.Drawing.Point(9, 357);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(260, 91);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Observaciones";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(584, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Validez";
-            // 
-            // dateTimePickerVal
-            // 
-            this.dateTimePickerVal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerVal.Location = new System.Drawing.Point(629, 26);
-            this.dateTimePickerVal.Name = "dateTimePickerVal";
-            this.dateTimePickerVal.Size = new System.Drawing.Size(94, 20);
-            this.dateTimePickerVal.TabIndex = 7;
-            // 
             // FormPresupuestoAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 476);
+            this.ClientSize = new System.Drawing.Size(752, 459);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox3);
@@ -409,5 +431,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePickerVal;
+        private System.Windows.Forms.Label labelTotIva;
+        private System.Windows.Forms.Label label10;
     }
 }

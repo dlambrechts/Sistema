@@ -39,11 +39,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textDescrip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboIva = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboIva);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.comboUnMedi);
             this.groupBox1.Controls.Add(this.comboTipo);
@@ -65,7 +69,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(162, 151);
+            this.checkBox1.Location = new System.Drawing.Point(162, 177);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(56, 17);
             this.checkBox1.TabIndex = 11;
@@ -108,7 +112,7 @@
             // 
             // buttonConfirmar
             // 
-            this.buttonConfirmar.Location = new System.Drawing.Point(251, 147);
+            this.buttonConfirmar.Location = new System.Drawing.Point(251, 173);
             this.buttonConfirmar.Name = "buttonConfirmar";
             this.buttonConfirmar.Size = new System.Drawing.Size(75, 23);
             this.buttonConfirmar.TabIndex = 6;
@@ -118,7 +122,7 @@
             // 
             // textPrecio
             // 
-            this.textPrecio.Location = new System.Drawing.Point(227, 106);
+            this.textPrecio.Location = new System.Drawing.Point(227, 133);
             this.textPrecio.Name = "textPrecio";
             this.textPrecio.Size = new System.Drawing.Size(100, 20);
             this.textPrecio.TabIndex = 5;
@@ -126,7 +130,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 109);
+            this.label3.Location = new System.Drawing.Point(7, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 4;
@@ -147,6 +151,27 @@
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Descripción";
+            // 
+            // comboIva
+            // 
+            this.comboIva.FormattingEnabled = true;
+            this.comboIva.Items.AddRange(new object[] {
+            "21",
+            "10,5"});
+            this.comboIva.Location = new System.Drawing.Point(205, 106);
+            this.comboIva.Name = "comboIva";
+            this.comboIva.Size = new System.Drawing.Size(121, 21);
+            this.comboIva.TabIndex = 14;
+            this.comboIva.Text = "21";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "IVA";
             // 
             // FormProductoEditar
             // 
@@ -176,5 +201,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textDescrip;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboIva;
+        private System.Windows.Forms.Label label6;
     }
 }

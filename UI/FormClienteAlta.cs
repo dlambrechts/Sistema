@@ -25,16 +25,17 @@ namespace UI
         enum CondPago:int { Contado,Anticipado}
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (textRazon.Text=="" && textCuit.Text=="")
+            if (textRazon.Text=="" || textCuit.Text=="" || textCP.Text=="" || textMail.Text=="")
 
             {
-                MessageBox.Show("Razón Social y CUIT son Obligatorios");
+                MessageBox.Show("Complete los campos obligatorios");
 
             }
 
             else 
             
             {
+                try { 
                 ClienteBE nCliente = new ClienteBE();
 
                 nCliente.RazonSocial = textRazon.Text;
@@ -46,12 +47,20 @@ namespace UI
                 nCliente.Cuit = textCuit.Text;
                 nCliente.Contacto = textContacto.Text;
                 nCliente.CondicionPago = comboCondPago.Text;
-
-                ClienteBLL bllCli = new ClienteBLL();
+                 ClienteBLL bllCli = new ClienteBLL();
                 bllCli.InsertarCliente(nCliente);
 
                 MessageBox.Show("Cliente Creado Correctamente");
                 this.Close();
+                }
+
+                catch (Exception ex)
+
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+              
                 
             }
 

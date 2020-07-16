@@ -27,9 +27,10 @@ namespace UI
  
         PresupuestoBE nPresupuesto = new PresupuestoBE();
         PresupuestoBLL bllPresupuesto = new PresupuestoBLL();     
-        float subtotal=0;
-        float valordesc = 0;
-        float total = 0;
+        decimal subtotal=0;
+        decimal valordesc = 0;
+        decimal totalIva = 0;
+        decimal total = 0;
 
         public void ActualizarGrillaItems() 
         
@@ -46,10 +47,12 @@ namespace UI
         {
             subtotal = bllPresupuesto.CalcularSubTotal(nPresupuesto.Items);
             valordesc = bllPresupuesto.CalcularDescuento(subtotal, Convert.ToInt32(comboDescuento.Text));
+            totalIva = bllPresupuesto.CalcularTotalIva(nPresupuesto);
             total = bllPresupuesto.CalcularTotal(valordesc,subtotal);
-            labelSubt.Text = "$ " + Convert.ToString(subtotal);
-            labelDesc.Text = "$ " + Convert.ToString(valordesc);
-            labelTot.Text = "$ " + Convert.ToString(total);
+            labelSubt.Text = "$ " + subtotal.ToString("0.##");
+            labelTotIva.Text = "$ " + totalIva.ToString("0.##");
+            labelDesc.Text = "$ " + valordesc.ToString("0.##");
+            labelTot.Text = "$ " + total.ToString("0.##");
         }
 
         private void FormPresupuestoAlta_Load(object sender, EventArgs e)
@@ -112,26 +115,41 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult Respuesta = MessageBox.Show("Confirma Emisión del Presupuesto?", "Generar Presupuesto", MessageBoxButtons.YesNo);
-            
-            if (Respuesta == DialogResult.Yes)
+
+            if (nPresupuesto.Items.Count == 0)
+
+            { MessageBox.Show("Debe agregar al menos un Item"); }
+
+
+            else
             {
-                nPresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;                      
-                nPresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
-                nPresupuesto.FechaEmision = DateTime.Now;
-                nPresupuesto.Estado = "Emitido";
-                nPresupuesto.FechaEntrega = dateTimePicker1.Value;
-                nPresupuesto.FechaValidez = dateTimePickerVal.Value;
-                nPresupuesto.Descuento = valordesc;
-                nPresupuesto.Total = total;
-                nPresupuesto.Observaciones = textBoxObs.Text;
+                DialogResult Respuesta = MessageBox.Show("Confirma Emisión del Presupuesto?", "Generar Presupuesto", MessageBoxButtons.YesNo);
+          
 
-                bllPresupuesto.AltaPresupuesto(nPresupuesto);
+           
+                    if (Respuesta == DialogResult.Yes)
+                    {
+                        nPresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;                      
+                        nPresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
+                        nPresupuesto.FechaEmision = DateTime.Now;
+                        nPresupuesto.estado.Id = 1; 
+                        nPresupuesto.FechaEntrega = dateTimePicker1.Value;
+                        nPresupuesto.FechaValidez = dateTimePickerVal.Value;
+                        nPresupuesto.PorcDescuento = Convert.ToInt32(comboDescuento.Text);
+                        nPresupuesto.Descuento = valordesc;
+                        nPresupuesto.Total = total;
+                        nPresupuesto.Observaciones = textBoxObs.Text;
+                        nPresupuesto.Iva = totalIva;
 
-                ReiniciarValores();
-                MessageBox.Show("Presupuesto emitido correctamente");
+                        bllPresupuesto.AltaPresupuesto(nPresupuesto);
+              
+                        MessageBox.Show("Presupuesto Emitido correctamente");
 
-            }                     
+                        this.Close();
+
+                    }
+
+             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -143,18 +161,7 @@ namespace UI
             ActualizarTotales();
         }
 
-        public void ReiniciarValores() 
-        
-        {
-            nPresupuesto.Items.Clear();
-            comboDescuento.SelectedItem = 0;
-            dateTimePicker1.Value = DateTime.Now.AddDays(15);           
-            dateTimePickerVal.Value = DateTime.Now.AddDays(30);
-            textBoxObs.Text = "";
-            ObtenerProductos();
-            ObtenerClientes();
-            ActualizarGrillaItems();
-        }
+
 
         private void button3_Click(object sender, EventArgs e)
         {

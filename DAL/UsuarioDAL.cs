@@ -27,11 +27,15 @@ namespace DAL
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
                     UsuarioBE oUsuario = new UsuarioBE();
-                    oUsuario.Id = Convert.ToInt32(Item[0]);
-                    oUsuario.Mail = Item[1].ToString().Trim();
-                    oUsuario.Nombre = Item[2].ToString().Trim();
-                    oUsuario.Apellido = Item[3].ToString().Trim();
-                    oUsuario.Password = Item[4].ToString().Trim();
+                    oUsuario.Id = Convert.ToInt32(Item[0]);                 
+                    oUsuario.Nombre = Item[1].ToString().Trim();
+                    oUsuario.Apellido = Item[2].ToString().Trim();
+                    oUsuario.Mail = Item[3].ToString().Trim();
+                    IdiomaBE uIdioma = new IdiomaBE();
+                    oUsuario.Idioma = uIdioma;
+                    oUsuario.Idioma.Id = Convert.ToInt32(Item[4]);
+                    oUsuario.Idioma.Nombre = Convert.ToString(Item[5]);
+
                     ListaUsuarios.Add(oUsuario);
                 }
 
@@ -139,6 +143,7 @@ namespace DAL
                 Parametros.Add("@Apellido", Usuario.Apellido);
                 Parametros.Add("@Mail", Usuario.Mail);
                 Parametros.Add("@Password", Usuario.Password);
+                Parametros.Add("@Idioma",Usuario.Idioma.Id);
 
             }
             else

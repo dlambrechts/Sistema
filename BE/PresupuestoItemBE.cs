@@ -11,8 +11,10 @@ namespace BE
     {
         public ProductoBE Producto { get; set; }
         public int Cantidad { get; set; }
-        public float PrecioUnitario { get; set; }
-        public float TotalItem { get; set; }
+        public decimal PrecioUnitario { get; set; }
+        public decimal PorcIVA { get; set; }
+        public decimal IvaItem { get; set; }
+        public decimal TotalItem { get; set; }
 
  
     }

@@ -31,11 +31,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonCierre = new System.Windows.Forms.Button();
+            this.buttonEditar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonEditar = new System.Windows.Forms.Button();
-            this.buttonCierre = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -44,9 +44,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(21, 73);
+            this.groupBox1.Location = new System.Drawing.Point(9, 73);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(892, 332);
+            this.groupBox1.Size = new System.Drawing.Size(904, 332);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Presupuestos";
@@ -58,12 +58,12 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 20);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 19);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(856, 296);
+            this.dataGridView1.Size = new System.Drawing.Size(888, 306);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -74,12 +74,32 @@
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(21, 13);
+            this.groupBox2.Location = new System.Drawing.Point(9, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(439, 54);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Acciones";
+            // 
+            // buttonCierre
+            // 
+            this.buttonCierre.Location = new System.Drawing.Point(263, 20);
+            this.buttonCierre.Name = "buttonCierre";
+            this.buttonCierre.Size = new System.Drawing.Size(75, 23);
+            this.buttonCierre.TabIndex = 5;
+            this.buttonCierre.Text = "Cierre";
+            this.buttonCierre.UseVisualStyleBackColor = true;
+            this.buttonCierre.Click += new System.EventHandler(this.buttonCierre_Click);
+            // 
+            // buttonEditar
+            // 
+            this.buttonEditar.Location = new System.Drawing.Point(181, 20);
+            this.buttonEditar.Name = "buttonEditar";
+            this.buttonEditar.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditar.TabIndex = 4;
+            this.buttonEditar.Text = "Editar";
+            this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // button4
             // 
@@ -87,7 +107,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Borrar";
+            this.button4.Text = "Eliminar";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -109,25 +129,6 @@
             this.button1.Text = "Nuevo";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonEditar
-            // 
-            this.buttonEditar.Location = new System.Drawing.Point(181, 20);
-            this.buttonEditar.Name = "buttonEditar";
-            this.buttonEditar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEditar.TabIndex = 4;
-            this.buttonEditar.Text = "Editar";
-            this.buttonEditar.UseVisualStyleBackColor = true;
-            // 
-            // buttonCierre
-            // 
-            this.buttonCierre.Location = new System.Drawing.Point(263, 20);
-            this.buttonCierre.Name = "buttonCierre";
-            this.buttonCierre.Size = new System.Drawing.Size(75, 23);
-            this.buttonCierre.TabIndex = 5;
-            this.buttonCierre.Text = "Cierre";
-            this.buttonCierre.UseVisualStyleBackColor = true;
-            this.buttonCierre.Click += new System.EventHandler(this.buttonCierre_Click);
             // 
             // FormPresupuestoGestion
             // 

@@ -11,7 +11,6 @@ namespace DAL
 {
     public class PresupuestoDAL
     {
-
         public List<PresupuestoAprobacionBE> HistorialAnalisis(PresupuestoBE Presupuesto) 
         
         {
@@ -58,18 +57,26 @@ namespace DAL
                 {
                     PresupuestoBE oPres = new PresupuestoBE();
 
-                    oPres.Id = Convert.ToInt32(Item[0]);
-                    oPres.Cliente = new ClienteBE(); oPres.Cliente.Id = Convert.ToInt32(Item[1]);
-                    oPres.Vendedor = new UsuarioBE();  oPres.Vendedor.Id = Convert.ToInt32(Item[2]);
-                    oPres.FechaEmision = Convert.ToDateTime(Item[3]);
-                    oPres.FechaEntrega = Convert.ToDateTime(Item[4]);
-                    oPres.FechaValidez = Convert.ToDateTime(Item[5]);
-                    oPres.AprobacionTecnica = Convert.ToBoolean(Item[6]);
-                    oPres.AprobacionComercial = Convert.ToBoolean(Item[7]);
-                    oPres.Estado = Convert.ToString(Item[8]).Trim();
-                    oPres.Descuento = (float)Convert.ToDouble(Item[9]);
-                    oPres.Total = (float)Convert.ToDouble(Item[10]);
-                    oPres.Observaciones = Convert.ToString(Item[11]).Trim();
+                    oPres.Id = Convert.ToInt32(Item["Id"]);
+                    oPres.Cliente = new ClienteBE(); 
+                    oPres.Cliente.Id = Convert.ToInt32(Item["IdCliente"]);
+                    oPres.Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim();
+                    oPres.Vendedor = new UsuarioBE(); 
+                    oPres.Vendedor.Id = Convert.ToInt32(Item["IdVendedor"]);
+                    oPres.Vendedor.Nombre = Convert.ToString(Item["Nombre"]).Trim();
+                    oPres.Vendedor.Apellido = Convert.ToString(Item["Apellido"]).Trim();
+                    oPres.FechaEmision = Convert.ToDateTime(Item["FechaEmision"]);
+                    oPres.FechaEntrega = Convert.ToDateTime(Item["FechaEntrega"]);
+                    oPres.FechaValidez = Convert.ToDateTime(Item["FechaValidez"]);
+                    oPres.AprobacionTecnica = Convert.ToBoolean(Item["AprobacionTecnica"]);
+                    oPres.AprobacionComercial = Convert.ToBoolean(Item["AprobacionComercial"]);
+                    oPres.estado.Id = Convert.ToInt32(Item["IdEstado"]);
+                    oPres.estado.Descripcion = Convert.ToString(Item["Descripcion"]).Trim();
+                    oPres.Descuento = Convert.ToDecimal(Item["Descuento"]);
+                    oPres.Total = Convert.ToDecimal(Item["Total"]);
+                    oPres.Observaciones = Convert.ToString(Item["Observaciones"]).Trim();
+                    oPres.PorcDescuento = Convert.ToInt32(Item["PorcDescuento"]);
+                    oPres.Iva = Convert.ToDecimal(Item["Iva"]);
 
                     ListaPresupuestos.Add(oPres);
                 }
@@ -77,26 +84,27 @@ namespace DAL
             }
             return ListaPresupuestos;
         }
-        public void AltaPresupuesto(PresupuestoBE nPresupuesto)
+        public void AltaPresupuesto(PresupuestoBE nPresupuesto)  
 
-        {
-           
-                Hashtable ParamCabecera = new Hashtable();
+        {   
+                Hashtable ParamCabecera = new Hashtable();                        // Cabecera
                 ParamCabecera.Add("@IdCliente", nPresupuesto.Cliente.Id);
                 ParamCabecera.Add("@IdVendedor", nPresupuesto.Vendedor.Id);
                 ParamCabecera.Add("@FechaEmision", nPresupuesto.FechaEmision);
                 ParamCabecera.Add("@FechaEntrega", nPresupuesto.FechaEntrega);
                 ParamCabecera.Add("@FechaValidez", nPresupuesto.FechaValidez);
-                ParamCabecera.Add("@Estado", nPresupuesto.Estado);
+                ParamCabecera.Add("@Estado", nPresupuesto.estado.Id);
                 ParamCabecera.Add("@Descuento", nPresupuesto.Descuento);
                 ParamCabecera.Add("@Total", nPresupuesto.Total);
                 ParamCabecera.Add("@Observaciones", nPresupuesto.Observaciones);
+                ParamCabecera.Add("@PorcDescuento", nPresupuesto.PorcDescuento);
+                ParamCabecera.Add("@Iva", nPresupuesto.Iva);
 
                 Acceso AccesoDB = new Acceso();
                 AccesoDB.Escribir("sp_InsertarPresupuestoCabecera", ParamCabecera);
 
 
-                foreach (PresupuestoItemBE item in nPresupuesto.Items)
+                foreach (PresupuestoItemBE item in nPresupuesto.Items)               // Items
            
                 { 
                      Hashtable ParamItems = new Hashtable();
@@ -104,11 +112,49 @@ namespace DAL
                     ParamItems.Add("@Cantidad", item.Cantidad);
                     ParamItems.Add("@PrecioUnitario", item.PrecioUnitario);
                     ParamItems.Add("@TotalItem", item.TotalItem);
+                    ParamItems.Add("@IvaItem", item.IvaItem);
+                    ParamItems.Add("@PorcIva", item.PorcIVA);
 
                 AccesoDB.Escribir("sp_InsertarPresupuestoItem", ParamItems);
+            }           
+        }
+
+        public void EditarPresupuesto(PresupuestoBE nPresupuesto)
+        {
+            Hashtable ParamCabecera = new Hashtable();                         // Cabecera
+
+            ParamCabecera.Add("@Id", nPresupuesto.Id);
+            ParamCabecera.Add("@IdCliente", nPresupuesto.Cliente.Id);
+            ParamCabecera.Add("@IdVendedor", nPresupuesto.Vendedor.Id);
+            ParamCabecera.Add("@FechaEdicion", DateTime.Now);
+            ParamCabecera.Add("@FechaEntrega", nPresupuesto.FechaEntrega);
+            ParamCabecera.Add("@FechaValidez", nPresupuesto.FechaValidez);
+            ParamCabecera.Add("@Estado", nPresupuesto.estado.Id);
+            ParamCabecera.Add("@Descuento", nPresupuesto.Descuento);
+            ParamCabecera.Add("@Total", nPresupuesto.Total);
+            ParamCabecera.Add("@Observaciones", nPresupuesto.Observaciones);
+            ParamCabecera.Add("@PorcDescuento", nPresupuesto.PorcDescuento);
+            ParamCabecera.Add("@Iva", nPresupuesto.Iva);
+
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_EditarPresupuestoCabecera", ParamCabecera);
+
+
+            foreach (PresupuestoItemBE item in nPresupuesto.Items)              // Items
+
+            {
+                Hashtable ParamItems = new Hashtable();
+                ParamItems.Add("@Id", nPresupuesto.Id);
+                ParamItems.Add("@IdProducto", item.Producto.Id);
+                ParamItems.Add("@Cantidad", item.Cantidad);
+                ParamItems.Add("@PrecioUnitario", item.PrecioUnitario);
+                ParamItems.Add("@TotalItem", item.TotalItem);
+                ParamItems.Add("@IvaItem", item.IvaItem);
+                ParamItems.Add("@PorcIva", item.PorcIVA);
+
+                AccesoDB.Escribir("sp_EditarPresupuestoItem", ParamItems);
             }
-            
-            
+
         }
 
         public PresupuestoBE SeleccionarPresupuestoPorId(int Id) 
@@ -126,18 +172,23 @@ namespace DAL
                 foreach (DataRow Item in Ds.Tables[0].Rows)
                 {
 
-                    oPres.Id = Convert.ToInt32(Item[0]);
-                    oPres.Cliente = new ClienteBE(); oPres.Cliente.Id = Convert.ToInt32(Item[1]);
-                    oPres.Vendedor = new UsuarioBE(); oPres.Vendedor.Id = Convert.ToInt32(Item[2]);
-                    oPres.FechaEmision = Convert.ToDateTime(Item[3]);
-                    oPres.FechaEntrega = Convert.ToDateTime(Item[4]);
-                    oPres.FechaValidez = Convert.ToDateTime(Item[5]);
-                    oPres.AprobacionTecnica = Convert.ToBoolean(Item[6]);
-                    oPres.AprobacionComercial = Convert.ToBoolean(Item[7]);
-                    oPres.Estado = Convert.ToString(Item[8]).Trim();
-                    oPres.Descuento = (float)Convert.ToDouble(Item[9]);
-                    oPres.Total = (float)Convert.ToDouble(Item[10]);
-                    oPres.Observaciones = Convert.ToString(Item[11]).Trim();
+                    oPres.Id = Convert.ToInt32(Item["Id"]);
+                    oPres.Cliente = new ClienteBE(); 
+                    oPres.Cliente.Id = Convert.ToInt32(Item["IdCliente"]);
+                    oPres.Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim(); ;
+                    oPres.Vendedor = new UsuarioBE(); oPres.Vendedor.Id = Convert.ToInt32(Item["IdVendedor"]);
+                    oPres.FechaEmision = Convert.ToDateTime(Item["FechaEmision"]);
+                    oPres.FechaEntrega = Convert.ToDateTime(Item["FechaEntrega"]);
+                    oPres.FechaValidez = Convert.ToDateTime(Item["FechaValidez"]);
+                    oPres.AprobacionTecnica = Convert.ToBoolean(Item["AprobacionTecnica"]);
+                    oPres.AprobacionComercial = Convert.ToBoolean(Item["AprobacionComercial"]);                
+                    oPres.estado.Id = Convert.ToInt32(Item["IdEstado"]);
+                    oPres.estado.Descripcion= Convert.ToString(Item["Descripcion"]).Trim();
+                    oPres.Descuento = Convert.ToDecimal(Item["Descuento"]);
+                    oPres.Total = Convert.ToDecimal(Item["Total"]);
+                    oPres.Observaciones = Convert.ToString(Item["Observaciones"]).Trim();
+                    oPres.PorcDescuento = Convert.ToInt32(Item["PorcDescuento"]);
+                    oPres.Iva = Convert.ToDecimal(Item["Iva"]);
 
 
                 }
@@ -154,8 +205,10 @@ namespace DAL
                     oItemPres.Producto.Id = Convert.ToInt32(Item["IdProducto"]);
                     oItemPres.Producto.Descripcion = Convert.ToString(Item["Descripcion"]).Trim();
                     oItemPres.Cantidad = Convert.ToInt32(Item["Cantidad"]);
-                    oItemPres.PrecioUnitario = (float)Convert.ToDouble(Item["PrecioUnitario"]);
-                    oItemPres.TotalItem = (float)Convert.ToDouble(Item["TotalItem"]);
+                    oItemPres.PrecioUnitario = Convert.ToDecimal(Item["PrecioUnitario"]);
+                    oItemPres.TotalItem = Convert.ToDecimal(Item["TotalItem"]);
+                    oItemPres.PorcIVA = Convert.ToDecimal(Item["PorcIva"]);
+                    oItemPres.IvaItem = Convert.ToDecimal(Item["IvaItem"]);
 
                     oPres.Items.Add(oItemPres);
                 }

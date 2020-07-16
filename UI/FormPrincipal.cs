@@ -81,11 +81,6 @@ namespace UI
                 if (aprobaciónComercialToolStripMenuItem.Tag != null && Traducciones.ContainsKey(aprobaciónComercialToolStripMenuItem.Tag.ToString()))
                     this.aprobaciónComercialToolStripMenuItem.Text = Traducciones[aprobaciónComercialToolStripMenuItem.Tag.ToString()].Texto;
 
-                if (visualizarPresupuestoToolStripMenuItem.Tag != null && Traducciones.ContainsKey(visualizarPresupuestoToolStripMenuItem.Tag.ToString()))
-                    this.visualizarPresupuestoToolStripMenuItem.Text = Traducciones[visualizarPresupuestoToolStripMenuItem.Tag.ToString()].Texto;
-
-                if (anularToolStripMenuItem.Tag != null && Traducciones.ContainsKey(anularToolStripMenuItem.Tag.ToString()))
-                    this.anularToolStripMenuItem.Text = Traducciones[anularToolStripMenuItem.Tag.ToString()].Texto;
 
                 if (toolStripStatusLabel1.Tag != null && Traducciones.ContainsKey(toolStripStatusLabel1.Tag.ToString()))
                     this.toolStripStatusLabel1.Text = Traducciones[toolStripStatusLabel1.Tag.ToString()].Texto;
@@ -114,9 +109,23 @@ namespace UI
                 if(traduccionesToolStripMenuItem.Tag != null && Traducciones.ContainsKey(traduccionesToolStripMenuItem.Tag.ToString()))
                     this.traduccionesToolStripMenuItem.Text = Traducciones[traduccionesToolStripMenuItem.Tag.ToString()].Texto;
 
+                if (productosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(productosToolStripMenuItem.Tag.ToString()))
+                    this.productosToolStripMenuItem.Text = Traducciones[productosToolStripMenuItem.Tag.ToString()].Texto;
+
+                if (metricasToolStripMenuItem.Tag != null && Traducciones.ContainsKey(metricasToolStripMenuItem.Tag.ToString()))
+                    this.metricasToolStripMenuItem.Text = Traducciones[metricasToolStripMenuItem.Tag.ToString()].Texto;
+
+                if (gestiónDeClientesToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gestiónDeClientesToolStripMenuItem.Tag.ToString()))
+                    this.gestiónDeClientesToolStripMenuItem.Text = Traducciones[gestiónDeClientesToolStripMenuItem.Tag.ToString()].Texto;
+
+                if (gestiónDeProductosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gestiónDeProductosToolStripMenuItem.Tag.ToString()))
+                    this.gestiónDeProductosToolStripMenuItem.Text = Traducciones[gestiónDeProductosToolStripMenuItem.Tag.ToString()].Texto;
+
+                if (ajustesDeStockToolStripMenuItem.Tag != null && Traducciones.ContainsKey(ajustesDeStockToolStripMenuItem.Tag.ToString()))
+                    this.ajustesDeStockToolStripMenuItem.Text = Traducciones[ajustesDeStockToolStripMenuItem.Tag.ToString()].Texto;
 
 
-
+                
             }
 
             if (SesionSingleton.Instancia.IsLogged())
@@ -205,7 +214,7 @@ namespace UI
         }
 
    
-        public void ValidarFormulario()
+        public void ValidarFormulario() // Deshabilitar menu cuando no hay ususario logueado
         
         {
             this.iniciarSesiónToolStripMenuItem.Enabled = !SesionSingleton.Instancia.IsLogged();
@@ -215,13 +224,15 @@ namespace UI
             this.pedidosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.clientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.idiomaToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
-
+            this.productosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+            this.metricasToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+            this.administradorToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             MarcarIdioma();
             Traducir();
 
          
         }
-        public void ValidarPermisos ()
+        public void ValidarPermisos () // Habilitar menu según permisos de usuario logueado
         
         {
             this.usuariosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoA); // ABM Usuarios
@@ -231,9 +242,11 @@ namespace UI
             this.emitirPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoD); // Emitir Presupuestos
             this.aprobarPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoE); // Aprobacion Tecnica
             this.aprobaciónComercialToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoF); // Aprobacion Comercial
-            this.visualizarPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoG); // Visualizar Presupuesto
-            this.anularToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoH); // Anular Presupuesto
+            this.gestiónDeProductosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoL); // ABM Productos
+            this.ajustesDeStockToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoN); // Ajustes de Stock
+            this.presupuestosToolStripMenuItem1.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoM); // Ver métricas, indicadores
             this.gestiónDeClientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoK); // ABM Clientes
+            
         }
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {

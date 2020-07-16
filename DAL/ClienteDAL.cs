@@ -117,5 +117,14 @@ namespace DAL
             Acceso AccesoDB = new Acceso();
             AccesoDB.Escribir("sp_EditarCliente", Parametros);
         }
+
+        public void EliminarCliente(ClienteBE nCli)
+
+        {
+            Hashtable Parametros = new Hashtable();
+            Parametros.Add("@Id", nCli.Id);
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_EliminarCliente", Parametros);
+        }
     }
 }

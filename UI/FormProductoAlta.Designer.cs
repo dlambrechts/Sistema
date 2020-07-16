@@ -40,12 +40,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textDescrip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboIva = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericStock)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboIva);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.comboUnMedi);
             this.groupBox1.Controls.Add(this.comboTipo);
             this.groupBox1.Controls.Add(this.label5);
@@ -59,7 +63,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(346, 218);
+            this.groupBox1.Size = new System.Drawing.Size(346, 223);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo";
@@ -101,7 +105,7 @@
             // 
             // buttonConfirmar
             // 
-            this.buttonConfirmar.Location = new System.Drawing.Point(251, 161);
+            this.buttonConfirmar.Location = new System.Drawing.Point(252, 188);
             this.buttonConfirmar.Name = "buttonConfirmar";
             this.buttonConfirmar.Size = new System.Drawing.Size(75, 23);
             this.buttonConfirmar.TabIndex = 6;
@@ -111,7 +115,7 @@
             // 
             // textPrecio
             // 
-            this.textPrecio.Location = new System.Drawing.Point(226, 132);
+            this.textPrecio.Location = new System.Drawing.Point(227, 159);
             this.textPrecio.Name = "textPrecio";
             this.textPrecio.Size = new System.Drawing.Size(100, 20);
             this.textPrecio.TabIndex = 5;
@@ -119,7 +123,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 135);
+            this.label3.Location = new System.Drawing.Point(7, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 4;
@@ -127,7 +131,7 @@
             // 
             // numericStock
             // 
-            this.numericStock.Location = new System.Drawing.Point(206, 106);
+            this.numericStock.Location = new System.Drawing.Point(207, 133);
             this.numericStock.Name = "numericStock";
             this.numericStock.Size = new System.Drawing.Size(120, 20);
             this.numericStock.TabIndex = 3;
@@ -135,7 +139,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 108);
+            this.label2.Location = new System.Drawing.Point(7, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 2;
@@ -157,11 +161,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Descripción";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "IVA";
+            // 
+            // comboIva
+            // 
+            this.comboIva.FormattingEnabled = true;
+            this.comboIva.Items.AddRange(new object[] {
+            "21",
+            "10,5"});
+            this.comboIva.Location = new System.Drawing.Point(205, 106);
+            this.comboIva.Name = "comboIva";
+            this.comboIva.Size = new System.Drawing.Size(121, 21);
+            this.comboIva.TabIndex = 12;
+            this.comboIva.Text = "21";
+            // 
             // FormProductoAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 252);
+            this.ClientSize = new System.Drawing.Size(374, 249);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormProductoAlta";
             this.Text = "Alta de Producto";
@@ -187,5 +212,7 @@
         private System.Windows.Forms.ComboBox comboTipo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboIva;
+        private System.Windows.Forms.Label label6;
     }
 }

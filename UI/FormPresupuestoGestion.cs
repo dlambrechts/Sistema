@@ -41,19 +41,11 @@ namespace UI
         {
 
         }
-
         public void CargarGrilla()
         
         {
-            ListaPresupuestos = bllPresup.ListarPresupuestos();
-            ClienteBLL bllCli = new ClienteBLL();
-            UsuarioBLL bllUs = new UsuarioBLL();
-            foreach (PresupuestoBE item in ListaPresupuestos)
-            {
-                item.Cliente = bllCli.SeleccionarPorId(item.Cliente.Id);
-                item.Vendedor = bllUs.SeleccionarUsuarioPorId(item.Vendedor.Id);
-            }
-
+            ListaPresupuestos.Clear();
+            ListaPresupuestos = bllPresup.ListarPresupuestos();     
             dataGridView1.DataSource = null;
             BindingList<PresupuestoBE> bList = new BindingList<PresupuestoBE>(ListaPresupuestos);
             dataGridView1.DataSource = bList;
@@ -102,6 +94,21 @@ namespace UI
 
             else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
 
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            if (selPres.Id != 0) 
+            
+            { 
+            FormPresupuestoEditar frmEd = new FormPresupuestoEditar();
+            frmEd.MdiParent = this.ParentForm;
+            frmEd.ePresupuesto = selPres;
+            frmEd.FormClosed += new FormClosedEventHandler(fNuevo_FormClosed);       
+            frmEd.Show();
+
+            }
+            else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
         }
     }
 }
