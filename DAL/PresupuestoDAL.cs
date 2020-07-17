@@ -266,5 +266,13 @@ namespace DAL
 
         }
 
+        public void Eliminar (PresupuestoBE ePresup)
+
+        {
+            Hashtable ParamCabecera = new Hashtable();
+            ParamCabecera.Add("@IdPresupuesto", ePresup.Id);
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_EliminarPresupuesto", ParamCabecera);
+        }
     }
 }

@@ -209,14 +209,15 @@
             this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewItems.Location = new System.Drawing.Point(10, 60);
             this.dataGridViewItems.Name = "dataGridViewItems";
+            this.dataGridViewItems.ReadOnly = true;
             this.dataGridViewItems.Size = new System.Drawing.Size(699, 195);
             this.dataGridViewItems.TabIndex = 11;
             // 
             // numericCant
             // 
-            this.numericCant.Location = new System.Drawing.Point(352, 30);
+            this.numericCant.Location = new System.Drawing.Point(377, 29);
             this.numericCant.Name = "numericCant";
-            this.numericCant.Size = new System.Drawing.Size(83, 20);
+            this.numericCant.Size = new System.Drawing.Size(58, 20);
             this.numericCant.TabIndex = 10;
             this.numericCant.Value = new decimal(new int[] {
             1,
@@ -257,7 +258,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(290, 32);
+            this.label3.Location = new System.Drawing.Point(325, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 2;
@@ -266,15 +267,15 @@
             // comboProducto
             // 
             this.comboProducto.FormattingEnabled = true;
-            this.comboProducto.Location = new System.Drawing.Point(78, 27);
+            this.comboProducto.Location = new System.Drawing.Point(63, 27);
             this.comboProducto.Name = "comboProducto";
-            this.comboProducto.Size = new System.Drawing.Size(191, 21);
+            this.comboProducto.Size = new System.Drawing.Size(256, 21);
             this.comboProducto.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 30);
+            this.label2.Location = new System.Drawing.Point(7, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 0;

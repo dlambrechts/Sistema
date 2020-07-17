@@ -113,5 +113,12 @@ namespace BLL
             PresupuestoDAL dPresup = new PresupuestoDAL();
             return dPresup.HistorialAnalisis(Presupuesto);
         }
+
+        public void Eliminar(PresupuestoBE ePresup) 
+        
+        {
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            dPresup.Eliminar(ePresup);
+        }
     }
 }

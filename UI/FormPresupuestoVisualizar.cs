@@ -32,7 +32,8 @@ namespace UI
             labelTot.Text = "$ " +Convert.ToString(vPresup.Total);
             labelEmis.Text = Convert.ToString(vPresup.FechaEmision.Date.ToShortDateString()) ;
             labelVal.Text = Convert.ToString(vPresup.FechaValidez.Date.ToShortDateString());
-            labelEnt.Text = Convert.ToString(vPresup.FechaEntrega.Date.ToShortDateString());
+            TimeSpan PlazoEntrega = vPresup.FechaEntrega - vPresup.FechaEmision;// 
+            labelEnt.Text = Convert.ToInt32(PlazoEntrega.TotalDays).ToString()+ " días";
             labelEst.Text = vPresup.Estado.ToString();
             checkBoxApTec.Checked = vPresup.AprobacionTecnica;
             checkBoxApCom.Checked = vPresup.AprobacionComercial;

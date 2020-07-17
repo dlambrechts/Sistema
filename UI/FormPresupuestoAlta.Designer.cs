@@ -126,7 +126,7 @@
             "5",
             "10",
             "15"});
-            this.comboDescuento.Location = new System.Drawing.Point(347, 25);
+            this.comboDescuento.Location = new System.Drawing.Point(354, 25);
             this.comboDescuento.Name = "comboDescuento";
             this.comboDescuento.Size = new System.Drawing.Size(52, 21);
             this.comboDescuento.TabIndex = 3;
@@ -136,7 +136,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(271, 28);
+            this.label4.Location = new System.Drawing.Point(281, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 2;
@@ -145,15 +145,15 @@
             // comboCliente
             // 
             this.comboCliente.FormattingEnabled = true;
-            this.comboCliente.Location = new System.Drawing.Point(69, 25);
+            this.comboCliente.Location = new System.Drawing.Point(44, 25);
             this.comboCliente.Name = "comboCliente";
-            this.comboCliente.Size = new System.Drawing.Size(191, 21);
+            this.comboCliente.Size = new System.Drawing.Size(231, 21);
             this.comboCliente.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 28);
+            this.label1.Location = new System.Drawing.Point(5, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 0;
@@ -183,15 +183,16 @@
             this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewItems.Location = new System.Drawing.Point(10, 60);
             this.dataGridViewItems.Name = "dataGridViewItems";
-            this.dataGridViewItems.Size = new System.Drawing.Size(699, 195);
+            this.dataGridViewItems.ReadOnly = true;
+            this.dataGridViewItems.Size = new System.Drawing.Size(713, 195);
             this.dataGridViewItems.TabIndex = 11;
             this.dataGridViewItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItems_CellContentClick);
             // 
             // numericCant
             // 
-            this.numericCant.Location = new System.Drawing.Point(352, 30);
+            this.numericCant.Location = new System.Drawing.Point(392, 29);
             this.numericCant.Name = "numericCant";
-            this.numericCant.Size = new System.Drawing.Size(83, 20);
+            this.numericCant.Size = new System.Drawing.Size(58, 20);
             this.numericCant.TabIndex = 10;
             this.numericCant.Value = new decimal(new int[] {
             1,
@@ -211,9 +212,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(441, 27);
+            this.button3.Location = new System.Drawing.Point(455, 27);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 23);
+            this.button3.Size = new System.Drawing.Size(88, 23);
             this.button3.TabIndex = 8;
             this.button3.Text = "Consulta Stock";
             this.button3.UseVisualStyleBackColor = true;
@@ -232,7 +233,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(290, 32);
+            this.label3.Location = new System.Drawing.Point(341, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 2;
@@ -241,15 +242,15 @@
             // comboProducto
             // 
             this.comboProducto.FormattingEnabled = true;
-            this.comboProducto.Location = new System.Drawing.Point(78, 27);
+            this.comboProducto.Location = new System.Drawing.Point(58, 27);
             this.comboProducto.Name = "comboProducto";
-            this.comboProducto.Size = new System.Drawing.Size(191, 21);
+            this.comboProducto.Size = new System.Drawing.Size(277, 21);
             this.comboProducto.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 30);
+            this.label2.Location = new System.Drawing.Point(5, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 0;

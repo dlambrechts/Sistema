@@ -53,9 +53,11 @@ namespace BLL
 
             {
                 if (Presup.Cliente.Id == Cli.Id)
+                { 
                 Existe = true;
                 break;
-             
+                }
+
             }
 
             return Existe;

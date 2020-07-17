@@ -21,7 +21,7 @@ namespace UI
 
         ClienteBLL bllCli = new ClienteBLL();
         public ClienteBE beCli = new ClienteBE();
-
+        List<ClienteBE> LisCLi = new List<ClienteBE>();
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -63,8 +63,11 @@ namespace UI
         public void LeerClientes()
 
         {
+            LisCLi.Clear();
+            LisCLi = bllCli.ListarClientes();
             dataGridClientes.DataSource = null;
-            dataGridClientes.DataSource = bllCli.ListarClientes();
+            BindingList<ClienteBE> cList = new BindingList<ClienteBE>(LisCLi);
+            dataGridClientes.DataSource =cList; 
         }
 
         private void dataGridClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using BE;
+using Servicios;
 
 namespace UI
 {
-    public partial class FormPresupuestoGestion : Form
+    public partial class FormPresupuestoGestion : Form,IIdiomaObserver
     {
         public FormPresupuestoGestion()
         {
             InitializeComponent();
+            Traducir();
             CargarGrilla();
         }
+
 
         PresupuestoBE selPres = new PresupuestoBE();
 
@@ -39,7 +42,7 @@ namespace UI
         }
         private void FormPresupuestoGestion_Load(object sender, EventArgs e)
         {
-
+            SesionSingleton.Instancia.SuscribirObs(this);
         }
         public void CargarGrilla()
         
@@ -96,19 +99,115 @@ namespace UI
 
         }
 
-        private void buttonEditar_Click(object sender, EventArgs e)
+        private void buttonEditar_Click(object sender, EventArgs e) // Editar
         {
-            if (selPres.Id != 0) 
-            
-            { 
-            FormPresupuestoEditar frmEd = new FormPresupuestoEditar();
-            frmEd.MdiParent = this.ParentForm;
-            frmEd.ePresupuesto = selPres;
-            frmEd.FormClosed += new FormClosedEventHandler(fNuevo_FormClosed);       
-            frmEd.Show();
+            if (selPres.Id != 0)
 
+            {
+                if (selPres.estado.Id == 8) { MessageBox.Show("No es posible Editar. El Presupeuesto ya fue Cerrado"); }
+
+                else
+                { 
+                    FormPresupuestoEditar frmEd = new FormPresupuestoEditar();
+                    frmEd.MdiParent = this.ParentForm;
+                    frmEd.ePresupuesto = selPres;
+                    frmEd.FormClosed += new FormClosedEventHandler(fNuevo_FormClosed);       
+                    frmEd.Show();
+
+                }
             }
             else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
+        }
+
+        private void button4_Click(object sender, EventArgs e) // Eliminar
+        {
+            if (selPres.Id != 0)
+
+            {
+                if (selPres.estado.Id == 8) { MessageBox.Show("No es posible Elminar. El Presupeuesto ya fue Cerrado"); }
+                else
+                {
+                    DialogResult Respuesta = MessageBox.Show("¿Eliminar Presupuesto " + selPres.Id + "?", "Eliminar Presupuesto", MessageBoxButtons.YesNo);
+
+                    if (Respuesta == DialogResult.Yes) 
+                        {                         
+                        bllPresup.Eliminar(selPres);
+                        CargarGrilla();
+                    }
+                }
+            }
+            else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
+        }
+
+        private void buttonLayout_Click(object sender, EventArgs e)
+        {
+
+            if (selPres.Id != 0)
+
+            {
+                DialogResult Respuesta = MessageBox.Show("¿Generar PDF Presupuesto " + selPres.Id + "?", "Generar PDF", MessageBoxButtons.YesNo);
+
+                if (Respuesta == DialogResult.Yes)
+
+                {
+                    ClienteBLL bllCli = new ClienteBLL();
+                    UsuarioBLL bllVen = new UsuarioBLL();
+             
+                    selPres = bllPresup.SeleccionarPresupuestoPorId(selPres.Id);
+                    selPres.Cliente = bllCli.SeleccionarPorId(selPres.Cliente.Id);
+                    selPres.Vendedor = bllVen.SeleccionarUsuarioPorId(selPres.Vendedor.Id);
+                    GenerarLayoutPresupuesto Pdf = new GenerarLayoutPresupuesto();
+
+                    Pdf.GenerarPresupuestoPdf(selPres);
+                }
+            }
+
+            else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
+        }
+        public void UpdateLanguage(IdiomaBE idioma)
+        {
+            Traducir();
+        }
+        private void Traducir()
+
+        {
+            IdiomaBE Idioma = null;
+
+            if (SesionSingleton.Instancia.IsLogged()) Idioma = SesionSingleton.Instancia.Usuario.Idioma;
+
+            var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
+
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
+            {
+
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
+                    this.Text = Traducciones[this.Tag.ToString()].Texto;
+
+                if (groupBox2.Tag != null && Traducciones.ContainsKey(groupBox2.Tag.ToString()))  // Título del form
+                    groupBox2.Text = Traducciones[groupBox2.Tag.ToString()].Texto;
+
+                if (button1.Tag != null && Traducciones.ContainsKey(button1.Tag.ToString()))  
+                    button1.Text = Traducciones[button1.Tag.ToString()].Texto;
+
+                if (button3.Tag != null && Traducciones.ContainsKey(button3.Tag.ToString()))  
+                    button3.Text = Traducciones[button3.Tag.ToString()].Texto;
+
+                if (buttonEditar.Tag != null && Traducciones.ContainsKey(buttonEditar.Tag.ToString())) 
+                    buttonEditar.Text = Traducciones[buttonEditar.Tag.ToString()].Texto;
+
+                if (buttonCierre.Tag != null && Traducciones.ContainsKey(buttonCierre.Tag.ToString()))
+                    buttonCierre.Text = Traducciones[buttonCierre.Tag.ToString()].Texto;
+
+                if (button4.Tag != null && Traducciones.ContainsKey(button4.Tag.ToString()))
+                    button4.Text = Traducciones[button4.Tag.ToString()].Texto;
+
+                if (buttonLayout.Tag != null && Traducciones.ContainsKey(buttonLayout.Tag.ToString()))
+                    buttonLayout.Text = Traducciones[buttonLayout.Tag.ToString()].Texto;
+
+                if (groupBox1.Tag != null && Traducciones.ContainsKey(groupBox1.Tag.ToString()))  
+                    groupBox1.Text = Traducciones[groupBox1.Tag.ToString()].Texto;
+            }
+
         }
     }
 }

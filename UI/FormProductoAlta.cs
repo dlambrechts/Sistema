@@ -31,6 +31,7 @@ namespace UI
             else 
             
             {
+                try { 
                 ProductoBE nProducto = new ProductoBE();
 
                 nProducto.Descripcion = textDescrip.Text;
@@ -45,7 +46,14 @@ namespace UI
 
                 MessageBox.Show("Producto Creado Correctamente");
                 this.Close();
+                }
 
+                catch (Exception ex)
+
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
             }
         }
 
