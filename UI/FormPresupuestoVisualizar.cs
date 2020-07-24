@@ -35,8 +35,7 @@ namespace UI
             TimeSpan PlazoEntrega = vPresup.FechaEntrega - vPresup.FechaEmision;// 
             labelEnt.Text = Convert.ToInt32(PlazoEntrega.TotalDays).ToString()+ " días";
             labelEst.Text = vPresup.Estado.ToString();
-            checkBoxApTec.Checked = vPresup.AprobacionTecnica;
-            checkBoxApCom.Checked = vPresup.AprobacionComercial;
+
             textBoxObs.Text = vPresup.Observaciones;
 
             CargarItemsEnGrilla();
@@ -77,7 +76,7 @@ namespace UI
 
             this.dataGridViewAprob.Columns[0].Visible = false;
             this.dataGridViewAprob.Columns[2].HeaderText = "Aprobador";
-            this.dataGridViewAprob.Columns[5].Width = 250;
+           
 
         }
 

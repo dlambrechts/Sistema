@@ -14,8 +14,11 @@ namespace BE
         public DateTime Fecha { get; set; }
 
         public UsuarioBE Aprobador = new UsuarioBE();
-        public UsuarioBE aprobador {  get { return Aprobador; }}       
-        public string TipoAprobacion { get; set; }
+        public UsuarioBE aprobador { get { return Aprobador; } }
+
+        public PresupuestoTipoAprobacionBE tipo = new PresupuestoTipoAprobacionBE();
+
+        public PresupuestoTipoAprobacionBE Tipo { get { return tipo; } }
         public string Accion { get; set; }
         public string Observaciones { get; set; }
         

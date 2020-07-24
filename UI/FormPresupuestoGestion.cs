@@ -81,7 +81,7 @@ namespace UI
             if (selPres.Id != 0)
 
             {
-                if(selPres.AprobacionTecnica==false || selPres.AprobacionComercial == false) { MessageBox.Show("El Presupuesto debe tener Aprobación Técnica y Comercial"); }
+                if(selPres.Estado.AprobacionCliente()==false) { MessageBox.Show("No es posible realizar el Cierre en el Estado actual"); }
 
                 else 
                 { 
@@ -104,7 +104,8 @@ namespace UI
             if (selPres.Id != 0)
 
             {
-                if (selPres.estado.Id == 8) { MessageBox.Show("No es posible Editar. El Presupeuesto ya fue Cerrado"); }
+              
+                if (selPres.Estado.Edicion()==false) { MessageBox.Show("No es posible Editar en el Estado Actual"); }
 
                 else
                 { 
@@ -115,6 +116,8 @@ namespace UI
                     frmEd.Show();
 
                 }
+
+               
             }
             else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
         }
@@ -124,7 +127,7 @@ namespace UI
             if (selPres.Id != 0)
 
             {
-                if (selPres.estado.Id == 8) { MessageBox.Show("No es posible Elminar. El Presupeuesto ya fue Cerrado"); }
+                if (selPres.Estado.Eliminar()==false) { MessageBox.Show("No es posible Elminar en el Estado actual"); }
                 else
                 {
                     DialogResult Respuesta = MessageBox.Show("¿Eliminar Presupuesto " + selPres.Id + "?", "Eliminar Presupuesto", MessageBoxButtons.YesNo);

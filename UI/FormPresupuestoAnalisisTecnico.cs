@@ -48,7 +48,7 @@ namespace UI
             if (radioPendientes.Checked==true)
             {
                 List<PresupuestoBE> ListaFiltrada = new List<PresupuestoBE>();
-                ListaFiltrada = ListaPresupuestos.Where(x => x.AprobacionTecnica == false).ToList();
+               // ListaFiltrada = ListaPresupuestos.Where(x => x.AprobacionTecnica == false).ToList();
                 BindingList<PresupuestoBE> bList = new BindingList<PresupuestoBE>(ListaFiltrada);
                 dataGridViewPresup.DataSource = bList;
             }
@@ -74,19 +74,30 @@ namespace UI
 
         private void buttonAp_Click(object sender, EventArgs e)
         {
-            if (selPres.Id == 0) { MessageBox.Show("Por favor, selecciones un Presupuesto"); }
+            if (selPres.Id == 0) { MessageBox.Show("Por favor, seleccione un Presupuesto"); }
 
            
-            else
-          
-            { 
-            FormPresupuestoAnalisisTecnicoEjecutar frPreAprob = new FormPresupuestoAnalisisTecnicoEjecutar();
-            frPreAprob.oPresup = selPres;
-            frPreAprob.MdiParent = this.ParentForm;
-            frPreAprob.FormClosed += new FormClosedEventHandler(frPrepAprob_FormClosed);
-                                
-            frPreAprob.Show();
+            else {
 
+                
+                if (selPres.Estado.AprobacionTecnica() == true || selPres.Estado.RechazoTecnico() == true)
+
+                {
+
+                    FormPresupuestoAnalisisTecnicoEjecutar frPreAprob = new FormPresupuestoAnalisisTecnicoEjecutar();
+                    frPreAprob.oPresup = selPres;
+                    frPreAprob.MdiParent = this.ParentForm;
+                    frPreAprob.FormClosed += new FormClosedEventHandler(frPrepAprob_FormClosed);
+
+                    frPreAprob.Show();
+                }
+                else
+                {
+
+                    MessageBox.Show("No es posible realizar el Análisis Técnico en el Estado actual");
+                }
+
+                
             }
         }
 

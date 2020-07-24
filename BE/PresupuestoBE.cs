@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BE.PresupuestoEstado;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace BE
 {
@@ -16,16 +18,17 @@ namespace BE
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaValidez { get; set; }
-        public bool AprobacionTecnica { get; set; }
-        public bool AprobacionComercial { get; set; }
-        public PresupuestoEstadoBE Estado { get { return estado; } }      
+        public PresupuestoEstadoBE Estado { get; set; }    
         public int PorcDescuento { get; set; }
         public decimal Descuento { get; set; }
         public decimal Iva { get; set; }
         public decimal Total { get; set; }
         public string Observaciones { get; set; }
-
-        public PresupuestoEstadoBE estado = new PresupuestoEstadoBE();
+       
+        public PresupuestoBE() 
+        
+        { this.Estado = new ApTecPend(); } // Todos los Presupuestos nuevos quedan pendientes de Aprobación Técnica
+        
         public bool ExisteItem (ProductoBE Prod){return this.Items.Exists(x => x.Producto.Id == Prod.Id);}
         public void AgregarItems(ProductoBE Prod, int Cant)
 

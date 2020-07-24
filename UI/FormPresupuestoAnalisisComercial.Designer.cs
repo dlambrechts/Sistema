@@ -79,7 +79,7 @@
             this.groupBox1.Controls.Add(this.dataGridViewPresup);
             this.groupBox1.Location = new System.Drawing.Point(12, 72);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(880, 349);
+            this.groupBox1.Size = new System.Drawing.Size(911, 410);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Presupuestos";
@@ -129,7 +129,7 @@
             this.dataGridViewPresup.Name = "dataGridViewPresup";
             this.dataGridViewPresup.ReadOnly = true;
             this.dataGridViewPresup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPresup.Size = new System.Drawing.Size(844, 278);
+            this.dataGridViewPresup.Size = new System.Drawing.Size(887, 339);
             this.dataGridViewPresup.TabIndex = 0;
             this.dataGridViewPresup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPresup_CellContentClick_1);
             // 
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 450);
+            this.ClientSize = new System.Drawing.Size(935, 504);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPresupuestoAnalisisComercial";

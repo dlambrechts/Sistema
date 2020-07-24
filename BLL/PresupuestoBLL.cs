@@ -120,5 +120,20 @@ namespace BLL
             PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.Eliminar(ePresup);
         }
+
+        public PresupuestoTipoAprobacionBE SeleccionarAprobacionTipo(string tipo) 
+        
+        {
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            return dPresup.SeleccionarAprobacionTipo(tipo);
+        }
+
+        public void ActualizarEstado(PresupuestoBE Pres, PresupuestoEstadoBE nEstado)
+
+        {
+
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            dPresup.ActualizarEstado(Pres,nEstado);
+        }
     }
 }

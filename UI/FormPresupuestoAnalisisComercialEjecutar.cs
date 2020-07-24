@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BE;
 using Servicios;
 using BLL;
+using BE.PresupuestoEstado;
 
 namespace UI
 {
@@ -24,35 +25,48 @@ namespace UI
 
         enum Accion : int { Aprobar = 1, Rechazar = 2 }
         public PresupuestoBE oPresup = new PresupuestoBE();
+        PresupuestoBLL bllP = new PresupuestoBLL();
         PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE();
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
+            oPresup = bllP.SeleccionarPresupuestoPorId(oPresup.Id); // Actualizo datos del presupuesto por si fue aprobado por otro usuario
+        
+            DialogResult Respuesta = MessageBox.Show("Confirma " + comboBoxAccion.Text + "Presupuesto?", comboBoxAccion.Text, MessageBoxButtons.YesNo);
 
-            if (oPresup.AprobacionComercial == true && comboBoxAccion.Text == "Aprobar") { MessageBox.Show("El Presupuesto ya está Aprobado"); }
+            if (Respuesta == DialogResult.Yes)
 
-            else
             {
-                DialogResult Respuesta = MessageBox.Show("Confirma " + comboBoxAccion.Text + "Presupuesto?", comboBoxAccion.Text, MessageBoxButtons.YesNo);
-
-                if (Respuesta == DialogResult.Yes)
-
+                if (((comboBoxAccion.Text == "Aprobar" && oPresup.Estado.AprobacionComercial() == true)) || ((comboBoxAccion.Text == "Rechazar" && oPresup.Estado.RechazoComercial() == true)))
                 {
                     nAprob.Presupuesto = oPresup;
                     nAprob.Aprobador = SesionSingleton.Instancia.Usuario;
                     nAprob.Fecha = DateTime.Now;
-                    nAprob.TipoAprobacion = "Comercial";
+                    nAprob.tipo = bllP.SeleccionarAprobacionTipo("Comercial");
                     nAprob.Accion = comboBoxAccion.Text;
                     nAprob.Observaciones = textBoxObs.Text;
                     PresupuestoBLL bllAp = new PresupuestoBLL();
+
+
+                    if (nAprob.Accion == "Aprobar")
+
+                    {
+                        PresupuestoEstadoBE nEstado = new EnviarCli();
+                        bllAp.ActualizarEstado(oPresup, nEstado);
+
+                    }
+                    else
+                    {
+                        PresupuestoEstadoBE nEstado = new ApComRech();
+                        bllAp.ActualizarEstado(oPresup, nEstado);
+                    }
+
+
                     bllAp.AnalisisComercial(nAprob);
-
                     MessageBox.Show("Operación realizada correctamente");
-
                     this.Close();
-
                 }
-
+                else { MessageBox.Show("No es posible realizar la acción en el Estado actual"); ; }
             }
         }
 

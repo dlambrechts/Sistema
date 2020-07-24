@@ -48,7 +48,7 @@ namespace UI
             if (radioPendientes.Checked == true)
             {
                 List<PresupuestoBE> ListaFiltrada = new List<PresupuestoBE>();
-                ListaFiltrada = ListaPresupuestos.Where(x => x.AprobacionComercial == false).ToList();
+               // ListaFiltrada = ListaPresupuestos.Where(x => x.AprobacionComercial == false).ToList();
                 BindingList<PresupuestoBE> bList = new BindingList<PresupuestoBE>(ListaFiltrada);
                 dataGridViewPresup.DataSource = bList;
             }
@@ -80,18 +80,18 @@ namespace UI
            
             else 
                 {
-                if (selPres.AprobacionTecnica == false)
-                {
-                    MessageBox.Show("Primero debe realizarse la Aprobación Técnica");
-                }
-                else
+                if (selPres.Estado.AprobacionComercial() == true || selPres.Estado.RechazoComercial() == true)
                 {
                     FormPresupuestoAnalisisComercialEjecutar frPreAprob = new FormPresupuestoAnalisisComercialEjecutar();
                     frPreAprob.oPresup = selPres;
                     frPreAprob.MdiParent = this.ParentForm;
                     frPreAprob.FormClosed += new FormClosedEventHandler(frPreAprob_FormClosed);
                     frPreAprob.Show();
-
+                    
+                }
+                else
+                {
+                    MessageBox.Show("No es posible realizar Analisis Comercial en el Estado Actual");
                 }
             }
         }

@@ -53,6 +53,7 @@ namespace UI
             labelTotIva.Text = "$ " + totalIva.ToString("0.##");
             labelDesc.Text = "$ " + valordesc.ToString("0.##");
             labelTot.Text = "$ " + total.ToString("0.##");
+            numericCant.Value = 1;
         }
 
         private void FormPresupuestoAlta_Load(object sender, EventArgs e)
@@ -131,8 +132,7 @@ namespace UI
                     {
                         nPresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;                      
                         nPresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
-                        nPresupuesto.FechaEmision = DateTime.Now;
-                        nPresupuesto.estado.Id = 1; 
+                        nPresupuesto.FechaEmision = DateTime.Now;                        
                         nPresupuesto.FechaEntrega = dateTimePicker1.Value;
                         nPresupuesto.FechaValidez = dateTimePickerVal.Value;
                         nPresupuesto.PorcDescuento = Convert.ToInt32(comboDescuento.Text);

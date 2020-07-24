@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BE;
 using Servicios;
 using BLL;
+using BE.PresupuestoEstado;
 
 namespace UI
 {
@@ -23,6 +24,7 @@ namespace UI
         }
         enum Accion:int { Aprobar=1,Rechazar=2}
         public PresupuestoBE oPresup = new PresupuestoBE();
+        PresupuestoBLL bllP = new PresupuestoBLL();
         PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE();
 
 
@@ -33,30 +35,46 @@ namespace UI
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if(oPresup.AprobacionTecnica==true && comboBoxAccion.Text == "Aprobar") { MessageBox.Show("El Presupuesto ya está Aprobado"); }
+            oPresup = bllP.SeleccionarPresupuestoPorId(oPresup.Id); // Actualizo datos del presupuesto por si fue aprobado por otro usuario
 
-            else { 
             DialogResult Respuesta = MessageBox.Show("Confirma "+ comboBoxAccion.Text + "Presupuesto?", comboBoxAccion.Text, MessageBoxButtons.YesNo);
 
-            if (Respuesta == DialogResult.Yes)
+                     if (Respuesta == DialogResult.Yes)
 
-                {
-                    nAprob.Presupuesto = oPresup;             
-                    nAprob.Aprobador = SesionSingleton.Instancia.Usuario;
-                    nAprob.Fecha = DateTime.Now;
-                    nAprob.TipoAprobacion = "Técnica";
-                    nAprob.Accion = comboBoxAccion.Text;
-                    nAprob.Observaciones = textBoxObs.Text;
-                    PresupuestoBLL bllAp = new PresupuestoBLL();
-                    bllAp.AnalisisTecnico(nAprob);
+                       {
+                            if(((comboBoxAccion.Text=="Aprobar" && oPresup.Estado.AprobacionTecnica()==true))|| ((comboBoxAccion.Text == "Rechazar" && oPresup.Estado.RechazoTecnico() == true)))
+                          { 
+                            nAprob.Presupuesto = oPresup;             
+                            nAprob.Aprobador = SesionSingleton.Instancia.Usuario;
+                            nAprob.Fecha = DateTime.Now;
+                            nAprob.tipo = bllP.SeleccionarAprobacionTipo("Tecnica");
+                            nAprob.Accion = comboBoxAccion.Text;
+                            nAprob.Observaciones = textBoxObs.Text;
+                            PresupuestoBLL bllAp = new PresupuestoBLL();
+                            
 
-                    MessageBox.Show("Operación realizada correctamente");
+                                    if (nAprob.Accion == "Aprobar") 
+                    
+                                     {
+                                         PresupuestoEstadoBE nEstado = new ApComPend();
+                                         bllAp.ActualizarEstado(oPresup, nEstado);
+                    
+                                      }
+                                     else 
+                                     {
+                                        PresupuestoEstadoBE nEstado = new ApTecRech();
+                                        bllAp.ActualizarEstado(oPresup, nEstado);
+                                      }
 
-                    this.Close();
 
-                 }
+                                bllAp.AnalisisTecnico(nAprob);
+                                MessageBox.Show("Operación realizada correctamente");
+                                this.Close();
+                        }
+                             else { MessageBox.Show("No es posible realizar la acción en el Estado actual"); ; }
+               }
 
-            }
+            
         }
 
     

@@ -124,12 +124,6 @@
     <Compile Include="FormPresupuestoAnalisisTecnicoEjecutar.Designer.cs">
       <DependentUpon>FormPresupuestoAnalisisTecnicoEjecutar.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPresupuestoApTecnica.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPresupuestoApTecnica.Designer.cs">
-      <DependentUpon>FormPresupuestoApTecnica.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormPresupuestoCierre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,9 +224,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPresupuestoAnalisisTecnicoEjecutar.resx">
       <DependentUpon>FormPresupuestoAnalisisTecnicoEjecutar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPresupuestoApTecnica.resx">
-      <DependentUpon>FormPresupuestoApTecnica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPresupuestoCierre.resx">
       <DependentUpon>FormPresupuestoCierre.cs</DependentUpon>

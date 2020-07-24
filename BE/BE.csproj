@@ -51,8 +51,16 @@
     <Compile Include="PerfilTipoPermisoBE.cs" />
     <Compile Include="PresupuestoAprobacionBE.cs" />
     <Compile Include="PresupuestoBE.cs" />
-    <Compile Include="PresupuestoEstadoBE.cs" />
+    <Compile Include="PresupuestoEstado\ApCli.cs" />
+    <Compile Include="PresupuestoEstado\ApComPend.cs" />
+    <Compile Include="PresupuestoEstado\ApComRech.cs" />
+    <Compile Include="PresupuestoEstado\ApTecPend.cs" />
+    <Compile Include="PresupuestoEstado\ApTecRech.cs" />
+    <Compile Include="PresupuestoEstado\EnviarCli.cs" />
+    <Compile Include="PresupuestoEstado\RechCli.cs" />
+    <Compile Include="PresupuestoEstado\PresupuestoEstadoBE.cs" />
     <Compile Include="PresupuestoItemBE.cs" />
+    <Compile Include="PresupuestoTipoAprobacionBE.cs" />
     <Compile Include="ProductoBE.cs" />
     <Compile Include="UsuarioBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

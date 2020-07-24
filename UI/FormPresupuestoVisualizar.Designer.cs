@@ -52,8 +52,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewItems = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBoxApCom = new System.Windows.Forms.CheckBox();
-            this.checkBoxApTec = new System.Windows.Forms.CheckBox();
             this.dataGridViewAprob = new System.Windows.Forms.DataGridView();
             this.groupBoxCabecera.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -319,8 +317,6 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBoxApCom);
-            this.groupBox3.Controls.Add(this.checkBoxApTec);
             this.groupBox3.Controls.Add(this.dataGridViewAprob);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 313);
@@ -331,39 +327,17 @@
             this.groupBox3.Text = "Historial de Aprobación";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // checkBoxApCom
-            // 
-            this.checkBoxApCom.AutoCheck = false;
-            this.checkBoxApCom.AutoSize = true;
-            this.checkBoxApCom.Location = new System.Drawing.Point(167, 30);
-            this.checkBoxApCom.Name = "checkBoxApCom";
-            this.checkBoxApCom.Size = new System.Drawing.Size(165, 21);
-            this.checkBoxApCom.TabIndex = 4;
-            this.checkBoxApCom.Text = "Aprobación Comercial";
-            this.checkBoxApCom.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxApTec
-            // 
-            this.checkBoxApTec.AutoCheck = false;
-            this.checkBoxApTec.AutoSize = true;
-            this.checkBoxApTec.Location = new System.Drawing.Point(9, 30);
-            this.checkBoxApTec.Name = "checkBoxApTec";
-            this.checkBoxApTec.Size = new System.Drawing.Size(153, 21);
-            this.checkBoxApTec.TabIndex = 3;
-            this.checkBoxApTec.Text = "Aprobación Técnica";
-            this.checkBoxApTec.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewAprob
             // 
             this.dataGridViewAprob.AllowUserToAddRows = false;
             this.dataGridViewAprob.AllowUserToDeleteRows = false;
             this.dataGridViewAprob.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAprob.Location = new System.Drawing.Point(6, 53);
+            this.dataGridViewAprob.Location = new System.Drawing.Point(6, 22);
             this.dataGridViewAprob.MultiSelect = false;
             this.dataGridViewAprob.Name = "dataGridViewAprob";
             this.dataGridViewAprob.ReadOnly = true;
             this.dataGridViewAprob.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewAprob.Size = new System.Drawing.Size(747, 141);
+            this.dataGridViewAprob.Size = new System.Drawing.Size(747, 172);
             this.dataGridViewAprob.TabIndex = 0;
             // 
             // FormPresupuestoVisualizar
@@ -384,7 +358,6 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAprob)).EndInit();
             this.ResumeLayout(false);
 
@@ -403,8 +376,6 @@
         private System.Windows.Forms.TextBox textBoxObs;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBoxApCom;
-        private System.Windows.Forms.CheckBox checkBoxApTec;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

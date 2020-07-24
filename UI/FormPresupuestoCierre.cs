@@ -32,7 +32,7 @@ namespace UI
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if (cPresup.Estado.Id==8 || cPresup.Estado.Id == 7) { MessageBox.Show("El Presupuesto ya está Cerrado"); }
+            if (cPresup.Estado.AprobacionCliente()==true) { MessageBox.Show("No es posible Realizar el Cierre en ele Estado Actual"); }
 
             else
             {
@@ -44,7 +44,7 @@ namespace UI
                     nAprob.Presupuesto = cPresup;
                     nAprob.Aprobador = SesionSingleton.Instancia.Usuario;
                     nAprob.Fecha = DateTime.Now;
-                    nAprob.TipoAprobacion = "Cliente";
+                    //nAprob.TipoAprobacion = "Cliente";
                     nAprob.Accion = comboBoxTipo.Text;
                     nAprob.Observaciones = textBoxObs.Text;
                     PresupuestoBLL bllAp = new PresupuestoBLL();

@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Data;
+using BE.PresupuestoEstado;
 
 namespace DAL
 {
     public class PresupuestoDAL
     {
-        public List<PresupuestoAprobacionBE> HistorialAnalisis(PresupuestoBE Presupuesto) 
-        
+        public List<PresupuestoAprobacionBE> HistorialAnalisis(PresupuestoBE Presupuesto)
+
         {
             List<PresupuestoAprobacionBE> Historial = new List<PresupuestoAprobacionBE>();
 
@@ -27,14 +28,14 @@ namespace DAL
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
                     PresupuestoAprobacionBE oAprob = new PresupuestoAprobacionBE();
-                    
+
                     oAprob.Fecha = Convert.ToDateTime(Item["Fecha"]); oAprob.Fecha.ToShortDateString();
                     oAprob.Aprobador.Nombre = Convert.ToString(Item["Nombre"]).Trim();
                     oAprob.Aprobador.Apellido = Convert.ToString(Item["Apellido"]).Trim();
-                    oAprob.TipoAprobacion = Convert.ToString(Item["TipoAprobacion"]).Trim();
+                    oAprob.tipo.Tipo = Convert.ToString(Item["Tipo"]).Trim();
                     oAprob.Accion = Convert.ToString(Item["Accion"]).Trim();
                     oAprob.Observaciones = Convert.ToString(Item["Observaciones"]).Trim();
-                   
+
 
                     Historial.Add(oAprob);
                 }
@@ -44,7 +45,7 @@ namespace DAL
         }
 
         public List<PresupuestoBE> ListarPresupuestos() // Solo muestra la cabecera para el listado
-        
+
         {
             List<PresupuestoBE> ListaPresupuestos = new List<PresupuestoBE>();
             Acceso AccesoDB = new Acceso();
@@ -58,25 +59,37 @@ namespace DAL
                     PresupuestoBE oPres = new PresupuestoBE();
 
                     oPres.Id = Convert.ToInt32(Item["Id"]);
-                    oPres.Cliente = new ClienteBE(); 
+                    oPres.Cliente = new ClienteBE();
                     oPres.Cliente.Id = Convert.ToInt32(Item["IdCliente"]);
                     oPres.Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim();
-                    oPres.Vendedor = new UsuarioBE(); 
+                    oPres.Vendedor = new UsuarioBE();
                     oPres.Vendedor.Id = Convert.ToInt32(Item["IdVendedor"]);
                     oPres.Vendedor.Nombre = Convert.ToString(Item["Nombre"]).Trim();
                     oPres.Vendedor.Apellido = Convert.ToString(Item["Apellido"]).Trim();
                     oPres.FechaEmision = Convert.ToDateTime(Item["FechaEmision"]);
                     oPres.FechaEntrega = Convert.ToDateTime(Item["FechaEntrega"]);
                     oPres.FechaValidez = Convert.ToDateTime(Item["FechaValidez"]);
-                    oPres.AprobacionTecnica = Convert.ToBoolean(Item["AprobacionTecnica"]);
-                    oPres.AprobacionComercial = Convert.ToBoolean(Item["AprobacionComercial"]);
-                    oPres.estado.Id = Convert.ToInt32(Item["IdEstado"]);
-                    oPres.estado.Descripcion = Convert.ToString(Item["Descripcion"]).Trim();
                     oPres.Descuento = Convert.ToDecimal(Item["Descuento"]);
                     oPres.Total = Convert.ToDecimal(Item["Total"]);
                     oPres.Observaciones = Convert.ToString(Item["Observaciones"]).Trim();
                     oPres.PorcDescuento = Convert.ToInt32(Item["PorcDescuento"]);
                     oPres.Iva = Convert.ToDecimal(Item["Iva"]);
+
+                    switch (Convert.ToString(Item["Estado"]).Trim())
+
+                    {
+                        case "ApTecPend": { oPres.Estado = new ApTecPend(); } break;
+                        case "ApTecRech": { oPres.Estado = new ApTecRech(); } break;
+                        case "ApComPend": { oPres.Estado = new ApComPend(); } break;
+                        case "ApComRech": { oPres.Estado = new ApComRech(); } break;
+                        case "EnviarCli": { oPres.Estado = new EnviarCli(); } break;
+                        case "ApCli": { oPres.Estado = new ApCli(); } break;
+                        case "RechCli": { oPres.Estado = new RechCli(); } break;
+
+                    }
+
+                    oPres.Estado.Descripción = Convert.ToString(Item["Descripcion"]).Trim();
+
 
                     ListaPresupuestos.Add(oPres);
                 }
@@ -84,39 +97,39 @@ namespace DAL
             }
             return ListaPresupuestos;
         }
-        public void AltaPresupuesto(PresupuestoBE nPresupuesto)  
+        public void AltaPresupuesto(PresupuestoBE nPresupuesto)
 
-        {   
-                Hashtable ParamCabecera = new Hashtable();                        // Cabecera
-                ParamCabecera.Add("@IdCliente", nPresupuesto.Cliente.Id);
-                ParamCabecera.Add("@IdVendedor", nPresupuesto.Vendedor.Id);
-                ParamCabecera.Add("@FechaEmision", nPresupuesto.FechaEmision);
-                ParamCabecera.Add("@FechaEntrega", nPresupuesto.FechaEntrega);
-                ParamCabecera.Add("@FechaValidez", nPresupuesto.FechaValidez);
-                ParamCabecera.Add("@Estado", nPresupuesto.estado.Id);
-                ParamCabecera.Add("@Descuento", nPresupuesto.Descuento);
-                ParamCabecera.Add("@Total", nPresupuesto.Total);
-                ParamCabecera.Add("@Observaciones", nPresupuesto.Observaciones);
-                ParamCabecera.Add("@PorcDescuento", nPresupuesto.PorcDescuento);
-                ParamCabecera.Add("@Iva", nPresupuesto.Iva);
+        {
+            Hashtable ParamCabecera = new Hashtable();                        // Cabecera
+            ParamCabecera.Add("@IdCliente", nPresupuesto.Cliente.Id);
+            ParamCabecera.Add("@IdVendedor", nPresupuesto.Vendedor.Id);
+            ParamCabecera.Add("@FechaEmision", nPresupuesto.FechaEmision);
+            ParamCabecera.Add("@FechaEntrega", nPresupuesto.FechaEntrega);
+            ParamCabecera.Add("@FechaValidez", nPresupuesto.FechaValidez);
+            ParamCabecera.Add("@Estado", nPresupuesto.Estado.GetType().Name);
+            ParamCabecera.Add("@Descuento", nPresupuesto.Descuento);
+            ParamCabecera.Add("@Total", nPresupuesto.Total);
+            ParamCabecera.Add("@Observaciones", nPresupuesto.Observaciones);
+            ParamCabecera.Add("@PorcDescuento", nPresupuesto.PorcDescuento);
+            ParamCabecera.Add("@Iva", nPresupuesto.Iva);
 
-                Acceso AccesoDB = new Acceso();
-                AccesoDB.Escribir("sp_InsertarPresupuestoCabecera", ParamCabecera);
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_InsertarPresupuestoCabecera", ParamCabecera);
 
 
-                foreach (PresupuestoItemBE item in nPresupuesto.Items)               // Items
-           
-                { 
-                     Hashtable ParamItems = new Hashtable();
-                    ParamItems.Add("@IdProducto", item.Producto.Id);
-                    ParamItems.Add("@Cantidad", item.Cantidad);
-                    ParamItems.Add("@PrecioUnitario", item.PrecioUnitario);
-                    ParamItems.Add("@TotalItem", item.TotalItem);
-                    ParamItems.Add("@IvaItem", item.IvaItem);
-                    ParamItems.Add("@PorcIva", item.PorcIVA);
+            foreach (PresupuestoItemBE item in nPresupuesto.Items)               // Items
+
+            {
+                Hashtable ParamItems = new Hashtable();
+                ParamItems.Add("@IdProducto", item.Producto.Id);
+                ParamItems.Add("@Cantidad", item.Cantidad);
+                ParamItems.Add("@PrecioUnitario", item.PrecioUnitario);
+                ParamItems.Add("@TotalItem", item.TotalItem);
+                ParamItems.Add("@IvaItem", item.IvaItem);
+                ParamItems.Add("@PorcIva", item.PorcIVA);
 
                 AccesoDB.Escribir("sp_InsertarPresupuestoItem", ParamItems);
-            }           
+            }
         }
 
         public void EditarPresupuesto(PresupuestoBE nPresupuesto)
@@ -129,7 +142,7 @@ namespace DAL
             ParamCabecera.Add("@FechaEdicion", DateTime.Now);
             ParamCabecera.Add("@FechaEntrega", nPresupuesto.FechaEntrega);
             ParamCabecera.Add("@FechaValidez", nPresupuesto.FechaValidez);
-            ParamCabecera.Add("@Estado", nPresupuesto.estado.Id);
+            ParamCabecera.Add("@Estado", nPresupuesto.Estado.GetType().Name);
             ParamCabecera.Add("@Descuento", nPresupuesto.Descuento);
             ParamCabecera.Add("@Total", nPresupuesto.Total);
             ParamCabecera.Add("@Observaciones", nPresupuesto.Observaciones);
@@ -157,8 +170,8 @@ namespace DAL
 
         }
 
-        public PresupuestoBE SeleccionarPresupuestoPorId(int Id) 
-        
+        public PresupuestoBE SeleccionarPresupuestoPorId(int Id)
+
         {
             PresupuestoBE oPres = new PresupuestoBE();
             Hashtable Parametros = new Hashtable();
@@ -173,22 +186,34 @@ namespace DAL
                 {
 
                     oPres.Id = Convert.ToInt32(Item["Id"]);
-                    oPres.Cliente = new ClienteBE(); 
+                    oPres.Cliente = new ClienteBE();
                     oPres.Cliente.Id = Convert.ToInt32(Item["IdCliente"]);
                     oPres.Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim(); ;
                     oPres.Vendedor = new UsuarioBE(); oPres.Vendedor.Id = Convert.ToInt32(Item["IdVendedor"]);
                     oPres.FechaEmision = Convert.ToDateTime(Item["FechaEmision"]);
                     oPres.FechaEntrega = Convert.ToDateTime(Item["FechaEntrega"]);
                     oPres.FechaValidez = Convert.ToDateTime(Item["FechaValidez"]);
-                    oPres.AprobacionTecnica = Convert.ToBoolean(Item["AprobacionTecnica"]);
-                    oPres.AprobacionComercial = Convert.ToBoolean(Item["AprobacionComercial"]);                
-                    oPres.estado.Id = Convert.ToInt32(Item["IdEstado"]);
-                    oPres.estado.Descripcion= Convert.ToString(Item["Descripcion"]).Trim();
                     oPres.Descuento = Convert.ToDecimal(Item["Descuento"]);
                     oPres.Total = Convert.ToDecimal(Item["Total"]);
                     oPres.Observaciones = Convert.ToString(Item["Observaciones"]).Trim();
                     oPres.PorcDescuento = Convert.ToInt32(Item["PorcDescuento"]);
                     oPres.Iva = Convert.ToDecimal(Item["Iva"]);
+
+
+                    switch (Convert.ToString(Item["Estado"]).Trim())
+
+                    {
+                        case "ApTecPend": { oPres.Estado = new ApTecPend(); } break;
+                        case "ApTecRech": { oPres.Estado = new ApTecRech(); } break;
+                        case "ApComPend": { oPres.Estado = new ApComPend(); } break;
+                        case "ApComRech": { oPres.Estado = new ApComRech(); } break;
+                        case "EnviarCli": { oPres.Estado = new EnviarCli(); } break;
+                        case "ApCli": { oPres.Estado = new ApCli(); } break;
+                        case "RechCli": { oPres.Estado = new RechCli(); } break;
+
+                    }
+
+                    oPres.Estado.Descripción = Convert.ToString(Item["Descripcion"]).Trim();
 
 
                 }
@@ -218,14 +243,14 @@ namespace DAL
             return oPres;
         }
 
-        public void AnalisisTecnico (PresupuestoAprobacionBE Resultado)
+        public void AnalisisTecnico(PresupuestoAprobacionBE Resultado)
 
         {
             Hashtable ParamCabecera = new Hashtable();
             ParamCabecera.Add("@IdPresupuesto", Resultado.Presupuesto.Id);
             ParamCabecera.Add("@IdAprobador", Resultado.Aprobador.Id);
             ParamCabecera.Add("@Fecha", Resultado.Fecha);
-            ParamCabecera.Add("@TipoAprobacion", Resultado.TipoAprobacion);
+            ParamCabecera.Add("@TipoAprobacion", Resultado.tipo.Id);
             ParamCabecera.Add("@Accion", Resultado.Accion);
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
@@ -241,7 +266,7 @@ namespace DAL
             ParamCabecera.Add("@IdPresupuesto", Resultado.Presupuesto.Id);
             ParamCabecera.Add("@IdAprobador", Resultado.Aprobador.Id);
             ParamCabecera.Add("@Fecha", Resultado.Fecha);
-            ParamCabecera.Add("@TipoAprobacion", Resultado.TipoAprobacion);
+            ParamCabecera.Add("@TipoAprobacion", Resultado.tipo.Id);
             ParamCabecera.Add("@Accion", Resultado.Accion);
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
@@ -257,7 +282,7 @@ namespace DAL
             ParamCabecera.Add("@IdPresupuesto", Resultado.Presupuesto.Id);
             ParamCabecera.Add("@IdAprobador", Resultado.Aprobador.Id);
             ParamCabecera.Add("@Fecha", Resultado.Fecha);
-            ParamCabecera.Add("@TipoAprobacion", Resultado.TipoAprobacion);
+            ParamCabecera.Add("@TipoAprobacion", Resultado.tipo.Id);
             ParamCabecera.Add("@Accion", Resultado.Accion);
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
@@ -266,7 +291,7 @@ namespace DAL
 
         }
 
-        public void Eliminar (PresupuestoBE ePresup)
+        public void Eliminar(PresupuestoBE ePresup)
 
         {
             Hashtable ParamCabecera = new Hashtable();
@@ -274,5 +299,41 @@ namespace DAL
             Acceso AccesoDB = new Acceso();
             AccesoDB.Escribir("sp_EliminarPresupuesto", ParamCabecera);
         }
-    }
+
+        public PresupuestoTipoAprobacionBE SeleccionarAprobacionTipo(string tipo)
+
+        {
+            PresupuestoTipoAprobacionBE Tipo = new PresupuestoTipoAprobacionBE();
+            Hashtable Parametros = new Hashtable();
+            Parametros.Add("@Tipo", tipo);
+            Acceso AccesoDB = new Acceso();
+            DataSet Ds = new DataSet();
+            Ds = AccesoDB.LeerDatos("sp_ListarPresupuestoAprobacionTipo", Parametros);
+
+            if (Ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow Item in Ds.Tables[0].Rows)
+                {
+
+                    Tipo.Id = Convert.ToInt32(Item["Id"]);
+                    Tipo.Tipo = Convert.ToString(Item["Tipo"]);
+
+
+                }
+            }
+
+            return Tipo;
+
+        }
+
+        public void ActualizarEstado(PresupuestoBE Pres, PresupuestoEstadoBE nEstado)
+
+                {
+                    Hashtable ParamCabecera = new Hashtable();
+                    ParamCabecera.Add("@IdPresupuesto", Pres.Id);
+                    ParamCabecera.Add("@Estado",nEstado.GetType().Name);
+                    Acceso AccesoDB = new Acceso();
+                    AccesoDB.Escribir("sp_ActualizarEstadoPresupuesto", ParamCabecera);
+        }
+}
 }

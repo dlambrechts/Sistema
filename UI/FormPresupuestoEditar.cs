@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
+using BE.PresupuestoEstado;
 using BLL;
 using Servicios;
 
@@ -162,7 +163,7 @@ namespace UI
 
                     ePresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;
                     ePresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
-                    ePresupuesto.estado.Id = 1;                                 // Al editar vuelve a estar pendiente de Aprobación Técnica
+                    ePresupuesto.Estado = new ApTecPend() ;                                 // Al editar vuelve a estar pendiente de Aprobación Técnica
                     ePresupuesto.FechaEntrega = dateTimePicker1.Value;
                     ePresupuesto.FechaValidez = dateTimePickerVal.Value;
                     ePresupuesto.PorcDescuento = Convert.ToInt32(comboDescuento.Text);

@@ -48,7 +48,7 @@
             this.groupBox2.Controls.Add(this.buttonAp);
             this.groupBox2.Location = new System.Drawing.Point(7, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(259, 54);
+            this.groupBox2.Size = new System.Drawing.Size(233, 54);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Acciones";
@@ -79,7 +79,7 @@
             this.groupBox1.Controls.Add(this.dataGridViewPresup);
             this.groupBox1.Location = new System.Drawing.Point(7, 69);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(859, 349);
+            this.groupBox1.Size = new System.Drawing.Size(859, 393);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Presupuestos";
@@ -129,7 +129,7 @@
             this.dataGridViewPresup.Name = "dataGridViewPresup";
             this.dataGridViewPresup.ReadOnly = true;
             this.dataGridViewPresup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPresup.Size = new System.Drawing.Size(835, 278);
+            this.dataGridViewPresup.Size = new System.Drawing.Size(835, 322);
             this.dataGridViewPresup.TabIndex = 0;
             this.dataGridViewPresup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPresup_CellContentClick);
             // 
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 433);
+            this.ClientSize = new System.Drawing.Size(892, 474);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPresupuestoAnalisisTecnico";
