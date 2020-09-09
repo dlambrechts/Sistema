@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteBE.cs" />
+    <Compile Include="ClienteTipoBE.cs" />
     <Compile Include="IdiomaBE.cs" />
     <Compile Include="IdiomaEtiquetaBE.cs" />
     <Compile Include="IdiomaTraduccionBE.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="PresupuestoItemBE.cs" />
     <Compile Include="PresupuestoTipoAprobacionBE.cs" />
     <Compile Include="ProductoBE.cs" />
+    <Compile Include="ProductoTipoBE.cs" />
+    <Compile Include="ProductoUnidadMedidaBE.cs" />
     <Compile Include="UsuarioBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

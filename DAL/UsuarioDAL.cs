@@ -109,7 +109,41 @@ namespace DAL
             return oUsuario;
         }
 
+        public string Alta (UsuarioBE Usuario) 
+        
+        {
+            string Consulta = "sp_InsertarUsuario";
+            Hashtable Parametros = new Hashtable();
 
+            Parametros.Add("@Nombre", Usuario.Nombre);
+            Parametros.Add("@Apellido", Usuario.Apellido);
+            Parametros.Add("@Mail", Usuario.Mail);
+            Parametros.Add("@Password", Usuario.Password);
+            Parametros.Add("@Idioma", Usuario.Idioma.Id);
+            
+            Acceso nAcceso = new Acceso();
+
+            return nAcceso.Escribir(Consulta, Parametros);
+        }
+
+
+        public void Editar(UsuarioBE Usuario)
+
+        {
+            string Consulta = "sp_EditarUsuario";
+            Hashtable Parametros = new Hashtable();
+
+            Parametros.Add("@Id", Usuario.Id);
+            Parametros.Add("@Nombre", Usuario.Nombre);
+            Parametros.Add("@Apellido", Usuario.Apellido);
+            Parametros.Add("@Mail", Usuario.Mail);
+            Parametros.Add("@Password", Usuario.Password);
+            Parametros.Add("@Idioma", Usuario.Idioma.Id);
+
+            Acceso nAcceso = new Acceso();
+
+            nAcceso.Escribir(Consulta, Parametros);
+        }
         public void ABM (UsuarioBE Usuario, int Operacion)
         {
             string Consulta;

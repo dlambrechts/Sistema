@@ -48,7 +48,7 @@ namespace UI
             if (radioPendientes.Checked==true)
             {
                 List<PresupuestoBE> ListaFiltrada = new List<PresupuestoBE>();
-               // ListaFiltrada = ListaPresupuestos.Where(x => x.AprobacionTecnica == false).ToList();
+                ListaFiltrada = ListaPresupuestos.Where(x => x.Estado.GetType().Name =="ApTecPend").ToList();
                 BindingList<PresupuestoBE> bList = new BindingList<PresupuestoBE>(ListaFiltrada);
                 dataGridViewPresup.DataSource = bList;
             }
@@ -95,6 +95,12 @@ namespace UI
                 {
 
                     MessageBox.Show("No es posible realizar el Análisis Técnico en el Estado actual");
+
+                    BitacoraActividadBE nActividad = new BitacoraActividadBE();
+                    BitacoraBLL bllAct = new BitacoraBLL();
+                    nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Advertencia");
+                    nActividad.Detalle = "Análisis Técnico no es posible para el Presupuesto N° " + selPres.Id + " en el estado actual";
+                    bllAct.NuevaActividad(nActividad);
                 }
 
                 

@@ -130,6 +130,8 @@ namespace UI
            
                     if (Respuesta == DialogResult.Yes)
                     {
+
+                    try { 
                         nPresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;                      
                         nPresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
                         nPresupuesto.FechaEmision = DateTime.Now;                        
@@ -142,8 +144,23 @@ namespace UI
                         nPresupuesto.Iva = totalIva;
 
                         bllPresupuesto.AltaPresupuesto(nPresupuesto);
-              
+
                         MessageBox.Show("Presupuesto Emitido correctamente");
+                    }
+
+                    catch (Exception Ex) 
+                    
+                    {
+                        BitacoraActividadBE nActividad = new BitacoraActividadBE();
+                        BitacoraBLL bllAct = new BitacoraBLL();
+                        nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Error");
+                        nActividad.Detalle = "Error en alta de Presupuesto: " + Ex.Message ;
+                        bllAct.NuevaActividad(nActividad);
+
+                        MessageBox.Show(Ex.Message);
+
+                    }
+                        
 
                         this.Close();
 

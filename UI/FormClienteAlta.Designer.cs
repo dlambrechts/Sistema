@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboCondPago = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.textContacto = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textCuit = new System.Windows.Forms.TextBox();
@@ -53,8 +51,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboCondPago);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.textContacto);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textCuit);
@@ -74,27 +70,10 @@
             this.groupBox1.Controls.Add(this.buttonGuardar);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(363, 333);
+            this.groupBox1.Size = new System.Drawing.Size(363, 311);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo";
-            // 
-            // comboCondPago
-            // 
-            this.comboCondPago.FormattingEnabled = true;
-            this.comboCondPago.Location = new System.Drawing.Point(149, 252);
-            this.comboCondPago.Name = "comboCondPago";
-            this.comboCondPago.Size = new System.Drawing.Size(196, 21);
-            this.comboCondPago.TabIndex = 20;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 260);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Condicion de Pago";
             // 
             // textContacto
             // 
@@ -231,7 +210,7 @@
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(270, 295);
+            this.buttonGuardar.Location = new System.Drawing.Point(270, 268);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardar.TabIndex = 0;
@@ -244,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 358);
+            this.ClientSize = new System.Drawing.Size(398, 337);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormClienteAlta";
             this.Text = "Nuevo Cliente";
@@ -275,7 +254,5 @@
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.TextBox textContacto;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboCondPago;
-        private System.Windows.Forms.Label label10;
     }
 }

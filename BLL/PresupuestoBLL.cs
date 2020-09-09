@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using BE;
 using System.ComponentModel;
 using DAL;
+using Servicios;
 
 namespace BLL
 {
     public class PresupuestoBLL
     {
-
+        BitacoraActividadBE nActividad = new BitacoraActividadBE();
+        BitacoraBLL bllAct = new BitacoraBLL();
         public decimal CalcularTotalIva(PresupuestoBE Presup)
 
         {
@@ -61,8 +63,11 @@ namespace BLL
 
         {
             PresupuestoDAL dPresup = new PresupuestoDAL();
-            dPresup.AltaPresupuesto(nPresupuesto);
-
+            string Id= dPresup.AltaPresupuesto(nPresupuesto);
+        
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se agregó el Presupuesto N° " + Id;
+            bllAct.NuevaActividad(nActividad);
         }
 
         public void EditarPresupuesto(PresupuestoBE nPresupuesto)
@@ -70,7 +75,21 @@ namespace BLL
         {
             PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.EditarPresupuesto(nPresupuesto);
+       
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se modificó el Presupuesto N° " + nPresupuesto.Id;
+            bllAct.NuevaActividad(nActividad);
 
+        }
+
+        public void Eliminar(PresupuestoBE ePresup)
+        {
+            PresupuestoDAL dPresup = new PresupuestoDAL();
+            dPresup.Eliminar(ePresup);
+
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se eliminó el Presupuesto N° " + ePresup.Id;
+            bllAct.NuevaActividad(nActividad);
         }
 
         public List<PresupuestoBE> ListarPresupuestos() // Listar Cabecera de Presupuestos
@@ -93,6 +112,10 @@ namespace BLL
         {
             PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.AnalisisTecnico(Resultado);
+
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Análisis Técnico realizado, Presupuesto N° " + Resultado.Presupuesto.Id;
+            bllAct.NuevaActividad(nActividad);
         }
 
         public void AnalisisComercial(PresupuestoAprobacionBE Resultado)
@@ -100,13 +123,22 @@ namespace BLL
         {
             PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.AnalisisComercial(Resultado);
+
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Análisis Comercial realizado, Presupuesto N° " + Resultado.Presupuesto.Id;
+            bllAct.NuevaActividad(nActividad);
         }
 
         public void Cierre(PresupuestoAprobacionBE Resultado)
         {
             PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.Cierre(Resultado);
+
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Cierre de Presupuesto N° " + Resultado.Presupuesto.Id;
+            bllAct.NuevaActividad(nActividad);
         }
+
         public List<PresupuestoAprobacionBE> HistorialAnalisis(PresupuestoBE Presupuesto)
         {
 
@@ -114,12 +146,6 @@ namespace BLL
             return dPresup.HistorialAnalisis(Presupuesto);
         }
 
-        public void Eliminar(PresupuestoBE ePresup) 
-        
-        {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
-            dPresup.Eliminar(ePresup);
-        }
 
         public PresupuestoTipoAprobacionBE SeleccionarAprobacionTipo(string tipo) 
         
@@ -131,9 +157,12 @@ namespace BLL
         public void ActualizarEstado(PresupuestoBE Pres, PresupuestoEstadoBE nEstado)
 
         {
-
             PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.ActualizarEstado(Pres,nEstado);
+
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Actualización de Estado, Presupuesto N° " + Pres.Id;
+            bllAct.NuevaActividad(nActividad);
         }
     }
 }

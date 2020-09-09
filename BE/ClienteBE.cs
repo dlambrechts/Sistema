@@ -14,12 +14,13 @@ namespace BE
         public int CodigoPostal { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
-        public string Tipo { get; set; }
+        public ClienteTipoBE Tipo { get { return tipo; } }
+
+        public ClienteTipoBE tipo = new ClienteTipoBE();
         public string Cuit { get; set; }
         public string Contacto { get; set; }
-        public string CondicionPago { get; set; }
         public bool Activo { get; set; }
-
+       
         public override string ToString()
         {
             return RazonSocial;

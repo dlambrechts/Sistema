@@ -16,6 +16,5 @@ namespace BE
         public decimal IvaItem { get; set; }
         public decimal TotalItem { get; set; }
 
- 
     }
 }

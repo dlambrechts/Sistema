@@ -33,10 +33,10 @@ namespace DAL
                     oCliente.CodigoPostal = Convert.ToInt32(Item["CodigoPostal"]);
                     oCliente.Telefono = Item["Telefono"].ToString().Trim();
                     oCliente.Mail = Item["Mail"].ToString().Trim();
-                    oCliente.Tipo = Item["Tipo"].ToString().Trim();
+                    oCliente.Tipo.Id = Item["Tipo"].ToString().Trim();
+                    oCliente.Tipo.Tipo = Item["Tipo"].ToString().Trim();
                     oCliente.Cuit = Item["Cuit"].ToString().Trim();
                     oCliente.Contacto = Item["Contacto"].ToString().Trim();
-                    oCliente.CondicionPago= Item["CondicionPago"].ToString().Trim();
                     oCliente.Activo = Convert.ToBoolean(Item["Activo"]);
 
                 }
@@ -65,10 +65,10 @@ namespace DAL
                     oCli.CodigoPostal = Convert.ToInt32(Item[3]);
                     oCli.Telefono= Convert.ToString(Item[4]).Trim();
                     oCli.Mail = Convert.ToString(Item[5]).Trim();
-                    oCli.Tipo = Convert.ToString(Item[6]).Trim();
-                    oCli.Cuit = Convert.ToString(Item[7]).Trim();
-                    oCli.Contacto = Convert.ToString(Item[8]).Trim();
-                    oCli.CondicionPago = Convert.ToString(Item[9]).Trim();
+                    oCli.Tipo.Id = Convert.ToString(Item[6]).Trim();
+                    oCli.Tipo.Tipo = Convert.ToString(Item[7]).Trim();
+                    oCli.Cuit = Convert.ToString(Item[8]).Trim();
+                    oCli.Contacto = Convert.ToString(Item[9]).Trim();                   
                     oCli.Activo = Convert.ToBoolean(Item[10]);
 
                     ListaClientes.Add(oCli);
@@ -77,7 +77,7 @@ namespace DAL
             }
             return ListaClientes;
         }
-        public void AltaCliente(ClienteBE nCli)
+        public string AltaCliente(ClienteBE nCli)
 
         {
             Hashtable Parametros = new Hashtable();
@@ -87,13 +87,12 @@ namespace DAL
             Parametros.Add("@CodigoPostal", nCli.CodigoPostal);
             Parametros.Add("@Tel", nCli.Telefono);
             Parametros.Add("@Mail", nCli.Mail);
-            Parametros.Add("@Tipo", nCli.Tipo);
+            Parametros.Add("@Tipo", nCli.Tipo.Id);
             Parametros.Add("@Cuit", nCli.Cuit);
-            Parametros.Add("@Contacto", nCli.Contacto);
-            Parametros.Add("@CondicionPago", nCli.CondicionPago);
+            Parametros.Add("@Contacto", nCli.Contacto);    
         
             Acceso AccesoDB = new Acceso();
-            AccesoDB.Escribir("sp_InsertarCliente", Parametros);
+            return AccesoDB.Escribir("sp_InsertarCliente", Parametros);
         }
 
         public void EditarCliente(ClienteBE nCli)
@@ -107,12 +106,10 @@ namespace DAL
             Parametros.Add("@CodigoPostal", nCli.CodigoPostal);
             Parametros.Add("@Tel", nCli.Telefono);
             Parametros.Add("@Mail", nCli.Mail);
-            Parametros.Add("@Tipo", nCli.Tipo);
+            Parametros.Add("@Tipo", nCli.Tipo.Id);
             Parametros.Add("@Cuit", nCli.Cuit);
             Parametros.Add("@Contacto", nCli.Contacto);
-            Parametros.Add("@CondicionPago", nCli.CondicionPago);
             Parametros.Add("@Activo", nCli.Activo);
-
 
             Acceso AccesoDB = new Acceso();
             AccesoDB.Escribir("sp_EditarCliente", Parametros);
@@ -125,6 +122,32 @@ namespace DAL
             Parametros.Add("@Id", nCli.Id);
             Acceso AccesoDB = new Acceso();
             AccesoDB.Escribir("sp_EliminarCliente", Parametros);
+        }
+
+        public List<ClienteTipoBE> ListarTipoCliente()
+
+        {
+            List<ClienteTipoBE> TiposCliente = new List<ClienteTipoBE>();
+
+            Acceso AccesoDB = new Acceso();
+            DataSet DS = new DataSet();
+            DS = AccesoDB.LeerDatos("sp_ListaClienteTipo", null);
+
+            if (DS.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow Item in DS.Tables[0].Rows)
+                {
+                    ClienteTipoBE oTipo = new ClienteTipoBE();
+
+                    oTipo.Id = Convert.ToString(Item[0]).Trim();
+                    oTipo.Tipo = Convert.ToString(Item[1]).Trim();
+
+
+                    TiposCliente.Add(oTipo);
+                }
+
+            }
+            return TiposCliente;
         }
     }
 }

@@ -55,22 +55,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encriptador.cs" />
-    <Compile Include="ExceptionLogin.cs" />
+    <Compile Include="Bitacora\BitacoraActividadBE.cs" />
+    <Compile Include="Bitacora\BitacoraBLL.cs" />
+    <Compile Include="Bitacora\BitacoraActividadTipoBE.cs" />
+    <Compile Include="Bitacora\BitacoraDAL.cs" />
+    <Compile Include="Login\Encriptador.cs" />
+    <Compile Include="Login\ExceptionLogin.cs" />
     <Compile Include="GenerarLayoutPresupuesto.cs" />
-    <Compile Include="ResultadoLogin.cs" />
+    <Compile Include="Login\ResultadoLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sesion.cs" />
-    <Compile Include="SesionSingleton.cs" />
+    <Compile Include="Login\Sesion.cs" />
+    <Compile Include="Login\SesionSingleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{e6cb6c5a-6027-4b3a-92d1-6fdbcb0e3f8e}</Project>
       <Name>BE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{51cc3297-c82e-420b-814b-9732a3767b17}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

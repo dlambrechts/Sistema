@@ -17,13 +17,20 @@ namespace UI
         public FormClienteEditar()
         {
             InitializeComponent();
-            comboTipo.DataSource = Enum.GetValues(typeof(TipoCli));
-            comboCondPago.DataSource = Enum.GetValues(typeof(CondPago));
+            CompletarTipos();
+       
         }
-        enum TipoCli : int { Inscripto = 1, ConsumidorFinal = 2, Exento = 3 }
-        enum CondPago : int { Contado, Anticipado }
+
+        ClienteBLL bllCli = new ClienteBLL();
 
         public ClienteBE Cli = new ClienteBE();
+
+        public void CompletarTipos()
+
+        {
+            comboTipo.DataSource = null;
+            comboTipo.DataSource = bllCli.ListarTipoCliente();
+        }
         private void FormClienteEditar_Load(object sender, EventArgs e)
         {
             textRazon.Text = Cli.RazonSocial;
@@ -31,10 +38,10 @@ namespace UI
             textCP.Text = Convert.ToString(Cli.CodigoPostal);
             textTel.Text = Cli.Telefono;
             textMail.Text = Cli.Mail;
-            comboTipo.Text = Cli.Tipo;
+            comboTipo.SelectedIndex = comboTipo.FindStringExact(Cli.Tipo.Tipo);
             textCuit.Text = Cli.Cuit;
             textContacto.Text = Cli.Contacto;
-            comboCondPago.Text = Cli.CondicionPago;
+
             checkBox1.Checked = Cli.Activo;
         }
 
@@ -46,7 +53,6 @@ namespace UI
 
             {
                 MessageBox.Show("Razón Social y CUIT son Obligatorios");
-
             }
 
             else
@@ -60,10 +66,10 @@ namespace UI
                 eCli.CodigoPostal = Convert.ToInt32(textCP.Text);
                 eCli.Telefono = textTel.Text;
                 eCli.Mail = textMail.Text;
-                eCli.Tipo = comboTipo.Text;
+                eCli.tipo = (ClienteTipoBE)comboTipo.SelectedItem;
                 eCli.Cuit = textCuit.Text;
                 eCli.Contacto = textContacto.Text;
-                eCli.CondicionPago = comboCondPago.Text;
+
                 eCli.Activo = checkBox1.Checked;
 
                 ClienteBLL bllCli = new ClienteBLL();

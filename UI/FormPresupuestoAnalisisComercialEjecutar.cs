@@ -30,7 +30,7 @@ namespace UI
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            oPresup = bllP.SeleccionarPresupuestoPorId(oPresup.Id); // Actualizo datos del presupuesto por si fue aprobado por otro usuario
+            oPresup = bllP.SeleccionarPresupuestoPorId(oPresup.Id); // Actualizo datos del presupuesto
         
             DialogResult Respuesta = MessageBox.Show("Confirma " + comboBoxAccion.Text + "Presupuesto?", comboBoxAccion.Text, MessageBoxButtons.YesNo);
 

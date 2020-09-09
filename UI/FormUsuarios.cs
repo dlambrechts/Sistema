@@ -39,8 +39,27 @@ namespace UI
                 else 
                 { 
            
-                    Asignar();
-                    bUsuario.ABM(oUsuario, 1);
+                    try
+                    {
+                        oUsuario.Nombre = textNombre.Text.Trim();
+                        oUsuario.Apellido = textApellido.Text.Trim();
+                        oUsuario.Mail = textMail.Text.Trim();
+                        oUsuario.Password = Encriptador.Hash(textPass1.Text);
+                        oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
+
+                        bUsuario.Alta(oUsuario);
+
+                    }
+
+                    catch  (Exception ex) 
+                    
+                    {
+                        MessageBox.Show(ex.Message);
+
+                    }
+
+
+                    
                     CargarGrilla();
                 }
             }
@@ -54,16 +73,6 @@ namespace UI
             comboIdioma.DataSource = Idiomas;
         }
 
-        public void Asignar() 
-        
-        {
-            oUsuario.Nombre = textNombre.Text.Trim();
-            oUsuario.Apellido = textApellido.Text.Trim();
-            oUsuario.Mail = textMail.Text.Trim();
-            oUsuario.Password = Encriptador.Hash(textPass1.Text);
-            oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
-        
-        }
 
         public void CargarGrilla()
         
@@ -76,6 +85,55 @@ namespace UI
         private void buttonDEL_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+            UsuarioBE selU = new UsuarioBE();
+            selU = (UsuarioBE)dataGridView1.CurrentRow.DataBoundItem;
+
+            textId.Text = Convert.ToString(selU.Id);
+            textNombre.Text = selU.Nombre;
+            textApellido.Text = selU.Apellido;
+            textMail.Text = selU.Mail;
+            comboIdioma.SelectedItem = comboIdioma.Items.IndexOf(selU.Idioma.Id);
+            
+           // oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
+        }
+
+        private void buttonUPD_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(textId.Text) == 0) { MessageBox.Show("Seleccione un usuario de la grilla"); }
+
+            else 
+            
+            {
+                try
+                {
+                    oUsuario.Id = Convert.ToInt32(textId.Text);
+                    oUsuario.Nombre = textNombre.Text.Trim();
+                    oUsuario.Apellido = textApellido.Text.Trim();
+                    oUsuario.Mail = textMail.Text.Trim();
+                    oUsuario.Password = Encriptador.Hash(textPass1.Text);
+                    oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
+
+                    bUsuario.Editar(oUsuario);
+
+                }
+
+                catch (Exception ex)
+
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+
+
+
+                CargarGrilla();
+
+            }
         }
     }
 }

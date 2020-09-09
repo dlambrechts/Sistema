@@ -81,17 +81,19 @@ namespace UI
             if (selPres.Id != 0)
 
             {
-                if(selPres.Estado.AprobacionCliente()==false) { MessageBox.Show("No es posible realizar el Cierre en el Estado actual"); }
+                if(selPres.Estado.AprobacionCliente()==true || selPres.Estado.RechazoCliente()==true) 
+                
+                {
+                    FormPresupuestoCierre FormC = new FormPresupuestoCierre();
+                    FormC.cPresup = selPres;
+                    FormC.MdiParent = this.ParentForm;
+                    FormC.FormClosed += new FormClosedEventHandler(fNuevo_FormClosed);
+                    FormC.Show();
+                }
 
                 else 
                 { 
-
-                        FormPresupuestoCierre FormC = new FormPresupuestoCierre();
-                        FormC.cPresup = selPres;
-                        FormC.MdiParent = this.ParentForm;
-                        FormC.FormClosed += new FormClosedEventHandler(fNuevo_FormClosed);
-                        FormC.Show();
-
+                    MessageBox.Show("No es posible realizar el Cierre en el Estado actual");
                 }
             }
 

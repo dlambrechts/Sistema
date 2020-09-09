@@ -97,7 +97,7 @@ namespace DAL
             }
             return ListaPresupuestos;
         }
-        public void AltaPresupuesto(PresupuestoBE nPresupuesto)
+        public string AltaPresupuesto(PresupuestoBE nPresupuesto)
 
         {
             Hashtable ParamCabecera = new Hashtable();                        // Cabecera
@@ -114,13 +114,13 @@ namespace DAL
             ParamCabecera.Add("@Iva", nPresupuesto.Iva);
 
             Acceso AccesoDB = new Acceso();
-            AccesoDB.Escribir("sp_InsertarPresupuestoCabecera", ParamCabecera);
-
+            string Id= AccesoDB.Escribir("sp_InsertarPresupuestoCabecera", ParamCabecera);
 
             foreach (PresupuestoItemBE item in nPresupuesto.Items)               // Items
 
             {
                 Hashtable ParamItems = new Hashtable();
+                ParamItems.Add("@IdPresup", Convert.ToInt32(Id));
                 ParamItems.Add("@IdProducto", item.Producto.Id);
                 ParamItems.Add("@Cantidad", item.Cantidad);
                 ParamItems.Add("@PrecioUnitario", item.PrecioUnitario);
@@ -130,6 +130,8 @@ namespace DAL
 
                 AccesoDB.Escribir("sp_InsertarPresupuestoItem", ParamItems);
             }
+
+            return Id;
         }
 
         public void EditarPresupuesto(PresupuestoBE nPresupuesto)
@@ -243,7 +245,7 @@ namespace DAL
             return oPres;
         }
 
-        public void AnalisisTecnico(PresupuestoAprobacionBE Resultado)
+        public string AnalisisTecnico(PresupuestoAprobacionBE Resultado)
 
         {
             Hashtable ParamCabecera = new Hashtable();
@@ -255,11 +257,11 @@ namespace DAL
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
             Acceso AccesoDB = new Acceso();
-            AccesoDB.Escribir("sp_InsertarPresupuestoAprobacionTec", ParamCabecera);
+            return AccesoDB.Escribir("sp_InsertarPresupuestoAprobacionTec", ParamCabecera);
 
         }
 
-        public void AnalisisComercial(PresupuestoAprobacionBE Resultado)
+        public string AnalisisComercial(PresupuestoAprobacionBE Resultado)
 
         {
             Hashtable ParamCabecera = new Hashtable();
@@ -271,11 +273,11 @@ namespace DAL
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
             Acceso AccesoDB = new Acceso();
-            AccesoDB.Escribir("sp_InsertarPresupuestoAprobacionCom", ParamCabecera);
+            return AccesoDB.Escribir("sp_InsertarPresupuestoAprobacionCom", ParamCabecera);
 
         }
 
-        public void Cierre(PresupuestoAprobacionBE Resultado)
+        public string Cierre(PresupuestoAprobacionBE Resultado)
 
         {
             Hashtable ParamCabecera = new Hashtable();
@@ -287,7 +289,7 @@ namespace DAL
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
             Acceso AccesoDB = new Acceso();
-            AccesoDB.Escribir("sp_InsertarPresupuestoCierre", ParamCabecera);
+           return  AccesoDB.Escribir("sp_InsertarPresupuestoCierre", ParamCabecera);
 
         }
 

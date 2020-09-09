@@ -102,6 +102,7 @@
             this.buttonUPD.TabIndex = 14;
             this.buttonUPD.Text = "Modificar";
             this.buttonUPD.UseVisualStyleBackColor = true;
+            this.buttonUPD.Click += new System.EventHandler(this.buttonUPD_Click);
             // 
             // buttonDEL
             // 
@@ -185,6 +186,7 @@
             this.textId.Name = "textId";
             this.textId.Size = new System.Drawing.Size(100, 20);
             this.textId.TabIndex = 4;
+            this.textId.Text = "0";
             // 
             // label4
             // 
@@ -233,6 +235,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(547, 266);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FormUsuarios
             // 

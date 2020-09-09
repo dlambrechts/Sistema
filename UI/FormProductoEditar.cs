@@ -17,16 +17,27 @@ namespace UI
         public FormProductoEditar()
         {
             InitializeComponent();
-            comboTipo.DataSource = Enum.GetValues(typeof(TipoProd));
-            comboUnMedi.DataSource = Enum.GetValues(typeof(UnidadMedida));
+            CompletarTipos();
+            CompletarUnidades();
 
         }
 
-        enum TipoProd : int { Terminado = 1, Repuesto = 2, Insumo = 3, SemiElaborado = 4,Servicio=5 }
-        enum UnidadMedida : int { Unidad = 1, Metro = 2, Kg = 3, Litro = 4 }
-
         public ProductoBE eProd = new ProductoBE();
-        
+        ProductoBLL bllProd = new ProductoBLL();
+
+        public void CompletarTipos()
+
+        {
+            comboTipo.DataSource = null;
+            comboTipo.DataSource = bllProd.ListarTipoProducto();
+        }
+
+        public void CompletarUnidades()
+
+        {
+            comboUnMedi.DataSource = null;
+            comboUnMedi.DataSource = bllProd.ListarUnidadesMedida();
+        }
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
             if (textDescrip.Text == "") { MessageBox.Show("Por favor, ingrese una Descripción"); }
@@ -38,13 +49,12 @@ namespace UI
 
                 eProducto.Id = eProd.Id;
                 eProducto.Descripcion = textDescrip.Text;
-                eProducto.Tipo = comboTipo.Text;
-                eProducto.UnidadMedida = comboUnMedi.Text;
+                eProducto.tipo = (ProductoTipoBE)comboTipo.SelectedItem;
+                eProducto.um = (ProductoUnidadMedidaBE)comboUnMedi.SelectedItem;
                 eProducto.Precio = Convert.ToDecimal(textPrecio.Text);
                 eProducto.Iva = Convert.ToDecimal(comboIva.Text);
                 eProducto.Activo = checkBox1.Checked;
-
-                ProductoBLL bllProd = new ProductoBLL();
+          
                 bllProd.EditarProducto(eProducto);
 
                 MessageBox.Show("Producto Modificado Correctamente");
@@ -56,8 +66,8 @@ namespace UI
         private void FormProductoEditar_Load(object sender, EventArgs e)
         {
             textDescrip.Text = eProd.Descripcion;
-            comboTipo.Text = eProd.Tipo;
-            comboUnMedi.Text = eProd.UnidadMedida;
+            comboTipo.SelectedIndex = comboTipo.FindStringExact(eProd.tipo.Tipo);
+            comboUnMedi.SelectedIndex = comboUnMedi.FindStringExact(eProd.UnidadMedida.Descripcion);
             textPrecio.Text = Convert.ToString(eProd.Precio);
             checkBox1.Checked = eProd.Activo;
             comboIva.Text = eProd.Iva.ToString(); ;

@@ -52,13 +52,11 @@ namespace UI
                             nAprob.Observaciones = textBoxObs.Text;
                             PresupuestoBLL bllAp = new PresupuestoBLL();
                             
-
                                     if (nAprob.Accion == "Aprobar") 
                     
                                      {
                                          PresupuestoEstadoBE nEstado = new ApComPend();
-                                         bllAp.ActualizarEstado(oPresup, nEstado);
-                    
+                                         bllAp.ActualizarEstado(oPresup, nEstado);            
                                       }
                                      else 
                                      {
@@ -66,18 +64,20 @@ namespace UI
                                         bllAp.ActualizarEstado(oPresup, nEstado);
                                       }
 
-
                                 bllAp.AnalisisTecnico(nAprob);
                                 MessageBox.Show("Operación realizada correctamente");
                                 this.Close();
                         }
-                             else { MessageBox.Show("No es posible realizar la acción en el Estado actual"); ; }
-               }
+                            else 
+                
+                         { 
+                    
+                            MessageBox.Show("No es posible realizar la acción en el Estado actual");
 
-            
+
+                           }
+               }            
         }
-
-    
         private void FormPresupuestoAnalisisTecnicoEjecutar_Load(object sender, EventArgs e)
         {
             textBoxPresup.Text = Convert.ToString(oPresup.Id);

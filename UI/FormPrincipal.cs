@@ -226,7 +226,7 @@ namespace UI
             this.idiomaToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.productosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.metricasToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
-            this.administradorToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+           // this.administradorToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             MarcarIdioma();
             Traducir();
 
@@ -355,6 +355,13 @@ namespace UI
             FormProductoGestion frmGesProd = new FormProductoGestion();
             frmGesProd.MdiParent = this;
             frmGesProd.Show();
+        }
+
+        private void bitácoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormBitacora fBit = new FormBitacora();
+            fBit.MdiParent = this;
+            fBit.Show();
         }
     }
 }

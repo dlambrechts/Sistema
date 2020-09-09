@@ -66,17 +66,44 @@ namespace BLL
             uDal.GuardarPermisos(Usuario);
         }
 
-        public void ABM (UsuarioBE Usuario, int Operacion) //  1- Alta, Baja o Modificación
+        public void Alta (UsuarioBE Usuario) 
+        
         {
             UsuarioDAL dUsuario = new UsuarioDAL();
-            dUsuario.ABM(Usuario, Operacion);
+            string Id= dUsuario.Alta(Usuario);
+
+            BitacoraActividadBE nActividad = new BitacoraActividadBE();
+            BitacoraBLL bllBit = new BitacoraBLL();
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se agregó el Usuario " + Id;
+            bllBit.NuevaActividad(nActividad);
 
         }
 
+        public void Editar(UsuarioBE Usuario)
+
+        {
+            UsuarioDAL dUsuario = new UsuarioDAL();
+            dUsuario.Editar(Usuario);
+
+            BitacoraActividadBE nActividad = new BitacoraActividadBE();
+            BitacoraBLL bllBit = new BitacoraBLL();
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se modificó el Usuario " + Usuario.Id;
+            bllBit.NuevaActividad(nActividad);
+
+        }
+   
         public void Logut ()
         
-        {
-            SesionSingleton.Instancia.Logout();
+        {                 
+                BitacoraActividadBE nAct = new BitacoraActividadBE();
+                BitacoraBLL bllAct = new BitacoraBLL();
+               
+                nAct.Detalle = "Sesión cerrada con éxito";
+                nAct.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+                bllAct.NuevaActividad(nAct);
+                SesionSingleton.Instancia.Logout();
         }
     }
 }

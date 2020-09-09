@@ -1,4 +1,5 @@
 ﻿using BE;
+using BE.PresupuestoEstado;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace UI
         enum Accion : int { Aprobar = 1, Rechazar = 2 }
 
         public PresupuestoBE cPresup = new PresupuestoBE();
-       
+        PresupuestoBLL bllP = new PresupuestoBLL();
         PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE();
         private void FormPresupuestoCierre_Load(object sender, EventArgs e)
         {
@@ -32,30 +33,53 @@ namespace UI
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if (cPresup.Estado.AprobacionCliente()==true) { MessageBox.Show("No es posible Realizar el Cierre en ele Estado Actual"); }
+            cPresup = bllP.SeleccionarPresupuestoPorId(cPresup.Id);
 
-            else
+            DialogResult Respuesta = MessageBox.Show("Confirma Cierre del Presupuesto?", comboBoxTipo.Text, MessageBoxButtons.YesNo);
+
+            if (Respuesta == DialogResult.Yes)
+
             {
-                DialogResult Respuesta = MessageBox.Show("Confirma Cierre del Presupuesto?", comboBoxTipo.Text, MessageBoxButtons.YesNo);
-
-                if (Respuesta == DialogResult.Yes)
-
+                if (((comboBoxTipo.Text == "Aprobar" && cPresup.Estado.AprobacionCliente() == true)) || ((comboBoxTipo.Text == "Rechazar" && cPresup.Estado.RechazoCliente() == true)))
                 {
                     nAprob.Presupuesto = cPresup;
                     nAprob.Aprobador = SesionSingleton.Instancia.Usuario;
                     nAprob.Fecha = DateTime.Now;
-                    //nAprob.TipoAprobacion = "Cliente";
+                    nAprob.tipo = bllP.SeleccionarAprobacionTipo("Cliente");
                     nAprob.Accion = comboBoxTipo.Text;
                     nAprob.Observaciones = textBoxObs.Text;
                     PresupuestoBLL bllAp = new PresupuestoBLL();
+
+                    if (nAprob.Accion == "Aprobar")
+
+                    {
+                        PresupuestoEstadoBE nEstado = new ApCli();
+                        bllAp.ActualizarEstado(cPresup, nEstado);
+                    }
+                    else
+                    {
+                        PresupuestoEstadoBE nEstado = new RechCli();
+                        bllAp.ActualizarEstado(cPresup, nEstado);
+                    }
+
                     bllAp.Cierre(nAprob);
-
                     MessageBox.Show("Operación realizada correctamente");
-
                     this.Close();
+                }
+                else 
+                
+                { 
+                    
+                    MessageBox.Show("No es posible realizar el Cierre en el Estado actual");
+
+                    BitacoraActividadBE nActividad = new BitacoraActividadBE();
+                    BitacoraBLL bllAct = new BitacoraBLL();
+                    nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Advertencia");
+                    nActividad.Detalle = "El Cierre no es posible para el Presupuesto N° " + cPresup.Id + " en el estado actual";
+                    bllAct.NuevaActividad(nActividad);
 
                 }
             }
-        }
+        }   
     }
 }

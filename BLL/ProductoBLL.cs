@@ -5,11 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DAL;
+using Servicios;
 
 namespace BLL
 {
     public class ProductoBLL
+
     {
+        public List<ProductoUnidadMedidaBE> ListarUnidadesMedida()
+        {
+            ProductoDAL dProd = new ProductoDAL();
+            return dProd.ListarUnidadesMedida();
+        }
+
+        public List<ProductoTipoBE> ListarTipoProducto() 
+        
+        {
+            ProductoDAL dProd = new ProductoDAL();
+            return dProd.ListarTipoProducto();
+        }
        public List<ProductoBE> ListarProductos() 
         
         {
@@ -21,7 +35,13 @@ namespace BLL
         
         {
             ProductoDAL dProd = new ProductoDAL();
-            dProd.AltaProducto(nProd);
+            string Id=dProd.AltaProducto(nProd);
+
+            BitacoraActividadBE nActividad = new BitacoraActividadBE();
+            BitacoraBLL bllAct = new BitacoraBLL();
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se agregó el Producto "+Id;
+            bllAct.NuevaActividad(nActividad);
         }
 
         public void EditarProducto(ProductoBE eProd)
@@ -29,12 +49,26 @@ namespace BLL
         {
             ProductoDAL dProd = new ProductoDAL();
             dProd.EditarProducto(eProd);
+
+            BitacoraActividadBE nActividad = new BitacoraActividadBE();
+            BitacoraBLL bllAct = new BitacoraBLL();
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se modificó el Producto " + eProd.Id;
+
+            bllAct.NuevaActividad(nActividad);
         }
 
         public void EliminarProducto(ProductoBE eProd)
         {
             ProductoDAL dProd = new ProductoDAL();
             dProd.EliminarProducto(eProd);
+
+            BitacoraActividadBE nActividad = new BitacoraActividadBE();
+            BitacoraBLL bllAct = new BitacoraBLL();
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se eliminó el Producto " + eProd.Id;
+
+            bllAct.NuevaActividad(nActividad);
         }
 
         public bool ExisteProductoEnPresupuesto(ProductoBE Prod)

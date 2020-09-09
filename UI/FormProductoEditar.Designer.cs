@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboIva = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.comboUnMedi = new System.Windows.Forms.ComboBox();
             this.comboTipo = new System.Windows.Forms.ComboBox();
@@ -39,8 +41,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textDescrip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboIva = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Editar";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // comboIva
+            // 
+            this.comboIva.FormattingEnabled = true;
+            this.comboIva.Items.AddRange(new object[] {
+            "21",
+            "10,5"});
+            this.comboIva.Location = new System.Drawing.Point(205, 106);
+            this.comboIva.Name = "comboIva";
+            this.comboIva.Size = new System.Drawing.Size(121, 21);
+            this.comboIva.TabIndex = 14;
+            this.comboIva.Text = "21";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "IVA";
             // 
             // checkBox1
             // 
@@ -152,32 +173,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Descripción";
             // 
-            // comboIva
-            // 
-            this.comboIva.FormattingEnabled = true;
-            this.comboIva.Items.AddRange(new object[] {
-            "21",
-            "10,5"});
-            this.comboIva.Location = new System.Drawing.Point(205, 106);
-            this.comboIva.Name = "comboIva";
-            this.comboIva.Size = new System.Drawing.Size(121, 21);
-            this.comboIva.TabIndex = 14;
-            this.comboIva.Text = "21";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 111);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "IVA";
-            // 
             // FormProductoEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 242);
+            this.ClientSize = new System.Drawing.Size(368, 240);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormProductoEditar";
             this.Text = "Editar Producto";

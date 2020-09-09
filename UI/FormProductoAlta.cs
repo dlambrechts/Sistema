@@ -17,13 +17,25 @@ namespace UI
         public FormProductoAlta()
         {
             InitializeComponent();
-            comboTipo.DataSource = Enum.GetValues(typeof(TipoProd));
-            comboUnMedi.DataSource = Enum.GetValues(typeof(UnidadMedida));
+            CompletarTipos();
+            CompletarUnidades();
         }
 
-        enum TipoProd:int {Terminado=1,Repuesto=2,Insumo=3,SemiElaborado=4,Servicio=5 }
-        enum UnidadMedida : int { Unidad=1,Metro=2,Kg=3,Litro=4}
+        ProductoBLL bllProd = new ProductoBLL();
 
+        public void CompletarTipos ()
+        
+        {
+            comboTipo.DataSource = null;
+            comboTipo.DataSource = bllProd.ListarTipoProducto();
+        }
+
+        public void CompletarUnidades() 
+        
+        {
+            comboUnMedi.DataSource = null;
+            comboUnMedi.DataSource = bllProd.ListarUnidadesMedida();
+        }
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
             if (textDescrip.Text=="") { MessageBox.Show("Por favor, ingrese una Descripción"); }
@@ -35,13 +47,13 @@ namespace UI
                 ProductoBE nProducto = new ProductoBE();
 
                 nProducto.Descripcion = textDescrip.Text;
-                nProducto.Tipo = comboTipo.Text;
-                nProducto.UnidadMedida = comboUnMedi.Text;
+                nProducto.tipo = (ProductoTipoBE)comboTipo.SelectedItem;
+                nProducto.um = (ProductoUnidadMedidaBE)comboUnMedi.SelectedItem;
                 nProducto.Stock = Convert.ToInt32(numericStock.Value);
                 nProducto.Precio = Convert.ToDecimal(textPrecio.Text);
                 nProducto.Iva = Convert.ToDecimal(comboIva.Text);
 
-                ProductoBLL bllProd = new ProductoBLL();
+                
                 bllProd.AltaProducto(nProducto);
 
                 MessageBox.Show("Producto Creado Correctamente");

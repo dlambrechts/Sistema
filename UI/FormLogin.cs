@@ -20,8 +20,8 @@ namespace UI
             InitializeComponent();
             Traducir();
         }
-       // PerfilComponenteBLL bllComp;
-
+       
+        
         public void UpdateLanguage(IdiomaBE idioma)
         {           
             Traducir();
@@ -77,6 +77,7 @@ namespace UI
                 var Resultado = bllUsuario.Login(textEmail.Text.Trim(), textPass.Text.Trim()) ;
                 FormPrincipal Form = (FormPrincipal)this.MdiParent;                          
                 Form.ValidarFormulario();
+                RegistroBitacora("Acceso Exitoso", (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje"));
                 this.Close();
             }
 
@@ -86,16 +87,28 @@ namespace UI
                 switch (Error.Result)
                 {
                     case ResultadoLogin.UsuarioInvalido:
-                        MessageBox.Show("Usuario incorrecto");
+                        MessageBox.Show("Usuario Incorrecto");
+
                         break;
                     case ResultadoLogin.PasswordInvalido:
                         MessageBox.Show("El Password ingresado es Incorrecto");
+                        
                         break;
 
                     default:
                         break;
                 }
             }
+        }
+
+        public void RegistroBitacora(string Detalle, BitacoraClasifActividad Clasificacion) 
+        
+        {
+            BitacoraActividadBE nAct = new BitacoraActividadBE();
+            BitacoraBLL bllAct = new BitacoraBLL();
+            nAct.Detalle = Detalle;
+            nAct.Clasificacion = Clasificacion;
+            bllAct.NuevaActividad(nAct);
         }
 
 

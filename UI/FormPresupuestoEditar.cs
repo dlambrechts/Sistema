@@ -97,9 +97,7 @@ namespace UI
 
             else
             {
-
                 int cantidad = Convert.ToInt32(numericCant.Value);
-
 
                 if (selProd.Stock < cantidad)
                 {
@@ -119,14 +117,11 @@ namespace UI
                     ActualizarGrillaItems();
                     ActualizarTotales();
                 }
-
-
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
             ProductoBE tempProd = new ProductoBE();
             tempProd = (ProductoBE)comboProducto.SelectedItem;
             MessageBox.Show("La cantidad Actual para " + tempProd.Descripcion + " es: " + tempProd.Stock + " " + tempProd.UnidadMedida);
@@ -142,7 +137,6 @@ namespace UI
                 ePresupuesto.QuitarItem(tempItem.Producto);
                 ActualizarGrillaItems();
                 ActualizarTotales();
-
             }
         }
 
@@ -160,7 +154,6 @@ namespace UI
 
                 if (Respuesta == DialogResult.Yes)
                 {
-
                     ePresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;
                     ePresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
                     ePresupuesto.Estado = new ApTecPend() ;                                 // Al editar vuelve a estar pendiente de Aprobación Técnica

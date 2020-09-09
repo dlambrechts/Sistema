@@ -44,6 +44,7 @@
             this.gestiónDeProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajustesDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.presupuestosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.administradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +57,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.dots = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.presupuestosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bitácoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.BarraDeEstado.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +94,7 @@
             // iniciarSesiónToolStripMenuItem
             // 
             this.iniciarSesiónToolStripMenuItem.Name = "iniciarSesiónToolStripMenuItem";
-            this.iniciarSesiónToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.iniciarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.iniciarSesiónToolStripMenuItem.Tag = "Login";
             this.iniciarSesiónToolStripMenuItem.Text = "Iniciar Sesión";
             this.iniciarSesiónToolStripMenuItem.Click += new System.EventHandler(this.iniciarSesiónToolStripMenuItem_Click);
@@ -101,7 +102,7 @@
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarSesiónToolStripMenuItem.Tag = "Logout";
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
@@ -109,7 +110,7 @@
             // idiomaToolStripMenuItem
             // 
             this.idiomaToolStripMenuItem.Name = "idiomaToolStripMenuItem";
-            this.idiomaToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.idiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.idiomaToolStripMenuItem.Tag = "Idioma";
             this.idiomaToolStripMenuItem.Text = "Idioma";
             // 
@@ -206,13 +207,20 @@
             this.metricasToolStripMenuItem.Tag = "Indicadores";
             this.metricasToolStripMenuItem.Text = "Indicadores";
             // 
+            // presupuestosToolStripMenuItem1
+            // 
+            this.presupuestosToolStripMenuItem1.Name = "presupuestosToolStripMenuItem1";
+            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.presupuestosToolStripMenuItem1.Text = "Presupuestos";
+            // 
             // administradorToolStripMenuItem
             // 
             this.administradorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuariosToolStripMenuItem,
             this.permisosToolStripMenuItem,
             this.permisoPorUsuarioToolStripMenuItem,
-            this.idiomaYTraduccionesToolStripMenuItem});
+            this.idiomaYTraduccionesToolStripMenuItem,
+            this.bitácoraToolStripMenuItem});
             this.administradorToolStripMenuItem.Name = "administradorToolStripMenuItem";
             this.administradorToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.administradorToolStripMenuItem.Tag = "Administrador";
@@ -313,11 +321,12 @@
             this.toolStripStatusLabel2.Tag = "Sesión no iniciada";
             this.toolStripStatusLabel2.Text = "Aún no ha iniciado sesión";
             // 
-            // presupuestosToolStripMenuItem1
+            // bitácoraToolStripMenuItem
             // 
-            this.presupuestosToolStripMenuItem1.Name = "presupuestosToolStripMenuItem1";
-            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.presupuestosToolStripMenuItem1.Text = "Presupuestos";
+            this.bitácoraToolStripMenuItem.Name = "bitácoraToolStripMenuItem";
+            this.bitácoraToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.bitácoraToolStripMenuItem.Text = "Bitácora";
+            this.bitácoraToolStripMenuItem.Click += new System.EventHandler(this.bitácoraToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -374,6 +383,7 @@
         private System.Windows.Forms.ToolStripMenuItem ajustesDeStockToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem metricasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bitácoraToolStripMenuItem;
     }
 }
 

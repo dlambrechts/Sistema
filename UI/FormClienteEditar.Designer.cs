@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboCondPago = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textContacto = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textCuit = new System.Windows.Forms.TextBox();
@@ -48,15 +47,12 @@
             this.textRazon = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.comboCondPago);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.textContacto);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textCuit);
@@ -76,27 +72,20 @@
             this.groupBox1.Controls.Add(this.buttonGuardar);
             this.groupBox1.Location = new System.Drawing.Point(12, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(362, 323);
+            this.groupBox1.Size = new System.Drawing.Size(362, 296);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Editar";
             // 
-            // comboCondPago
+            // checkBox1
             // 
-            this.comboCondPago.FormattingEnabled = true;
-            this.comboCondPago.Location = new System.Drawing.Point(150, 241);
-            this.comboCondPago.Name = "comboCondPago";
-            this.comboCondPago.Size = new System.Drawing.Size(196, 21);
-            this.comboCondPago.TabIndex = 39;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 249);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 13);
-            this.label10.TabIndex = 38;
-            this.label10.Text = "Condicion de Pago";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(185, 256);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(56, 17);
+            this.checkBox1.TabIndex = 40;
+            this.checkBox1.Text = "Activo";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // textContacto
             // 
@@ -233,7 +222,7 @@
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(271, 278);
+            this.buttonGuardar.Location = new System.Drawing.Point(271, 250);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardar.TabIndex = 21;
@@ -242,21 +231,11 @@
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(185, 284);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(56, 17);
-            this.checkBox1.TabIndex = 40;
-            this.checkBox1.Text = "Activo";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // FormClienteEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 374);
+            this.ClientSize = new System.Drawing.Size(394, 332);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormClienteEditar";
             this.Text = "Editar Cliente";
@@ -270,8 +249,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboCondPago;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textContacto;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textCuit;
