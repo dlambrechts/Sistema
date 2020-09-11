@@ -58,6 +58,7 @@ namespace UI
             else
 
             {
+                try { 
                 ClienteBE eCli = new ClienteBE();
 
                 eCli.Id = Cli.Id;
@@ -73,9 +74,17 @@ namespace UI
                 eCli.Activo = checkBox1.Checked;
 
                 ClienteBLL bllCli = new ClienteBLL();
-                bllCli.EditarCliente(eCli);
+                bllCli.NuevaVersion(Cli,eCli);
 
+                
                 MessageBox.Show("Cliente Modificado Correctamente");
+                }
+
+                catch (Exception ex) 
+                
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 this.Close();
 
             }

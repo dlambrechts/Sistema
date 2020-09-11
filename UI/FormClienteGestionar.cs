@@ -101,5 +101,23 @@ namespace UI
                 }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            {
+                if (beCli.RazonSocial == null) { MessageBox.Show("Debe seleccionar un Cliente"); }
+
+                else
+                {
+
+                    FormClienteVersion frmVer = new FormClienteVersion();
+                    frmVer.Cli = beCli;
+                    frmVer.MdiParent = this.ParentForm;
+                    frmVer.FormClosed += new FormClosedEventHandler(frmEdit_FormClosed);
+                    frmVer.Show();
+
+                }
+            }
+        }   
     }
 }

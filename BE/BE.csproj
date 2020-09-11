@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="ClienteBE.cs" />
     <Compile Include="ClienteTipoBE.cs" />
+    <Compile Include="ClienteVersionCambiosBE.cs" />
+    <Compile Include="ClienteVersionBE.cs" />
     <Compile Include="IdiomaBE.cs" />
     <Compile Include="IdiomaEtiquetaBE.cs" />
     <Compile Include="IdiomaTraduccionBE.cs" />
