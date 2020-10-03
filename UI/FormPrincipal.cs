@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.CompilerServices;
+using Servicios.DigitoVerificador;
 
 namespace UI
 {
@@ -204,6 +205,7 @@ namespace UI
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             SesionSingleton.Instancia.SuscribirObs(this);
+            IntegridadUsuarios();
         }
 
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -211,6 +213,16 @@ namespace UI
         {
             SesionSingleton.Instancia.DesuscribirObs(this);
 
+        }
+
+        public void IntegridadUsuarios() 
+        
+        {
+            DigitoVerificador DV = new DigitoVerificador();
+
+            DV.VerificarIntegridadHorizonal(bllUsuario.ListarUsuarios());
+            DV.VerificarIntegridadVertical(bllUsuario.ListarUsuarios());
+        
         }
 
    

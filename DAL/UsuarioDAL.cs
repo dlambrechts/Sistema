@@ -35,6 +35,8 @@ namespace DAL
                     oUsuario.Idioma = uIdioma;
                     oUsuario.Idioma.Id = Convert.ToInt32(Item[4]);
                     oUsuario.Idioma.Nombre = Convert.ToString(Item[5]);
+                    oUsuario.dvh = Convert.ToInt32(Item[6]);
+                    oUsuario.Password = Convert.ToString(Item[7]).Trim();
 
                     ListaUsuarios.Add(oUsuario);
                 }
@@ -120,6 +122,7 @@ namespace DAL
             Parametros.Add("@Mail", Usuario.Mail);
             Parametros.Add("@Password", Usuario.Password);
             Parametros.Add("@Idioma", Usuario.Idioma.Id);
+            Parametros.Add("@dvh", Usuario.dvh);
             
             Acceso nAcceso = new Acceso();
 
@@ -139,6 +142,7 @@ namespace DAL
             Parametros.Add("@Mail", Usuario.Mail);
             Parametros.Add("@Password", Usuario.Password);
             Parametros.Add("@Idioma", Usuario.Idioma.Id);
+            Parametros.Add("@dvh", Usuario.dvh);
 
             Acceso nAcceso = new Acceso();
 

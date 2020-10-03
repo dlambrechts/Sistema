@@ -59,6 +59,8 @@
     <Compile Include="Bitacora\BitacoraBLL.cs" />
     <Compile Include="Bitacora\BitacoraActividadTipoBE.cs" />
     <Compile Include="Bitacora\BitacoraDAL.cs" />
+    <Compile Include="DigitoVerificador\DigitoVerificador.cs" />
+    <Compile Include="DigitoVerificador\DigitoVerificadorDAL.cs" />
     <Compile Include="Login\Encriptador.cs" />
     <Compile Include="Login\ExceptionLogin.cs" />
     <Compile Include="GenerarLayoutPresupuesto.cs" />

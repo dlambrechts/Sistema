@@ -14,6 +14,7 @@ namespace BE
         public string Apellido { get; set; }
         public string Password { get; set; }
         public IdiomaBE Idioma { get; set; }
+        public int dvh { get; set; }
 
         List<PerfilComponenteBE> permisos;
         public UsuarioBE() { permisos = new List<PerfilComponenteBE>(); }

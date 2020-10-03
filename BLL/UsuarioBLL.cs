@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 using BE;
 using DAL;
 using Servicios;
+using Servicios.DigitoVerificador;
 
 namespace BLL
 {
     public class UsuarioBLL
     {
+        UsuarioDAL dUsuario = new UsuarioDAL();
+        DigitoVerificador DigitoVerificador = new DigitoVerificador();
+        
+
         public List<UsuarioBE> ListarUsuarios() // Traer Lista de usuarios para ABM
         {
-            List<UsuarioBE> Lista = new List<UsuarioBE>();
-            UsuarioDAL dUsuario= new UsuarioDAL();
+            List<UsuarioBE> Lista = new List<UsuarioBE>();            
             return Lista = dUsuario.ListarUsuarios();
         }
 
@@ -22,15 +26,12 @@ namespace BLL
         
         {
             UsuarioBE oUsuario = new UsuarioBE();
-            UsuarioDAL dUsuario = new UsuarioDAL();
             oUsuario = dUsuario.LeerUsuario(Mail);
-            return oUsuario;
-        
+            return oUsuario;      
         }
 
-        public UsuarioBE SeleccionarUsuarioPorId(int Id) 
+        public UsuarioBE SeleccionarUsuarioPorId(int Id)
         {
-            UsuarioDAL dUsuario = new UsuarioDAL();
             return dUsuario.SeleccionarUsuarioPorId(Id);
         }
         public ResultadoLogin Login (string Mail, string Password) 
@@ -47,7 +48,6 @@ namespace BLL
             if (oUsuario.Mail == null) throw new ExceptionLogin(ResultadoLogin.UsuarioInvalido);
 
 
-
             if (!oUsuario.Password.Equals(Encriptador.Hash(Password)))
                 throw new ExceptionLogin(ResultadoLogin.PasswordInvalido);
             else
@@ -56,21 +56,19 @@ namespace BLL
                 SesionSingleton.Instancia.Login(oUsuario);
                 return ResultadoLogin.UsuarioValido;
             }
- 
         }
-
         public void GuardarPermisos(UsuarioBE Usuario)
 
         {
-            UsuarioDAL uDal = new UsuarioDAL();
-            uDal.GuardarPermisos(Usuario);
+            dUsuario.GuardarPermisos(Usuario);
         }
-
         public void Alta (UsuarioBE Usuario) 
         
-        {
-            UsuarioDAL dUsuario = new UsuarioDAL();
+        {            
+            Usuario.dvh = DigitoVerificador.CalcularDigitoHorizontal(Usuario);
             string Id= dUsuario.Alta(Usuario);
+            int dvv = DigitoVerificador.CalcularDigitoVertical(dUsuario.ListarUsuarios());
+            DigitoVerificador.ActualizarDigitoVertical(dvv);            
 
             BitacoraActividadBE nActividad = new BitacoraActividadBE();
             BitacoraBLL bllBit = new BitacoraBLL();
@@ -83,8 +81,10 @@ namespace BLL
         public void Editar(UsuarioBE Usuario)
 
         {
-            UsuarioDAL dUsuario = new UsuarioDAL();
+            Usuario.dvh = DigitoVerificador.CalcularDigitoHorizontal(Usuario);
             dUsuario.Editar(Usuario);
+            int dvv = DigitoVerificador.CalcularDigitoVertical(dUsuario.ListarUsuarios());
+            DigitoVerificador.ActualizarDigitoVertical(dvv);
 
             BitacoraActividadBE nActividad = new BitacoraActividadBE();
             BitacoraBLL bllBit = new BitacoraBLL();
@@ -105,5 +105,7 @@ namespace BLL
                 bllAct.NuevaActividad(nAct);
                 SesionSingleton.Instancia.Logout();
         }
+
+    
     }
 }
