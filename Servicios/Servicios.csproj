@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backup\Backup.cs" />
     <Compile Include="Bitacora\BitacoraActividadBE.cs" />
     <Compile Include="Bitacora\BitacoraBLL.cs" />
     <Compile Include="Bitacora\BitacoraActividadTipoBE.cs" />

@@ -375,5 +375,12 @@ namespace UI
             fBit.MdiParent = this;
             fBit.Show();
         }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormBackup fback = new FormBackup();
+            fback.MdiParent = this;
+            fback.Show();
+        }
     }
 }
