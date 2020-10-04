@@ -41,6 +41,8 @@ namespace UI
             LeerClientes();
         }
 
+       
+
         private void FormClienteGestionar_Load(object sender, EventArgs e)
         {
             LeerClientes();

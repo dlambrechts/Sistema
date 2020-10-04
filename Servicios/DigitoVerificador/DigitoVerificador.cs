@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Servicios.Bitacora;
+
 
 namespace Servicios.DigitoVerificador
 {
@@ -56,6 +58,12 @@ namespace Servicios.DigitoVerificador
 
         public void VerificarIntegridadHorizonal(List<UsuarioBE> Users)
         {
+            BitacoraBLL bllBit = new BitacoraBLL();
+
+            BitacoraActividadBE nInicioVerificacionHorizontal = new BitacoraActividadBE();
+            nInicioVerificacionHorizontal.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nInicioVerificacionHorizontal.Detalle = "Se inició el porceso de verificación de Dígito Horizontal";
+            bllBit.NuevaActividad(nInicioVerificacionHorizontal);
 
             foreach (UsuarioBE u in Users)
             {
@@ -63,22 +71,51 @@ namespace Servicios.DigitoVerificador
 
                 if (u.dvh != dvh)
                 {
+                    BitacoraActividadBE nActividad = new BitacoraActividadBE();
 
-                    MessageBox.Show("Inconsistencia en usuario " + u + dvh + "  " + u.dvh);
+
+                    nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Error");
+                    nActividad.Detalle = "El Proceso de Verificación de DB detectó inconsistencias en el usuario: " + u.Id;
+                    bllBit.NuevaActividad(nActividad);
+                    
                 }
 
             }
+
+            BitacoraActividadBE nFinVerificacionHorizontal = new BitacoraActividadBE();
+            nFinVerificacionHorizontal.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nFinVerificacionHorizontal.Detalle = "Finalizó el porceso de verificación de Dígito Horizontal";
+            bllBit.NuevaActividad(nFinVerificacionHorizontal);
 
         }
 
         public void VerificarIntegridadVertical(List<UsuarioBE> Users)
         {
+            BitacoraBLL bllBit = new BitacoraBLL();
+
+            BitacoraActividadBE nInicioVerificacionVertical = new BitacoraActividadBE();
+            nInicioVerificacionVertical.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nInicioVerificacionVertical.Detalle = "Se inició el porceso de verificación de Dígito Vertical";
+            bllBit.NuevaActividad(nInicioVerificacionVertical);
+
             int dvv = CalcularDigitoVertical(Users);
 
             DigitoVerificadorDAL dvdal = new DigitoVerificadorDAL();
             int dvv_db = dvdal.ObtenerVertical();
 
-            if (dvv != dvv_db) { MessageBox.Show("Inconsistencia horizontal"+dvv+" " + dvv_db); }
+            if (dvv != dvv_db) 
+            {
+                BitacoraActividadBE nError = new BitacoraActividadBE();                
+                nError.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Error");
+                nError.Detalle = "El Proceso de Verificación de DB detectó que se agregaron o quitaron Usuarios";
+                bllBit.NuevaActividad(nError);
+
+            }
+
+            BitacoraActividadBE nFinVerificacionVertical = new BitacoraActividadBE();
+            nFinVerificacionVertical.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nFinVerificacionVertical.Detalle = "Finalizó el porceso de verificación de Dígito Vertical";
+            bllBit.NuevaActividad(nFinVerificacionVertical);
 
         }
     }

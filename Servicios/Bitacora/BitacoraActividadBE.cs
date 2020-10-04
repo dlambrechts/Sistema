@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Servicios;
 
 
-namespace BE
+namespace Servicios.Bitacora
 {
     public class BitacoraActividadBE
     {

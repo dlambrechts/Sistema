@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Servicios;
+using Servicios.Bitacora;
 
 namespace BLL
 {
@@ -77,9 +78,7 @@ namespace BLL
             Historico.Fecha = DateTime.Now;        
             Historico.Cambios = Cambios;
             Historico.Cliente = Anterior;
-
-           
-
+          
             EditarCliente(Nuevo);
             dCliente.InsertarHistorico(Historico);
 
@@ -90,14 +89,14 @@ namespace BLL
         {
             ClienteVersionCambiosBE Cambios = new ClienteVersionCambiosBE();
 
-            Cambios.RazonSocial = !(string.Equals(Anterior.RazonSocial, Nuevo.RazonSocial));
-            Cambios.Direccion = !(string.Equals(Anterior.Direccion, Nuevo.Direccion));
+            Cambios.RazonSocial = !(string.Equals(Anterior.RazonSocial.Trim(), Nuevo.RazonSocial.Trim()));
+            Cambios.Direccion = !(string.Equals(Anterior.Direccion.Trim(), Nuevo.Direccion.Trim()));
             Cambios.CodigoPostal = !(int.Equals(Anterior.CodigoPostal, Nuevo.CodigoPostal));
-            Cambios.Telefono = !(string.Equals(Anterior.Telefono, Nuevo.Telefono));
-            Cambios.Mail = !(string.Equals(Anterior.Mail, Nuevo.Mail));
-            Cambios.Tipo = !(string.Equals(Anterior.Tipo.Id, Nuevo.Tipo.Id));
-            Cambios.Cuit = !(string.Equals(Anterior.Cuit, Nuevo.Cuit));
-            Cambios.Contacto = !(string.Equals(Anterior.Contacto, Nuevo.Contacto));
+            Cambios.Telefono = !(string.Equals(Anterior.Telefono.Trim(), Nuevo.Telefono.Trim()));
+            Cambios.Mail = !(string.Equals(Anterior.Mail.Trim(), Nuevo.Mail.Trim()));
+            Cambios.Tipo = !(string.Equals(Anterior.Tipo.Id.Trim(), Nuevo.Tipo.Id.Trim()));
+            Cambios.Cuit = !(string.Equals(Anterior.Cuit.Trim(), Nuevo.Cuit.Trim()));
+            Cambios.Contacto = !(string.Equals(Anterior.Contacto.Trim(), Nuevo.Contacto.Trim()));
             Cambios.Activo = !(string.Equals(Anterior.Activo, Nuevo.Activo));
 
             return Cambios;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BE;
 using DAL;
 using Servicios;
+using Servicios.Bitacora;
 
 namespace BLL
 {

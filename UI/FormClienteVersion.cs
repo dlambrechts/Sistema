@@ -36,9 +36,9 @@ namespace UI
             {
                 
                 selVer=(ClienteVersionBE)dataGridViewVersiones.CurrentRow.DataBoundItem;
-                ClienteVersionBE Contenido = new ClienteVersionBE();
-                Contenido=bllCli.ObtenerVersionPorIdVersion(selVer);
-                MostrarContenidoVersion(Contenido);
+                
+                selVer=bllCli.ObtenerVersionPorIdVersion(selVer);
+                MostrarContenidoVersion(selVer);
                 selVer.Cambios = bllCli.ObtenerCamposAfectadorEnVersion(selVer);
                 MostrarCamposAfectados(selVer.Cambios);
             }
@@ -82,12 +82,24 @@ namespace UI
         }
         private void buttonrest_Click(object sender, EventArgs e)
         {
-            DialogResult Respuesta = MessageBox.Show("Desea restaurar el Cliente a la version " + selVer.Fecha + "?", Convert.ToString(Cli.Id), MessageBoxButtons.YesNo);
-
-            if (Respuesta == DialogResult.Yes)
+            if (selVer.IdVersion != 0)
 
             {
+
+                DialogResult Respuesta = MessageBox.Show("Desea restaurar el Cliente a la version " + selVer.Fecha + "?", Convert.ToString(Cli.Id), MessageBoxButtons.YesNo);
+
+                if (Respuesta == DialogResult.Yes)
+
+                {
+                    bllCli.NuevaVersion(Cli, selVer.Cliente);
+                    MessageBox.Show("Versión Restaurada");
+                    this.Close();
+                }
+
             }
+
+            else { MessageBox.Show("Debe seleccionar una versión"); }
         }
     }
+    
 }

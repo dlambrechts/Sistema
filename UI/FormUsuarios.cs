@@ -37,8 +37,7 @@ namespace UI
               if(textPass1.Text!=textPass2.Text) { MessageBox.Show("Las contraseñas no coinciden"); }
 
                 else 
-                { 
-           
+                {          
                     try
                     {
                         oUsuario.Nombre = textNombre.Text.Trim();
@@ -48,18 +47,10 @@ namespace UI
                         oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
 
                         bUsuario.Alta(oUsuario);
-
                     }
 
-                    catch  (Exception ex) 
-                    
-                    {
-                        MessageBox.Show(ex.Message);
+                    catch  (Exception ex) {MessageBox.Show(ex.Message);}
 
-                    }
-
-
-                    
                     CargarGrilla();
                 }
             }
@@ -84,7 +75,22 @@ namespace UI
 
         private void buttonDEL_Click(object sender, EventArgs e)
         {
+            if (Convert.ToInt32(textId.Text) == 0) { MessageBox.Show("Seleccione un usuario de la grilla"); }
 
+            else
+
+            {
+                oUsuario.Id = Convert.ToInt32(textId.Text);
+                oUsuario.Mail = textMail.Text.Trim();
+
+                if (oUsuario.Mail == "admin") { MessageBox.Show("No se puede eliminar el Usuario admin"); }
+
+                else 
+                {                 
+                  bUsuario.Eliminar(oUsuario);
+                  CargarGrilla();
+                }
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -99,7 +105,7 @@ namespace UI
             textMail.Text = selU.Mail;
             comboIdioma.SelectedItem = comboIdioma.Items.IndexOf(selU.Idioma.Id);
             
-           // oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
+           
         }
 
         private void buttonUPD_Click(object sender, EventArgs e)

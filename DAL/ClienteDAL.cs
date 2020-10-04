@@ -166,6 +166,7 @@ namespace DAL
             ParametrosCampos.Add("@FlagCuit", Version.Cambios.Cuit);
             ParametrosCampos.Add("@FlagContacto", Version.Cambios.Contacto);
             ParametrosCampos.Add("@FlagActivo", Version.Cambios.Activo);
+            ParametrosCampos.Add("@IdCli", Version.Cliente.Id);
 
             AccesoDB.Escribir("sp_InsertarClienteVersionCampos", ParametrosCampos);
 
@@ -261,6 +262,7 @@ namespace DAL
                     Ver.Cliente.Cuit = Convert.ToString(Item[9]);
                     Ver.Cliente.Contacto = Convert.ToString(Item[10]);
                     if (Item[11] != DBNull.Value) { Ver.Cliente.FechaModificacion=Convert.ToDateTime(Item[11]);}
+                    Ver.Cliente.Id = Convert.ToInt32(Item[12]);
                 }
             }
             return Ver;

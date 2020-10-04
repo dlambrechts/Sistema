@@ -7,6 +7,7 @@ using BE;
 using System.ComponentModel;
 using DAL;
 using Servicios;
+using Servicios.Bitacora;
 
 namespace BLL
 {

@@ -205,7 +205,7 @@ namespace UI
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             SesionSingleton.Instancia.SuscribirObs(this);
-            IntegridadUsuarios();
+            IntegridadDB();
         }
 
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -215,7 +215,7 @@ namespace UI
 
         }
 
-        public void IntegridadUsuarios() 
+        public void IntegridadDB() 
         
         {
             DigitoVerificador DV = new DigitoVerificador();

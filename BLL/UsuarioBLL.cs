@@ -7,6 +7,7 @@ using BE;
 using DAL;
 using Servicios;
 using Servicios.DigitoVerificador;
+using Servicios.Bitacora;
 
 namespace BLL
 {
@@ -14,7 +15,8 @@ namespace BLL
     {
         UsuarioDAL dUsuario = new UsuarioDAL();
         DigitoVerificador DigitoVerificador = new DigitoVerificador();
-        
+        BitacoraActividadBE nActividad = new BitacoraActividadBE();
+        BitacoraBLL bllBit = new BitacoraBLL();
 
         public List<UsuarioBE> ListarUsuarios() // Traer Lista de usuarios para ABM
         {
@@ -70,8 +72,7 @@ namespace BLL
             int dvv = DigitoVerificador.CalcularDigitoVertical(dUsuario.ListarUsuarios());
             DigitoVerificador.ActualizarDigitoVertical(dvv);            
 
-            BitacoraActividadBE nActividad = new BitacoraActividadBE();
-            BitacoraBLL bllBit = new BitacoraBLL();
+                       
             nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
             nActividad.Detalle = "Se agregó el Usuario " + Id;
             bllBit.NuevaActividad(nActividad);
@@ -85,25 +86,33 @@ namespace BLL
             dUsuario.Editar(Usuario);
             int dvv = DigitoVerificador.CalcularDigitoVertical(dUsuario.ListarUsuarios());
             DigitoVerificador.ActualizarDigitoVertical(dvv);
-
-            BitacoraActividadBE nActividad = new BitacoraActividadBE();
-            BitacoraBLL bllBit = new BitacoraBLL();
+                        
             nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
             nActividad.Detalle = "Se modificó el Usuario " + Usuario.Id;
             bllBit.NuevaActividad(nActividad);
 
         }
-   
+
+        public void Eliminar(UsuarioBE Usuario)
+
+        {     
+            dUsuario.Eliminar(Usuario);
+            int dvv = DigitoVerificador.CalcularDigitoVertical(dUsuario.ListarUsuarios());
+            DigitoVerificador.ActualizarDigitoVertical(dvv);
+
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            nActividad.Detalle = "Se Eliminó el Usuario " + Usuario.Id;
+            bllBit.NuevaActividad(nActividad);
+       
+        }
+
         public void Logut ()
         
-        {                 
-                BitacoraActividadBE nAct = new BitacoraActividadBE();
-                BitacoraBLL bllAct = new BitacoraBLL();
-               
-                nAct.Detalle = "Sesión cerrada con éxito";
-                nAct.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
-                bllAct.NuevaActividad(nAct);
-                SesionSingleton.Instancia.Logout();
+        {                             
+            nActividad.Detalle = "Sesión cerrada con éxito";
+            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            bllBit.NuevaActividad(nActividad);
+            SesionSingleton.Instancia.Logout();
         }
 
     

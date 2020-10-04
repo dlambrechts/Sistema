@@ -9,7 +9,8 @@ using System.Data;
 using DAL;
 
 
-namespace DAL
+
+namespace Servicios.Bitacora
 {
     public class BitacoraDAL
     {

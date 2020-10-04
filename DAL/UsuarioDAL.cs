@@ -35,7 +35,7 @@ namespace DAL
                     oUsuario.Idioma = uIdioma;
                     oUsuario.Idioma.Id = Convert.ToInt32(Item[4]);
                     oUsuario.Idioma.Nombre = Convert.ToString(Item[5]);
-                    oUsuario.dvh = Convert.ToInt32(Item[6]);
+                     oUsuario.dvh = Convert.ToInt32(Item[6]); 
                     oUsuario.Password = Convert.ToString(Item[7]).Trim();
 
                     ListaUsuarios.Add(oUsuario);
@@ -148,51 +148,19 @@ namespace DAL
 
             nAcceso.Escribir(Consulta, Parametros);
         }
-        public void ABM (UsuarioBE Usuario, int Operacion)
+
+        public void Eliminar (UsuarioBE Usuario)
+
         {
-            string Consulta;
-
-            switch (Operacion)
-            {
-                case 1:
-                    Consulta = "sp_InsertarUsuario";
-                    break;
-                case 2:
-                    Consulta = "s_ModificarUsuario";
-                    break;
-                case 3:
-                    Consulta = "s_EliminarUsuario";
-                    break;
-                default:
-                    Consulta = null;
-                    break;
-            }
-
+            string Consulta = "sp_EliminarUsuario";
             Hashtable Parametros = new Hashtable();
+            Parametros.Add("@Id", Usuario.Id);   
 
-            if (Operacion != 3)
-            {
-                if (Usuario.Id != 0)
-                {
-                    Parametros.Add("@IdUsuario", Usuario.Id);
-                }
-
-                Parametros.Add("@Nombre", Usuario.Nombre);
-                Parametros.Add("@Apellido", Usuario.Apellido);
-                Parametros.Add("@Mail", Usuario.Mail);
-                Parametros.Add("@Password", Usuario.Password);
-                Parametros.Add("@Idioma",Usuario.Idioma.Id);
-
-            }
-            else
-            {
-                Parametros.Add("@IdUsuario", Usuario.Id);
-            }
             Acceso nAcceso = new Acceso();
-            
-            nAcceso.Escribir(Consulta, Parametros);
 
+            nAcceso.Escribir(Consulta, Parametros);
         }
+
 
         public void GuardarPermisos(UsuarioBE Usuario)
 

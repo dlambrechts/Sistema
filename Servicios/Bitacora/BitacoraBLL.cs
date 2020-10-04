@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using BE;
 using DAL;
 using Servicios;
+using Servicios.Bitacora;
 
-namespace BLL
+namespace Servicios.Bitacora
 {
     public class BitacoraBLL
     {
@@ -16,7 +17,11 @@ namespace BLL
         {
             BitacoraDAL bDal = new BitacoraDAL();
             nAct.Fecha = DateTime.Now;
-            nAct.Usuario.Id = SesionSingleton.Instancia.Usuario.Id;         
+
+            if (SesionSingleton.Instancia.Usuario != null) 
+            { 
+            nAct.Usuario.Id = SesionSingleton.Instancia.Usuario.Id;
+            }
             bDal.NuevaActividad(nAct);
         }
 

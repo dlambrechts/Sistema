@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
 using BLL;
+using Servicios.Bitacora;
+
 namespace UI
 {
     public partial class FormPresupuestoAnalisisComercial : Form

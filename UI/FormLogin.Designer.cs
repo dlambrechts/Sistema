@@ -86,7 +86,7 @@
             this.textEmail.Name = "textEmail";
             this.textEmail.Size = new System.Drawing.Size(172, 20);
             this.textEmail.TabIndex = 4;
-            this.textEmail.Text = "lambrechts.diego@gmail.com";
+            this.textEmail.Text = "admin";
             // 
             // groupBox1
             // 

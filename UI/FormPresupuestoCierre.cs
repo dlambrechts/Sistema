@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Servicios;
+using Servicios.Bitacora;
 
 namespace UI
 {
