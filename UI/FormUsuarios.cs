@@ -80,15 +80,20 @@ namespace UI
             else
 
             {
-                oUsuario.Id = Convert.ToInt32(textId.Text);
-                oUsuario.Mail = textMail.Text.Trim();
+                DialogResult Respuesta = MessageBox.Show("Confirma Eliminar Usuario?", "Eliminar Usuario", MessageBoxButtons.YesNo);
 
-                if (oUsuario.Mail == "admin") { MessageBox.Show("No se puede eliminar el Usuario admin"); }
+                if (Respuesta == DialogResult.Yes)
+                {
+                    oUsuario.Id = Convert.ToInt32(textId.Text);
+                    oUsuario.Mail = textMail.Text.Trim();
 
-                else 
-                {                 
-                  bUsuario.Eliminar(oUsuario);
-                  CargarGrilla();
+                    if (oUsuario.Mail == "admin") { MessageBox.Show("No se puede eliminar el Usuario admin"); }
+
+                    else
+                    {
+                        bUsuario.Eliminar(oUsuario);
+                        CargarGrilla();
+                    }
                 }
             }
         }
@@ -104,41 +109,40 @@ namespace UI
             textApellido.Text = selU.Apellido;
             textMail.Text = selU.Mail;
             comboIdioma.SelectedItem = comboIdioma.Items.IndexOf(selU.Idioma.Id);
-            
-           
+                       
         }
 
         private void buttonUPD_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(textId.Text) == 0) { MessageBox.Show("Seleccione un usuario de la grilla"); }
 
-            else 
-            
+            else
+
             {
-                try
+                DialogResult Respuesta = MessageBox.Show("Confirma Modificación de Usuario?", "Modificar Usuario", MessageBoxButtons.YesNo);
+
+                if (Respuesta == DialogResult.Yes)
                 {
-                    oUsuario.Id = Convert.ToInt32(textId.Text);
-                    oUsuario.Nombre = textNombre.Text.Trim();
-                    oUsuario.Apellido = textApellido.Text.Trim();
-                    oUsuario.Mail = textMail.Text.Trim();
-                    oUsuario.Password = Encriptador.Hash(textPass1.Text);
-                    oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
+                    try
+                    {
+                        oUsuario.Id = Convert.ToInt32(textId.Text);
+                        oUsuario.Nombre = textNombre.Text.Trim();
+                        oUsuario.Apellido = textApellido.Text.Trim();
+                        oUsuario.Mail = textMail.Text.Trim();
+                        oUsuario.Password = Encriptador.Hash(textPass1.Text);
+                        oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
 
-                    bUsuario.Editar(oUsuario);
+                        bUsuario.Editar(oUsuario);
 
-                }
-
+                    }
+                      
                 catch (Exception ex)
 
-                {
-                    MessageBox.Show(ex.Message);
-
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-
-
-
                 CargarGrilla();
-
             }
         }
     }

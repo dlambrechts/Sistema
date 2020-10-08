@@ -29,53 +29,29 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.buttonNuevo = new System.Windows.Forms.Button();
-            this.buttonRestaurar = new System.Windows.Forms.Button();
             this.labelResp = new System.Windows.Forms.Label();
+            this.buttonRestaurar = new System.Windows.Forms.Button();
+            this.buttonNuevo = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonElim = new System.Windows.Forms.Button();
+            this.buttonCambiar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonCambiar);
+            this.groupBox2.Controls.Add(this.buttonElim);
             this.groupBox2.Controls.Add(this.labelResp);
             this.groupBox2.Controls.Add(this.buttonRestaurar);
             this.groupBox2.Controls.Add(this.buttonNuevo);
             this.groupBox2.Controls.Add(this.listBox1);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(388, 192);
+            this.groupBox2.Size = new System.Drawing.Size(363, 204);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Respaldos Disponibles";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(235, 121);
-            this.listBox1.TabIndex = 0;
-            // 
-            // buttonNuevo
-            // 
-            this.buttonNuevo.Location = new System.Drawing.Point(262, 48);
-            this.buttonNuevo.Name = "buttonNuevo";
-            this.buttonNuevo.Size = new System.Drawing.Size(75, 23);
-            this.buttonNuevo.TabIndex = 0;
-            this.buttonNuevo.Text = "Nuevo";
-            this.buttonNuevo.UseVisualStyleBackColor = true;
-            this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
-            // 
-            // buttonRestaurar
-            // 
-            this.buttonRestaurar.Location = new System.Drawing.Point(262, 19);
-            this.buttonRestaurar.Name = "buttonRestaurar";
-            this.buttonRestaurar.Size = new System.Drawing.Size(75, 23);
-            this.buttonRestaurar.TabIndex = 1;
-            this.buttonRestaurar.Text = "Restaurar";
-            this.buttonRestaurar.UseVisualStyleBackColor = true;
-            this.buttonRestaurar.Click += new System.EventHandler(this.buttonRestaurar_Click);
             // 
             // labelResp
             // 
@@ -86,11 +62,57 @@
             this.labelResp.TabIndex = 1;
             this.labelResp.Text = "La ruta predeterminada de Backup es ";
             // 
+            // buttonRestaurar
+            // 
+            this.buttonRestaurar.Location = new System.Drawing.Point(260, 48);
+            this.buttonRestaurar.Name = "buttonRestaurar";
+            this.buttonRestaurar.Size = new System.Drawing.Size(75, 23);
+            this.buttonRestaurar.TabIndex = 1;
+            this.buttonRestaurar.Text = "Restaurar";
+            this.buttonRestaurar.UseVisualStyleBackColor = true;
+            this.buttonRestaurar.Click += new System.EventHandler(this.buttonRestaurar_Click);
+            // 
+            // buttonNuevo
+            // 
+            this.buttonNuevo.Location = new System.Drawing.Point(260, 19);
+            this.buttonNuevo.Name = "buttonNuevo";
+            this.buttonNuevo.Size = new System.Drawing.Size(75, 23);
+            this.buttonNuevo.TabIndex = 0;
+            this.buttonNuevo.Text = "Nuevo";
+            this.buttonNuevo.UseVisualStyleBackColor = true;
+            this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(248, 121);
+            this.listBox1.TabIndex = 0;
+            // 
+            // buttonElim
+            // 
+            this.buttonElim.Location = new System.Drawing.Point(260, 78);
+            this.buttonElim.Name = "buttonElim";
+            this.buttonElim.Size = new System.Drawing.Size(75, 23);
+            this.buttonElim.TabIndex = 2;
+            this.buttonElim.Text = "Eliminar";
+            this.buttonElim.UseVisualStyleBackColor = true;
+            // 
+            // buttonCambiar
+            // 
+            this.buttonCambiar.Location = new System.Drawing.Point(9, 172);
+            this.buttonCambiar.Name = "buttonCambiar";
+            this.buttonCambiar.Size = new System.Drawing.Size(75, 23);
+            this.buttonCambiar.TabIndex = 3;
+            this.buttonCambiar.Text = "Cambiar";
+            this.buttonCambiar.UseVisualStyleBackColor = true;
+            // 
             // FormBackup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 217);
+            this.ClientSize = new System.Drawing.Size(389, 228);
             this.Controls.Add(this.groupBox2);
             this.Name = "FormBackup";
             this.Text = "Backup";
@@ -107,5 +129,7 @@
         private System.Windows.Forms.Button buttonNuevo;
         private System.Windows.Forms.Button buttonRestaurar;
         private System.Windows.Forms.Label labelResp;
+        private System.Windows.Forms.Button buttonCambiar;
+        private System.Windows.Forms.Button buttonElim;
     }
 }

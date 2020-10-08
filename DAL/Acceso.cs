@@ -48,7 +48,6 @@ namespace DAL
             SqlDataAdapter Adaptador = new SqlDataAdapter(ComandoSQL);
             Adaptador.Fill(DS);
             return DS;
-
         }
 
 
@@ -78,28 +77,24 @@ namespace DAL
                 ComandoSQL.Parameters.Add("@Id_ins", SqlDbType.Int).Direction = ParameterDirection.Output; // Para inserción
 
                 int respuesta = ComandoSQL.ExecuteNonQuery();
-                    
                 Transaccion.Commit();
-
                 Id = ComandoSQL.Parameters["@Id_ins"].Value.ToString().Trim();
-
-
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                Transaccion.Rollback();
-               
+                Transaccion.Rollback();  
             }
+
             finally
             {
                 Conexion.Close();
             }
-
             return Id;
         }
 
-        public void EjecutarQuerysBackup(string Consulta) // Exclusivo tareas de backup se conecta a la base MASTER y no utiliza Transacciones
+        public void EjecutarQuerysBackup(string Consulta) // Exclusivo para tareas de backup: se conecta a la base MASTER y no utiliza Transacciones
         {
             ComandoSQL = new SqlCommand();
             Conexion = new SqlConnection("Data Source=EQA-NB09;Initial Catalog=master;User ID=sa;Password=T0rtug4");
@@ -112,20 +107,16 @@ namespace DAL
                 ComandoSQL.CommandTimeout = 600;
                 ComandoSQL.CommandType = CommandType.Text; 
                 ComandoSQL.ExecuteNonQuery();
-
+                MessageBox.Show("Tarea realizada correctamente");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-               
             }
             finally
             {
                 Conexion.Close();
-                MessageBox.Show("Tarea realizada correctamente");
             }
-
-           
         }
     }
 }

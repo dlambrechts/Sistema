@@ -17,13 +17,14 @@ namespace Servicios.DigitoVerificador
         {
             int DVH = 0;
 
-            DVH = GenerarAscii(User.Nombre) + GenerarAscii(User.Apellido) + GenerarAscii(User.Mail) + GenerarAscii(User.Password);
+            DVH = GenerarAscii(User.Nombre, 1) + GenerarAscii(User.Apellido, 2 ) + GenerarAscii(User.Mail, 3) + GenerarAscii(User.Password, 4);
             return DVH;
         }
 
         public int CalcularDigitoVertical(List<UsuarioBE> Users)
         {
             int dvv = 0;
+            
             foreach(UsuarioBE item in Users)
             
             {
@@ -37,23 +38,22 @@ namespace Servicios.DigitoVerificador
         {
                        
             DigitoVerificadorDAL dalDv = new DigitoVerificadorDAL();
-
             dalDv.ActualizarVertical(Dv);
-
         }
 
-        public int GenerarAscii(string atributo)
+        public int GenerarAscii(string atributo, int pos)
 
         {
             int valor = 0;
-
+            int flag = 1;
             byte[] ValoresASCII = Encoding.ASCII.GetBytes(atributo);
             foreach (byte b in ValoresASCII)
             {
-                valor = valor + b;
+                valor = valor + (b*flag);
+                flag++;
             }
 
-            return valor;
+            return valor+pos;
         }
 
         public void VerificarIntegridadHorizonal(List<UsuarioBE> Users)
