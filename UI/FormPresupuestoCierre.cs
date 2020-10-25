@@ -75,7 +75,7 @@ namespace UI
 
                     BitacoraActividadBE nActividad = new BitacoraActividadBE();
                     BitacoraBLL bllAct = new BitacoraBLL();
-                    nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Advertencia");
+                 //   nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Advertencia");
                     nActividad.Detalle = "El Cierre no es posible para el Presupuesto N° " + cPresup.Id + " en el estado actual";
                     bllAct.NuevaActividad(nActividad);
 

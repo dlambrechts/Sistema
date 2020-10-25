@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Acceso.cs" />
     <Compile Include="ClienteDAL.cs" />
+    <Compile Include="PedidoDAL.cs" />
     <Compile Include="PerfilComponenteDAL.cs" />
     <Compile Include="PerfilFamiliaDAL.cs" />
     <Compile Include="PerfilPatenteDAL.cs" />

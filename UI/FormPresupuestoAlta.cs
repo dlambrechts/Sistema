@@ -154,7 +154,7 @@ namespace UI
                     {
                         BitacoraActividadBE nActividad = new BitacoraActividadBE();
                         BitacoraBLL bllAct = new BitacoraBLL();
-                        nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Error");
+                      //  nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Error");
                         nActividad.Detalle = "Error en alta de Presupuesto: " + Ex.Message ;
                         bllAct.NuevaActividad(nActividad);
 

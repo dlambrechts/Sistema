@@ -16,5 +16,6 @@ namespace BE.PresupuestoEstado
         public override bool RechazoTecnico() { return false; }
         public override bool Edicion() { return false; }
         public override bool Eliminar() { return false; }
+        public override bool EmitirPedido() { return true;}
     }
 }

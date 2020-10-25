@@ -37,6 +37,7 @@ namespace UI
         }
 
         private void Traducir()
+        #region
 
         {
             IdiomaBE Idioma = null;
@@ -136,6 +137,7 @@ namespace UI
             }
 
         }
+        #endregion
         private void MostrarIdiomas()
 
         {
@@ -226,7 +228,7 @@ namespace UI
         }
 
    
-        public void ValidarFormulario() // Deshabilitar menu cuando no hay ususario logueado
+        public void ValidarFormulario() // Deshabilitar menu cuando no hay ususarios logueado
         
         {
             this.iniciarSesiónToolStripMenuItem.Enabled = !SesionSingleton.Instancia.IsLogged();
@@ -238,7 +240,7 @@ namespace UI
             this.idiomaToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.productosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.metricasToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
-           // this.administradorToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
+          
             MarcarIdioma();
             Traducir();
 
@@ -258,7 +260,10 @@ namespace UI
             this.ajustesDeStockToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoN); // Ajustes de Stock
             this.presupuestosToolStripMenuItem1.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoM); // Ver métricas, indicadores
             this.gestiónDeClientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoK); // ABM Clientes
-            
+            this.gestionDePedidosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoO); // Gestión Pedidos
+            this.bitácoraToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoP); // Bitacora
+            this.backupToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoQ); // Backup
+
         }
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -381,6 +386,13 @@ namespace UI
             FormBackup fback = new FormBackup();
             fback.MdiParent = this;
             fback.Show();
+        }
+
+        private void gestionDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPedidoGestion Pgest = new FormPedidoGestion();
+            Pgest.MdiParent = this;
+            Pgest.Show();
         }
     }
 }

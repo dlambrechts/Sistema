@@ -99,7 +99,7 @@ namespace UI
 
                     BitacoraActividadBE nActividad = new BitacoraActividadBE();
                     BitacoraBLL bllAct = new BitacoraBLL();
-                    nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Advertencia");
+                //    nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Advertencia");
                     nActividad.Detalle = "Análisis Técnico no es posible para el Presupuesto N° " + selPres.Id + " en el estado actual";
                     bllAct.NuevaActividad(nActividad);
                 }

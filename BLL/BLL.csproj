@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ClienteBLL.cs" />
     <Compile Include="IdiomaEtiquetaBLL.cs" />
+    <Compile Include="PedidoBLL.cs" />
     <Compile Include="PresupuestoBLL.cs" />
     <Compile Include="ProductoBLL.cs" />
     <Compile Include="TraductorBLL.cs" />

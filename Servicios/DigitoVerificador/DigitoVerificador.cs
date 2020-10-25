@@ -61,7 +61,9 @@ namespace Servicios.DigitoVerificador
             BitacoraBLL bllBit = new BitacoraBLL();
 
             BitacoraActividadBE nInicioVerificacionHorizontal = new BitacoraActividadBE();
-            nInicioVerificacionHorizontal.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            BitacoraTipoActividad tipo = new BitacoraTipoActividad();
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nInicioVerificacionHorizontal.SetTipo(tipo);
             nInicioVerificacionHorizontal.Detalle = "Se inició el porceso de verificación de Dígito Horizontal";
             bllBit.NuevaActividad(nInicioVerificacionHorizontal);
 
@@ -73,8 +75,9 @@ namespace Servicios.DigitoVerificador
                 {
                     BitacoraActividadBE nActividad = new BitacoraActividadBE();
 
-
-                    nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Error");
+                    tipo = bllBit.ListarTipos().First(item => item.Tipo == "Error");
+                    nInicioVerificacionHorizontal.SetTipo(tipo);
+                    nActividad.SetTipo(tipo);
                     nActividad.Detalle = "El Proceso de Verificación de DB detectó inconsistencias en el usuario: " + u.Id;
                     bllBit.NuevaActividad(nActividad);
                     
@@ -83,7 +86,9 @@ namespace Servicios.DigitoVerificador
             }
 
             BitacoraActividadBE nFinVerificacionHorizontal = new BitacoraActividadBE();
-            nFinVerificacionHorizontal.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+          
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nFinVerificacionHorizontal.SetTipo(tipo);
             nFinVerificacionHorizontal.Detalle = "Finalizó el porceso de verificación de Dígito Horizontal";
             bllBit.NuevaActividad(nFinVerificacionHorizontal);
 
@@ -94,7 +99,9 @@ namespace Servicios.DigitoVerificador
             BitacoraBLL bllBit = new BitacoraBLL();
 
             BitacoraActividadBE nInicioVerificacionVertical = new BitacoraActividadBE();
-            nInicioVerificacionVertical.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            BitacoraTipoActividad tipo = new BitacoraTipoActividad();
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nInicioVerificacionVertical.SetTipo(tipo);
             nInicioVerificacionVertical.Detalle = "Se inició el porceso de verificación de Dígito Vertical";
             bllBit.NuevaActividad(nInicioVerificacionVertical);
 
@@ -105,15 +112,17 @@ namespace Servicios.DigitoVerificador
 
             if (dvv != dvv_db) 
             {
-                BitacoraActividadBE nError = new BitacoraActividadBE();                
-                nError.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Error");
+                BitacoraActividadBE nError = new BitacoraActividadBE();
+                tipo = bllBit.ListarTipos().First(item => item.Tipo == "Error");
+                nError.SetTipo(tipo);
                 nError.Detalle = "El Proceso de Verificación de DB detectó que se agregaron o quitaron Usuarios";
                 bllBit.NuevaActividad(nError);
 
             }
 
             BitacoraActividadBE nFinVerificacionVertical = new BitacoraActividadBE();
-            nFinVerificacionVertical.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nFinVerificacionVertical.SetTipo(tipo);
             nFinVerificacionVertical.Detalle = "Finalizó el porceso de verificación de Dígito Vertical";
             bllBit.NuevaActividad(nFinVerificacionVertical);
 

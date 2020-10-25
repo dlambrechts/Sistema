@@ -13,8 +13,10 @@ namespace BLL
 {
     public class PresupuestoBLL
     {
+        PresupuestoDAL dPresup = new PresupuestoDAL();
         BitacoraActividadBE nActividad = new BitacoraActividadBE();
-        BitacoraBLL bllAct = new BitacoraBLL();
+        BitacoraBLL bllBit = new BitacoraBLL();
+        BitacoraTipoActividad tipo = new BitacoraTipoActividad();
         public decimal CalcularTotalIva(PresupuestoBE Presup)
 
         {
@@ -62,88 +64,82 @@ namespace BLL
 
         public void AltaPresupuesto (PresupuestoBE nPresupuesto)
 
-        {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
+        {          
             string Id= dPresup.AltaPresupuesto(nPresupuesto);
-        
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se agregó el Presupuesto N° " + Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
 
         public void EditarPresupuesto(PresupuestoBE nPresupuesto)
 
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
+            
             dPresup.EditarPresupuesto(nPresupuesto);
-       
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se modificó el Presupuesto N° " + nPresupuesto.Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
 
         }
 
         public void Eliminar(PresupuestoBE ePresup)
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.Eliminar(ePresup);
 
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se eliminó el Presupuesto N° " + ePresup.Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
 
         public List<PresupuestoBE> ListarPresupuestos() // Listar Cabecera de Presupuestos
         
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             return dPresup.ListarPresupuestos();
         }
 
         public PresupuestoBE SeleccionarPresupuestoPorId(int Id)
 
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             return dPresup.SeleccionarPresupuestoPorId(Id);
-
         }
 
         public void AnalisisTecnico(PresupuestoAprobacionBE Resultado)
 
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.AnalisisTecnico(Resultado);
 
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Análisis Técnico realizado, Presupuesto N° " + Resultado.Presupuesto.Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
 
         public void AnalisisComercial(PresupuestoAprobacionBE Resultado)
 
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.AnalisisComercial(Resultado);
 
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Análisis Comercial realizado, Presupuesto N° " + Resultado.Presupuesto.Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
 
         public void Cierre(PresupuestoAprobacionBE Resultado)
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.Cierre(Resultado);
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
 
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
             nActividad.Detalle = "Cierre de Presupuesto N° " + Resultado.Presupuesto.Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
 
         public List<PresupuestoAprobacionBE> HistorialAnalisis(PresupuestoBE Presupuesto)
         {
-
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             return dPresup.HistorialAnalisis(Presupuesto);
         }
 
@@ -151,19 +147,17 @@ namespace BLL
         public PresupuestoTipoAprobacionBE SeleccionarAprobacionTipo(string tipo) 
         
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             return dPresup.SeleccionarAprobacionTipo(tipo);
         }
 
         public void ActualizarEstado(PresupuestoBE Pres, PresupuestoEstadoBE nEstado)
 
         {
-            PresupuestoDAL dPresup = new PresupuestoDAL();
             dPresup.ActualizarEstado(Pres,nEstado);
-
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Actualización de Estado, Presupuesto N° " + Pres.Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
     }
 }

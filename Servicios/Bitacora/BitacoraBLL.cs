@@ -13,9 +13,10 @@ namespace Servicios.Bitacora
 {
     public class BitacoraBLL
     {
+        BitacoraDAL bDal = new BitacoraDAL();
         public void NuevaActividad(BitacoraActividadBE nAct )
         {
-            BitacoraDAL bDal = new BitacoraDAL();
+            
             nAct.Fecha = DateTime.Now;
 
             if (SesionSingleton.Instancia.Usuario != null) 
@@ -27,10 +28,14 @@ namespace Servicios.Bitacora
 
         public List<BitacoraActividadBE> ListarEventos() 
         
-        {
-            BitacoraDAL dBitacora = new BitacoraDAL();
+        {         
+            return bDal.ListarEventos();
+        }
 
-            return dBitacora.ListarEventos();
+        public List<BitacoraTipoActividad> ListarTipos()
+
+        {
+            return bDal.ListarTipos();
         }
 
     }

@@ -21,6 +21,9 @@ namespace BE
         PermisoL, // Gestion de Productos ABM
         PermisoM, // Visualiza Indicadores
         PermisoN, // Puede hacer movimientos de stock
-        Ninguno, // No borrar esto (usado en PerfilComponenteDAL)
+        PermisoO, // Gestion de Pedidos
+        PermisoP, // Visualiza Bitacora
+        PermisoQ, // Gestion de Backup
+        Ninguno, 
     }
 }

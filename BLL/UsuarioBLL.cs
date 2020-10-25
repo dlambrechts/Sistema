@@ -17,6 +17,7 @@ namespace BLL
         DigitoVerificador DigitoVerificador = new DigitoVerificador();
         BitacoraActividadBE nActividad = new BitacoraActividadBE();
         BitacoraBLL bllBit = new BitacoraBLL();
+        BitacoraTipoActividad tipo = new BitacoraTipoActividad();
 
         public List<UsuarioBE> ListarUsuarios() // Traer Lista de usuarios para ABM
         {
@@ -70,10 +71,10 @@ namespace BLL
             Usuario.dvh = DigitoVerificador.CalcularDigitoHorizontal(Usuario);
             string Id= dUsuario.Alta(Usuario);
             int dvv = DigitoVerificador.CalcularDigitoVertical(dUsuario.ListarUsuarios());
-            DigitoVerificador.ActualizarDigitoVertical(dvv);            
-
-                       
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            DigitoVerificador.ActualizarDigitoVertical(dvv);
+            
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se agregó el Usuario " + Id;
             bllBit.NuevaActividad(nActividad);
 
@@ -86,8 +87,9 @@ namespace BLL
             dUsuario.Editar(Usuario);
             int dvv = DigitoVerificador.CalcularDigitoVertical(dUsuario.ListarUsuarios());
             DigitoVerificador.ActualizarDigitoVertical(dvv);
-                        
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se modificó el Usuario " + Usuario.Id;
             bllBit.NuevaActividad(nActividad);
 
@@ -100,7 +102,8 @@ namespace BLL
             int dvv = DigitoVerificador.CalcularDigitoVertical(dUsuario.ListarUsuarios());
             DigitoVerificador.ActualizarDigitoVertical(dvv);
 
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se Eliminó el Usuario " + Usuario.Id;
             bllBit.NuevaActividad(nActividad);
        
@@ -110,7 +113,8 @@ namespace BLL
         
         {                             
             nActividad.Detalle = "Sesión cerrada con éxito";
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             bllBit.NuevaActividad(nActividad);
             SesionSingleton.Instancia.Logout();
         }

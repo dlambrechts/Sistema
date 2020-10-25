@@ -17,6 +17,8 @@ namespace BE
         public abstract bool RechazoComercial();
         public abstract bool AprobacionCliente();
         public abstract bool RechazoCliente();
+
+        public abstract bool EmitirPedido();
         public abstract bool Edicion();
         public abstract bool Eliminar();
 

@@ -13,6 +13,9 @@ namespace BLL
     public class ClienteBLL
     {
         ClienteDAL dCliente = new ClienteDAL();
+        BitacoraBLL bllBit = new BitacoraBLL();
+        BitacoraTipoActividad tipo = new BitacoraTipoActividad();
+
         public ClienteBE SeleccionarPorId(int Id) 
         
         {          
@@ -46,10 +49,10 @@ namespace BLL
             string Id=dCliente.AltaCliente(nCliente);
 
             BitacoraActividadBE nActividad = new BitacoraActividadBE();
-            BitacoraBLL bllAct = new BitacoraBLL();
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se agregó el Cliente " + Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
 
         public void EditarCliente(ClienteBE nCliente)
@@ -60,10 +63,10 @@ namespace BLL
             dCliente.EditarCliente(nCliente);
 
             BitacoraActividadBE nActividad = new BitacoraActividadBE();
-            BitacoraBLL bllAct = new BitacoraBLL();
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se modificó el Cliente " + nCliente.Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
 
         public void NuevaVersion(ClienteBE Anterior, ClienteBE Nuevo)
@@ -72,12 +75,11 @@ namespace BLL
             ClienteVersionCambiosBE Cambios = new ClienteVersionCambiosBE();
             Cambios = ControlCambios(Anterior, Nuevo);
 
-            ClienteVersionBE Historico = new ClienteVersionBE();
+            ClienteVersionBE Historico = new ClienteVersionBE(Anterior,SesionSingleton.Instancia.Usuario);
 
             Historico.UsuarioVersion.Id = SesionSingleton.Instancia.Usuario.Id;
-            Historico.Fecha = DateTime.Now;        
-            Historico.Cambios = Cambios;
-            Historico.Cliente = Anterior;
+            Historico.Fecha = DateTime.Now;
+            Historico.SetCambios(Cambios);
           
             EditarCliente(Nuevo);
             dCliente.InsertarHistorico(Historico);
@@ -108,10 +110,10 @@ namespace BLL
             CliDal.EliminarCliente(eCli);
 
             BitacoraActividadBE nActividad = new BitacoraActividadBE();
-            BitacoraBLL bllAct = new BitacoraBLL();
-            nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje");
+            tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
+            nActividad.SetTipo(tipo);
             nActividad.Detalle = "Se eliminó el Cliente " + eCli.Id;
-            bllAct.NuevaActividad(nActividad);
+            bllBit.NuevaActividad(nActividad);
         }
 
         public List<ClienteTipoBE> ListarTipoCliente()

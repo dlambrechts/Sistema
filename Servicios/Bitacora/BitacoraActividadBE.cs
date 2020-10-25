@@ -12,13 +12,27 @@ namespace Servicios.Bitacora
 {
     public class BitacoraActividadBE
     {
+
         public int Id { get; set; }
-        public UsuarioBE usuario { get { return Usuario; } }      
-        public DateTime Fecha { get; set; }
-        public BitacoraClasifActividad Clasificacion { get; set; }
+  
+        private BitacoraTipoActividad _tipo;
+        public BitacoraActividadBE()
+
+        {
+            _tipo = new BitacoraTipoActividad();
+        }
+        public DateTime Fecha { get; set; }        
+        public string Detalle { get; set; }
+
+        public BitacoraTipoActividad Tipo { get { return _tipo; } }
+        
+        public void SetTipo (BitacoraTipoActividad tipo) { _tipo = tipo; }
 
         public UsuarioBE Usuario = new UsuarioBE();
-        public string Detalle { get; set; }
+
+        public UsuarioBE usuario { get { return Usuario; } }
+
+       
     }
 
 

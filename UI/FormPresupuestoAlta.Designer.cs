@@ -175,6 +175,7 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Items del Presupuesto";
+           
             // 
             // dataGridViewItems
             // 

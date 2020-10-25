@@ -29,165 +29,135 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.CheckFecha = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimeDesde = new System.Windows.Forms.DateTimePicker();
-            this.dateTimeHasta = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBoxTipo = new System.Windows.Forms.CheckBox();
-            this.checkBoxUsuario = new System.Windows.Forms.CheckBox();
-            this.buttonMostrar = new System.Windows.Forms.Button();
+            this.dateTimeHasta = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimeDesde = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.comboUsuario = new System.Windows.Forms.ComboBox();
             this.comboTipo = new System.Windows.Forms.ComboBox();
             this.dataGridViewEventos = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEventos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.checkBoxTipo);
-            this.groupBox1.Controls.Add(this.checkBoxUsuario);
-            this.groupBox1.Controls.Add(this.buttonMostrar);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.dateTimeHasta);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.dateTimeDesde);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboUsuario);
             this.groupBox1.Controls.Add(this.comboTipo);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(562, 82);
+            this.groupBox1.Size = new System.Drawing.Size(728, 46);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.CheckFecha);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.dateTimeDesde);
-            this.groupBox2.Controls.Add(this.dateTimeHasta);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(19, 11);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(245, 66);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            // 
-            // CheckFecha
-            // 
-            this.CheckFecha.AutoSize = true;
-            this.CheckFecha.Location = new System.Drawing.Point(6, 12);
-            this.CheckFecha.Name = "CheckFecha";
-            this.CheckFecha.Size = new System.Drawing.Size(61, 17);
-            this.CheckFecha.TabIndex = 12;
-            this.CheckFecha.Text = "Fechas";
-            this.CheckFecha.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Desde";
-            // 
-            // dateTimeDesde
-            // 
-            this.dateTimeDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeDesde.Location = new System.Drawing.Point(115, 10);
-            this.dateTimeDesde.Name = "dateTimeDesde";
-            this.dateTimeDesde.Size = new System.Drawing.Size(120, 20);
-            this.dateTimeDesde.TabIndex = 0;
-            // 
-            // dateTimeHasta
-            // 
-            this.dateTimeHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeHasta.Location = new System.Drawing.Point(115, 34);
-            this.dateTimeHasta.Name = "dateTimeHasta";
-            this.dateTimeHasta.Size = new System.Drawing.Size(120, 20);
-            this.dateTimeHasta.TabIndex = 1;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(67, 40);
+            this.label2.Location = new System.Drawing.Point(176, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Hasta";
             // 
-            // checkBoxTipo
+            // dateTimeHasta
             // 
-            this.checkBoxTipo.AutoSize = true;
-            this.checkBoxTipo.Location = new System.Drawing.Point(274, 49);
-            this.checkBoxTipo.Name = "checkBoxTipo";
-            this.checkBoxTipo.Size = new System.Drawing.Size(47, 17);
-            this.checkBoxTipo.TabIndex = 10;
-            this.checkBoxTipo.Text = "Tipo";
-            this.checkBoxTipo.UseVisualStyleBackColor = true;
+            this.dateTimeHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeHasta.Location = new System.Drawing.Point(217, 15);
+            this.dateTimeHasta.Name = "dateTimeHasta";
+            this.dateTimeHasta.Size = new System.Drawing.Size(120, 20);
+            this.dateTimeHasta.TabIndex = 1;
+            this.dateTimeHasta.Value = new System.DateTime(2020, 10, 20, 20, 43, 22, 0);
+            this.dateTimeHasta.ValueChanged += new System.EventHandler(this.dateTimeHasta_ValueChanged);
             // 
-            // checkBoxUsuario
+            // label1
             // 
-            this.checkBoxUsuario.AutoSize = true;
-            this.checkBoxUsuario.Location = new System.Drawing.Point(274, 23);
-            this.checkBoxUsuario.Name = "checkBoxUsuario";
-            this.checkBoxUsuario.Size = new System.Drawing.Size(62, 17);
-            this.checkBoxUsuario.TabIndex = 9;
-            this.checkBoxUsuario.Text = "Usuario";
-            this.checkBoxUsuario.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Desde";
             // 
-            // buttonMostrar
+            // label4
             // 
-            this.buttonMostrar.Location = new System.Drawing.Point(465, 21);
-            this.buttonMostrar.Name = "buttonMostrar";
-            this.buttonMostrar.Size = new System.Drawing.Size(88, 47);
-            this.buttonMostrar.TabIndex = 8;
-            this.buttonMostrar.Text = "Mostrar";
-            this.buttonMostrar.UseVisualStyleBackColor = true;
-            this.buttonMostrar.Click += new System.EventHandler(this.buttonMostrar_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(540, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Tipo";
+            // 
+            // dateTimeDesde
+            // 
+            this.dateTimeDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeDesde.Location = new System.Drawing.Point(50, 16);
+            this.dateTimeDesde.Name = "dateTimeDesde";
+            this.dateTimeDesde.Size = new System.Drawing.Size(120, 20);
+            this.dateTimeDesde.TabIndex = 0;
+            this.dateTimeDesde.Value = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
+            this.dateTimeDesde.ValueChanged += new System.EventHandler(this.dateTimeDesde_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(364, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Usuario";
             // 
             // comboUsuario
             // 
             this.comboUsuario.FormattingEnabled = true;
-            this.comboUsuario.Location = new System.Drawing.Point(336, 21);
+            this.comboUsuario.Location = new System.Drawing.Point(413, 15);
             this.comboUsuario.Name = "comboUsuario";
             this.comboUsuario.Size = new System.Drawing.Size(121, 21);
             this.comboUsuario.TabIndex = 7;
+            this.comboUsuario.SelectedIndexChanged += new System.EventHandler(this.comboUsuario_SelectedIndexChanged);
+            this.comboUsuario.SelectionChangeCommitted += new System.EventHandler(this.comboUsuario_SelectionChangeCommitted);
+            this.comboUsuario.SelectedValueChanged += new System.EventHandler(this.comboUsuario_SelectedValueChanged);
             // 
             // comboTipo
             // 
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(336, 46);
+            this.comboTipo.Location = new System.Drawing.Point(574, 15);
             this.comboTipo.Name = "comboTipo";
             this.comboTipo.Size = new System.Drawing.Size(121, 21);
             this.comboTipo.TabIndex = 5;
+            this.comboTipo.SelectionChangeCommitted += new System.EventHandler(this.comboTipo_SelectionChangeCommitted);
             // 
             // dataGridViewEventos
             // 
             this.dataGridViewEventos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEventos.Location = new System.Drawing.Point(12, 100);
+            this.dataGridViewEventos.Location = new System.Drawing.Point(12, 64);
             this.dataGridViewEventos.Name = "dataGridViewEventos";
             this.dataGridViewEventos.ReadOnly = true;
             this.dataGridViewEventos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewEventos.Size = new System.Drawing.Size(685, 386);
+            this.dataGridViewEventos.Size = new System.Drawing.Size(745, 422);
             this.dataGridViewEventos.TabIndex = 1;
             // 
             // FormBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 498);
+            this.ClientSize = new System.Drawing.Size(767, 498);
             this.Controls.Add(this.dataGridViewEventos);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormBitacora";
             this.Text = "Bitacora";
+            this.Load += new System.EventHandler(this.FormBitacora_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEventos)).EndInit();
             this.ResumeLayout(false);
 
@@ -203,10 +173,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimeHasta;
         private System.Windows.Forms.DateTimePicker dateTimeDesde;
-        private System.Windows.Forms.Button buttonMostrar;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox CheckFecha;
-        private System.Windows.Forms.CheckBox checkBoxTipo;
-        private System.Windows.Forms.CheckBox checkBoxUsuario;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

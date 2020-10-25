@@ -114,9 +114,14 @@ namespace UI
 
                     FormClienteVersion frmVer = new FormClienteVersion();
                     frmVer.Cli = beCli;
+
+                    if (bllCli.ListarVersionesClientePorId(beCli).Count == 0) { MessageBox.Show("No existen versiones para el cliente " + beCli.Id); }
+
+                    else { 
                     frmVer.MdiParent = this.ParentForm;
                     frmVer.FormClosed += new FormClosedEventHandler(frmEdit_FormClosed);
                     frmVer.Show();
+                    }
 
                 }
             }

@@ -8,14 +8,25 @@ namespace BE
 {
     public class ClienteVersionBE
     {
-        public int IdVersion { get; set; }        
+        public int IdVersion { get; set; }
         public DateTime Fecha { get; set; }
 
-        public UsuarioBE UsuarioVersion = new UsuarioBE();
+        private UsuarioBE _Usuario;
 
-        public ClienteBE Cliente = new ClienteBE();
+        private ClienteBE _Cliente;
 
-        public ClienteVersionCambiosBE Cambios = new ClienteVersionCambiosBE();
-        public UsuarioBE Usuario { get { return UsuarioVersion; } }
+        private ClienteVersionCambiosBE _Cambios;
+        public ClienteVersionBE(ClienteBE cliente, UsuarioBE usuario)
+
+        {
+            _Usuario = usuario;
+            _Cliente = cliente;
+            _Cambios = new ClienteVersionCambiosBE();
+        }
+        public UsuarioBE UsuarioVersion {get{return _Usuario; } }
+        public ClienteBE Cliente { get { return _Cliente; }  }
+        public ClienteVersionCambiosBE Cambios { get { return _Cambios; } }
+        public void SetCambios (ClienteVersionCambiosBE Cambios) { _Cambios = Cambios; }
+        
     }
 }

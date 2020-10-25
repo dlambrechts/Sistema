@@ -222,7 +222,9 @@ namespace DAL
             {
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
-                    ClienteVersionBE Version = new ClienteVersionBE();
+                    UsuarioBE Us = new UsuarioBE();
+
+                    ClienteVersionBE Version = new ClienteVersionBE(Cli,Us);
 
                     Version.IdVersion = Convert.ToInt32(Item[0]);
                     Version.Fecha = Convert.ToDateTime(Item[1]);
@@ -244,28 +246,34 @@ namespace DAL
             Hashtable Parametros = new Hashtable();
             Parametros.Add("@IdVers", Vers.IdVersion);
             DS = AccesoDB.LeerDatos("sp_SeleccionarVersionClientePorVersion", Parametros);
-            ClienteVersionBE Ver = new ClienteVersionBE();
+            ClienteBE CliVer = new ClienteBE();
 
             if (DS.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow Item in DS.Tables[0].Rows)
-                {
-                    Ver.IdVersion = Convert.ToInt32(Item[0]);
-                    Ver.Fecha= Convert.ToDateTime(Item[1]);
-                    Ver.Cliente.RazonSocial = Convert.ToString(Item[2]);
-                    Ver.Cliente.Direccion = Convert.ToString(Item[3]);
-                    Ver.Cliente.CodigoPostal = Convert.ToInt32(Item[4]);
-                    Ver.Cliente.Telefono = Convert.ToString(Item[5]);
-                    Ver.Cliente.Mail = Convert.ToString(Item[6]);
-                    Ver.Cliente.tipo.Id = Convert.ToString(Item[7]);
-                    Ver.Cliente.tipo.Tipo = Convert.ToString(Item[8]);
-                    Ver.Cliente.Cuit = Convert.ToString(Item[9]);
-                    Ver.Cliente.Contacto = Convert.ToString(Item[10]);
-                    if (Item[11] != DBNull.Value) { Ver.Cliente.FechaModificacion=Convert.ToDateTime(Item[11]);}
-                    Ver.Cliente.Id = Convert.ToInt32(Item[12]);
-                }
+                DataTable Tabla = DS.Tables[0];
+
+                    CliVer.RazonSocial = Convert.ToString(Tabla.Rows[0][2]);
+                    CliVer.Direccion = Convert.ToString(Tabla.Rows[0][3]);
+                    CliVer.CodigoPostal = Convert.ToInt32(Tabla.Rows[0][4]);
+                    CliVer.Telefono = Convert.ToString(Tabla.Rows[0][5]);
+                    CliVer.Mail = Convert.ToString(Tabla.Rows[0][6]);
+                    CliVer.tipo.Id = Convert.ToString(Tabla.Rows[0][7]);
+                    CliVer.tipo.Tipo = Convert.ToString(Tabla.Rows[0][8]);
+                    CliVer.Cuit = Convert.ToString(Tabla.Rows[0][9]);
+                    CliVer.Contacto = Convert.ToString(Tabla.Rows[0][10]);
+                    CliVer.Activo = Convert.ToBoolean(Tabla.Rows[0]["Activo"]);
+                    if (Tabla.Rows[0][11] != DBNull.Value) { CliVer.FechaModificacion = Convert.ToDateTime(Tabla.Rows[0][11]); }
+                    CliVer.Id = Convert.ToInt32(Tabla.Rows[0][12]);
+
+                    ClienteVersionBE Version = new ClienteVersionBE(CliVer, Vers.UsuarioVersion);
+                    Version.IdVersion = Vers.IdVersion;
+                    Version.Fecha = Convert.ToDateTime(Tabla.Rows[0][1]);
+
+                return Version;
             }
-            return Ver;
+            else return null;
+
+
         }
 
         public ClienteVersionCambiosBE ObtenerCamposAfectadorEnVersion(ClienteVersionBE Vers)
@@ -276,25 +284,26 @@ namespace DAL
             Hashtable Parametros = new Hashtable();
             Parametros.Add("@IdVers", Vers.IdVersion);
             DS = AccesoDB.LeerDatos("sp_SeleccionarVersionCamposPorId", Parametros);
-            ClienteVersionBE Ver = new ClienteVersionBE();
+
+            ClienteVersionCambiosBE Cambios = new ClienteVersionCambiosBE();
 
             if (DS.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
-                    Ver.IdVersion = Convert.ToInt32(Item[0]);
-                    Ver.Cambios.RazonSocial = Convert.ToBoolean(Item[1]);
-                    Ver.Cambios.Direccion = Convert.ToBoolean(Item[2]);
-                    Ver.Cambios.CodigoPostal = Convert.ToBoolean(Item[3]);
-                    Ver.Cambios.Telefono = Convert.ToBoolean(Item[4]);
-                    Ver.Cambios.Mail = Convert.ToBoolean(Item[5]);
-                    Ver.Cambios.Tipo = Convert.ToBoolean(Item[6]);
-                    Ver.Cambios.Cuit = Convert.ToBoolean(Item[7]);
-                    Ver.Cambios.Contacto = Convert.ToBoolean(Item[8]);
-                    Ver.Cambios.Activo = Convert.ToBoolean(Item[9]);
+                   
+                   Cambios.RazonSocial = Convert.ToBoolean(Item[1]);
+                   Cambios.Direccion = Convert.ToBoolean(Item[2]);
+                   Cambios.CodigoPostal = Convert.ToBoolean(Item[3]);
+                   Cambios.Telefono = Convert.ToBoolean(Item[4]);
+                   Cambios.Mail = Convert.ToBoolean(Item[5]);
+                   Cambios.Tipo = Convert.ToBoolean(Item[6]);
+                   Cambios.Cuit = Convert.ToBoolean(Item[7]);
+                   Cambios.Contacto = Convert.ToBoolean(Item[8]);
+                   Cambios.Activo = Convert.ToBoolean(Item[9]);
                 }
             }
-            return Ver.Cambios;
+            return Cambios;
         }
     }
 }

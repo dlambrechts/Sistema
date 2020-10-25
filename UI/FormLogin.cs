@@ -21,8 +21,9 @@ namespace UI
             InitializeComponent();
             Traducir();
         }
-       
+        BitacoraBLL bllAct = new BitacoraBLL();
         
+
         public void UpdateLanguage(IdiomaBE idioma)
         {           
             Traducir();
@@ -70,7 +71,7 @@ namespace UI
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            //UsuarioBE oUsuario = new UsuarioBE();
+            
             UsuarioBLL bllUsuario = new UsuarioBLL();
 
             try
@@ -78,7 +79,9 @@ namespace UI
                 var Resultado = bllUsuario.Login(textEmail.Text.Trim(), textPass.Text.Trim()) ;
                 FormPrincipal Form = (FormPrincipal)this.MdiParent;                          
                 Form.ValidarFormulario();
-                RegistroBitacora("Acceso Exitoso", (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Mensaje"));
+                BitacoraTipoActividad tipo = new BitacoraTipoActividad();
+                tipo = bllAct.ListarTipos().First(item => item.Tipo == "Mensaje");
+                RegistroBitacora("Acceso Exitoso",tipo );
                 this.Close();
             }
 
@@ -102,13 +105,13 @@ namespace UI
             }
         }
 
-        public void RegistroBitacora(string Detalle, BitacoraClasifActividad Clasificacion) 
+        public void RegistroBitacora(string Detalle, BitacoraTipoActividad Tipo) 
         
         {
             BitacoraActividadBE nAct = new BitacoraActividadBE();
-            BitacoraBLL bllAct = new BitacoraBLL();
+            
             nAct.Detalle = Detalle;
-            nAct.Clasificacion = Clasificacion;
+            nAct.SetTipo(Tipo);
             bllAct.NuevaActividad(nAct);
         }
 

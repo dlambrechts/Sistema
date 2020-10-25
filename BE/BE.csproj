@@ -48,6 +48,8 @@
     <Compile Include="IdiomaBE.cs" />
     <Compile Include="IdiomaEtiquetaBE.cs" />
     <Compile Include="IdiomaTraduccionBE.cs" />
+    <Compile Include="PedidoBE.cs" />
+    <Compile Include="PedidoItemBE.cs" />
     <Compile Include="PerfilComponenteBE.cs" />
     <Compile Include="PerfilFamiliaBE.cs" />
     <Compile Include="PerfilPatenteBE.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="PresupuestoEstado\ApTecPend.cs" />
     <Compile Include="PresupuestoEstado\ApTecRech.cs" />
     <Compile Include="PresupuestoEstado\EnviarCli.cs" />
+    <Compile Include="PresupuestoEstado\Finalizado.cs" />
     <Compile Include="PresupuestoEstado\RechCli.cs" />
     <Compile Include="PresupuestoEstado\PresupuestoEstadoBE.cs" />
     <Compile Include="PresupuestoItemBE.cs" />

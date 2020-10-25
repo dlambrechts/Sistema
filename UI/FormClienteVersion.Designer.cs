@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewVersiones = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonrest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelCli = new System.Windows.Forms.Label();
-            this.dataGridViewVersiones = new System.Windows.Forms.DataGridView();
-            this.dataGridViewContenido = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewCampos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewContenido = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVersiones)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContenido)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCampos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContenido)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -55,15 +58,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Versiones";
             // 
-            // groupBox2
+            // dataGridViewVersiones
             // 
-            this.groupBox2.Controls.Add(this.dataGridViewCampos);
-            this.groupBox2.Location = new System.Drawing.Point(311, 141);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(578, 88);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Datos Afectados";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewVersiones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewVersiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewVersiones.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewVersiones.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewVersiones.MultiSelect = false;
+            this.dataGridViewVersiones.Name = "dataGridViewVersiones";
+            this.dataGridViewVersiones.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewVersiones.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewVersiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewVersiones.Size = new System.Drawing.Size(269, 210);
+            this.dataGridViewVersiones.TabIndex = 0;
+            this.dataGridViewVersiones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVersiones_CellContentClick);
             // 
             // groupBox3
             // 
@@ -104,17 +133,23 @@
             this.labelCli.TabIndex = 5;
             this.labelCli.Text = "label2";
             // 
-            // dataGridViewVersiones
+            // groupBox2
             // 
-            this.dataGridViewVersiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewVersiones.Location = new System.Drawing.Point(6, 20);
-            this.dataGridViewVersiones.MultiSelect = false;
-            this.dataGridViewVersiones.Name = "dataGridViewVersiones";
-            this.dataGridViewVersiones.ReadOnly = true;
-            this.dataGridViewVersiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVersiones.Size = new System.Drawing.Size(269, 209);
-            this.dataGridViewVersiones.TabIndex = 0;
-            this.dataGridViewVersiones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVersiones_CellContentClick);
+            this.groupBox2.Controls.Add(this.dataGridViewCampos);
+            this.groupBox2.Location = new System.Drawing.Point(311, 141);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(578, 88);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Datos Afectados";
+            // 
+            // dataGridViewCampos
+            // 
+            this.dataGridViewCampos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCampos.Location = new System.Drawing.Point(9, 19);
+            this.dataGridViewCampos.Name = "dataGridViewCampos";
+            this.dataGridViewCampos.Size = new System.Drawing.Size(563, 63);
+            this.dataGridViewCampos.TabIndex = 2;
             // 
             // dataGridViewContenido
             // 
@@ -126,14 +161,6 @@
             this.dataGridViewContenido.Size = new System.Drawing.Size(563, 72);
             this.dataGridViewContenido.TabIndex = 1;
             this.dataGridViewContenido.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewContenido_CellContentClick);
-            // 
-            // dataGridViewCampos
-            // 
-            this.dataGridViewCampos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCampos.Location = new System.Drawing.Point(9, 19);
-            this.dataGridViewCampos.Name = "dataGridViewCampos";
-            this.dataGridViewCampos.Size = new System.Drawing.Size(563, 63);
-            this.dataGridViewCampos.TabIndex = 2;
             // 
             // FormClienteVersion
             // 
@@ -150,11 +177,11 @@
             this.Text = "Versiones Anteriores";
             this.Load += new System.EventHandler(this.FormClienteVersion_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVersiones)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContenido)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCampos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContenido)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,13 +190,13 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button buttonrest;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelCli;
         private System.Windows.Forms.DataGridView dataGridViewVersiones;
-        private System.Windows.Forms.DataGridView dataGridViewCampos;
         private System.Windows.Forms.DataGridView dataGridViewContenido;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dataGridViewCampos;
     }
 }

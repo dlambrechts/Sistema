@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE
+namespace Servicios.Bitacora
 {
-    public enum BitacoraClasifActividad
+    public class BitacoraTipoActividad
     {
-        Mensaje,
-        Advertencia,
-        Error,
+        public int Id { get; set; }
+        public string Tipo { get; set; }
+
+        public override string ToString()
+        {
+            return Tipo;
+        }
 
     }
 }

@@ -50,5 +50,10 @@ namespace BE
                 this.Items.Remove(ItemRemover);
             }
         }
+
+        public override string ToString()
+        {
+            return "Presupuesto N° " + Id + "  Cliente: " + Cliente.RazonSocial;
+        }
     }
 }
