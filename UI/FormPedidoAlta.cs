@@ -46,7 +46,7 @@ namespace UI
 
             else
             {
-                DialogResult Respuesta = MessageBox.Show("Confirma Emisión del Pedidoo?", "Generar Pedido", MessageBoxButtons.YesNo);
+                DialogResult Respuesta = MessageBox.Show("Confirma Emisión del Pedido?", "Generar Pedido", MessageBoxButtons.YesNo);
 
                 if (Respuesta == DialogResult.Yes)
                 {

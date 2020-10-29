@@ -66,5 +66,20 @@ namespace UI
             fVer.Show();
             }
         }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            if (selPed == null) { MessageBox.Show("Debe seleccionar un Pedido"); }
+
+            else
+
+            {
+                FormPedidoEditar fEdit = new FormPedidoEditar();
+                fEdit.Pedido = selPed;
+                fEdit.MdiParent = this.ParentForm;
+                fEdit.FormClosed += new FormClosedEventHandler(Alta_FormClosed);
+                fEdit.Show();
+            }
+        }
     }
 }

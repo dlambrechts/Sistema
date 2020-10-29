@@ -98,5 +98,17 @@ namespace DAL
             return Items;
         }
 
+        public void CambiarFechaEntrega(PedidoBE Pedido)
+
+        {
+            Hashtable Param = new Hashtable();                        
+            Param.Add("@IdPedido", Pedido.Id);
+            Param.Add("@Fecha", Pedido.FechaEntrega);
+
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_EditarPedidoEntrega", Param);           
+           
+        }
+
     }
 }

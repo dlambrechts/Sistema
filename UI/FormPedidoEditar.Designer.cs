@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FormPedidoVisualizar
+    partial class FormPedidoEditar
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewItems = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelEmision = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.labelPRes = new System.Windows.Forms.Label();
-            this.labelEntrega = new System.Windows.Forms.Label();
             this.labelCli = new System.Windows.Forms.Label();
             this.labelNum = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewItems = new System.Windows.Forms.DataGridView();
-            this.groupBox1.SuspendLayout();
+            this.dateTimePickerEntrega = new System.Windows.Forms.DateTimePicker();
+            this.buttonAct = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridViewItems);
+            this.groupBox2.Location = new System.Drawing.Point(12, 110);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(375, 284);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Items";
+            // 
+            // dataGridViewItems
+            // 
+            this.dataGridViewItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewItems.Location = new System.Drawing.Point(9, 20);
+            this.dataGridViewItems.Name = "dataGridViewItems";
+            this.dataGridViewItems.Size = new System.Drawing.Size(348, 253);
+            this.dataGridViewItems.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePickerEntrega);
             this.groupBox1.Controls.Add(this.labelEmision);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.labelPRes);
-            this.groupBox1.Controls.Add(this.labelEntrega);
             this.groupBox1.Controls.Add(this.labelCli);
             this.groupBox1.Controls.Add(this.labelNum);
             this.groupBox1.Controls.Add(this.label4);
@@ -61,14 +81,14 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(375, 92);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cabecera";
             // 
             // labelEmision
             // 
             this.labelEmision.AutoSize = true;
-            this.labelEmision.Location = new System.Drawing.Point(299, 25);
+            this.labelEmision.Location = new System.Drawing.Point(277, 25);
             this.labelEmision.Name = "labelEmision";
             this.labelEmision.Size = new System.Drawing.Size(32, 13);
             this.labelEmision.TabIndex = 9;
@@ -77,7 +97,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(197, 25);
+            this.label5.Location = new System.Drawing.Point(175, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 13);
             this.label5.TabIndex = 8;
@@ -91,15 +111,6 @@
             this.labelPRes.Size = new System.Drawing.Size(35, 13);
             this.labelPRes.TabIndex = 7;
             this.labelPRes.Text = "label5";
-            // 
-            // labelEntrega
-            // 
-            this.labelEntrega.AutoSize = true;
-            this.labelEntrega.Location = new System.Drawing.Point(299, 48);
-            this.labelEntrega.Name = "labelEntrega";
-            this.labelEntrega.Size = new System.Drawing.Size(26, 13);
-            this.labelEntrega.TabIndex = 6;
-            this.labelEntrega.Text = "fEnt";
             // 
             // labelCli
             // 
@@ -122,7 +133,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(197, 48);
+            this.label4.Location = new System.Drawing.Point(174, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 3;
@@ -155,57 +166,58 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cliente";
             // 
-            // groupBox2
+            // dateTimePickerEntrega
             // 
-            this.groupBox2.Controls.Add(this.dataGridViewItems);
-            this.groupBox2.Location = new System.Drawing.Point(12, 110);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(375, 291);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Items";
+            this.dateTimePickerEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEntrega.Location = new System.Drawing.Point(272, 48);
+            this.dateTimePickerEntrega.Name = "dateTimePickerEntrega";
+            this.dateTimePickerEntrega.Size = new System.Drawing.Size(89, 20);
+            this.dateTimePickerEntrega.TabIndex = 10;
             // 
-            // dataGridViewItems
+            // buttonAct
             // 
-            this.dataGridViewItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewItems.Location = new System.Drawing.Point(9, 20);
-            this.dataGridViewItems.Name = "dataGridViewItems";
-            this.dataGridViewItems.Size = new System.Drawing.Size(348, 253);
-            this.dataGridViewItems.TabIndex = 0;
+            this.buttonAct.Location = new System.Drawing.Point(294, 400);
+            this.buttonAct.Name = "buttonAct";
+            this.buttonAct.Size = new System.Drawing.Size(75, 30);
+            this.buttonAct.TabIndex = 4;
+            this.buttonAct.Text = "Actualizar";
+            this.buttonAct.UseVisualStyleBackColor = true;
+            this.buttonAct.Click += new System.EventHandler(this.buttonAct_Click);
             // 
-            // FormPedidoVisualizar
+            // FormPedidoEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 412);
+            this.ClientSize = new System.Drawing.Size(397, 434);
+            this.Controls.Add(this.buttonAct);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FormPedidoVisualizar";
-            this.Text = "Pedido";
-            this.Load += new System.EventHandler(this.FormPedidoVisualizar_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Name = "FormPedidoEditar";
+            this.Text = "Editar Pedido";
+            this.Load += new System.EventHandler(this.FormPedidoEditar_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dataGridViewItems;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEntrega;
+        private System.Windows.Forms.Label labelEmision;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelPRes;
+        private System.Windows.Forms.Label labelCli;
+        private System.Windows.Forms.Label labelNum;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridViewItems;
-        private System.Windows.Forms.Label labelPRes;
-        private System.Windows.Forms.Label labelEntrega;
-        private System.Windows.Forms.Label labelCli;
-        private System.Windows.Forms.Label labelNum;
-        private System.Windows.Forms.Label labelEmision;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonAct;
     }
 }

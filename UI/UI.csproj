@@ -106,6 +106,12 @@
     <Compile Include="FormPedidoAlta.Designer.cs">
       <DependentUpon>FormPedidoAlta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPedidoEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPedidoEditar.Designer.cs">
+      <DependentUpon>FormPedidoEditar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPedidoGestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPedidoAlta.resx">
       <DependentUpon>FormPedidoAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPedidoEditar.resx">
+      <DependentUpon>FormPedidoEditar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPedidoGestion.resx">
       <DependentUpon>FormPedidoGestion.cs</DependentUpon>

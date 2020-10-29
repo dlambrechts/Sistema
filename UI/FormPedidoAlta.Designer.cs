@@ -150,7 +150,7 @@
             this.dataGridItemsPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridItemsPedido.Location = new System.Drawing.Point(18, 79);
             this.dataGridItemsPedido.Name = "dataGridItemsPedido";
-            this.dataGridItemsPedido.Size = new System.Drawing.Size(378, 261);
+            this.dataGridItemsPedido.Size = new System.Drawing.Size(371, 261);
             this.dataGridItemsPedido.TabIndex = 1;
             // 
             // buttonConfirmar

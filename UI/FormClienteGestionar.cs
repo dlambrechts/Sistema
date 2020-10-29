@@ -69,7 +69,11 @@ namespace UI
             LisCLi = bllCli.ListarClientes();
             dataGridClientes.DataSource = null;
             BindingList<ClienteBE> cList = new BindingList<ClienteBE>(LisCLi);
-            dataGridClientes.DataSource =cList; 
+            dataGridClientes.DataSource =cList;
+            dataGridClientes.Columns["_UsuarioCreacion"].Visible = false;
+            dataGridClientes.Columns["_UsuarioModificacion"].Visible = false;
+            dataGridClientes.Columns["FechaModificacion"].Visible = false;
+            dataGridClientes.Columns["FechaCreacion"].Visible = false;
         }
 
         private void dataGridClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)

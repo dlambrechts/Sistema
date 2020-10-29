@@ -40,6 +40,12 @@ namespace BLL
             return nPedido;
         }
 
+        public void CambiarFechaEntrega(PedidoBE PedidoEditado) 
+        
+        {
+            pDal.CambiarFechaEntrega(PedidoEditado);
+        }
+
         public void CargarItems(PedidoBE Pedido) 
         
         {
