@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 
 namespace BE
 {
-   public class PresupuestoBE
+
+    [Serializable()]
+    [XmlInclude(typeof(ApCli)), XmlInclude(typeof(ApComPend)),XmlInclude(typeof(ApComRech)), XmlInclude(typeof(ApTecPend)), XmlInclude(typeof(ApTecRech)), XmlInclude(typeof(EnviarCli)), XmlInclude(typeof(Finalizado)), XmlInclude(typeof(RechCli))]
+    public class PresupuestoBE
     {
+        [XmlElement("Num_Presupuesto")]
         public int Id { get; set; }
         public ClienteBE Cliente { get; set; }
-
-        public List<PresupuestoItemBE> Items = new List<PresupuestoItemBE>();
         public UsuarioBE Vendedor { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
@@ -55,5 +58,8 @@ namespace BE
         {
             return "Presupuesto N° " + Id + "  Cliente: " + Cliente.RazonSocial;
         }
+
+        [XmlIgnoreAttribute]
+        public List<PresupuestoItemBE> Items = new List<PresupuestoItemBE>();
     }
 }

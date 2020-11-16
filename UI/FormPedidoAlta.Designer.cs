@@ -40,33 +40,44 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridItemsPedido = new System.Windows.Forms.DataGridView();
             this.buttonConfirmar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxDir = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxCargo = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.buttonVerPres = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItemsPedido)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonVerPres);
             this.groupBox1.Controls.Add(this.listBoxPresup);
             this.groupBox1.Controls.Add(this.buttonCargarPresup);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(337, 392);
+            this.groupBox1.Size = new System.Drawing.Size(337, 410);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Presupuestos Aprobados";
             // 
             // listBoxPresup
             // 
+            this.listBoxPresup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.listBoxPresup.FormattingEnabled = true;
+            this.listBoxPresup.ItemHeight = 16;
             this.listBoxPresup.Location = new System.Drawing.Point(6, 24);
             this.listBoxPresup.Name = "listBoxPresup";
-            this.listBoxPresup.Size = new System.Drawing.Size(316, 316);
+            this.listBoxPresup.Size = new System.Drawing.Size(316, 324);
             this.listBoxPresup.TabIndex = 1;
             // 
             // buttonCargarPresup
             // 
-            this.buttonCargarPresup.Location = new System.Drawing.Point(247, 346);
+            this.buttonCargarPresup.Location = new System.Drawing.Point(247, 372);
             this.buttonCargarPresup.Name = "buttonCargarPresup";
             this.buttonCargarPresup.Size = new System.Drawing.Size(75, 32);
             this.buttonCargarPresup.TabIndex = 0;
@@ -76,17 +87,18 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.dataGridItemsPedido);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.labrlPresup);
             this.groupBox2.Controls.Add(this.labelCli);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.dataGridItemsPedido);
             this.groupBox2.Controls.Add(this.buttonConfirmar);
             this.groupBox2.Location = new System.Drawing.Point(365, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(411, 392);
+            this.groupBox2.Size = new System.Drawing.Size(411, 410);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pedido";
@@ -94,7 +106,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(304, 17);
+            this.dateTimePicker1.Location = new System.Drawing.Point(294, 19);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(92, 20);
             this.dateTimePicker1.TabIndex = 7;
@@ -129,7 +141,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 48);
+            this.label2.Location = new System.Drawing.Point(18, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 3;
@@ -148,14 +160,14 @@
             // 
             this.dataGridItemsPedido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridItemsPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridItemsPedido.Location = new System.Drawing.Point(18, 79);
+            this.dataGridItemsPedido.Location = new System.Drawing.Point(9, 63);
             this.dataGridItemsPedido.Name = "dataGridItemsPedido";
-            this.dataGridItemsPedido.Size = new System.Drawing.Size(371, 261);
+            this.dataGridItemsPedido.Size = new System.Drawing.Size(371, 183);
             this.dataGridItemsPedido.TabIndex = 1;
             // 
             // buttonConfirmar
             // 
-            this.buttonConfirmar.Location = new System.Drawing.Point(321, 346);
+            this.buttonConfirmar.Location = new System.Drawing.Point(316, 372);
             this.buttonConfirmar.Name = "buttonConfirmar";
             this.buttonConfirmar.Size = new System.Drawing.Size(75, 32);
             this.buttonConfirmar.TabIndex = 0;
@@ -163,11 +175,85 @@
             this.buttonConfirmar.UseVisualStyleBackColor = true;
             this.buttonConfirmar.Click += new System.EventHandler(this.buttonConfirmar_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Dirección de Entrega";
+            // 
+            // textBoxDir
+            // 
+            this.textBoxDir.Enabled = false;
+            this.textBoxDir.Location = new System.Drawing.Point(141, 51);
+            this.textBoxDir.Name = "textBoxDir";
+            this.textBoxDir.Size = new System.Drawing.Size(223, 20);
+            this.textBoxDir.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Envío a Cargo de";
+            // 
+            // comboBoxCargo
+            // 
+            this.comboBoxCargo.Enabled = false;
+            this.comboBoxCargo.FormattingEnabled = true;
+            this.comboBoxCargo.Items.AddRange(new object[] {
+            "Cliente",
+            "Vendedor"});
+            this.comboBoxCargo.Location = new System.Drawing.Point(237, 77);
+            this.comboBoxCargo.Name = "comboBoxCargo";
+            this.comboBoxCargo.Size = new System.Drawing.Size(127, 21);
+            this.comboBoxCargo.TabIndex = 13;
+            this.comboBoxCargo.Text = "Cliente";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(8, 22);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(55, 17);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "Envío";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // buttonVerPres
+            // 
+            this.buttonVerPres.Location = new System.Drawing.Point(141, 372);
+            this.buttonVerPres.Name = "buttonVerPres";
+            this.buttonVerPres.Size = new System.Drawing.Size(76, 32);
+            this.buttonVerPres.TabIndex = 2;
+            this.buttonVerPres.Text = "Ver";
+            this.buttonVerPres.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.comboBoxCargo);
+            this.groupBox3.Controls.Add(this.textBoxDir);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Location = new System.Drawing.Point(6, 252);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(370, 114);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Entrega";
+            // 
             // FormPedidoAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 422);
+            this.ClientSize = new System.Drawing.Size(768, 439);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPedidoAlta";
@@ -177,6 +263,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItemsPedido)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -195,5 +283,12 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label labrlPresup;
         private System.Windows.Forms.Label labelCli;
+        private System.Windows.Forms.ComboBox comboBoxCargo;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxDir;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button buttonVerPres;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

@@ -394,5 +394,12 @@ namespace UI
             Pgest.MdiParent = this;
             Pgest.Show();
         }
+
+        private void presupuestosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormReporte fRep = new FormReporte();
+            fRep.MdiParent = this;
+            fRep.Show();
+        }
     }
 }

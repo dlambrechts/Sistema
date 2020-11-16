@@ -38,6 +38,20 @@ namespace UI
             labelEntrega.Text = Pedido.FechaEntrega.ToShortDateString();
             labelEmision.Text = Pedido.FechaEmision.ToShortDateString();
             labelPRes.Text = Convert.ToString(Pedido.Presupuesto.Id);
+            checkBox1.Checked = Pedido.Envio;
+            if (Pedido.Envio == true)
+
+            {
+                labelDir.Text = Pedido.DireccionEnvio;
+                labelResp.Text = Pedido.ResponsableEnvio;
+
+            }
+            else
+
+            {
+                labelDir.Text = "n/a";
+                labelResp.Text = "n/a";
+            }
         
         }
     }

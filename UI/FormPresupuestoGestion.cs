@@ -20,6 +20,7 @@ namespace UI
             InitializeComponent();
             Traducir();
             CargarGrilla();
+            Helper();
         }
 
 
@@ -213,6 +214,24 @@ namespace UI
                     groupBox1.Text = Traducciones[groupBox1.Tag.ToString()].Texto;
             }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bllPresup.Serializar();
+        }
+
+        public void Helper() 
+        
+        {
+            toolTipGestion.SetToolTip(button1, "Haga clic aquí para Crear un Nuevo Presupuesto");
+            toolTipGestion.SetToolTip(button3, "Haga clic aquí para Visualizar el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(buttonEditar, "Haga clic aquí para Editar el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(button4, "Haga clic aquí para Eliminar el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(buttonCierre, "Haga clic aquí para informar Respuesta del Cliente para el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(buttonEditar, "Haga clic aquí para Editar para el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(buttonLayout, "Haga clic aquí para generar PDF del Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(button2, "Haga clic aquí para realizar una serialización XML de todos los Presupuestos");
         }
     }
 }

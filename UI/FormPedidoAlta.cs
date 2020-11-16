@@ -54,8 +54,16 @@ namespace UI
 
                     Pedido.FechaEmision = DateTime.Now;
                     Pedido.FechaEntrega = Convert.ToDateTime(dateTimePicker1.Value);
-                    pedBLL.AltaPedido(Pedido);
+                    Pedido.Envio = checkBox1.Checked;
+                    
 
+                        if (Pedido.Envio == true) 
+                        {
+                            Pedido.DireccionEnvio = textBoxDir.Text;
+                            Pedido.ResponsableEnvio = comboBoxCargo.Text;                           
+                        }
+
+                    pedBLL.AltaPedido(Pedido);
                     PresupuestoEstadoBE nEstado = new Finalizado();
                     preBLL.ActualizarEstado(Pedido.Presupuesto, nEstado);
 
@@ -88,11 +96,22 @@ namespace UI
             labelCli.Text = Pedido.Cliente.RazonSocial;
             labrlPresup.Text = Convert.ToString(Pedido.Presupuesto.Id);
 
+            checkBox1.Enabled = true;
+            textBoxDir.Text = Pres.Cliente.Direccion;
+
         }
 
         private void buttonCargarPresup_Click(object sender, EventArgs e)
         {
             PrecargaPedido();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+         
+                comboBoxCargo.Enabled = checkBox1.Checked;
+                textBoxDir.Enabled = checkBox1.Checked;
+            
         }
     }
 }

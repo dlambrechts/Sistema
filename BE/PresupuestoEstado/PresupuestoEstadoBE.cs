@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-
-        public abstract class PresupuestoEstadoBE
+    [Serializable()]
+    public abstract class PresupuestoEstadoBE
         {
 
         public String Descripción { get; set; }

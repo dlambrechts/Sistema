@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.buttonLayout = new System.Windows.Forms.Button();
             this.buttonCierre = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.toolTipGestion = new System.Windows.Forms.ToolTip(this.components);
+            this.helpGestionPresup = new System.Windows.Forms.HelpProvider();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -71,6 +75,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.buttonLayout);
             this.groupBox2.Controls.Add(this.buttonCierre);
             this.groupBox2.Controls.Add(this.buttonEditar);
@@ -79,11 +84,21 @@
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Location = new System.Drawing.Point(9, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(522, 54);
+            this.groupBox2.Size = new System.Drawing.Size(633, 54);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "Acciones";
             this.groupBox2.Text = "Acciones";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(506, 20);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Serializar XML";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonLayout
             // 
@@ -151,6 +166,10 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // helpGestionPresup
+            // 
+            this.helpGestionPresup.HelpNamespace = "C:\\OneDrive - EQA SAIC\\_Diploma\\Helper\\GestionPresup.html";
+            // 
             // FormPresupuestoGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,7 +177,11 @@
             this.ClientSize = new System.Drawing.Size(960, 497);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.HelpButton = true;
+            this.helpGestionPresup.SetHelpKeyword(this, "Presup");
+            this.helpGestionPresup.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "FormPresupuestoGestion";
+            this.helpGestionPresup.SetShowHelp(this, true);
             this.Tag = "Gestión de presupuestos";
             this.Text = "Gestión de Presupuestos";
             this.Load += new System.EventHandler(this.FormPresupuestoGestion_Load);
@@ -180,5 +203,8 @@
         private System.Windows.Forms.Button buttonCierre;
         private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.Button buttonLayout;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolTip toolTipGestion;
+        private System.Windows.Forms.HelpProvider helpGestionPresup;
     }
 }

@@ -43,7 +43,7 @@ namespace BLL
         public void CambiarFechaEntrega(PedidoBE PedidoEditado) 
         
         {
-            pDal.CambiarFechaEntrega(PedidoEditado);
+            pDal.Editar(PedidoEditado);
         }
 
         public void CargarItems(PedidoBE Pedido) 

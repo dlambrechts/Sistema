@@ -31,11 +31,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridClientes = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonVer = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonVer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -49,6 +49,7 @@
             this.groupBox1.Size = new System.Drawing.Size(847, 370);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "Clientes";
             this.groupBox1.Text = "Clientes";
             // 
             // dataGridClientes
@@ -78,7 +79,18 @@
             this.groupBox2.Size = new System.Drawing.Size(483, 55);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Tag = "Acciones";
             this.groupBox2.Text = "Acciones";
+            // 
+            // buttonVer
+            // 
+            this.buttonVer.Location = new System.Drawing.Point(191, 19);
+            this.buttonVer.Name = "buttonVer";
+            this.buttonVer.Size = new System.Drawing.Size(70, 23);
+            this.buttonVer.TabIndex = 4;
+            this.buttonVer.Tag = "Ver";
+            this.buttonVer.Text = "Ver";
+            this.buttonVer.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -86,6 +98,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(129, 23);
             this.button4.TabIndex = 3;
+            this.button4.Tag = "Versiones Anteriores";
             this.button4.Text = "Versiones Anteriores";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -96,6 +109,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 2;
+            this.button3.Tag = "Eliminar";
             this.button3.Text = "Eliminar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -106,6 +120,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
+            this.button2.Tag = "Editar";
             this.button2.Text = "Editar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -116,18 +131,10 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
+            this.button1.Tag = "Nuevo";
             this.button1.Text = "Nuevo";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonVer
-            // 
-            this.buttonVer.Location = new System.Drawing.Point(191, 19);
-            this.buttonVer.Name = "buttonVer";
-            this.buttonVer.Size = new System.Drawing.Size(70, 23);
-            this.buttonVer.TabIndex = 4;
-            this.buttonVer.Text = "Ver";
-            this.buttonVer.UseVisualStyleBackColor = true;
             // 
             // FormClienteGestionar
             // 
@@ -137,6 +144,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormClienteGestionar";
+            this.Tag = "Clientes";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.FormClienteGestionar_Load);
             this.groupBox1.ResumeLayout(false);

@@ -8,6 +8,9 @@ using System.ComponentModel;
 using DAL;
 using Servicios;
 using Servicios.Bitacora;
+using Servicios.SerializadorXML;
+using System.Security.Cryptography.X509Certificates;
+using BE.PresupuestoEstado;
 
 namespace BLL
 {
@@ -158,6 +161,28 @@ namespace BLL
             nActividad.SetTipo(tipo);
             nActividad.Detalle = "Actualización de Estado, Presupuesto N° " + Pres.Id;
             bllBit.NuevaActividad(nActividad);
+        }
+
+        public void Serializar() 
+        
+        {
+            List<PresupuestoBE> Presupuestos = new List<PresupuestoBE>();
+            Presupuestos = dPresup.ListarPresupuestos();
+            Serializador<List<PresupuestoBE>> Serializador = new Serializador<List<PresupuestoBE>>();
+
+            Serializador.Serializar(Presupuestos);
+        }
+
+        public List<PresupuestoBE> PresupuestosAtrasados(DateTime desde,DateTime hasta) 
+
+        {
+            List<PresupuestoBE> Lista = new List<PresupuestoBE>(dPresup.ListarPresupuestos());
+            Lista = Lista.Where(x => x.FechaEmision > desde).ToList();
+            Lista = Lista.Where(x => x.FechaEmision < hasta).ToList();
+            Lista = Lista.Where(x => x.FechaValidez < DateTime.Now).ToList();
+            Lista = Lista.Where(x => x.Estado.GetType().Name !=  "Finalizado").ToList();
+
+            return Lista;
         }
     }
 }

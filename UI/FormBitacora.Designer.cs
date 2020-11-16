@@ -57,6 +57,7 @@
             this.groupBox1.Size = new System.Drawing.Size(728, 46);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "Filtros";
             this.groupBox1.Text = "Filtros";
             // 
             // label2
@@ -66,6 +67,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 3;
+            this.label2.Tag = "Hasta";
             this.label2.Text = "Hasta";
             // 
             // dateTimeHasta
@@ -85,6 +87,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 2;
+            this.label1.Tag = "Desde";
             this.label1.Text = "Desde";
             // 
             // label4
@@ -94,6 +97,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 13;
+            this.label4.Tag = "Tipo";
             this.label4.Text = "Tipo";
             // 
             // dateTimeDesde
@@ -113,6 +117,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 12;
+            this.label3.Tag = "Usuario";
             this.label3.Text = "Usuario";
             // 
             // comboUsuario
@@ -154,6 +159,7 @@
             this.Controls.Add(this.dataGridViewEventos);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormBitacora";
+            this.Tag = "Bitacora";
             this.Text = "Bitacora";
             this.Load += new System.EventHandler(this.FormBitacora_Load);
             this.groupBox1.ResumeLayout(false);

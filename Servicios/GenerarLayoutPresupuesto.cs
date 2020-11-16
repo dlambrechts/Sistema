@@ -31,7 +31,7 @@ namespace Servicios
                 var boldTableFont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD);
                 var bodyFont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.NORMAL);
                 var EmailFont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.NORMAL, BaseColor.BLUE);
-                //BaseColor TabelHeaderBackGroundColor = WebColors.GetRGBColor("#EEEEEE");
+               
                 BaseColor TabelHeaderBackGroundColor = WebColors.GetRGBColor("#EEEEEE");
 
                 iTextSharp.text.Rectangle pageSize = writer.PageSize;
@@ -44,12 +44,12 @@ namespace Servicios
                 PdfPTable headertable = new PdfPTable(3);
                 headertable.HorizontalAlignment = 0;
                 headertable.WidthPercentage = 100;
-                headertable.SetWidths(new float[] { 120f, 280f, 120f });  // then set the column's __relative__ widths
+                headertable.SetWidths(new float[] { 120f, 280f, 120f });   
                 headertable.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
                         
 
                 iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance("C:\\OneDrive - EQA SAIC\\Escritorio\\logo.png");
-                logo.ScaleToFit(100, 15);
+                logo.ScaleToFit(100, 30);
 
                 {
                     PdfPCell pdfCelllogo = new PdfPCell(logo);
@@ -96,7 +96,7 @@ namespace Servicios
                 PdfPTable Invoicetable = new PdfPTable(3);
                 Invoicetable.HorizontalAlignment = 0;
                 Invoicetable.WidthPercentage = 100;
-                Invoicetable.SetWidths(new float[] { 120f, 280f, 120f });  // then set the column's __relative__ widths
+                Invoicetable.SetWidths(new float[] { 120f, 280f, 120f });  
                 Invoicetable.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
 
                 {
@@ -161,7 +161,7 @@ namespace Servicios
                 #endregion
 
                 #region Items Table
-                //Create body table
+                //Cuerpo de la tabla
                 PdfPTable itemTable = new PdfPTable(7);
 
                 itemTable.HorizontalAlignment = 0;
@@ -251,13 +251,13 @@ namespace Servicios
                 PdfPCell cella = new PdfPCell(new Phrase("Impuestos", boldTableFont));
                 cella.Colspan = 6;
                 cella.HorizontalAlignment = 2;
-                // cellz.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER;
+               
                 itemTable.AddCell(cella);
 
                 PdfPCell cellz = new PdfPCell(new Phrase("$ " + Presup.Iva.ToString(), boldTableFont));
                 cellz.Colspan = 1;
                 cellz.HorizontalAlignment = 2;
-               // cellz.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER;
+              
                 itemTable.AddCell(cellz);
 
                 PdfPCell cellb = new PdfPCell(new Phrase("Descuentos", boldTableFont));
@@ -306,7 +306,7 @@ namespace Servicios
                 cb.ShowText("Observaciones: "+Presup.Observaciones);
                 cb.EndText();
 
-                //Move the pointer and draw line to separate footer section from rest of page
+
                 cb.MoveTo(40, pdfDoc.PageSize.GetBottom(50));
                 cb.LineTo(pdfDoc.PageSize.Width - 40, pdfDoc.PageSize.GetBottom(50));
                 cb.Stroke();

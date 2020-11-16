@@ -15,16 +15,19 @@ namespace BE
         private PresupuestoBE _Presupuesto;
 
         private List<PedidoItemBE> _Items;
-        public PedidoBE (ClienteBE cliente, PresupuestoBE presupuesto) 
-        
+        public PedidoBE(ClienteBE cliente, PresupuestoBE presupuesto)
+
         {
             _Cliente = cliente;
             _Presupuesto = presupuesto;
             _Items = new List<PedidoItemBE>();
         }
-     
+
+
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
+
+
         public void AgregarItem(ProductoBE Producto, int Cantidad) 
         
         {
@@ -36,5 +39,9 @@ namespace BE
         public ClienteBE Cliente { get { return _Cliente; } }
 
         public PresupuestoBE Presupuesto { get { return _Presupuesto; } }
+
+        public bool Envio { get; set; }
+        public string DireccionEnvio { get; set; }
+        public string ResponsableEnvio { get; set; }
     }
 }

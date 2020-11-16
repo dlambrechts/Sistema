@@ -36,6 +36,9 @@ namespace UI
             dateTimePickerEntrega.Value = Pedido.FechaEntrega;
             labelEmision.Text = Pedido.FechaEmision.ToShortDateString();
             labelPRes.Text = Convert.ToString(Pedido.Presupuesto.Id);
+            checkBox1.Checked = Pedido.Envio;
+            textBoxDir.Text = Pedido.DireccionEnvio;
+            comboBoxCargo.Text = Pedido.ResponsableEnvio;
         
         }
 
@@ -48,7 +51,11 @@ namespace UI
                 try
                 {
                     Pedido.FechaEntrega = Convert.ToDateTime(dateTimePickerEntrega.Value);
+                    Pedido.Envio = checkBox1.Checked;
+                    Pedido.ResponsableEnvio = comboBoxCargo.Text;
+                    Pedido.DireccionEnvio = textBoxDir.Text;
                     bllP.CambiarFechaEntrega(Pedido);
+
                     MessageBox.Show("Pedido Actualizado Correctamente");
                     this.Close();
                 }
@@ -58,6 +65,12 @@ namespace UI
                 { MessageBox.Show(ex.Message); }
             }
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBoxCargo.Enabled = checkBox1.Checked;
+            textBoxDir.Enabled = checkBox1.Checked;
         }
     }
 }

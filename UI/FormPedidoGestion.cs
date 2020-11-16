@@ -81,5 +81,18 @@ namespace UI
                 fEdit.Show();
             }
         }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult Respuesta = MessageBox.Show("Confirma Eliminar el Pedido?", "Eliminar", MessageBoxButtons.YesNo);
+
+            if (Respuesta == DialogResult.Yes)
+
+            {
+            }
+
+            else { }
+
+         }
     }
 }

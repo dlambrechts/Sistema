@@ -9,14 +9,60 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
 using BLL;
+using Servicios;
 
 namespace UI
 {
-    public partial class FormClienteGestionar : Form
+    public partial class FormClienteGestionar : Form, IIdiomaObserver
     {
         public FormClienteGestionar()
         {
             InitializeComponent();
+            Traducir();
+        }
+        public void UpdateLanguage(IdiomaBE idioma)
+        {
+            Traducir();
+        }
+
+        private void Traducir()
+
+        {
+            IdiomaBE Idioma = null;
+
+            if (SesionSingleton.Instancia.IsLogged()) Idioma = SesionSingleton.Instancia.Usuario.Idioma;
+
+            var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
+
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
+            {
+
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
+                    this.Text = Traducciones[this.Tag.ToString()].Texto;
+
+                if (button1.Tag != null && Traducciones.ContainsKey(button1.Tag.ToString()))
+                    button1.Text = Traducciones[button1.Tag.ToString()].Texto;
+
+                if (button2.Tag != null && Traducciones.ContainsKey(button2.Tag.ToString()))
+                    button2.Text = Traducciones[button2.Tag.ToString()].Texto;
+
+                if (buttonVer.Tag != null && Traducciones.ContainsKey(buttonVer.Tag.ToString()))
+                    buttonVer.Text = Traducciones[buttonVer.Tag.ToString()].Texto;
+
+                if (button4.Tag != null && Traducciones.ContainsKey(button4.Tag.ToString()))
+                    button4.Text = Traducciones[button4.Tag.ToString()].Texto;
+
+                if (button3.Tag != null && Traducciones.ContainsKey(button3.Tag.ToString()))
+                    button3.Text = Traducciones[button3.Tag.ToString()].Texto;
+
+                if (groupBox1.Tag != null && Traducciones.ContainsKey(groupBox1.Tag.ToString()))
+                    groupBox1.Text = Traducciones[groupBox1.Tag.ToString()].Texto;
+
+                if (groupBox2.Tag != null && Traducciones.ContainsKey(groupBox2.Tag.ToString()))
+                    groupBox2.Text = Traducciones[groupBox2.Tag.ToString()].Texto;
+
+            }
+
         }
 
         ClienteBLL bllCli = new ClienteBLL();
@@ -45,6 +91,7 @@ namespace UI
 
         private void FormClienteGestionar_Load(object sender, EventArgs e)
         {
+            SesionSingleton.Instancia.SuscribirObs(this);
             LeerClientes();
         }
 

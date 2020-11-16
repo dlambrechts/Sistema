@@ -38,6 +38,7 @@
             this.aprobarPresupuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aprobaciónComercialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +60,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.dots = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.gestionDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.BarraDeEstado.SuspendLayout();
             this.SuspendLayout();
@@ -160,6 +160,13 @@
             this.pedidosToolStripMenuItem.Tag = "Pedidos";
             this.pedidosToolStripMenuItem.Text = "Pedidos";
             // 
+            // gestionDePedidosToolStripMenuItem
+            // 
+            this.gestionDePedidosToolStripMenuItem.Name = "gestionDePedidosToolStripMenuItem";
+            this.gestionDePedidosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.gestionDePedidosToolStripMenuItem.Text = "Gestion de Pedidos";
+            this.gestionDePedidosToolStripMenuItem.Click += new System.EventHandler(this.gestionDePedidosToolStripMenuItem_Click);
+            // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -207,15 +214,16 @@
             this.metricasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.presupuestosToolStripMenuItem1});
             this.metricasToolStripMenuItem.Name = "metricasToolStripMenuItem";
-            this.metricasToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.metricasToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.metricasToolStripMenuItem.Tag = "Indicadores";
-            this.metricasToolStripMenuItem.Text = "Indicadores";
+            this.metricasToolStripMenuItem.Text = "Reportes";
             // 
             // presupuestosToolStripMenuItem1
             // 
             this.presupuestosToolStripMenuItem1.Name = "presupuestosToolStripMenuItem1";
-            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
-            this.presupuestosToolStripMenuItem1.Text = "Presupuestos";
+            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.presupuestosToolStripMenuItem1.Text = "Ventas Perdidas";
+            this.presupuestosToolStripMenuItem1.Click += new System.EventHandler(this.presupuestosToolStripMenuItem1_Click);
             // 
             // administradorToolStripMenuItem
             // 
@@ -339,13 +347,6 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(143, 17);
             this.toolStripStatusLabel2.Tag = "Sesión no iniciada";
             this.toolStripStatusLabel2.Text = "Aún no ha iniciado sesión";
-            // 
-            // gestionDePedidosToolStripMenuItem
-            // 
-            this.gestionDePedidosToolStripMenuItem.Name = "gestionDePedidosToolStripMenuItem";
-            this.gestionDePedidosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.gestionDePedidosToolStripMenuItem.Text = "Gestion de Pedidos";
-            this.gestionDePedidosToolStripMenuItem.Click += new System.EventHandler(this.gestionDePedidosToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 

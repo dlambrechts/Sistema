@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE
 {
@@ -14,10 +15,14 @@ namespace BE
         public string Apellido { get; set; }
         public string Password { get; set; }
         public IdiomaBE Idioma { get; set; }
+
+        [XmlIgnoreAttribute]
         public int dvh { get; set; }
 
         List<PerfilComponenteBE> permisos;
         public UsuarioBE() { permisos = new List<PerfilComponenteBE>(); }
+
+        [XmlIgnoreAttribute]
         public List<PerfilComponenteBE> Permisos {  get { return permisos; }   }
         public bool ExistePermisoExplisito (PerfilComponenteBE Perm){ if (permisos.Exists(permisos => permisos.Id == Perm.Id))  return true;  else return false; } // Verifico que el permiso esté de forma directa en el Usuario, para poder eliminarlo luego
         public void AgregarPermiso (PerfilComponenteBE Perm) { permisos.Add(Perm); }

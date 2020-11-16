@@ -62,6 +62,7 @@ namespace DAL
                     oPres.Cliente = new ClienteBE();
                     oPres.Cliente.Id = Convert.ToInt32(Item["IdCliente"]);
                     oPres.Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim();
+                    oPres.Cliente.Direccion = Convert.ToString(Item["Direccion"]).Trim();
                     oPres.Vendedor = new UsuarioBE();
                     oPres.Vendedor.Id = Convert.ToInt32(Item["IdVendedor"]);
                     oPres.Vendedor.Nombre = Convert.ToString(Item["Nombre"]).Trim();
@@ -85,6 +86,7 @@ namespace DAL
                         case "EnviarCli": { oPres.Estado = new EnviarCli(); } break;
                         case "ApCli": { oPres.Estado = new ApCli(); } break;
                         case "RechCli": { oPres.Estado = new RechCli(); } break;
+                        case "Finalizado": { oPres.Estado = new Finalizado(); } break;
 
                     }
 
@@ -212,6 +214,7 @@ namespace DAL
                         case "EnviarCli": { oPres.Estado = new EnviarCli(); } break;
                         case "ApCli": { oPres.Estado = new ApCli(); } break;
                         case "RechCli": { oPres.Estado = new RechCli(); } break;
+                        case "Finalizado": { oPres.Estado = new Finalizado(); } break;
 
                     }
 

@@ -10,14 +10,16 @@ using System.Windows.Forms;
 using BE;
 using BLL;
 using Servicios.Bitacora;
+using Servicios;
 
 namespace UI
 {
-    public partial class FormBitacora : Form
+    public partial class FormBitacora : Form,IIdiomaObserver
     {
         public FormBitacora()
         {
             InitializeComponent();
+            Traducir();
             CargarUsuarios();
             CargarTipos();
             dateTimeHasta.Value = DateTime.Now;
@@ -25,8 +27,46 @@ namespace UI
             
         }
 
+        public void UpdateLanguage(IdiomaBE idioma)
+        {
+            Traducir();
+        }
+
         BitacoraBLL bllBit = new BitacoraBLL();
-        
+
+        private void Traducir()
+
+        {
+            IdiomaBE Idioma = null;
+
+            if (SesionSingleton.Instancia.IsLogged()) Idioma = SesionSingleton.Instancia.Usuario.Idioma;
+
+            var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
+
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
+            {
+
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
+                    this.Text = Traducciones[this.Tag.ToString()].Texto;
+
+                if (groupBox1.Tag != null && Traducciones.ContainsKey(groupBox1.Tag.ToString()))
+                    groupBox1.Text = Traducciones[groupBox1.Tag.ToString()].Texto;
+
+                if (label1.Tag != null && Traducciones.ContainsKey(label1.Tag.ToString()))
+                    label1.Text = Traducciones[label1.Tag.ToString()].Texto;
+
+                if (label2.Tag != null && Traducciones.ContainsKey(label2.Tag.ToString()))
+                    label2.Text = Traducciones[label2.Tag.ToString()].Texto;
+
+                if (label3.Tag != null && Traducciones.ContainsKey(label3.Tag.ToString()))
+                    label3.Text = Traducciones[label3.Tag.ToString()].Texto;
+
+                if (label4.Tag != null && Traducciones.ContainsKey(label4.Tag.ToString()))
+                    label4.Text = Traducciones[label4.Tag.ToString()].Texto;
+
+            }
+
+        }
         public void CargarUsuarios() 
         
         {
@@ -101,7 +141,7 @@ namespace UI
         }
         private void FormBitacora_Load(object sender, EventArgs e)
         {
-
+            SesionSingleton.Instancia.SuscribirObs(this);
         }
         private void buttonMostrar_Click(object sender, EventArgs e)
         {

@@ -36,6 +36,7 @@
             this.radioPendientes = new System.Windows.Forms.RadioButton();
             this.radioButtonTodos = new System.Windows.Forms.RadioButton();
             this.dataGridViewPresup = new System.Windows.Forms.DataGridView();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -133,6 +134,10 @@
             this.dataGridViewPresup.TabIndex = 0;
             this.dataGridViewPresup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPresup_CellContentClick_1);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "C:\\OneDrive - EQA SAIC\\_Diploma\\Helper\\GestionPresupApCom.html";
+            // 
             // FormPresupuestoAnalisisComercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,7 +145,9 @@
             this.ClientSize = new System.Drawing.Size(935, 504);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "FormPresupuestoAnalisisComercial";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Análisis Comercial de Presupuestos";
             this.Load += new System.EventHandler(this.FormPresupuestoAnalisisComercial_Load);
             this.groupBox2.ResumeLayout(false);
@@ -162,5 +169,6 @@
         private System.Windows.Forms.RadioButton radioPendientes;
         private System.Windows.Forms.RadioButton radioButtonTodos;
         private System.Windows.Forms.DataGridView dataGridViewPresup;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

@@ -10,19 +10,63 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Servicios;
 using Servicios.Backup;
+using BE;
+using BLL;
 
 namespace UI
 {
-    public partial class FormBackup : Form
+    public partial class FormBackup : Form,IIdiomaObserver
     {
         public FormBackup()
         {
             InitializeComponent();
+            Traducir();
+        }
+
+        public void UpdateLanguage(IdiomaBE idioma)
+        {
+            Traducir();
+        }
+
+        private void Traducir()
+
+        {
+            IdiomaBE Idioma = null;
+
+            if (SesionSingleton.Instancia.IsLogged()) Idioma = SesionSingleton.Instancia.Usuario.Idioma;
+
+            var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
+
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
+            {
+
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
+                    this.Text = Traducciones[this.Tag.ToString()].Texto;
+
+                if (buttonNuevo.Tag != null && Traducciones.ContainsKey(buttonNuevo.Tag.ToString()))
+                    buttonNuevo.Text = Traducciones[buttonNuevo.Tag.ToString()].Texto;
+
+                if (buttonRestaurar.Tag != null && Traducciones.ContainsKey(buttonRestaurar.Tag.ToString()))
+                    buttonRestaurar.Text = Traducciones[buttonRestaurar.Tag.ToString()].Texto;
+
+                if (buttonElim.Tag != null && Traducciones.ContainsKey(buttonElim.Tag.ToString()))
+                    buttonElim.Text = Traducciones[buttonElim.Tag.ToString()].Texto;
+
+                if (buttonCambiar.Tag != null && Traducciones.ContainsKey(buttonCambiar.Tag.ToString()))
+                    buttonCambiar.Text = Traducciones[buttonCambiar.Tag.ToString()].Texto;
+
+                if (groupBox2.Tag != null && Traducciones.ContainsKey(groupBox2.Tag.ToString()))
+                    groupBox2.Text = Traducciones[groupBox2.Tag.ToString()].Texto;
+
+
+            }
+
         }
 
         string Directorio = @"C:\Backup\"; // A futuro permitir al usuario seleccionar la carpeta
         private void FormBackup_Load(object sender, EventArgs e)
         {
+            SesionSingleton.Instancia.SuscribirObs(this);
             CargarBackups();
             labelResp.Text= labelResp.Text + Directorio;
         }

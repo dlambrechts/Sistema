@@ -22,6 +22,19 @@ namespace DAL
             ParamCabecera.Add("@IdPresupuesto", Pedido.Presupuesto.Id);
             ParamCabecera.Add("@FechaEmision", Pedido.FechaEmision);
             ParamCabecera.Add("@FechaEntrega", Pedido.FechaEntrega);
+            ParamCabecera.Add("@Envio", Pedido.Envio);
+
+            if (Pedido.Envio == true) { 
+            ParamCabecera.Add("@ResponsableEntrega", Pedido.ResponsableEnvio);
+            ParamCabecera.Add("@DireccionEntrega", Pedido.DireccionEnvio);
+            }
+
+            else
+            {
+                ParamCabecera.Add("@ResponsableEntrega", "");
+                ParamCabecera.Add("@DireccionEntrega", "");
+
+            }
 
             Acceso AccesoDB = new Acceso();
             string Id = AccesoDB.Escribir("sp_InsertarPedidoCabecera", ParamCabecera);
@@ -63,6 +76,9 @@ namespace DAL
                     oPedido.Id = Convert.ToInt32(Item[0]);
                     oPedido.FechaEmision = Convert.ToDateTime(Item["FechaEmision"]);
                     oPedido.FechaEntrega = Convert.ToDateTime(Item["FechaEntrega"]);
+                    oPedido.Envio = Convert.ToBoolean(Item["Envio"]);
+                    oPedido.ResponsableEnvio = Convert.ToString(Item["ResponsableEntrega"]).Trim();
+                    oPedido.DireccionEnvio = Convert.ToString(Item["DireccionEntrega"]).Trim();
 
                     ListaPedidos.Add(oPedido);
                 }
@@ -98,15 +114,28 @@ namespace DAL
             return Items;
         }
 
-        public void CambiarFechaEntrega(PedidoBE Pedido)
+        public void Editar(PedidoBE Pedido)
 
         {
             Hashtable Param = new Hashtable();                        
             Param.Add("@IdPedido", Pedido.Id);
             Param.Add("@Fecha", Pedido.FechaEntrega);
+            Param.Add("@Envio", Pedido.Envio);
+            if (Pedido.Envio == true)
+            {
+                Param.Add("@ResponsableEntrega", Pedido.ResponsableEnvio);
+                Param.Add("@DireccionEntrega", Pedido.DireccionEnvio);
+            }
+
+            else
+            {
+                Param.Add("@ResponsableEntrega", "");
+                Param.Add("@DireccionEntrega", "");
+
+            }
 
             Acceso AccesoDB = new Acceso();
-            AccesoDB.Escribir("sp_EditarPedidoEntrega", Param);           
+            AccesoDB.Escribir("sp_EditarPedido", Param);           
            
         }
 

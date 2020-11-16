@@ -17,8 +17,7 @@ namespace UI
         public FormClienteEditar()
         {
             InitializeComponent();
-            CompletarTipos();
-       
+            CompletarTipos();      
         }
 
         ClienteBLL bllCli = new ClienteBLL();

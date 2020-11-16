@@ -58,6 +58,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBoxObs = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
@@ -175,7 +176,6 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Items del Presupuesto";
-           
             // 
             // dataGridViewItems
             // 
@@ -376,6 +376,10 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Observaciones";
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "C:\\OneDrive - EQA SAIC\\_Diploma\\Helper\\GestionPresup.html";
+            // 
             // FormPresupuestoAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,7 +390,10 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.helpProvider1.SetHelpKeyword(this, "nuevo");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "FormPresupuestoAlta";
+            this.helpProvider1.SetShowHelp(this, true);
             this.Text = "Nuevo Presupuesto";
             this.Load += new System.EventHandler(this.FormPresupuestoAlta_Load);
             this.groupBox1.ResumeLayout(false);
@@ -435,5 +442,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerVal;
         private System.Windows.Forms.Label labelTotIva;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
