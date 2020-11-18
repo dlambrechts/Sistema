@@ -51,6 +51,7 @@
             this.groupBox1.Size = new System.Drawing.Size(359, 55);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "Acciones";
             this.groupBox1.Text = "Acciones";
             // 
             // buttonEditar
@@ -59,6 +60,7 @@
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(75, 23);
             this.buttonEditar.TabIndex = 3;
+            this.buttonEditar.Tag = "Editar";
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
             this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
@@ -69,6 +71,7 @@
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 2;
+            this.buttonEliminar.Tag = "Eliminar";
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
             this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
@@ -79,6 +82,7 @@
             this.buttonVer.Name = "buttonVer";
             this.buttonVer.Size = new System.Drawing.Size(75, 23);
             this.buttonVer.TabIndex = 1;
+            this.buttonVer.Tag = "Ver";
             this.buttonVer.Text = "Ver";
             this.buttonVer.UseVisualStyleBackColor = true;
             this.buttonVer.Click += new System.EventHandler(this.buttonVer_Click);
@@ -89,6 +93,7 @@
             this.buttonNuevo.Name = "buttonNuevo";
             this.buttonNuevo.Size = new System.Drawing.Size(75, 23);
             this.buttonNuevo.TabIndex = 0;
+            this.buttonNuevo.Tag = "Nuevo";
             this.buttonNuevo.Text = "Nuevo";
             this.buttonNuevo.UseVisualStyleBackColor = true;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
@@ -98,9 +103,10 @@
             this.groupBox2.Controls.Add(this.dataGridViewPedidos);
             this.groupBox2.Location = new System.Drawing.Point(12, 73);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(697, 323);
+            this.groupBox2.Size = new System.Drawing.Size(761, 350);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Tag = "Pedidos";
             this.groupBox2.Text = "Pedidos";
             // 
             // dataGridViewPedidos
@@ -108,12 +114,12 @@
             this.dataGridViewPedidos.AllowUserToAddRows = false;
             this.dataGridViewPedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPedidos.Location = new System.Drawing.Point(16, 20);
+            this.dataGridViewPedidos.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPedidos.MultiSelect = false;
             this.dataGridViewPedidos.Name = "dataGridViewPedidos";
             this.dataGridViewPedidos.ReadOnly = true;
             this.dataGridViewPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPedidos.Size = new System.Drawing.Size(667, 296);
+            this.dataGridViewPedidos.Size = new System.Drawing.Size(749, 324);
             this.dataGridViewPedidos.TabIndex = 0;
             this.dataGridViewPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -121,10 +127,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 418);
+            this.ClientSize = new System.Drawing.Size(785, 435);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPedidoGestion";
+            this.Tag = "Pedidos";
             this.Text = "Pedidos";
             this.Load += new System.EventHandler(this.FormPedidoGestion_Load);
             this.groupBox1.ResumeLayout(false);

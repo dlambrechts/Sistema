@@ -218,7 +218,15 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            bllPresup.Serializar();
+            DialogResult Respuesta = MessageBox.Show("¿Generar Serialización XML de Presupuestos?", "Generar XML", MessageBoxButtons.YesNo);
+
+            if (Respuesta == DialogResult.Yes)
+
+            {
+                bllPresup.Serializar();
+            }
+       
+        
         }
 
         public void Helper() 

@@ -64,8 +64,6 @@ namespace UI
                         }
 
                     pedBLL.AltaPedido(Pedido);
-                    PresupuestoEstadoBE nEstado = new Finalizado();
-                    preBLL.ActualizarEstado(Pedido.Presupuesto, nEstado);
 
                         MessageBox.Show("Pedido Emitito Correctamente");
                         this.Close();
@@ -113,5 +111,24 @@ namespace UI
                 textBoxDir.Enabled = checkBox1.Checked;
             
         }
+
+        private void buttonVerPres_Click(object sender, EventArgs e)
+        {
+
+            PresupuestoBE Pres = new PresupuestoBE();
+            Pres = (PresupuestoBE)listBoxPresup.SelectedItem;
+
+            if (Pres.Id != 0)
+
+            {
+                FormPresupuestoVisualizar FormV = new FormPresupuestoVisualizar();
+                FormV.vPresup = Pres;
+                FormV.MdiParent = this.ParentForm;
+                FormV.Show();
+            }
+
+            else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
+        }
+    
     }
 }

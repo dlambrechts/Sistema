@@ -24,9 +24,9 @@ namespace DAL
             ParamCabecera.Add("@FechaEntrega", Pedido.FechaEntrega);
             ParamCabecera.Add("@Envio", Pedido.Envio);
 
-            if (Pedido.Envio == true) { 
-            ParamCabecera.Add("@ResponsableEntrega", Pedido.ResponsableEnvio);
-            ParamCabecera.Add("@DireccionEntrega", Pedido.DireccionEnvio);
+            if (Pedido.Envio == true) {
+                ParamCabecera.Add("@ResponsableEntrega", Pedido.ResponsableEnvio);
+                ParamCabecera.Add("@DireccionEntrega", Pedido.DireccionEnvio);
             }
 
             else
@@ -71,7 +71,7 @@ namespace DAL
                     PresupuestoBE Presupuesto = new PresupuestoBE();
                     Presupuesto.Cliente = Cliente;
                     Presupuesto.Id = Convert.ToInt32(Item["IdPresupuesto"]);
-                    PedidoBE oPedido = new PedidoBE(Cliente,Presupuesto);
+                    PedidoBE oPedido = new PedidoBE(Cliente, Presupuesto);
 
                     oPedido.Id = Convert.ToInt32(Item[0]);
                     oPedido.FechaEmision = Convert.ToDateTime(Item["FechaEmision"]);
@@ -87,12 +87,12 @@ namespace DAL
             return ListaPedidos;
         }
 
-        public List<PedidoItemBE> ObtenerItems(PedidoBE Pedido) 
+        public List<PedidoItemBE> ObtenerItems(PedidoBE Pedido)
 
-        {          
+        {
             Acceso AccesoDB = new Acceso();
             DataSet DS = new DataSet();
-            Hashtable Param = new Hashtable();         
+            Hashtable Param = new Hashtable();
             Param.Add("@IdPedido", Pedido.Id);
             DS = AccesoDB.LeerDatos("sp_ListarPedidoItems", Param);
 
@@ -102,12 +102,12 @@ namespace DAL
             {
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
-                    ProductoBE Producto= new ProductoBE();
+                    ProductoBE Producto = new ProductoBE();
                     Producto.Id = Convert.ToInt32(Item["IdProducto"]);
                     Producto.Descripcion = Convert.ToString(Item["Descripcion"]).Trim();
                     int Cantidad = Convert.ToInt32(Item["Cantidad"]);
-                    PedidoItemBE _Item = new PedidoItemBE(Producto,Cantidad);
-                    
+                    PedidoItemBE _Item = new PedidoItemBE(Producto, Cantidad);
+
                     Items.Add(_Item);
                 }
             }
@@ -117,7 +117,7 @@ namespace DAL
         public void Editar(PedidoBE Pedido)
 
         {
-            Hashtable Param = new Hashtable();                        
+            Hashtable Param = new Hashtable();
             Param.Add("@IdPedido", Pedido.Id);
             Param.Add("@Fecha", Pedido.FechaEntrega);
             Param.Add("@Envio", Pedido.Envio);
@@ -135,8 +135,17 @@ namespace DAL
             }
 
             Acceso AccesoDB = new Acceso();
-            AccesoDB.Escribir("sp_EditarPedido", Param);           
-           
+            AccesoDB.Escribir("sp_EditarPedido", Param);
+
+        } 
+
+        public void Eliminar (PedidoBE Pedido)
+        {
+            Hashtable Param = new Hashtable();
+            Param.Add("@IdPedido", Pedido.Id);
+            Acceso AccesoDB = new Acceso();
+            AccesoDB.Escribir("sp_EliminarPedido", Param);
+
         }
 
     }

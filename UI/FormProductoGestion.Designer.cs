@@ -49,6 +49,7 @@
             this.groupBox1.Size = new System.Drawing.Size(284, 54);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "Acciones";
             this.groupBox1.Text = "Acciones";
             // 
             // buttonEliminar
@@ -57,6 +58,7 @@
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 2;
+            this.buttonEliminar.Tag = "Eliminar";
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
             this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
@@ -67,6 +69,7 @@
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(75, 23);
             this.buttonEditar.TabIndex = 1;
+            this.buttonEditar.Tag = "Editar";
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
             this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
@@ -77,6 +80,7 @@
             this.buttonNuevo.Name = "buttonNuevo";
             this.buttonNuevo.Size = new System.Drawing.Size(75, 23);
             this.buttonNuevo.TabIndex = 0;
+            this.buttonNuevo.Tag = "Nuevo";
             this.buttonNuevo.Text = "Nuevo";
             this.buttonNuevo.UseVisualStyleBackColor = true;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
@@ -89,6 +93,7 @@
             this.groupBox2.Size = new System.Drawing.Size(702, 323);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Tag = "Productos";
             this.groupBox2.Text = "Productos";
             // 
             // dataGridView1
@@ -112,6 +117,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormProductoGestion";
+            this.Tag = "Productos";
             this.Text = "Gestión de Productos";
             this.Load += new System.EventHandler(this.FormProductoGestion_Load);
             this.groupBox1.ResumeLayout(false);

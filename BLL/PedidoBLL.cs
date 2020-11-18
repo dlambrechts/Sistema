@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using BE;
+using BE.PresupuestoEstado;
 
 namespace BLL
 {
     public class PedidoBLL
     {
         PedidoDAL pDal = new PedidoDAL();
+        PresupuestoDAL presDal = new PresupuestoDAL();
         public List<PedidoBE> ListarPedidos()
 
         {
@@ -21,6 +23,8 @@ namespace BLL
         
         {
             pDal.AltaPedido(Pedido);
+            PresupuestoEstadoBE nEstado = new Finalizado();
+            presDal.ActualizarEstado(Pedido.Presupuesto, nEstado);
         }
         public PedidoBE PresupuestoToPedido (PresupuestoBE Pres)  // Crear el Pedido en Base a un Presupesto
         
@@ -56,6 +60,14 @@ namespace BLL
             {
                 Pedido.AgregarItem(item.Producto, item.Cantidad);
             }    
+        }
+
+        public void Eliminar(PedidoBE Pedido) 
+        
+        {         
+            pDal.Eliminar(Pedido);
+            PresupuestoEstadoBE estado = new ApCli();
+            presDal.ActualizarEstado(Pedido.Presupuesto, estado);
         }
     }
 }

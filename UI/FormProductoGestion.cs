@@ -9,14 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
 using BLL;
+using Servicios;
 
 namespace UI
 {
-    public partial class FormProductoGestion : Form
+    public partial class FormProductoGestion : Form, IIdiomaObserver
     {
         public FormProductoGestion()
         {
             InitializeComponent();
+            Traducir();
         }
 
         ProductoBLL bllProd = new ProductoBLL();
@@ -35,6 +37,7 @@ namespace UI
         private void FormProductoGestion_Load(object sender, EventArgs e)
         {
             LeerProductos();
+            SesionSingleton.Instancia.SuscribirObs(this);
         }
         public void LeerProductos()
 
@@ -95,6 +98,45 @@ namespace UI
                 }  
                 
             }
+        }
+
+        public void UpdateLanguage(IdiomaBE idioma)
+        {
+            Traducir();
+        }
+        private void Traducir()
+
+        {
+            IdiomaBE Idioma = null;
+
+            if (SesionSingleton.Instancia.IsLogged()) Idioma = SesionSingleton.Instancia.Usuario.Idioma;
+
+            var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
+
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
+            {
+
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
+                    this.Text = Traducciones[this.Tag.ToString()].Texto;
+
+                if (groupBox2.Tag != null && Traducciones.ContainsKey(groupBox2.Tag.ToString()))  // Título del form
+                    groupBox2.Text = Traducciones[groupBox2.Tag.ToString()].Texto;
+
+                if (buttonNuevo.Tag != null && Traducciones.ContainsKey(buttonNuevo.Tag.ToString()))
+                    buttonNuevo.Text = Traducciones[buttonNuevo.Tag.ToString()].Texto;
+
+                if (buttonEliminar.Tag != null && Traducciones.ContainsKey(buttonEliminar.Tag.ToString()))
+                    buttonEliminar.Text = Traducciones[buttonEliminar.Tag.ToString()].Texto;
+
+                if (buttonEditar.Tag != null && Traducciones.ContainsKey(buttonEditar.Tag.ToString()))
+                    buttonEditar.Text = Traducciones[buttonEditar.Tag.ToString()].Texto;
+
+
+
+                if (groupBox1.Tag != null && Traducciones.ContainsKey(groupBox1.Tag.ToString()))
+                    groupBox1.Text = Traducciones[groupBox1.Tag.ToString()].Texto;
+            }
+
         }
     }
 }

@@ -126,8 +126,12 @@ namespace UI
                 if (ajustesDeStockToolStripMenuItem.Tag != null && Traducciones.ContainsKey(ajustesDeStockToolStripMenuItem.Tag.ToString()))
                     this.ajustesDeStockToolStripMenuItem.Text = Traducciones[ajustesDeStockToolStripMenuItem.Tag.ToString()].Texto;
 
+                if (gestionDePedidosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gestionDePedidosToolStripMenuItem.Tag.ToString()))
+                    this.gestionDePedidosToolStripMenuItem.Text = Traducciones[gestionDePedidosToolStripMenuItem.Tag.ToString()].Texto;
 
-                
+                if (presupuestosToolStripMenuItem1.Tag != null && Traducciones.ContainsKey(presupuestosToolStripMenuItem1.Tag.ToString()))
+                    this.presupuestosToolStripMenuItem1.Text = Traducciones[presupuestosToolStripMenuItem1.Tag.ToString()].Texto;
+
             }
 
             if (SesionSingleton.Instancia.IsLogged())
