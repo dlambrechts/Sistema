@@ -53,6 +53,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "Respaldos";
             this.groupBox2.Text = "Respaldos Disponibles";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // buttonCambiar
             // 

@@ -27,16 +27,21 @@ namespace BE
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
 
-
-        public void AgregarItem(ProductoBE Producto, int Cantidad) 
+        public void AgregarItem(ProductoBE Producto, int Cantidad,decimal unitario,decimal impuestos,decimal totalitem) 
         
         {
-            PedidoItemBE Item = new PedidoItemBE(Producto,Cantidad);
+            PedidoItemBE Item = new PedidoItemBE(Producto,Cantidad,unitario,impuestos,totalitem);
             _Items.Add(Item);
         }
        
         public List<PedidoItemBE> Items { get { return _Items; } }
         public ClienteBE Cliente { get { return _Cliente; } }
+
+        public decimal Descuento { get; set; }
+
+        public decimal Impuestos { get; set; }
+
+        public decimal Total { get; set; }
 
         public PresupuestoBE Presupuesto { get { return _Presupuesto; } }
 

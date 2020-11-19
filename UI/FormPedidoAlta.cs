@@ -94,6 +94,10 @@ namespace UI
             labelCli.Text = Pedido.Cliente.RazonSocial;
             labrlPresup.Text = Convert.ToString(Pedido.Presupuesto.Id);
 
+            labelImp.Text = "$ " + Convert.ToString(Pres.Iva);
+            labelDesc.Text = "$ " + Convert.ToString(Pres.Descuento);
+            labelTot.Text = "$ " + Convert.ToString(Pres.Total);
+
             checkBox1.Enabled = true;
             textBoxDir.Text = Pres.Cliente.Direccion;
 

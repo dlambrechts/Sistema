@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelTot = new System.Windows.Forms.Label();
+            this.labelImp = new System.Windows.Forms.Label();
+            this.labelDesc = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.labelEmision = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.labelPRes = new System.Windows.Forms.Label();
@@ -42,11 +48,11 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewItems = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelResp = new System.Windows.Forms.Label();
+            this.labelDir = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.labelDir = new System.Windows.Forms.Label();
-            this.labelResp = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
@@ -55,6 +61,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelTot);
+            this.groupBox1.Controls.Add(this.labelImp);
+            this.groupBox1.Controls.Add(this.labelDesc);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.labelEmision);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.labelPRes);
@@ -67,10 +79,65 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(375, 100);
+            this.groupBox1.Size = new System.Drawing.Size(375, 157);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cabecera";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // labelTot
+            // 
+            this.labelTot.AutoSize = true;
+            this.labelTot.Location = new System.Drawing.Point(92, 136);
+            this.labelTot.Name = "labelTot";
+            this.labelTot.Size = new System.Drawing.Size(46, 13);
+            this.labelTot.TabIndex = 27;
+            this.labelTot.Text = "labelImp";
+            // 
+            // labelImp
+            // 
+            this.labelImp.AutoSize = true;
+            this.labelImp.Location = new System.Drawing.Point(92, 113);
+            this.labelImp.Name = "labelImp";
+            this.labelImp.Size = new System.Drawing.Size(46, 13);
+            this.labelImp.TabIndex = 26;
+            this.labelImp.Text = "labelImp";
+            // 
+            // labelDesc
+            // 
+            this.labelDesc.AutoSize = true;
+            this.labelDesc.Location = new System.Drawing.Point(92, 91);
+            this.labelDesc.Name = "labelDesc";
+            this.labelDesc.Size = new System.Drawing.Size(54, 13);
+            this.labelDesc.TabIndex = 25;
+            this.labelDesc.Text = "labelDesc";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 136);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(67, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Total Pedido";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 113);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(55, 13);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Impuestos";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 91);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Descuento";
             // 
             // labelEmision
             // 
@@ -167,7 +234,7 @@
             this.groupBox2.Controls.Add(this.dataGridViewItems);
             this.groupBox2.Location = new System.Drawing.Point(393, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(349, 224);
+            this.groupBox2.Size = new System.Drawing.Size(349, 277);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Items";
@@ -178,7 +245,7 @@
             this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewItems.Location = new System.Drawing.Point(9, 20);
             this.dataGridViewItems.Name = "dataGridViewItems";
-            this.dataGridViewItems.Size = new System.Drawing.Size(335, 198);
+            this.dataGridViewItems.Size = new System.Drawing.Size(335, 251);
             this.dataGridViewItems.TabIndex = 0;
             // 
             // groupBox3
@@ -188,12 +255,30 @@
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Location = new System.Drawing.Point(17, 122);
+            this.groupBox3.Location = new System.Drawing.Point(12, 175);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(370, 114);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Entrega";
+            // 
+            // labelResp
+            // 
+            this.labelResp.AutoSize = true;
+            this.labelResp.Location = new System.Drawing.Point(151, 80);
+            this.labelResp.Name = "labelResp";
+            this.labelResp.Size = new System.Drawing.Size(35, 13);
+            this.labelResp.TabIndex = 16;
+            this.labelResp.Text = "label9";
+            // 
+            // labelDir
+            // 
+            this.labelDir.AutoSize = true;
+            this.labelDir.Location = new System.Drawing.Point(151, 54);
+            this.labelDir.Name = "labelDir";
+            this.labelDir.Size = new System.Drawing.Size(35, 13);
+            this.labelDir.TabIndex = 15;
+            this.labelDir.Text = "label8";
             // 
             // checkBox1
             // 
@@ -224,29 +309,11 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Envío a Cargo de";
             // 
-            // labelDir
-            // 
-            this.labelDir.AutoSize = true;
-            this.labelDir.Location = new System.Drawing.Point(151, 54);
-            this.labelDir.Name = "labelDir";
-            this.labelDir.Size = new System.Drawing.Size(35, 13);
-            this.labelDir.TabIndex = 15;
-            this.labelDir.Text = "label8";
-            // 
-            // labelResp
-            // 
-            this.labelResp.AutoSize = true;
-            this.labelResp.Location = new System.Drawing.Point(151, 80);
-            this.labelResp.Name = "labelResp";
-            this.labelResp.Size = new System.Drawing.Size(35, 13);
-            this.labelResp.TabIndex = 16;
-            this.labelResp.Text = "label9";
-            // 
             // FormPedidoVisualizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 257);
+            this.ClientSize = new System.Drawing.Size(753, 301);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -284,5 +351,11 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelTot;
+        private System.Windows.Forms.Label labelImp;
+        private System.Windows.Forms.Label labelDesc;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

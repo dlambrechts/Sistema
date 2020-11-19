@@ -38,6 +38,9 @@ namespace UI
             labelEntrega.Text = Pedido.FechaEntrega.ToShortDateString();
             labelEmision.Text = Pedido.FechaEmision.ToShortDateString();
             labelPRes.Text = Convert.ToString(Pedido.Presupuesto.Id);
+            labelDesc.Text = "$ "+Convert.ToString(Pedido.Descuento);
+            labelImp.Text = "$ " + Convert.ToString(Pedido.Impuestos);
+            labelTot.Text = "$ " + Convert.ToString(Pedido.Total);
             checkBox1.Checked = Pedido.Envio;
             if (Pedido.Envio == true)
 
@@ -53,6 +56,11 @@ namespace UI
                 labelResp.Text = "n/a";
             }
         
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -33,18 +33,23 @@ namespace BLL
 
             Pres = presBLL.SeleccionarPresupuestoPorId(Pres.Id); // Traer los items del presupuesto de la DB
 
+
             PedidoBE nPedido = new PedidoBE(Pres.Cliente, Pres);
+
+            nPedido.Descuento = Pres.Descuento;
+            nPedido.Impuestos = Pres.Iva;
+            nPedido.Total = Pres.Total;
 
             foreach (PresupuestoItemBE item in Pres.Items)
 
             {
-                nPedido.AgregarItem(item.Producto, item.Cantidad);
+                nPedido.AgregarItem(item.Producto, item.Cantidad,item.PrecioUnitario,item.IvaItem,item.TotalItem);
             }
 
             return nPedido;
         }
 
-        public void CambiarFechaEntrega(PedidoBE PedidoEditado) 
+        public void Editar(PedidoBE PedidoEditado) 
         
         {
             pDal.Editar(PedidoEditado);
@@ -58,7 +63,7 @@ namespace BLL
 
             foreach (PedidoItemBE item in Items)
             {
-                Pedido.AgregarItem(item.Producto, item.Cantidad);
+                Pedido.AgregarItem(item.Producto, item.Cantidad,item.PrecioUnitario, item.Impuestos,item.TotalItem);
             }    
         }
 

@@ -54,7 +54,7 @@ namespace UI
                     Pedido.Envio = checkBox1.Checked;
                     Pedido.ResponsableEnvio = comboBoxCargo.Text;
                     Pedido.DireccionEnvio = textBoxDir.Text;
-                    bllP.CambiarFechaEntrega(Pedido);
+                    bllP.Editar(Pedido);
 
                     MessageBox.Show("Pedido Actualizado Correctamente");
                     this.Close();

@@ -23,6 +23,9 @@ namespace DAL
             ParamCabecera.Add("@FechaEmision", Pedido.FechaEmision);
             ParamCabecera.Add("@FechaEntrega", Pedido.FechaEntrega);
             ParamCabecera.Add("@Envio", Pedido.Envio);
+            ParamCabecera.Add("@Descuento", Pedido.Descuento);
+            ParamCabecera.Add("@Impuestos", Pedido.Impuestos);
+            ParamCabecera.Add("@Total", Pedido.Total);
 
             if (Pedido.Envio == true) {
                 ParamCabecera.Add("@ResponsableEntrega", Pedido.ResponsableEnvio);
@@ -45,7 +48,10 @@ namespace DAL
                 Hashtable ParamItems = new Hashtable();
                 ParamItems.Add("@IdPedido", Convert.ToInt32(Id));
                 ParamItems.Add("@IdProducto", item.Producto.Id);
+                ParamItems.Add("@PrecioUnitario", item.PrecioUnitario);
                 ParamItems.Add("@Cantidad", item.Cantidad);
+                ParamItems.Add("@Impuestos", item.Impuestos);
+                ParamItems.Add("@TotalItem", item.TotalItem);
 
                 AccesoDB.Escribir("sp_InsertarPedidoItem", ParamItems);
             }
@@ -79,6 +85,9 @@ namespace DAL
                     oPedido.Envio = Convert.ToBoolean(Item["Envio"]);
                     oPedido.ResponsableEnvio = Convert.ToString(Item["ResponsableEntrega"]).Trim();
                     oPedido.DireccionEnvio = Convert.ToString(Item["DireccionEntrega"]).Trim();
+                    oPedido.Descuento = Convert.ToDecimal(Item["Descuento"]);
+                    oPedido.Impuestos = Convert.ToDecimal(Item["Impuestos"]);
+                    oPedido.Total = Convert.ToDecimal(Item["Total"]);
 
                     ListaPedidos.Add(oPedido);
                 }
@@ -105,8 +114,11 @@ namespace DAL
                     ProductoBE Producto = new ProductoBE();
                     Producto.Id = Convert.ToInt32(Item["IdProducto"]);
                     Producto.Descripcion = Convert.ToString(Item["Descripcion"]).Trim();
+                    decimal unitario = Convert.ToDecimal(Item["PrecioUnitario"]);
+                    decimal Impuesto = Convert.ToDecimal(Item["Impuestos"]);
+                    decimal TotalItem = Convert.ToDecimal(Item["TotalItem"]);
                     int Cantidad = Convert.ToInt32(Item["Cantidad"]);
-                    PedidoItemBE _Item = new PedidoItemBE(Producto, Cantidad);
+                    PedidoItemBE _Item = new PedidoItemBE(Producto, Cantidad,unitario,Impuesto,TotalItem);
 
                     Items.Add(_Item);
                 }
