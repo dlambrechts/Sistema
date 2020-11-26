@@ -21,7 +21,7 @@ namespace UI
         }
         PresupuestoBLL bllPresup = new PresupuestoBLL();
         List<PresupuestoBE> ListaPresupuestos = new List<PresupuestoBE>();
-        PresupuestoBE selPres = new PresupuestoBE();
+        PresupuestoBE selPres;
         private void FormPresupuestoAnalisisTecnico_Load(object sender, EventArgs e)
         {
             ObtenerPresupuestos();
@@ -34,11 +34,11 @@ namespace UI
             ListaPresupuestos = bllPresup.ListarPresupuestos();
             ClienteBLL bllCli = new ClienteBLL();
             UsuarioBLL bllUs = new UsuarioBLL();
-            foreach (PresupuestoBE item in ListaPresupuestos)
-            {
-                item.Cliente = bllCli.SeleccionarPorId(item.Cliente.Id);
-                item.Vendedor = bllUs.SeleccionarUsuarioPorId(item.Vendedor.Id);
-            }
+            //foreach (PresupuestoBE item in ListaPresupuestos)
+            //{
+            //    item.Cliente = bllCli.SeleccionarPorId(item.Cliente.Id);
+            //    item.Vendedor = bllUs.SeleccionarUsuarioPorId(item.Vendedor.Id);
+            //}
 
         }
         public void CargarGrilla()
@@ -75,7 +75,7 @@ namespace UI
 
         private void buttonAp_Click(object sender, EventArgs e)
         {
-            if (selPres.Id == 0) { MessageBox.Show("Por favor, seleccione un Presupuesto"); }
+            if (selPres==null) { MessageBox.Show("Por favor, seleccione un Presupuesto"); }
 
            
             else {
@@ -98,8 +98,7 @@ namespace UI
                     MessageBox.Show("No es posible realizar el Análisis Técnico en el Estado actual");
 
                     BitacoraActividadBE nActividad = new BitacoraActividadBE();
-                    BitacoraBLL bllAct = new BitacoraBLL();
-                //    nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Advertencia");
+                    BitacoraBLL bllAct = new BitacoraBLL();             
                     nActividad.Detalle = "Análisis Técnico no es posible para el Presupuesto N° " + selPres.Id + " en el estado actual";
                     bllAct.NuevaActividad(nActividad);
                 }
@@ -126,7 +125,7 @@ namespace UI
         private void buttonVis_Click(object sender, EventArgs e)
         {
 
-            if (selPres.Id != 0)
+            if (selPres !=null)
 
             {
                 FormPresupuestoVisualizar FormV = new FormPresupuestoVisualizar();

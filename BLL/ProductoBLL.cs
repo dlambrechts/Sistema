@@ -82,7 +82,7 @@ namespace BLL
             foreach (PresupuestoBE Presup in ListaPresup)
 
             {
-                PresupuestoBE checkPres = new PresupuestoBE();
+                PresupuestoBE checkPres;
                 checkPres = bllPres.SeleccionarPresupuestoPorId(Presup.Id);
                 if (checkPres.Items.Exists(x => x.Producto.Id == Prod.Id))
 

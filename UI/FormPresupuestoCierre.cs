@@ -23,9 +23,9 @@ namespace UI
         }
         enum Accion : int { Aprobar = 1, Rechazar = 2 }
 
-        public PresupuestoBE cPresup = new PresupuestoBE();
+        public PresupuestoBE cPresup;
         PresupuestoBLL bllP = new PresupuestoBLL();
-        PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE();
+
         private void FormPresupuestoCierre_Load(object sender, EventArgs e)
         {
             textBoxPre.Text = Convert.ToString(cPresup.Id);
@@ -41,12 +41,14 @@ namespace UI
             if (Respuesta == DialogResult.Yes)
 
             {
+                PresupuestoTipoAprobacionBE Tipo = new PresupuestoTipoAprobacionBE();
+                Tipo = bllP.SeleccionarAprobacionTipo("Cliente");
+                PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE(cPresup, Tipo, SesionSingleton.Instancia.Usuario);
+
                 if (((comboBoxTipo.Text == "Aprobar" && cPresup.Estado.AprobacionCliente() == true)) || ((comboBoxTipo.Text == "Rechazar" && cPresup.Estado.RechazoCliente() == true)))
                 {
-                    nAprob.Presupuesto = cPresup;
-                    nAprob.Aprobador = SesionSingleton.Instancia.Usuario;
+                
                     nAprob.Fecha = DateTime.Now;
-                    nAprob.tipo = bllP.SeleccionarAprobacionTipo("Cliente");
                     nAprob.Accion = comboBoxTipo.Text;
                     nAprob.Observaciones = textBoxObs.Text;
                     PresupuestoBLL bllAp = new PresupuestoBLL();
@@ -75,7 +77,7 @@ namespace UI
 
                     BitacoraActividadBE nActividad = new BitacoraActividadBE();
                     BitacoraBLL bllAct = new BitacoraBLL();
-                 //   nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Advertencia");
+
                     nActividad.Detalle = "El Cierre no es posible para el Presupuesto N° " + cPresup.Id + " en el estado actual";
                     bllAct.NuevaActividad(nActividad);
 

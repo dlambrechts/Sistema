@@ -18,7 +18,7 @@ namespace UI
             InitializeComponent();
         }
 
-        public PresupuestoBE vPresup = new PresupuestoBE();
+        public PresupuestoBE vPresup;
        
 
         private void FormPresupuestoVisualizar_Load(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace UI
             UsuarioBLL bllUs = new UsuarioBLL();
 
             vPresup = bllPresup.SeleccionarPresupuestoPorId(vPresup.Id);
-            vPresup.Cliente = bllCli.SeleccionarPorId(vPresup.Cliente.Id);
+            //vPresup.Cliente = bllCli.SeleccionarPorId(vPresup.Cliente.Id);
             vPresup.Vendedor = bllUs.SeleccionarUsuarioPorId(vPresup.Vendedor.Id);           
         }
 

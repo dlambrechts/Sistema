@@ -27,12 +27,14 @@ namespace DAL
             {
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
-                    PresupuestoAprobacionBE oAprob = new PresupuestoAprobacionBE();
+                    UsuarioBE Aprobador = new UsuarioBE();
+                    Aprobador.Nombre = Convert.ToString(Item["Nombre"]).Trim();
+                    Aprobador.Apellido = Convert.ToString(Item["Apellido"]).Trim();
+                    PresupuestoTipoAprobacionBE Tipo = new PresupuestoTipoAprobacionBE();
+                    Tipo.Tipo = Convert.ToString(Item["Tipo"]).Trim();
 
-                    oAprob.Fecha = Convert.ToDateTime(Item["Fecha"]); oAprob.Fecha.ToShortDateString();
-                    oAprob.Aprobador.Nombre = Convert.ToString(Item["Nombre"]).Trim();
-                    oAprob.Aprobador.Apellido = Convert.ToString(Item["Apellido"]).Trim();
-                    oAprob.tipo.Tipo = Convert.ToString(Item["Tipo"]).Trim();
+                    PresupuestoAprobacionBE oAprob = new PresupuestoAprobacionBE(Presupuesto,Tipo,Aprobador);
+                    oAprob.Fecha = Convert.ToDateTime(Item["Fecha"]); oAprob.Fecha.ToShortDateString();                   
                     oAprob.Accion = Convert.ToString(Item["Accion"]).Trim();
                     oAprob.Observaciones = Convert.ToString(Item["Observaciones"]).Trim();
 
@@ -56,13 +58,15 @@ namespace DAL
             {
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
-                    PresupuestoBE oPres = new PresupuestoBE();
+                    ClienteBE Cliente = new ClienteBE();
 
+
+                   
+                    Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim();
+                    Cliente.Direccion = Convert.ToString(Item["Direccion"]).Trim();
+
+                    PresupuestoBE oPres = new PresupuestoBE(Cliente);
                     oPres.Id = Convert.ToInt32(Item["Id"]);
-                    oPres.Cliente = new ClienteBE();
-                    oPres.Cliente.Id = Convert.ToInt32(Item["IdCliente"]);
-                    oPres.Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim();
-                    oPres.Cliente.Direccion = Convert.ToString(Item["Direccion"]).Trim();
                     oPres.Vendedor = new UsuarioBE();
                     oPres.Vendedor.Id = Convert.ToInt32(Item["IdVendedor"]);
                     oPres.Vendedor.Nombre = Convert.ToString(Item["Nombre"]).Trim();
@@ -76,20 +80,21 @@ namespace DAL
                     oPres.PorcDescuento = Convert.ToInt32(Item["PorcDescuento"]);
                     oPres.Iva = Convert.ToDecimal(Item["Iva"]);
 
+                    PresupuestoEstadoBE Est ;
                     switch (Convert.ToString(Item["Estado"]).Trim())
 
                     {
-                        case "ApTecPend": { oPres.Estado = new ApTecPend(); } break;
-                        case "ApTecRech": { oPres.Estado = new ApTecRech(); } break;
-                        case "ApComPend": { oPres.Estado = new ApComPend(); } break;
-                        case "ApComRech": { oPres.Estado = new ApComRech(); } break;
-                        case "EnviarCli": { oPres.Estado = new EnviarCli(); } break;
-                        case "ApCli": { oPres.Estado = new ApCli(); } break;
-                        case "RechCli": { oPres.Estado = new RechCli(); } break;
-                        case "Finalizado": { oPres.Estado = new Finalizado(); } break;
-
+                        case "ApTecPend": { Est = new ApTecPend(); oPres.ActualizarEstado(Est); } break;
+                        case "ApTecRech": { Est = new ApTecRech(); oPres.ActualizarEstado(Est); } break;
+                        case "ApComPend": { Est = new ApComPend(); oPres.ActualizarEstado(Est); } break;
+                        case "ApComRech": { Est = new ApComRech(); oPres.ActualizarEstado(Est); } break;
+                        case "EnviarCli": { Est = new EnviarCli(); oPres.ActualizarEstado(Est); } break;
+                        case "ApCli": { Est = new ApCli(); oPres.ActualizarEstado(Est); } break;
+                        case "RechCli": { Est = new RechCli(); oPres.ActualizarEstado(Est); } break;
+                        case "Finalizado": { Est = new Finalizado(); oPres.ActualizarEstado(Est); } break;
+                            
                     }
-
+                    
                     oPres.Estado.Descripción = Convert.ToString(Item["Descripcion"]).Trim();
 
 
@@ -177,7 +182,8 @@ namespace DAL
         public PresupuestoBE SeleccionarPresupuestoPorId(int Id)
 
         {
-            PresupuestoBE oPres = new PresupuestoBE();
+            ClienteBE Cli = new ClienteBE();
+            PresupuestoBE oPres = new PresupuestoBE(Cli);
             Hashtable Parametros = new Hashtable();
             Parametros.Add("@Id", Id);
             Acceso AccesoDB = new Acceso();
@@ -189,8 +195,7 @@ namespace DAL
                 foreach (DataRow Item in Ds.Tables[0].Rows)
                 {
 
-                    oPres.Id = Convert.ToInt32(Item["Id"]);
-                    oPres.Cliente = new ClienteBE();
+                    oPres.Id = Convert.ToInt32(Item["Id"]);                
                     oPres.Cliente.Id = Convert.ToInt32(Item["IdCliente"]);
                     oPres.Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim(); ;
                     oPres.Vendedor = new UsuarioBE(); oPres.Vendedor.Id = Convert.ToInt32(Item["IdVendedor"]);
@@ -204,17 +209,18 @@ namespace DAL
                     oPres.Iva = Convert.ToDecimal(Item["Iva"]);
 
 
+                    PresupuestoEstadoBE Est;
                     switch (Convert.ToString(Item["Estado"]).Trim())
 
                     {
-                        case "ApTecPend": { oPres.Estado = new ApTecPend(); } break;
-                        case "ApTecRech": { oPres.Estado = new ApTecRech(); } break;
-                        case "ApComPend": { oPres.Estado = new ApComPend(); } break;
-                        case "ApComRech": { oPres.Estado = new ApComRech(); } break;
-                        case "EnviarCli": { oPres.Estado = new EnviarCli(); } break;
-                        case "ApCli": { oPres.Estado = new ApCli(); } break;
-                        case "RechCli": { oPres.Estado = new RechCli(); } break;
-                        case "Finalizado": { oPres.Estado = new Finalizado(); } break;
+                        case "ApTecPend": { Est = new ApTecPend(); oPres.ActualizarEstado(Est); } break;
+                        case "ApTecRech": { Est = new ApTecRech(); oPres.ActualizarEstado(Est); } break;
+                        case "ApComPend": { Est = new ApComPend(); oPres.ActualizarEstado(Est); } break;
+                        case "ApComRech": { Est = new ApComRech(); oPres.ActualizarEstado(Est); } break;
+                        case "EnviarCli": { Est = new EnviarCli(); oPres.ActualizarEstado(Est); } break;
+                        case "ApCli": { Est = new ApCli(); oPres.ActualizarEstado(Est); } break;
+                        case "RechCli": { Est = new RechCli(); oPres.ActualizarEstado(Est); } break;
+                        case "Finalizado": { Est = new Finalizado(); oPres.ActualizarEstado(Est); } break;
 
                     }
 
@@ -255,7 +261,7 @@ namespace DAL
             ParamCabecera.Add("@IdPresupuesto", Resultado.Presupuesto.Id);
             ParamCabecera.Add("@IdAprobador", Resultado.Aprobador.Id);
             ParamCabecera.Add("@Fecha", Resultado.Fecha);
-            ParamCabecera.Add("@TipoAprobacion", Resultado.tipo.Id);
+            ParamCabecera.Add("@TipoAprobacion", Resultado.Tipo.Id);
             ParamCabecera.Add("@Accion", Resultado.Accion);
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
@@ -271,7 +277,7 @@ namespace DAL
             ParamCabecera.Add("@IdPresupuesto", Resultado.Presupuesto.Id);
             ParamCabecera.Add("@IdAprobador", Resultado.Aprobador.Id);
             ParamCabecera.Add("@Fecha", Resultado.Fecha);
-            ParamCabecera.Add("@TipoAprobacion", Resultado.tipo.Id);
+            ParamCabecera.Add("@TipoAprobacion", Resultado.Tipo.Id);
             ParamCabecera.Add("@Accion", Resultado.Accion);
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 
@@ -287,7 +293,7 @@ namespace DAL
             ParamCabecera.Add("@IdPresupuesto", Resultado.Presupuesto.Id);
             ParamCabecera.Add("@IdAprobador", Resultado.Aprobador.Id);
             ParamCabecera.Add("@Fecha", Resultado.Fecha);
-            ParamCabecera.Add("@TipoAprobacion", Resultado.tipo.Id);
+            ParamCabecera.Add("@TipoAprobacion", Resultado.Tipo.Id);
             ParamCabecera.Add("@Accion", Resultado.Accion);
             ParamCabecera.Add("@Observaciones", Resultado.Observaciones);
 

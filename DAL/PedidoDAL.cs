@@ -74,8 +74,8 @@ namespace DAL
                     ClienteBE Cliente = new ClienteBE();
                     Cliente.Id = Convert.ToInt32(Item["IdCliente"]);
                     Cliente.RazonSocial = Convert.ToString(Item["RazonSocial"]).Trim();
-                    PresupuestoBE Presupuesto = new PresupuestoBE();
-                    Presupuesto.Cliente = Cliente;
+                    PresupuestoBE Presupuesto = new PresupuestoBE(Cliente);
+                    
                     Presupuesto.Id = Convert.ToInt32(Item["IdPresupuesto"]);
                     PedidoBE oPedido = new PedidoBE(Cliente, Presupuesto);
 

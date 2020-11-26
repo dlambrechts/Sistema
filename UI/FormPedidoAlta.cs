@@ -83,7 +83,7 @@ namespace UI
             labelCli.Text = "";
             labrlPresup.Text = "";
 
-            PresupuestoBE Pres = new PresupuestoBE();
+            PresupuestoBE Pres;
             Pres = (PresupuestoBE)listBoxPresup.SelectedItem;
 
             Pedido = pedBLL.PresupuestoToPedido(Pres);
@@ -119,7 +119,7 @@ namespace UI
         private void buttonVerPres_Click(object sender, EventArgs e)
         {
 
-            PresupuestoBE Pres = new PresupuestoBE();
+            PresupuestoBE Pres;
             Pres = (PresupuestoBE)listBoxPresup.SelectedItem;
 
             if (Pres.Id != 0)

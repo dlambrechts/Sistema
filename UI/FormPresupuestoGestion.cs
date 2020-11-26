@@ -24,7 +24,7 @@ namespace UI
         }
 
 
-        PresupuestoBE selPres = new PresupuestoBE();
+        PresupuestoBE selPres;
 
         PresupuestoBLL bllPresup = new PresupuestoBLL();
         List<PresupuestoBE> ListaPresupuestos = new List<PresupuestoBE>();
@@ -65,7 +65,7 @@ namespace UI
         private void button3_Click(object sender, EventArgs e)
         {
 
-            if (selPres.Id!=0)
+            if (selPres!=null)
 
             {
                 FormPresupuestoVisualizar FormV = new FormPresupuestoVisualizar();
@@ -79,7 +79,7 @@ namespace UI
 
         private void buttonCierre_Click(object sender, EventArgs e)
         {
-            if (selPres.Id != 0)
+            if (selPres!=null)
 
             {
                 if(selPres.Estado.AprobacionCliente()==true || selPres.Estado.RechazoCliente()==true) 
@@ -104,7 +104,7 @@ namespace UI
 
         private void buttonEditar_Click(object sender, EventArgs e) // Editar
         {
-            if (selPres.Id != 0)
+            if (selPres!=null)
 
             {
               
@@ -127,7 +127,7 @@ namespace UI
 
         private void button4_Click(object sender, EventArgs e) // Eliminar
         {
-            if (selPres.Id != 0)
+            if (selPres!=null)
 
             {
                 if (selPres.Estado.Eliminar()==false) { MessageBox.Show("No es posible Elminar en el Estado actual"); }
@@ -142,13 +142,14 @@ namespace UI
                     }
                 }
             }
+
             else MessageBox.Show("Por favor, seleccione un Presupuesto de la Grilla");
         }
 
         private void buttonLayout_Click(object sender, EventArgs e)
         {
 
-            if (selPres.Id != 0)
+            if (selPres!=null)
 
             {
                 DialogResult Respuesta = MessageBox.Show("¿Generar PDF Presupuesto " + selPres.Id + "?", "Generar PDF", MessageBoxButtons.YesNo);
@@ -160,7 +161,6 @@ namespace UI
                     UsuarioBLL bllVen = new UsuarioBLL();
              
                     selPres = bllPresup.SeleccionarPresupuestoPorId(selPres.Id);
-                    selPres.Cliente = bllCli.SeleccionarPorId(selPres.Cliente.Id);
                     selPres.Vendedor = bllVen.SeleccionarUsuarioPorId(selPres.Vendedor.Id);
                     GenerarLayoutPresupuesto Pdf = new GenerarLayoutPresupuesto();
 

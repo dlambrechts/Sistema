@@ -21,7 +21,7 @@ namespace UI
             InitializeComponent();
         }
 
-        public PresupuestoBE ePresupuesto = new PresupuestoBE();
+        public PresupuestoBE ePresupuesto;
         public PresupuestoBLL bllPresupuesto = new PresupuestoBLL();
         private void FormPresupuestoEditar_Load(object sender, EventArgs e)
         {
@@ -154,9 +154,12 @@ namespace UI
 
                 if (Respuesta == DialogResult.Yes)
                 {
-                    ePresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;
+                    ClienteBE nCli = new ClienteBE();
+                    nCli= (ClienteBE)comboCliente.SelectedItem;
+                    ePresupuesto.ActualizarCliente(nCli);
                     ePresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
-                    ePresupuesto.Estado = new ApTecPend() ;                                 // Al editar vuelve a estar pendiente de Aprobación Técnica
+                    PresupuestoEstadoBE nEstado = new ApComPend();
+                    ePresupuesto.ActualizarEstado(nEstado);                                // Al editar vuelve a estar pendiente de Aprobación Técnica
                     ePresupuesto.FechaEntrega = dateTimePicker1.Value;
                     ePresupuesto.FechaValidez = dateTimePickerVal.Value;
                     ePresupuesto.PorcDescuento = Convert.ToInt32(comboDescuento.Text);

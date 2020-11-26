@@ -10,17 +10,23 @@ namespace BE
     {
         public int Id { get; set; }
 
-        public PresupuestoBE Presupuesto = new PresupuestoBE();
-        public DateTime Fecha { get; set; }
+        private PresupuestoBE _Presupuesto;
 
-        public UsuarioBE Aprobador = new UsuarioBE();
-        public UsuarioBE aprobador { get { return Aprobador; } }
+        private UsuarioBE _Aprobador;
 
-        public PresupuestoTipoAprobacionBE tipo = new PresupuestoTipoAprobacionBE();
-
-        public PresupuestoTipoAprobacionBE Tipo { get { return tipo; } }
+        private PresupuestoTipoAprobacionBE _Tipo;
+        public DateTime Fecha { get; set; }        
         public string Accion { get; set; }
         public string Observaciones { get; set; }
+        public PresupuestoAprobacionBE(PresupuestoBE _presup,PresupuestoTipoAprobacionBE _tipo, UsuarioBE _aprobador) 
         
+        {
+            _Presupuesto = _presup;
+            _Aprobador = _aprobador;
+            _Tipo = _tipo;
+        }
+        public UsuarioBE Aprobador { get { return _Aprobador; } }
+        public PresupuestoBE Presupuesto { get { return _Presupuesto; } }
+        public PresupuestoTipoAprobacionBE Tipo { get { return _Tipo; } }
     }
 }

@@ -16,22 +16,28 @@ namespace BE
     {
         [XmlElement("Num_Presupuesto")]
         public int Id { get; set; }
-        public ClienteBE Cliente { get; set; }
+        private ClienteBE _Cliente { get; set; }
+
+        private PresupuestoEstadoBE _Estado;
+
+        public List<PresupuestoItemBE> _Items;
+        public PresupuestoBE(ClienteBE _cliente) 
+        
+        {
+            _Cliente = _cliente;
+            _Items = new List<PresupuestoItemBE>();
+            this._Estado = new ApTecPend();      // Todos los Presupuestos nuevos quedan pendientes de Aprobación Técnica
+        }
         public UsuarioBE Vendedor { get; set; }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
-        public DateTime FechaValidez { get; set; }
-        public PresupuestoEstadoBE Estado { get; set; }    
+        public DateTime FechaValidez { get; set; }   
         public int PorcDescuento { get; set; }
         public decimal Descuento { get; set; }
         public decimal Iva { get; set; }
         public decimal Total { get; set; }
-        public string Observaciones { get; set; }
-       
-        public PresupuestoBE() 
-        
-        { this.Estado = new ApTecPend(); } // Todos los Presupuestos nuevos quedan pendientes de Aprobación Técnica
-        
+        public string Observaciones { get; set; }        
+        public void ActualizarEstado (PresupuestoEstadoBE NuevoEstado) { this._Estado = NuevoEstado;}
         public bool ExisteItem (ProductoBE Prod){return this.Items.Exists(x => x.Producto.Id == Prod.Id);}
         public void AgregarItems(ProductoBE Prod, int Cant)
 
@@ -50,16 +56,19 @@ namespace BE
             if (this.ExisteItem(Prod) == true)         
             {
                 var ItemRemover = this.Items.Single(x => x.Producto.Id == Prod.Id);
-                this.Items.Remove(ItemRemover);
+                this._Items.Remove(ItemRemover);
             }
         }
-
         public override string ToString()
         {
-            return "Presupuesto N° " + Id + "  Cliente: " + Cliente.RazonSocial;
+            return "Presupuesto N° " + Id + "  Cliente: " + _Cliente.RazonSocial;
         }
 
         [XmlIgnoreAttribute]
-        public List<PresupuestoItemBE> Items = new List<PresupuestoItemBE>();
+        public List<PresupuestoItemBE> Items { get { return _Items; } }
+        public PresupuestoEstadoBE Estado { get { return this._Estado; } }
+        public ClienteBE Cliente { get { return this._Cliente; } }
+
+        public void ActualizarCliente (ClienteBE NuevoCliente) { this._Cliente = NuevoCliente; }
     }
 }

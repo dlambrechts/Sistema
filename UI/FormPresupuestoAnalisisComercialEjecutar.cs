@@ -20,13 +20,13 @@ namespace UI
         {
             InitializeComponent();
             comboBoxAccion.DataSource = Enum.GetValues(typeof(Accion));
-            textBoxPresup.Text = Convert.ToString(oPresup.Id);
+
         }
 
         enum Accion : int { Aprobar = 1, Rechazar = 2 }
-        public PresupuestoBE oPresup = new PresupuestoBE();
+        public PresupuestoBE oPresup;
         PresupuestoBLL bllP = new PresupuestoBLL();
-        PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE();
+
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
@@ -37,12 +37,15 @@ namespace UI
             if (Respuesta == DialogResult.Yes)
 
             {
+                PresupuestoTipoAprobacionBE Tipo = new PresupuestoTipoAprobacionBE();
+                Tipo= bllP.SeleccionarAprobacionTipo("Comercial");
+
+                PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE(oPresup,Tipo, SesionSingleton.Instancia.Usuario);
+
                 if (((comboBoxAccion.Text == "Aprobar" && oPresup.Estado.AprobacionComercial() == true)) || ((comboBoxAccion.Text == "Rechazar" && oPresup.Estado.RechazoComercial() == true)))
                 {
-                    nAprob.Presupuesto = oPresup;
-                    nAprob.Aprobador = SesionSingleton.Instancia.Usuario;
-                    nAprob.Fecha = DateTime.Now;
-                    nAprob.tipo = bllP.SeleccionarAprobacionTipo("Comercial");
+
+                    nAprob.Fecha = DateTime.Now;                   
                     nAprob.Accion = comboBoxAccion.Text;
                     nAprob.Observaciones = textBoxObs.Text;
                     PresupuestoBLL bllAp = new PresupuestoBLL();
@@ -83,6 +86,7 @@ namespace UI
         private void FormPresupuestoAnalisisComercialEjecutar_Load(object sender, EventArgs e)
         {
             textBoxPresup.Text = Convert.ToString(oPresup.Id);
+           
         }
     }
 }

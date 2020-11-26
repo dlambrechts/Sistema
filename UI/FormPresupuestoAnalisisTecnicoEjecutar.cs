@@ -23,9 +23,8 @@ namespace UI
             
         }
         enum Accion:int { Aprobar=1,Rechazar=2}
-        public PresupuestoBE oPresup = new PresupuestoBE();
+        public PresupuestoBE oPresup;
         PresupuestoBLL bllP = new PresupuestoBLL();
-        PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE();
 
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -39,15 +38,17 @@ namespace UI
 
             DialogResult Respuesta = MessageBox.Show("Confirma "+ comboBoxAccion.Text + "Presupuesto?", comboBoxAccion.Text, MessageBoxButtons.YesNo);
 
-                     if (Respuesta == DialogResult.Yes)
+              if (Respuesta == DialogResult.Yes)
 
-                       {
-                            if(((comboBoxAccion.Text=="Aprobar" && oPresup.Estado.AprobacionTecnica()==true))|| ((comboBoxAccion.Text == "Rechazar" && oPresup.Estado.RechazoTecnico() == true)))
+             {
+                PresupuestoTipoAprobacionBE Tipo = new PresupuestoTipoAprobacionBE();
+                Tipo = bllP.SeleccionarAprobacionTipo("Tecnica");
+                PresupuestoAprobacionBE nAprob = new PresupuestoAprobacionBE(oPresup, Tipo, SesionSingleton.Instancia.Usuario);
+
+                if (((comboBoxAccion.Text=="Aprobar" && oPresup.Estado.AprobacionTecnica()==true))|| ((comboBoxAccion.Text == "Rechazar" && oPresup.Estado.RechazoTecnico() == true)))
                           { 
-                            nAprob.Presupuesto = oPresup;             
-                            nAprob.Aprobador = SesionSingleton.Instancia.Usuario;
+
                             nAprob.Fecha = DateTime.Now;
-                            nAprob.tipo = bllP.SeleccionarAprobacionTipo("Tecnica");
                             nAprob.Accion = comboBoxAccion.Text;
                             nAprob.Observaciones = textBoxObs.Text;
                             PresupuestoBLL bllAp = new PresupuestoBLL();

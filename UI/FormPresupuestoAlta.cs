@@ -20,13 +20,13 @@ namespace UI
         public FormPresupuestoAlta()
         {
             InitializeComponent();
-            ActualizarGrillaItems();
+           
             comboDescuento.SelectedItem = 0;
             dateTimePicker1.Value = DateTime.Now.AddDays(15);
             dateTimePickerVal.Value = DateTime.Now.AddDays(30);
         }
- 
-        PresupuestoBE nPresupuesto = new PresupuestoBE();
+
+        PresupuestoBE nPresupuesto;
         PresupuestoBLL bllPresupuesto = new PresupuestoBLL();     
         decimal subtotal=0;
         decimal valordesc = 0;
@@ -36,12 +36,14 @@ namespace UI
         public void ActualizarGrillaItems() 
         
         {
+            
             BindingList<PresupuestoItemBE> ListaItems = new BindingList<PresupuestoItemBE>(nPresupuesto.Items);
 
             this.dataGridViewItems.DataSource = null;
             this.dataGridViewItems.DataSource = ListaItems;
             this.dataGridViewItems.Columns[0].HeaderText = "Item";
-            this.dataGridViewItems.Columns[0].Width = 250;       
+            this.dataGridViewItems.Columns[0].Width = 250;
+           
         }
         public void ActualizarTotales() 
         
@@ -60,7 +62,10 @@ namespace UI
         private void FormPresupuestoAlta_Load(object sender, EventArgs e)
         {
             ObtenerClientes();
-            ObtenerProductos();
+            ObtenerProductos();            
+            ClienteBE nCliente = new ClienteBE();
+            nPresupuesto = new PresupuestoBE(nCliente);
+            ActualizarGrillaItems();
         }
 
         public void ObtenerClientes() 
@@ -132,8 +137,9 @@ namespace UI
                     if (Respuesta == DialogResult.Yes)
                     {
 
-                    try { 
-                        nPresupuesto.Cliente = (ClienteBE)comboCliente.SelectedItem;                      
+                    try {
+                       
+                        nPresupuesto.ActualizarCliente((ClienteBE)comboCliente.SelectedItem);                                                                   
                         nPresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
                         nPresupuesto.FechaEmision = DateTime.Now;                        
                         nPresupuesto.FechaEntrega = dateTimePicker1.Value;
@@ -145,7 +151,6 @@ namespace UI
                         nPresupuesto.Iva = totalIva;
 
                         bllPresupuesto.AltaPresupuesto(nPresupuesto);
-
                         MessageBox.Show("Presupuesto Emitido correctamente");
                     }
 
@@ -154,17 +159,12 @@ namespace UI
                     {
                         BitacoraActividadBE nActividad = new BitacoraActividadBE();
                         BitacoraBLL bllAct = new BitacoraBLL();
-                      //  nActividad.Clasificacion = (BitacoraClasifActividad)System.Enum.Parse(typeof(BitacoraClasifActividad), "Error");
                         nActividad.Detalle = "Error en alta de Presupuesto: " + Ex.Message ;
                         bllAct.NuevaActividad(nActividad);
-
                         MessageBox.Show(Ex.Message);
-
                     }
                         
-
                         this.Close();
-
                     }
 
              }
