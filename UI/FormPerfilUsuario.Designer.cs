@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormPerfilUsuario
+    public partial class FormPerfilUsuario
     {
         /// <summary>
         /// Required designer variable.

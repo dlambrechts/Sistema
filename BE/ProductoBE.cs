@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +24,9 @@ namespace BE
        
         public override string ToString()
         {
-            return "(Código: " + Id +") "+" "+Descripcion;
+            return "(C�digo: " + Id +") "+" "+Descripcion;
         }
+
+
     }
 }

@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +15,7 @@ using BLL;
 
 namespace UI
 {
-    public partial class FormBackup : Form,IIdiomaObserver
+    public partial class FormBackup : Form, IIdiomaObserver
     {
         public FormBackup()
         {
@@ -37,10 +37,10 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr√° traducciones, por lo tanto es necesario consultar si es null
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr· traducciones, por lo tanto es necesario consultar si es null
             {
 
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // T√≠tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÌtulo del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
                 if (buttonNuevo.Tag != null && Traducciones.ContainsKey(buttonNuevo.Tag.ToString()))
@@ -99,7 +99,7 @@ namespace UI
             if (SesionSingleton.Instancia.Usuario.Mail != "admin") 
             
             {
-                MessageBox.Show("Solo el usuario admin puede realzar esta operaci√≥n");
+                MessageBox.Show("Solo el usuario admin puede realzar esta operaciÛn");
             }
 
             else 
@@ -114,7 +114,7 @@ namespace UI
                 else 
                 
                 {
-                    DialogResult Respuesta = MessageBox.Show("Confirma retauraci√≥n de Base de datos: "+listBox1.SelectedItem.ToString()+" ?", "Restaurar", MessageBoxButtons.YesNo);
+                    DialogResult Respuesta = MessageBox.Show("Confirma retauraciÛn de Base de datos: "+listBox1.SelectedItem.ToString()+" ?", "Restaurar", MessageBoxButtons.YesNo);
 
 
 

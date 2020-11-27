@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE.PresupuestoEstado
 {
-    public class ApCli:PresupuestoEstadoBE
+    public class ApCli : PresupuestoEstadoBE
     {
         public override bool AprobacionCliente() { return false; }
         public override bool AprobacionComercial() { return false; }

@@ -1,4 +1,4 @@
-ï»¿using BE;
+using BE;
 using BLL;
 using System;
 using System.Collections.Generic;
@@ -19,10 +19,10 @@ namespace UI
             InitializeComponent();
         }
 
-        IdiomaEtiquetaBLL bllEt = new IdiomaEtiquetaBLL();
+        private BLL.IdiomaEtiquetaBLL bllEt = new IdiomaEtiquetaBLL();
        
-        IdiomaBE beIdioma = new IdiomaBE();
-        IdiomaEtiquetaBE beEt = new IdiomaEtiquetaBE();
+        private BE.IdiomaBE beIdioma = new IdiomaBE();
+        private BE.IdiomaEtiquetaBE beEt = new IdiomaEtiquetaBE();
        
 
 
@@ -40,7 +40,7 @@ namespace UI
 
             if(Traducciones==null)  // Traducciones va a ser null cuando se cree un idioma nuevo y no tenga traducciones cargadas para las etiquetas
             {
-                MessageBox.Show("AÃºn no existen la traducciÃ³n para el Idioma seleccionado");
+                MessageBox.Show("Aún no existen la traducción para el Idioma seleccionado");
                 textTraduccion.Text = "";
             }
 
@@ -55,7 +55,7 @@ namespace UI
                    else 
             
                    {
-                         MessageBox.Show("AÃºn no existen la traducciÃ³n para el Idioma seleccionado");
+                         MessageBox.Show("Aún no existen la traducción para el Idioma seleccionado");
                          textTraduccion.Text = "";
                    }
 
@@ -77,14 +77,14 @@ namespace UI
 
             {
                 TraductorBLL.InsertarEditarTraduccion(beIdioma, nTraduc, 2);
-                MessageBox.Show("La traducciÃ³n se Modifico correctamente");
+                MessageBox.Show("La traducción se Modifico correctamente");
             }
 
             else
 
             {
                 TraductorBLL.InsertarEditarTraduccion(beIdioma, nTraduc, 1); // Si no existe entonces la creo
-                MessageBox.Show("La TraducciÃ³n se CreÃ³ correctamente");
+                MessageBox.Show("La Traducción se Creó correctamente");
             }
 
             textTraduccion.Text = "";

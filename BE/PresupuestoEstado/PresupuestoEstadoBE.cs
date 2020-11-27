@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace BE
 {
     [Serializable()]
-    public abstract class PresupuestoEstadoBE
+	public abstract class PresupuestoEstadoBE
         {
 
-        public String DescripciÃ³n { get; set; }
+        public String Descripción { get; set; }
         public abstract bool AprobacionTecnica();
         public abstract bool RechazoTecnico();
         public abstract bool AprobacionComercial();
@@ -24,7 +24,7 @@ namespace BE
 
         public override string ToString()
         {
-            return DescripciÃ³n;
+            return Descripción;
         }
     }
     

@@ -1,4 +1,4 @@
-ï»¿using BE;
+using BE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,7 +95,7 @@ namespace DAL
                             
                     }
                     
-                    oPres.Estado.DescripciÃ³n = Convert.ToString(Item["Descripcion"]).Trim();
+                    oPres.Estado.Descripción = Convert.ToString(Item["Descripcion"]).Trim();
 
 
                     ListaPresupuestos.Add(oPres);
@@ -179,7 +179,7 @@ namespace DAL
 
         }
 
-        public PresupuestoBE SeleccionarPresupuestoPorId(int Id)
+        public BE.PresupuestoBE SeleccionarPresupuestoPorId(int Id)
 
         {
             ClienteBE Cli = new ClienteBE();
@@ -224,7 +224,7 @@ namespace DAL
 
                     }
 
-                    oPres.Estado.DescripciÃ³n = Convert.ToString(Item["Descripcion"]).Trim();
+                    oPres.Estado.Descripción = Convert.ToString(Item["Descripcion"]).Trim();
 
 
                 }
@@ -311,7 +311,7 @@ namespace DAL
             AccesoDB.Escribir("sp_EliminarPresupuesto", ParamCabecera);
         }
 
-        public PresupuestoTipoAprobacionBE SeleccionarAprobacionTipo(string tipo)
+        public BE.PresupuestoTipoAprobacionBE SeleccionarAprobacionTipo(string tipo)
 
         {
             PresupuestoTipoAprobacionBE Tipo = new PresupuestoTipoAprobacionBE();

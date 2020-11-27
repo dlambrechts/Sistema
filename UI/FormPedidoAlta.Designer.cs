@@ -1,6 +1,6 @@
-ï»¿namespace UI
+namespace UI
 {
-    partial class FormPedidoAlta
+    public partial class FormPedidoAlta
     {
         /// <summary>
         /// Required designer variable.
@@ -207,7 +207,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(55, 17);
             this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "EnvÃ­o";
+            this.checkBox1.Text = "Envío";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -218,7 +218,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "DirecciÃ³n de Entrega";
+            this.label4.Text = "Dirección de Entrega";
             // 
             // comboBoxCargo
             // 
@@ -248,7 +248,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 13);
             this.label6.TabIndex = 12;
-            this.label6.Text = "EnvÃ­o a Cargo de";
+            this.label6.Text = "Envío a Cargo de";
             // 
             // dataGridItemsPedido
             // 

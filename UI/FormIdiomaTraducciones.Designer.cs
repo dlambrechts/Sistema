@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormIdiomaTraducciones
+    public partial class FormIdiomaTraducciones
     {
         /// <summary>
         /// Required designer variable.
@@ -98,7 +98,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Traducción";
+            this.label3.Text = "Traducci�n";
             // 
             // textTraduccion
             // 

@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormClienteVersion
+    public partial class FormClienteVersion
     {
         /// <summary>
         /// Required designer variable.
@@ -110,7 +110,7 @@
             this.buttonrest.Name = "buttonrest";
             this.buttonrest.Size = new System.Drawing.Size(107, 42);
             this.buttonrest.TabIndex = 3;
-            this.buttonrest.Text = "Restaurar Versión";
+            this.buttonrest.Text = "Restaurar Versi�n";
             this.buttonrest.UseVisualStyleBackColor = true;
             this.buttonrest.Click += new System.EventHandler(this.buttonrest_Click);
             // 

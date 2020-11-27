@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,8 +21,8 @@ namespace UI
             InitializeComponent();
         }
 
-        public PresupuestoBE ePresupuesto;
-        public PresupuestoBLL bllPresupuesto = new PresupuestoBLL();
+        public BE.PresupuestoBE ePresupuesto;
+        public BLL.PresupuestoBLL bllPresupuesto = new PresupuestoBLL();
         private void FormPresupuestoEditar_Load(object sender, EventArgs e)
         {
             ePresupuesto = bllPresupuesto.SeleccionarPresupuestoPorId(ePresupuesto.Id);
@@ -101,7 +101,7 @@ namespace UI
 
                 if (selProd.Stock < cantidad)
                 {
-                    DialogResult Respuesta = MessageBox.Show("Actualmente no hay Stock suficiente. Â¿Agregar Item de todas formas?", "Advertencia Stock", MessageBoxButtons.YesNo);
+                    DialogResult Respuesta = MessageBox.Show("Actualmente no hay Stock suficiente. ¿Agregar Item de todas formas?", "Advertencia Stock", MessageBoxButtons.YesNo);
 
                     if (Respuesta == DialogResult.Yes)
                     {
@@ -150,7 +150,7 @@ namespace UI
 
             else
             {
-                DialogResult Respuesta = MessageBox.Show("Confirma EdiciÃ³n del Presupuesto?", "Editar Presupuesto", MessageBoxButtons.YesNo);
+                DialogResult Respuesta = MessageBox.Show("Confirma Edición del Presupuesto?", "Editar Presupuesto", MessageBoxButtons.YesNo);
 
                 if (Respuesta == DialogResult.Yes)
                 {
@@ -159,7 +159,7 @@ namespace UI
                     ePresupuesto.ActualizarCliente(nCli);
                     ePresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
                     PresupuestoEstadoBE nEstado = new ApComPend();
-                    ePresupuesto.ActualizarEstado(nEstado);                                // Al editar vuelve a estar pendiente de AprobaciÃ³n TÃ©cnica
+                    ePresupuesto.ActualizarEstado(nEstado);                                // Al editar vuelve a estar pendiente de Aprobación Técnica
                     ePresupuesto.FechaEntrega = dateTimePicker1.Value;
                     ePresupuesto.FechaValidez = dateTimePickerVal.Value;
                     ePresupuesto.PorcDescuento = Convert.ToInt32(comboDescuento.Text);

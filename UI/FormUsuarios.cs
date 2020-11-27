@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,8 +20,8 @@ namespace UI
             InitializeComponent();
         }
 
-        UsuarioBLL bUsuario = new UsuarioBLL();
-        UsuarioBE oUsuario = new UsuarioBE();
+        private BLL.UsuarioBLL bUsuario = new UsuarioBLL();
+        private BE.UsuarioBE oUsuario = new UsuarioBE();
        
 
         private void buttonCRE_Click(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace UI
             
             { 
             
-              if(textPass1.Text!=textPass2.Text) { MessageBox.Show("Las contraseÃ±as no coinciden"); }
+              if(textPass1.Text!=textPass2.Text) { MessageBox.Show("Las contraseñas no coinciden"); }
 
                 else 
                 {          
@@ -119,7 +119,7 @@ namespace UI
             else
 
             {
-                DialogResult Respuesta = MessageBox.Show("Confirma ModificaciÃ³n de Usuario?", "Modificar Usuario", MessageBoxButtons.YesNo);
+                DialogResult Respuesta = MessageBox.Show("Confirma Modificación de Usuario?", "Modificar Usuario", MessageBoxButtons.YesNo);
 
                 if (Respuesta == DialogResult.Yes)
                 {

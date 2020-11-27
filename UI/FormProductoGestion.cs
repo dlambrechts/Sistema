@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,8 +21,8 @@ namespace UI
             Traducir();
         }
 
-        ProductoBLL bllProd = new ProductoBLL();
-        ProductoBE beProd = new ProductoBE();
+        private BLL.ProductoBLL bllProd = new ProductoBLL();
+        private BE.ProductoBE beProd = new ProductoBE();
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             FormProductoAlta frmProdAlta = new FormProductoAlta();
@@ -79,7 +79,7 @@ namespace UI
             else
             {
 
-             DialogResult Respuesta = MessageBox.Show("Â¿Eliminar Producto "+ beProd.Id +"?", "Eliminar Producto"  , MessageBoxButtons.YesNo);
+             DialogResult Respuesta = MessageBox.Show("¿Eliminar Producto "+ beProd.Id +"?", "Eliminar Producto"  , MessageBoxButtons.YesNo);
 
                 if (Respuesta == DialogResult.Yes)
                 {
@@ -113,13 +113,13 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrÃ¡ traducciones, por lo tanto es necesario consultar si es null
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
             {
 
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÃ­tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
-                if (groupBox2.Tag != null && Traducciones.ContainsKey(groupBox2.Tag.ToString()))  // TÃ­tulo del form
+                if (groupBox2.Tag != null && Traducciones.ContainsKey(groupBox2.Tag.ToString()))  // Título del form
                     groupBox2.Text = Traducciones[groupBox2.Tag.ToString()].Texto;
 
                 if (buttonNuevo.Tag != null && Traducciones.ContainsKey(buttonNuevo.Tag.ToString()))

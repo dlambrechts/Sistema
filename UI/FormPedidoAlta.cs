@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using BE.PresupuestoEstado;
 using BLL;
 using System;
@@ -19,9 +19,9 @@ namespace UI
         {
             InitializeComponent();
         }
-        PresupuestoBLL preBLL = new PresupuestoBLL();
-        PedidoBLL pedBLL = new PedidoBLL();
-        PedidoBE Pedido;
+        private BLL.PresupuestoBLL preBLL = new PresupuestoBLL();
+        private BLL.PedidoBLL pedBLL = new PedidoBLL();
+        private BE.PedidoBE Pedido;
         private void FormPedidoAlta_Load(object sender, EventArgs e)
         {
             ListarPresupuestosAprobados();           
@@ -46,7 +46,7 @@ namespace UI
 
             else
             {
-                DialogResult Respuesta = MessageBox.Show("Confirma Emisión del Pedido?", "Generar Pedido", MessageBoxButtons.YesNo);
+                DialogResult Respuesta = MessageBox.Show("Confirma Emisi�n del Pedido?", "Generar Pedido", MessageBoxButtons.YesNo);
 
                 if (Respuesta == DialogResult.Yes)
                 {

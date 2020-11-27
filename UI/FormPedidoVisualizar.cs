@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +20,8 @@ namespace UI
             InitializeComponent();
         }
 
-        public PedidoBE Pedido;
-        PedidoBLL bllP = new PedidoBLL();
+        public BE.PedidoBE Pedido;
+        private BLL.PedidoBLL bllP = new PedidoBLL();
         private void FormPedidoVisualizar_Load(object sender, EventArgs e)
         {
             CargarDatos();

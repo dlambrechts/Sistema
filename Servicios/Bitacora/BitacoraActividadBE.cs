@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace Servicios.Bitacora
         
         public void SetTipo (BitacoraTipoActividad tipo) { _tipo = tipo; }
 
-        public UsuarioBE Usuario = new UsuarioBE();
+        public BE.UsuarioBE Usuario = new UsuarioBE();
 
         public UsuarioBE usuario { get { return Usuario; } }
 

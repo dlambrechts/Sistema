@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormPresupuestoAlta
+    public partial class FormPresupuestoAlta
     {
         /// <summary>
         /// Required designer variable.

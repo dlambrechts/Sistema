@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +10,7 @@ namespace BLL
 {
     public static class TraductorBLL
     {
-        public static IdiomaBE ObtenerIdiomaPorDefecto()
+        public static BE.IdiomaBE ObtenerIdiomaPorDefecto()
 
         {
             return ObtenerIdiomas().Where(i => i.Default).FirstOrDefault();

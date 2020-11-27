@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,9 +22,9 @@ namespace UI
             comboBoxAccion.DataSource = Enum.GetValues(typeof(Accion));
             
         }
-        enum Accion:int { Aprobar=1,Rechazar=2}
-        public PresupuestoBE oPresup;
-        PresupuestoBLL bllP = new PresupuestoBLL();
+        public enum Accion : int { Aprobar=1,Rechazar=2}
+        public BE.PresupuestoBE oPresup;
+        private BLL.PresupuestoBLL bllP = new PresupuestoBLL();
 
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -66,14 +66,14 @@ namespace UI
                                       }
 
                                 bllAp.AnalisisTecnico(nAprob);
-                                MessageBox.Show("OperaciÃ³n realizada correctamente");
+                                MessageBox.Show("Operación realizada correctamente");
                                 this.Close();
                         }
                             else 
                 
                          { 
                     
-                            MessageBox.Show("No es posible realizar la acciÃ³n en el Estado actual");
+                            MessageBox.Show("No es posible realizar la acción en el Estado actual");
 
 
                            }

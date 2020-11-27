@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +20,7 @@ namespace UI
             CompletarTipos();
        
         }
-        ClienteBLL bllCli = new ClienteBLL();
+        private BLL.ClienteBLL bllCli = new ClienteBLL();
         public void CompletarTipos() 
         
         {

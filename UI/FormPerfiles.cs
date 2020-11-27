@@ -1,4 +1,4 @@
-Ôªøusing BLL;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +13,12 @@ using Servicios;
 
 namespace UI
 {
-    public partial class FormPerfiles : Form,IIdiomaObserver
+    public partial class FormPerfiles : Form, IIdiomaObserver
     {
-        PerfilPatenteBLL bllPat;
-        PerfilFamilaBLL bllFam;
-        PerfilFamiliaBE beFamSeleccion;
-        PerfilComponenteBLL bllComp;
+        private BLL.PerfilPatenteBLL bllPat;
+        private BLL.PerfilFamilaBLL bllFam;
+        private BE.PerfilFamiliaBE beFamSeleccion;
+        private BLL.PerfilComponenteBLL bllComp;
         
         public FormPerfiles()
         {
@@ -44,10 +44,10 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr√° traducciones, por lo tanto es necesario consultar si es null
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr· traducciones, por lo tanto es necesario consultar si es null
             {
 
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // T√≠tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÌtulo del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
                 if (buttonConfig.Tag != null && Traducciones.ContainsKey(buttonConfig.Tag.ToString()))
@@ -230,7 +230,7 @@ namespace UI
 
                     var esta = bllComp.Existe(beFamSeleccion, familia.Id);
                     if (!esta)
-                        MessageBox.Show("El Grupo No est√° Agregado");
+                        MessageBox.Show("El Grupo No est· Agregado");
                     else
                     {
 
@@ -291,7 +291,7 @@ namespace UI
             try
             {
                 bllFam.GuardarFamilia(beFamSeleccion);
-                MessageBox.Show("El Grupo se Guard√≥ correctamente");
+                MessageBox.Show("El Grupo se GuardÛ correctamente");
             }
             catch (Exception)
             {

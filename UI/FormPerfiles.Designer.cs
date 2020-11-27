@@ -1,6 +1,6 @@
-锘縩amespace UI
+namespace UI
 {
-    partial class FormPerfiles
+    public partial class FormPerfiles
     {
         /// <summary>
         /// Required designer variable.
@@ -149,8 +149,8 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 1;
-            this.label2.Tag = "Descripci贸n";
-            this.label2.Text = "Descripci贸n";
+            this.label2.Tag = "Descripci髇";
+            this.label2.Text = "Descripci髇";
             // 
             // label1
             // 
@@ -159,8 +159,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 0;
-            this.label1.Tag = "Permiso at贸mico";
-            this.label1.Text = "Permiso At贸mico";
+            this.label1.Tag = "Permiso at髆ico";
+            this.label1.Text = "Permiso At髆ico";
             // 
             // groupBox2
             // 
@@ -241,8 +241,8 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 1;
-            this.label3.Tag = "Descripci贸n";
-            this.label3.Text = "Descripci贸n";
+            this.label3.Tag = "Descripci髇";
+            this.label3.Text = "Descripci髇";
             // 
             // textBoxNombreGrupo
             // 
@@ -268,8 +268,8 @@
             this.groupBox3.Size = new System.Drawing.Size(301, 423);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Tag = "Configuraci贸n del grupo";
-            this.groupBox3.Text = "Configuraci贸n del Grupo";
+            this.groupBox3.Tag = "Configuraci髇 del grupo";
+            this.groupBox3.Text = "Configuraci髇 del Grupo";
             // 
             // button1
             // 

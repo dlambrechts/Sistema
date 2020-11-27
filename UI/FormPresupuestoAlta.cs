@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,8 +26,8 @@ namespace UI
             dateTimePickerVal.Value = DateTime.Now.AddDays(30);
         }
 
-        PresupuestoBE nPresupuesto;
-        PresupuestoBLL bllPresupuesto = new PresupuestoBLL();     
+        private BE.PresupuestoBE nPresupuesto;
+        private BLL.PresupuestoBLL bllPresupuesto = new PresupuestoBLL();     
         decimal subtotal=0;
         decimal valordesc = 0;
         decimal totalIva = 0;
@@ -99,7 +99,7 @@ namespace UI
 
                 if (selProd.Stock < cantidad)
                 {
-                    DialogResult Respuesta = MessageBox.Show("Actualmente no hay Stock suficiente. Â¿Agregar Item de todas formas?", "Advertencia Stock", MessageBoxButtons.YesNo);
+                    DialogResult Respuesta = MessageBox.Show("Actualmente no hay Stock suficiente. ¿Agregar Item de todas formas?", "Advertencia Stock", MessageBoxButtons.YesNo);
 
                     if (Respuesta == DialogResult.Yes)
                     {
@@ -130,7 +130,7 @@ namespace UI
 
             else
             {
-                DialogResult Respuesta = MessageBox.Show("Confirma EmisiÃ³n del Presupuesto?", "Generar Presupuesto", MessageBoxButtons.YesNo);
+                DialogResult Respuesta = MessageBox.Show("Confirma Emisión del Presupuesto?", "Generar Presupuesto", MessageBoxButtons.YesNo);
           
 
            

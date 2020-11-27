@@ -1,6 +1,6 @@
-ï»¿namespace UI
+namespace UI
 {
-    partial class FormPresupuestoAnalisisComercialEjecutar
+    public partial class FormPresupuestoAnalisisComercialEjecutar
     {
         /// <summary>
         /// Required designer variable.
@@ -79,7 +79,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "AcciÃ³n:";
+            this.label2.Text = "Acción:";
             // 
             // label1
             // 
@@ -88,7 +88,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Presupuesto NÂ°:";
+            this.label1.Text = "Presupuesto N°:";
             // 
             // buttonConfirmar
             // 
@@ -125,7 +125,7 @@
             this.ClientSize = new System.Drawing.Size(296, 236);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPresupuestoAnalisisComercialEjecutar";
-            this.Text = "AprobaciÃ³n Comercial";
+            this.Text = "Aprobación Comercial";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormPresupuestoAnalisisComercialEjecutar_FormClosed);
             this.Load += new System.EventHandler(this.FormPresupuestoAnalisisComercialEjecutar_Load);
             this.groupBox1.ResumeLayout(false);

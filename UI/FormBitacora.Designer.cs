@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormBitacora
+    public partial class FormBitacora
     {
         /// <summary>
         /// Required designer variable.

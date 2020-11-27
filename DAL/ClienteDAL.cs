@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace DAL
 {
     public class ClienteDAL
     {
-        public ClienteBE SeleccionarPorId(int Id)
+        public BE.ClienteBE SeleccionarPorId(int Id)
 
         {
             Acceso AccesoDB = new Acceso();
@@ -238,7 +238,7 @@ namespace DAL
             return Lista;
         }
 
-        public ClienteVersionBE ObtenerVersionPorIdVersion(ClienteVersionBE Vers)
+        public BE.ClienteVersionBE ObtenerVersionPorIdVersion(ClienteVersionBE Vers)
 
         {
             Acceso AccesoDB = new Acceso();
@@ -276,7 +276,7 @@ namespace DAL
 
         }
 
-        public ClienteVersionCambiosBE ObtenerCamposAfectadorEnVersion(ClienteVersionBE Vers)
+        public BE.ClienteVersionCambiosBE ObtenerCamposAfectadorEnVersion(ClienteVersionBE Vers)
 
         {
             Acceso AccesoDB = new Acceso();

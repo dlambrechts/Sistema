@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,9 +21,9 @@ namespace UI
 
         }
 
-        PresupuestoBLL bllPresup = new PresupuestoBLL();
+        private BLL.PresupuestoBLL bllPresup = new PresupuestoBLL();
         List<PresupuestoBE> ListaPresupuestos = new List<PresupuestoBE>();
-        PresupuestoBE selPres;
+        private BE.PresupuestoBE selPres;
         private void FormPresupuestoAnalisisComercial_Load(object sender, EventArgs e)
         {
             ObtenerPresupuestos();
@@ -95,7 +95,7 @@ namespace UI
 
                     BitacoraActividadBE nActividad = new BitacoraActividadBE();
                     BitacoraBLL bllAct = new BitacoraBLL();
-                    nActividad.Detalle = "AnÃ¡lisis Comercial no es posible para el Presupuesto NÂ° " + selPres.Id + " en el estado actual";
+                    nActividad.Detalle = "Análisis Comercial no es posible para el Presupuesto N° " + selPres.Id + " en el estado actual";
                     bllAct.NuevaActividad(nActividad);
                 }
             }

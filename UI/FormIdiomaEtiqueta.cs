@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +19,8 @@ namespace UI
             InitializeComponent();
         }
 
-        IdiomaEtiquetaBLL bllEt = new IdiomaEtiquetaBLL();
-        IdiomaEtiquetaBE beEt = new IdiomaEtiquetaBE();
+        private BLL.IdiomaEtiquetaBLL bllEt = new IdiomaEtiquetaBLL();
+        private BE.IdiomaEtiquetaBE beEt = new IdiomaEtiquetaBE();
         private void FormIdiomaEtiqueta_Load(object sender, EventArgs e)
         {
             CargarGrilla();

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Collections;
-using System.Windows.Forms;
 using DAL;
 
 
@@ -83,7 +82,7 @@ namespace DAL
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               
                 Transaccion.Rollback();  
             }
 
@@ -107,11 +106,11 @@ namespace DAL
                 ComandoSQL.CommandTimeout = 600;
                 ComandoSQL.CommandType = CommandType.Text; 
                 ComandoSQL.ExecuteNonQuery();
-                MessageBox.Show("Tarea realizada correctamente");
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+
             }
             finally
             {

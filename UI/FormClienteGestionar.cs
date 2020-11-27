@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,10 +34,10 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrÃ¡ traducciones, por lo tanto es necesario consultar si es null
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
             {
 
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÃ­tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
                 if (button1.Tag != null && Traducciones.ContainsKey(button1.Tag.ToString()))
@@ -65,8 +65,8 @@ namespace UI
 
         }
 
-        ClienteBLL bllCli = new ClienteBLL();
-        public ClienteBE beCli = new ClienteBE();
+        private BLL.ClienteBLL bllCli = new ClienteBLL();
+        public BE.ClienteBE beCli = new ClienteBE();
         List<ClienteBE> LisCLi = new List<ClienteBE>();
         private void button1_Click(object sender, EventArgs e)
         {
@@ -136,7 +136,7 @@ namespace UI
             else
             {
 
-                DialogResult Respuesta = MessageBox.Show("Â¿Eliminar Cliente " + beCli.Id + "?", "Eliminar Cliente", MessageBoxButtons.YesNo);
+                DialogResult Respuesta = MessageBox.Show("¿Eliminar Cliente " + beCli.Id + "?", "Eliminar Cliente", MessageBoxButtons.YesNo);
 
                 if (Respuesta == DialogResult.Yes)
                 {

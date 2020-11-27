@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using BLL;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace UI
             CompletarUnidades();
         }
 
-        ProductoBLL bllProd = new ProductoBLL();
+        private BLL.ProductoBLL bllProd = new ProductoBLL();
 
         public void CompletarTipos ()
         
@@ -38,7 +38,7 @@ namespace UI
         }
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if (textDescrip.Text=="") { MessageBox.Show("Por favor, ingrese una Descripción"); }
+            if (textDescrip.Text=="") { MessageBox.Show("Por favor, ingrese una Descripci�n"); }
 
             else 
             

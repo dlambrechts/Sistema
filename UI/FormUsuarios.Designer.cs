@@ -1,6 +1,6 @@
-ï»¿namespace UI
+namespace UI
 {
-    partial class FormUsuarios
+    public partial class FormUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -147,7 +147,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(108, 13);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Confirmar ContraseÃ±a";
+            this.label6.Text = "Confirmar Contraseña";
             // 
             // label5
             // 
@@ -156,7 +156,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 8;
-            this.label5.Text = "ContraseÃ±a";
+            this.label5.Text = "Contraseña";
             // 
             // textMail
             // 

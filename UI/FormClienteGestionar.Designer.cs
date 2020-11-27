@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormClienteGestionar
+    public partial class FormClienteGestionar
     {
         /// <summary>
         /// Required designer variable.

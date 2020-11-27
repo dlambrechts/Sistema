@@ -1,6 +1,6 @@
-ï»¿namespace UI
+namespace UI
 {
-    partial class FormPedidoEditar
+    public partial class FormPedidoEditar
     {
         /// <summary>
         /// Required designer variable.
@@ -116,7 +116,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 13);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Fecha de EmisiÃ³n";
+            this.label5.Text = "Fecha de Emisión";
             // 
             // labelPRes
             // 
@@ -161,7 +161,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Presupuesto NÂ°";
+            this.label3.Text = "Presupuesto N°";
             // 
             // label2
             // 
@@ -170,7 +170,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Pedido NÂ°";
+            this.label2.Text = "Pedido N°";
             // 
             // label1
             // 
@@ -212,7 +212,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(55, 17);
             this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "EnvÃ­o";
+            this.checkBox1.Text = "Envío";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -223,7 +223,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "DirecciÃ³n de Entrega";
+            this.label6.Text = "Dirección de Entrega";
             // 
             // comboBoxCargo
             // 
@@ -253,7 +253,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 13);
             this.label7.TabIndex = 12;
-            this.label7.Text = "EnvÃ­o a Cargo de";
+            this.label7.Text = "Envío a Cargo de";
             // 
             // FormPedidoEditar
             // 

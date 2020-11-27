@@ -1,4 +1,4 @@
-Ôªøusing BE;
+using BE;
 using BLL;
 using System;
 using System.Collections.Generic;
@@ -26,8 +26,8 @@ namespace UI
             Traducir();
         }
 
-        PedidoBLL pBLL = new PedidoBLL();
-        PedidoBE selPed;
+        private BLL.PedidoBLL pBLL = new PedidoBLL();
+        private BE.PedidoBE selPed;
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             FormPedidoAlta Alta = new FormPedidoAlta();
@@ -121,10 +121,10 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr√° traducciones, por lo tanto es necesario consultar si es null
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr· traducciones, por lo tanto es necesario consultar si es null
             {
 
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // T√≠tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÌtulo del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
                 if (groupBox1.Tag != null && Traducciones.ContainsKey(groupBox1.Tag.ToString()))

@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,9 +20,9 @@ namespace UI
             CompletarTipos();      
         }
 
-        ClienteBLL bllCli = new ClienteBLL();
+        private BLL.ClienteBLL bllCli = new ClienteBLL();
 
-        public ClienteBE Cli = new ClienteBE();
+        public BE.ClienteBE Cli = new ClienteBE();
 
         public void CompletarTipos()
 
@@ -51,7 +51,7 @@ namespace UI
             if (textRazon.Text == "" && textCuit.Text == "")
 
             {
-                MessageBox.Show("Razón Social y CUIT son Obligatorios");
+                MessageBox.Show("Raz�n Social y CUIT son Obligatorios");
             }
 
             else

@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +13,11 @@ namespace BLL
 {
     public class UsuarioBLL
     {
-        UsuarioDAL dUsuario = new UsuarioDAL();
-        DigitoVerificador DigitoVerificador = new DigitoVerificador();
-        BitacoraActividadBE nActividad = new BitacoraActividadBE();
-        BitacoraBLL bllBit = new BitacoraBLL();
-        BitacoraTipoActividad tipo = new BitacoraTipoActividad();
+        private DAL.UsuarioDAL dUsuario = new UsuarioDAL();
+        private Servicios.DigitoVerificador.DigitoVerificador DigitoVerificador = new DigitoVerificador();
+        private Servicios.Bitacora.BitacoraActividadBE nActividad = new BitacoraActividadBE();
+        private Servicios.Bitacora.BitacoraBLL bllBit = new BitacoraBLL();
+        private Servicios.Bitacora.BitacoraTipoActividad tipo = new BitacoraTipoActividad();
 
         public List<UsuarioBE> ListarUsuarios() // Traer Lista de usuarios para ABM
         {
@@ -25,7 +25,7 @@ namespace BLL
             return Lista = dUsuario.ListarUsuarios();
         }
 
-        public UsuarioBE GetUsuarioLogin(string Mail) // Traer usuario para luego validar el login
+        public BE.UsuarioBE GetUsuarioLogin(string Mail) // Traer usuario para luego validar el login
         
         {
             UsuarioBE oUsuario = new UsuarioBE();
@@ -33,15 +33,15 @@ namespace BLL
             return oUsuario;      
         }
 
-        public UsuarioBE SeleccionarUsuarioPorId(int Id)
+        public BE.UsuarioBE SeleccionarUsuarioPorId(int Id)
         {
             return dUsuario.SeleccionarUsuarioPorId(Id);
         }
-        public ResultadoLogin Login (string Mail, string Password) 
+        public Servicios.ResultadoLogin Login(string Mail, string Password) 
         
         {
             if (SesionSingleton.Instancia.IsLogged())
-                throw new Exception("La sesiÃ³n ya estÃ¡ iniciada");
+                throw new Exception("La sesión ya está iniciada");
 
             UsuarioBE oUsuario = new UsuarioBE();
             PerfilComponenteBLL bllComp = new PerfilComponenteBLL();
@@ -75,7 +75,7 @@ namespace BLL
             
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se agregÃ³ el Usuario " + Id;
+            nActividad.Detalle = "Se agregó el Usuario " + Id;
             bllBit.NuevaActividad(nActividad);
 
         }
@@ -90,7 +90,7 @@ namespace BLL
 
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se modificÃ³ el Usuario " + Usuario.Id;
+            nActividad.Detalle = "Se modificó el Usuario " + Usuario.Id;
             bllBit.NuevaActividad(nActividad);
 
         }
@@ -104,7 +104,7 @@ namespace BLL
 
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se EliminÃ³ el Usuario " + Usuario.Id;
+            nActividad.Detalle = "Se Eliminó el Usuario " + Usuario.Id;
             bllBit.NuevaActividad(nActividad);
        
         }
@@ -112,7 +112,7 @@ namespace BLL
         public void Logut ()
         
         {                             
-            nActividad.Detalle = "SesiÃ³n cerrada con Ã©xito";
+            nActividad.Detalle = "Sesión cerrada con éxito";
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
             bllBit.NuevaActividad(nActividad);

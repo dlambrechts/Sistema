@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormIdiomaEtiqueta
+    public partial class FormIdiomaEtiqueta
     {
         /// <summary>
         /// Required designer variable.

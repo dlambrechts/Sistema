@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +16,10 @@ namespace BLL
 {
     public class PresupuestoBLL
     {
-        PresupuestoDAL dPresup = new PresupuestoDAL();
-        BitacoraActividadBE nActividad = new BitacoraActividadBE();
-        BitacoraBLL bllBit = new BitacoraBLL();
-        BitacoraTipoActividad tipo = new BitacoraTipoActividad();
+        private DAL.PresupuestoDAL dPresup = new PresupuestoDAL();
+        private Servicios.Bitacora.BitacoraActividadBE nActividad = new BitacoraActividadBE();
+        private Servicios.Bitacora.BitacoraBLL bllBit = new BitacoraBLL();
+        private Servicios.Bitacora.BitacoraTipoActividad tipo = new BitacoraTipoActividad();
         public decimal CalcularTotalIva(PresupuestoBE Presup)
 
         {
@@ -71,7 +71,7 @@ namespace BLL
             string Id= dPresup.AltaPresupuesto(nPresupuesto);
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se agregÃ³ el Presupuesto NÂ° " + Id;
+            nActividad.Detalle = "Se agregó el Presupuesto N° " + Id;
             bllBit.NuevaActividad(nActividad);
         }
 
@@ -82,7 +82,7 @@ namespace BLL
             dPresup.EditarPresupuesto(nPresupuesto);
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se modificÃ³ el Presupuesto NÂ° " + nPresupuesto.Id;
+            nActividad.Detalle = "Se modificó el Presupuesto N° " + nPresupuesto.Id;
             bllBit.NuevaActividad(nActividad);
 
         }
@@ -93,7 +93,7 @@ namespace BLL
 
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se eliminÃ³ el Presupuesto NÂ° " + ePresup.Id;
+            nActividad.Detalle = "Se eliminó el Presupuesto N° " + ePresup.Id;
             bllBit.NuevaActividad(nActividad);
         }
 
@@ -103,7 +103,7 @@ namespace BLL
             return dPresup.ListarPresupuestos();
         }
 
-        public PresupuestoBE SeleccionarPresupuestoPorId(int Id)
+        public BE.PresupuestoBE SeleccionarPresupuestoPorId(int Id)
 
         {
             return dPresup.SeleccionarPresupuestoPorId(Id);
@@ -116,7 +116,7 @@ namespace BLL
 
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "AnÃ¡lisis TÃ©cnico realizado, Presupuesto NÂ° " + Resultado.Presupuesto.Id;
+            nActividad.Detalle = "Análisis Técnico realizado, Presupuesto N° " + Resultado.Presupuesto.Id;
             bllBit.NuevaActividad(nActividad);
         }
 
@@ -127,7 +127,7 @@ namespace BLL
 
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "AnÃ¡lisis Comercial realizado, Presupuesto NÂ° " + Resultado.Presupuesto.Id;
+            nActividad.Detalle = "Análisis Comercial realizado, Presupuesto N° " + Resultado.Presupuesto.Id;
             bllBit.NuevaActividad(nActividad);
         }
 
@@ -137,7 +137,7 @@ namespace BLL
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
 
-            nActividad.Detalle = "Cierre de Presupuesto NÂ° " + Resultado.Presupuesto.Id;
+            nActividad.Detalle = "Cierre de Presupuesto N° " + Resultado.Presupuesto.Id;
             bllBit.NuevaActividad(nActividad);
         }
 
@@ -147,7 +147,7 @@ namespace BLL
         }
 
 
-        public PresupuestoTipoAprobacionBE SeleccionarAprobacionTipo(string tipo) 
+        public BE.PresupuestoTipoAprobacionBE SeleccionarAprobacionTipo(string tipo) 
         
         {
             return dPresup.SeleccionarAprobacionTipo(tipo);
@@ -159,7 +159,7 @@ namespace BLL
             dPresup.ActualizarEstado(Pres,nEstado);
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "ActualizaciÃ³n de Estado, Presupuesto NÂ° " + Pres.Id;
+            nActividad.Detalle = "Actualización de Estado, Presupuesto N° " + Pres.Id;
             bllBit.NuevaActividad(nActividad);
         }
 

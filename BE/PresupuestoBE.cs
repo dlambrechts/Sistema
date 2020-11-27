@@ -1,4 +1,4 @@
-ï»¿using BE.PresupuestoEstado;
+using BE.PresupuestoEstado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,8 @@ namespace BE
 {
 
     [Serializable()]
-    [XmlInclude(typeof(ApCli)), XmlInclude(typeof(ApComPend)),XmlInclude(typeof(ApComRech)), XmlInclude(typeof(ApTecPend)), XmlInclude(typeof(ApTecRech)), XmlInclude(typeof(EnviarCli)), XmlInclude(typeof(Finalizado)), XmlInclude(typeof(RechCli))]
-    public class PresupuestoBE
+	[XmlInclude(typeof(ApCli)), XmlInclude(typeof(ApComPend)),XmlInclude(typeof(ApComRech)), XmlInclude(typeof(ApTecPend)), XmlInclude(typeof(ApTecRech)), XmlInclude(typeof(EnviarCli)), XmlInclude(typeof(Finalizado)), XmlInclude(typeof(RechCli))]
+	public class PresupuestoBE
     {
         [XmlElement("Num_Presupuesto")]
         public int Id { get; set; }
@@ -26,9 +26,10 @@ namespace BE
         {
             _Cliente = _cliente;
             _Items = new List<PresupuestoItemBE>();
-            this._Estado = new ApTecPend();      // Todos los Presupuestos nuevos quedan pendientes de AprobaciÃ³n TÃ©cnica
+            this._Estado = new ApTecPend();      // Todos los Presupuestos nuevos quedan pendientes de Aprobación Técnica
         }
         public UsuarioBE Vendedor { get; set; }
+        public ClienteBE Cliente { get { return this._Cliente; } }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaValidez { get; set; }   
@@ -61,14 +62,14 @@ namespace BE
         }
         public override string ToString()
         {
-            return "Presupuesto NÂ° " + Id + "  Cliente: " + _Cliente.RazonSocial;
+            return "Presupuesto N° " + Id + "  Cliente: " + _Cliente.RazonSocial;
         }
 
         [XmlIgnoreAttribute]
         public List<PresupuestoItemBE> Items { get { return _Items; } }
         public PresupuestoEstadoBE Estado { get { return this._Estado; } }
-        public ClienteBE Cliente { get { return this._Cliente; } }
-
         public void ActualizarCliente (ClienteBE NuevoCliente) { this._Cliente = NuevoCliente; }
+
+        public PresupuestoBE() { } // Constructor vacío para serializar XML
     }
 }

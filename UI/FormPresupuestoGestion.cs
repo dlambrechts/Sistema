@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +13,7 @@ using Servicios;
 
 namespace UI
 {
-    public partial class FormPresupuestoGestion : Form,IIdiomaObserver
+    public partial class FormPresupuestoGestion : Form, IIdiomaObserver
     {
         public FormPresupuestoGestion()
         {
@@ -24,9 +24,9 @@ namespace UI
         }
 
 
-        PresupuestoBE selPres;
+        private BE.PresupuestoBE selPres;
 
-        PresupuestoBLL bllPresup = new PresupuestoBLL();
+        private BLL.PresupuestoBLL bllPresup = new PresupuestoBLL();
         List<PresupuestoBE> ListaPresupuestos = new List<PresupuestoBE>();
         
         private void button1_Click(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace UI
                 if (selPres.Estado.Eliminar()==false) { MessageBox.Show("No es posible Elminar en el Estado actual"); }
                 else
                 {
-                    DialogResult Respuesta = MessageBox.Show("Â¿Eliminar Presupuesto " + selPres.Id + "?", "Eliminar Presupuesto", MessageBoxButtons.YesNo);
+                    DialogResult Respuesta = MessageBox.Show("¿Eliminar Presupuesto " + selPres.Id + "?", "Eliminar Presupuesto", MessageBoxButtons.YesNo);
 
                     if (Respuesta == DialogResult.Yes) 
                         {                         
@@ -152,7 +152,7 @@ namespace UI
             if (selPres!=null)
 
             {
-                DialogResult Respuesta = MessageBox.Show("Â¿Generar PDF Presupuesto " + selPres.Id + "?", "Generar PDF", MessageBoxButtons.YesNo);
+                DialogResult Respuesta = MessageBox.Show("¿Generar PDF Presupuesto " + selPres.Id + "?", "Generar PDF", MessageBoxButtons.YesNo);
 
                 if (Respuesta == DialogResult.Yes)
 
@@ -183,13 +183,13 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrÃ¡ traducciones, por lo tanto es necesario consultar si es null
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habrá traducciones, por lo tanto es necesario consultar si es null
             {
 
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÃ­tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // Título del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
-                if (groupBox2.Tag != null && Traducciones.ContainsKey(groupBox2.Tag.ToString()))  // TÃ­tulo del form
+                if (groupBox2.Tag != null && Traducciones.ContainsKey(groupBox2.Tag.ToString()))  // Título del form
                     groupBox2.Text = Traducciones[groupBox2.Tag.ToString()].Texto;
 
                 if (button1.Tag != null && Traducciones.ContainsKey(button1.Tag.ToString()))  
@@ -218,7 +218,7 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult Respuesta = MessageBox.Show("Â¿Generar SerializaciÃ³n XML de Presupuestos?", "Generar XML", MessageBoxButtons.YesNo);
+            DialogResult Respuesta = MessageBox.Show("¿Generar Serialización XML de Presupuestos?", "Generar XML", MessageBoxButtons.YesNo);
 
             if (Respuesta == DialogResult.Yes)
 
@@ -232,14 +232,14 @@ namespace UI
         public void Helper() 
         
         {
-            toolTipGestion.SetToolTip(button1, "Haga clic aquÃ­ para Crear un Nuevo Presupuesto");
-            toolTipGestion.SetToolTip(button3, "Haga clic aquÃ­ para Visualizar el Presupuesto seleccionado");
-            toolTipGestion.SetToolTip(buttonEditar, "Haga clic aquÃ­ para Editar el Presupuesto seleccionado");
-            toolTipGestion.SetToolTip(button4, "Haga clic aquÃ­ para Eliminar el Presupuesto seleccionado");
-            toolTipGestion.SetToolTip(buttonCierre, "Haga clic aquÃ­ para informar Respuesta del Cliente para el Presupuesto seleccionado");
-            toolTipGestion.SetToolTip(buttonEditar, "Haga clic aquÃ­ para Editar para el Presupuesto seleccionado");
-            toolTipGestion.SetToolTip(buttonLayout, "Haga clic aquÃ­ para generar PDF del Presupuesto seleccionado");
-            toolTipGestion.SetToolTip(button2, "Haga clic aquÃ­ para realizar una serializaciÃ³n XML de todos los Presupuestos");
+            toolTipGestion.SetToolTip(button1, "Haga clic aquí para Crear un Nuevo Presupuesto");
+            toolTipGestion.SetToolTip(button3, "Haga clic aquí para Visualizar el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(buttonEditar, "Haga clic aquí para Editar el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(button4, "Haga clic aquí para Eliminar el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(buttonCierre, "Haga clic aquí para informar Respuesta del Cliente para el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(buttonEditar, "Haga clic aquí para Editar para el Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(buttonLayout, "Haga clic aquí para generar PDF del Presupuesto seleccionado");
+            toolTipGestion.SetToolTip(button2, "Haga clic aquí para realizar una serialización XML de todos los Presupuestos");
         }
     }
 }

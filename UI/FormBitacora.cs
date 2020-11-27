@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +14,7 @@ using Servicios;
 
 namespace UI
 {
-    public partial class FormBitacora : Form,IIdiomaObserver
+    public partial class FormBitacora : Form, IIdiomaObserver
     {
         public FormBitacora()
         {
@@ -32,7 +32,7 @@ namespace UI
             Traducir();
         }
 
-        BitacoraBLL bllBit = new BitacoraBLL();
+        private Servicios.Bitacora.BitacoraBLL bllBit = new BitacoraBLL();
 
         private void Traducir()
 
@@ -43,10 +43,10 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr√° traducciones, por lo tanto es necesario consultar si es null
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr· traducciones, por lo tanto es necesario consultar si es null
             {
 
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // T√≠tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÌtulo del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
                 if (groupBox1.Tag != null && Traducciones.ContainsKey(groupBox1.Tag.ToString()))

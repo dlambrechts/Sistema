@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormBackup
+    public partial class FormBackup
     {
         /// <summary>
         /// Required designer variable.

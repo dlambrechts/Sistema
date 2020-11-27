@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +13,9 @@ namespace BLL
     public class ProductoBLL
 
     {
-        ProductoDAL dProd = new ProductoDAL();
-        BitacoraBLL bllBit = new BitacoraBLL();
-        BitacoraTipoActividad tipo = new BitacoraTipoActividad();
+        private DAL.ProductoDAL dProd = new ProductoDAL();
+        private Servicios.Bitacora.BitacoraBLL bllBit = new BitacoraBLL();
+        private Servicios.Bitacora.BitacoraTipoActividad tipo = new BitacoraTipoActividad();
         public List<ProductoUnidadMedidaBE> ListarUnidadesMedida()
         {         
             return dProd.ListarUnidadesMedida();
@@ -41,7 +41,7 @@ namespace BLL
             BitacoraBLL bllAct = new BitacoraBLL();
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se agregÃ³ el Producto "+Id;
+            nActividad.Detalle = "Se agregó el Producto "+Id;
             bllAct.NuevaActividad(nActividad);
         }
 
@@ -54,7 +54,7 @@ namespace BLL
             BitacoraBLL bllAct = new BitacoraBLL();
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se modificÃ³ el Producto " + eProd.Id;
+            nActividad.Detalle = "Se modificó el Producto " + eProd.Id;
 
             bllAct.NuevaActividad(nActividad);
         }
@@ -68,7 +68,7 @@ namespace BLL
             BitacoraBLL bllAct = new BitacoraBLL();
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se eliminÃ³ el Producto " + eProd.Id;
+            nActividad.Detalle = "Se eliminó el Producto " + eProd.Id;
 
             bllAct.NuevaActividad(nActividad);
         }

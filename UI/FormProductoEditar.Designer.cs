@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormProductoEditar
+    public partial class FormProductoEditar
     {
         /// <summary>
         /// Required designer variable.
@@ -171,7 +171,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Descripción";
+            this.label1.Text = "Descripci�n";
             // 
             // FormProductoEditar
             // 

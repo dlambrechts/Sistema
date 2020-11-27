@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,7 +98,7 @@ namespace DAL
             }
         }
 
-        private PerfilComponenteBE ObtenerComponente(int id, IList<PerfilComponenteBE> lista)
+        private BE.PerfilComponenteBE ObtenerComponente(int id, IList<PerfilComponenteBE> lista)
         {
 
             PerfilComponenteBE Componente = lista != null ? lista.Where(i => i.Id.Equals(id)).FirstOrDefault() : null;
@@ -156,7 +156,7 @@ namespace DAL
 
                         {
                             PerfilFamiliaBE Familia = new PerfilFamiliaBE();
-                        Familia.Permiso = (PerfilTipoPermisoBE)Enum.Parse(typeof(PerfilTipoPermisoBE), "Ninguno"); // Se hace esto porque al instanciar la familia asigna un permiso enum automáticamente
+                        Familia.Permiso = (PerfilTipoPermisoBE)Enum.Parse(typeof(PerfilTipoPermisoBE), "Ninguno"); // Se hace esto porque al instanciar la familia asigna un permiso enum autom�ticamente
                             Familia.Id = IdPermiso;
                             Familia.Descripcion = DescPermiso;
 

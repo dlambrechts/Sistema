@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using BLL;
 using System;
 using System.Collections.Generic;
@@ -15,12 +15,12 @@ namespace UI
 {
     public partial class FormPerfilUsuario : Form
     {
-        public UsuarioBLL bllUsuario;
-        public UsuarioBE beUsuario;
-        public PerfilComponenteBLL bllComp;
-        public PerfilFamilaBLL bllFam;
-        public PerfilPatenteBLL bllPat;
-        UsuarioBE tmpUs;
+        public BLL.UsuarioBLL bllUsuario;
+        public BE.UsuarioBE beUsuario;
+        public BLL.PerfilComponenteBLL bllComp;
+        public BLL.PerfilFamilaBLL bllFam;
+        public BLL.PerfilPatenteBLL bllPat;
+        private BE.UsuarioBE tmpUs;
 
         public FormPerfilUsuario()
         {

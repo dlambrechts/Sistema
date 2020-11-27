@@ -1,6 +1,6 @@
-ï»¿namespace UI
+namespace UI
 {
-    partial class FormLogin
+    public partial class FormLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -65,7 +65,7 @@
             this.btnIniciar.Size = new System.Drawing.Size(96, 23);
             this.btnIniciar.TabIndex = 2;
             this.btnIniciar.Tag = "Login";
-            this.btnIniciar.Text = "Iniciar SesiÃ³n";
+            this.btnIniciar.Text = "Iniciar Sesión";
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
@@ -120,7 +120,7 @@
             this.Controls.Add(this.btnIniciar);
             this.Name = "FormLogin";
             this.Tag = "Login";
-            this.Text = "Iniciar SesiÃ³n";
+            this.Text = "Iniciar Sesión";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.Load += new System.EventHandler(this.FormLogin_Load);
             this.groupBox1.ResumeLayout(false);

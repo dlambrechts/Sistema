@@ -1,6 +1,6 @@
-ï»¿namespace UI
+namespace UI
 {
-    partial class FormPresupuestoVisualizar
+    public partial class FormPresupuestoVisualizar
     {
         /// <summary>
         /// Required designer variable.
@@ -88,7 +88,7 @@
             this.groupBoxCabecera.Size = new System.Drawing.Size(753, 146);
             this.groupBoxCabecera.TabIndex = 0;
             this.groupBoxCabecera.TabStop = false;
-            this.groupBoxCabecera.Text = "Presupuesto NÂ°";
+            this.groupBoxCabecera.Text = "Presupuesto N°";
             // 
             // labelIva
             // 
@@ -269,7 +269,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 17);
             this.label4.TabIndex = 3;
-            this.label4.Text = "EmisiÃ³n:";
+            this.label4.Text = "Emisión:";
             // 
             // label3
             // 
@@ -324,7 +324,7 @@
             this.groupBox3.Size = new System.Drawing.Size(759, 200);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Historial de AprobaciÃ³n";
+            this.groupBox3.Text = "Historial de Aprobación";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // dataGridViewAprob

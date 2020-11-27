@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormProductoGestion
+    public partial class FormProductoGestion
     {
         /// <summary>
         /// Required designer variable.
@@ -118,7 +118,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormProductoGestion";
             this.Tag = "Productos";
-            this.Text = "Gestión de Productos";
+            this.Text = "Gesti�n de Productos";
             this.Load += new System.EventHandler(this.FormProductoGestion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

@@ -1,4 +1,4 @@
-﻿using BLL;
+using BLL;
 using BE;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace UI
         }
 
         public List<IdiomaBE> Idiomas;
-        IdiomaBE Idioma = new IdiomaBE();
+        private BE.IdiomaBE Idioma = new IdiomaBE();
         private void FormIdioma_Load(object sender, EventArgs e)
         {
             ObtenerIdiomas();        
@@ -84,7 +84,7 @@ namespace UI
             IdiomaBE Idioma = new IdiomaBE();
             Idioma = (IdiomaBE)comboIdiomas.SelectedItem;
 
-            DialogResult dialogResult = MessageBox.Show("Desea Eliminar el Idioma"+" "+Idioma.Nombre+"? Se borrarán tambien todas las traducciones", "Eliminar", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Desea Eliminar el Idioma"+" "+Idioma.Nombre+"? Se borrar�n tambien todas las traducciones", "Eliminar", MessageBoxButtons.YesNo);
            
             if (dialogResult == DialogResult.Yes)
             {

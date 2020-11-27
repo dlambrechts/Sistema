@@ -1,6 +1,6 @@
-锘縩amespace UI
+namespace UI
 {
-    partial class FormClienteEditar
+    public partial class FormClienteEditar
     {
         /// <summary>
         /// Required designer variable.
@@ -142,7 +142,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 31;
-            this.label5.Text = "Tel茅fono";
+            this.label5.Text = "Tel閒ono";
             // 
             // textTel
             // 
@@ -165,8 +165,8 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 28;
-            this.label4.Tag = "C贸digo postal";
-            this.label4.Text = "C贸digo Postal";
+            this.label4.Tag = "C骴igo postal";
+            this.label4.Text = "C骴igo Postal";
             // 
             // comboTipo
             // 
@@ -200,8 +200,8 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 24;
-            this.label2.Tag = "Direcci贸n";
-            this.label2.Text = "Direcci贸n";
+            this.label2.Tag = "Direcci髇";
+            this.label2.Text = "Direcci髇";
             // 
             // textRazon
             // 
@@ -217,8 +217,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 22;
-            this.label1.Tag = "Raz贸n social";
-            this.label1.Text = "Raz贸n Social";
+            this.label1.Tag = "Raz髇 social";
+            this.label1.Text = "Raz髇 Social";
             // 
             // buttonGuardar
             // 

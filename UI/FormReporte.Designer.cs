@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormReporte
+    public partial class FormReporte
     {
         /// <summary>
         /// Required designer variable.

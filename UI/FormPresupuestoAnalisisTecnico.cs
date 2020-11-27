@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,9 +19,9 @@ namespace UI
         {
             InitializeComponent();
         }
-        PresupuestoBLL bllPresup = new PresupuestoBLL();
+        private BLL.PresupuestoBLL bllPresup = new PresupuestoBLL();
         List<PresupuestoBE> ListaPresupuestos = new List<PresupuestoBE>();
-        PresupuestoBE selPres;
+        private BE.PresupuestoBE selPres;
         private void FormPresupuestoAnalisisTecnico_Load(object sender, EventArgs e)
         {
             ObtenerPresupuestos();
@@ -95,11 +95,11 @@ namespace UI
                 else
                 {
 
-                    MessageBox.Show("No es posible realizar el AnÃ¡lisis TÃ©cnico en el Estado actual");
+                    MessageBox.Show("No es posible realizar el Análisis Técnico en el Estado actual");
 
                     BitacoraActividadBE nActividad = new BitacoraActividadBE();
                     BitacoraBLL bllAct = new BitacoraBLL();             
-                    nActividad.Detalle = "AnÃ¡lisis TÃ©cnico no es posible para el Presupuesto NÂ° " + selPres.Id + " en el estado actual";
+                    nActividad.Detalle = "Análisis Técnico no es posible para el Presupuesto N° " + selPres.Id + " en el estado actual";
                     bllAct.NuevaActividad(nActividad);
                 }
 

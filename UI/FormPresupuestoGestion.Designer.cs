@@ -1,6 +1,6 @@
-ï»¿namespace UI
+namespace UI
 {
-    partial class FormPresupuestoGestion
+    public partial class FormPresupuestoGestion
     {
         /// <summary>
         /// Required designer variable.
@@ -182,8 +182,8 @@
             this.helpGestionPresup.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "FormPresupuestoGestion";
             this.helpGestionPresup.SetShowHelp(this, true);
-            this.Tag = "GestiÃ³n de presupuestos";
-            this.Text = "GestiÃ³n de Presupuestos";
+            this.Tag = "Gestión de presupuestos";
+            this.Text = "Gestión de Presupuestos";
             this.Load += new System.EventHandler(this.FormPresupuestoGestion_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

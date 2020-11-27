@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +18,7 @@ namespace UI
             InitializeComponent();
         }
 
-        public PresupuestoBE vPresup;
+        public BE.PresupuestoBE vPresup;
        
 
         private void FormPresupuestoVisualizar_Load(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace UI
             labelEmis.Text = Convert.ToString(vPresup.FechaEmision.Date.ToShortDateString()) ;
             labelVal.Text = Convert.ToString(vPresup.FechaValidez.Date.ToShortDateString());
             TimeSpan PlazoEntrega = vPresup.FechaEntrega - vPresup.FechaEmision;// 
-            labelEnt.Text = Convert.ToInt32(PlazoEntrega.TotalDays).ToString()+ " días";
+            labelEnt.Text = Convert.ToInt32(PlazoEntrega.TotalDays).ToString()+ " d�as";
             labelEst.Text = vPresup.Estado.ToString();
 
             textBoxObs.Text = vPresup.Observaciones;

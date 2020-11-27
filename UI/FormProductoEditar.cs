@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,8 +22,8 @@ namespace UI
 
         }
 
-        public ProductoBE eProd = new ProductoBE();
-        ProductoBLL bllProd = new ProductoBLL();
+        public BE.ProductoBE eProd = new ProductoBE();
+        private BLL.ProductoBLL bllProd = new ProductoBLL();
 
         public void CompletarTipos()
 
@@ -40,7 +40,7 @@ namespace UI
         }
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if (textDescrip.Text == "") { MessageBox.Show("Por favor, ingrese una Descripción"); }
+            if (textDescrip.Text == "") { MessageBox.Show("Por favor, ingrese una Descripci�n"); }
 
             else 
             

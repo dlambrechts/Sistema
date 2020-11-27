@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -49,7 +49,7 @@ namespace DAL
             }
         }
 
-        public UsuarioBE LeerUsuario(string Mail)  // Para Login, selecciona por mail
+        public BE.UsuarioBE LeerUsuario(string Mail)  // Para Login, selecciona por mail
 
         {
             Acceso AccesoDB = new Acceso();
@@ -83,7 +83,7 @@ namespace DAL
             return oUsuario;
         }
 
-        public UsuarioBE SeleccionarUsuarioPorId(int Id)
+        public BE.UsuarioBE SeleccionarUsuarioPorId(int Id)
 
         {
             Acceso AccesoDB = new Acceso();
@@ -166,7 +166,7 @@ namespace DAL
 
         {
             Acceso nAcceso = new Acceso();
-            string ConsultaDel = "sp_BorrarPermisosUsuario"; // Primero borro los permisos que tenía el usuario
+            string ConsultaDel = "sp_BorrarPermisosUsuario"; // Primero borro los permisos que ten�a el usuario
             Hashtable ParametrosDel = new Hashtable();
             ParametrosDel.Add("IdUsuario", Usuario.Id);
             nAcceso.Escribir(ConsultaDel, ParametrosDel);

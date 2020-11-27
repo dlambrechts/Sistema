@@ -1,4 +1,4 @@
-ï»¿using BE;
+using BE;
 using BE.PresupuestoEstado;
 using System;
 using System.Collections.Generic;
@@ -21,10 +21,10 @@ namespace UI
         {
             InitializeComponent();
         }
-        enum Accion : int { Aprobar = 1, Rechazar = 2 }
+        public enum Accion : int { Aprobar = 1, Rechazar = 2 }
 
-        public PresupuestoBE cPresup;
-        PresupuestoBLL bllP = new PresupuestoBLL();
+        public BE.PresupuestoBE cPresup;
+        private BLL.PresupuestoBLL bllP = new PresupuestoBLL();
 
         private void FormPresupuestoCierre_Load(object sender, EventArgs e)
         {
@@ -66,7 +66,7 @@ namespace UI
                     }
 
                     bllAp.Cierre(nAprob);
-                    MessageBox.Show("OperaciÃ³n realizada correctamente");
+                    MessageBox.Show("Operación realizada correctamente");
                     this.Close();
                 }
                 else 
@@ -78,7 +78,7 @@ namespace UI
                     BitacoraActividadBE nActividad = new BitacoraActividadBE();
                     BitacoraBLL bllAct = new BitacoraBLL();
 
-                    nActividad.Detalle = "El Cierre no es posible para el Presupuesto NÂ° " + cPresup.Id + " en el estado actual";
+                    nActividad.Detalle = "El Cierre no es posible para el Presupuesto N° " + cPresup.Id + " en el estado actual";
                     bllAct.NuevaActividad(nActividad);
 
                 }

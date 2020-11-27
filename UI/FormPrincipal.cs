@@ -1,4 +1,4 @@
-Ôªøusing BLL;
+using BLL;
 using BE;
 using Servicios;
 using System;
@@ -15,10 +15,10 @@ using Servicios.DigitoVerificador;
 
 namespace UI
 {
-    public partial class FormPrincipal : Form,IIdiomaObserver
+    public partial class FormPrincipal : Form, IIdiomaObserver
     {
 
-        UsuarioBLL bllUsuario;
+        private BLL.UsuarioBLL bllUsuario;
         public FormPrincipal()
         {
             InitializeComponent();
@@ -46,12 +46,12 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if(Traducciones!=null) // Al crear un idioma nuevo y utilizarlo no habr√° traducciones, por lo tanto es necesario consultar si es null
+            if(Traducciones!=null) // Al crear un idioma nuevo y utilizarlo no habr· traducciones, por lo tanto es necesario consultar si es null
             {
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // T√≠tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÌtulo del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
-                foreach (ToolStripItem x in this.menuStrip1.Items) // Todos los men√∫s
+                foreach (ToolStripItem x in this.menuStrip1.Items) // Todos los men˙s
                 {
                 if (x.Tag != null && Traducciones.ContainsKey(x.Tag.ToString()))
                  x.Text = Traducciones[x.Tag.ToString()].Texto;
@@ -65,14 +65,14 @@ namespace UI
 
                 }
 
-                if (cerrarSesi√≥nToolStripMenuItem.Tag != null && Traducciones.ContainsKey(cerrarSesi√≥nToolStripMenuItem.Tag.ToString()))
-                    this.cerrarSesi√≥nToolStripMenuItem.Text = Traducciones[cerrarSesi√≥nToolStripMenuItem.Tag.ToString()].Texto;
+                if (cerrarSesiÛnToolStripMenuItem.Tag != null && Traducciones.ContainsKey(cerrarSesiÛnToolStripMenuItem.Tag.ToString()))
+                    this.cerrarSesiÛnToolStripMenuItem.Text = Traducciones[cerrarSesiÛnToolStripMenuItem.Tag.ToString()].Texto;
 
                 if (idiomaToolStripMenuItem.Tag != null && Traducciones.ContainsKey(idiomaToolStripMenuItem.Tag.ToString()))
                     this.idiomaToolStripMenuItem.Text = Traducciones[idiomaToolStripMenuItem.Tag.ToString()].Texto;
 
-                if (iniciarSesi√≥nToolStripMenuItem.Tag != null && Traducciones.ContainsKey(iniciarSesi√≥nToolStripMenuItem.Tag.ToString()))
-                    this.iniciarSesi√≥nToolStripMenuItem.Text = Traducciones[iniciarSesi√≥nToolStripMenuItem.Tag.ToString()].Texto;
+                if (iniciarSesiÛnToolStripMenuItem.Tag != null && Traducciones.ContainsKey(iniciarSesiÛnToolStripMenuItem.Tag.ToString()))
+                    this.iniciarSesiÛnToolStripMenuItem.Text = Traducciones[iniciarSesiÛnToolStripMenuItem.Tag.ToString()].Texto;
 
                 if (emitirPresupuestoToolStripMenuItem.Tag != null && Traducciones.ContainsKey(emitirPresupuestoToolStripMenuItem.Tag.ToString()))
                     this.emitirPresupuestoToolStripMenuItem.Text = Traducciones[emitirPresupuestoToolStripMenuItem.Tag.ToString()].Texto;
@@ -80,8 +80,8 @@ namespace UI
                 if (aprobarPresupuestoToolStripMenuItem.Tag != null && Traducciones.ContainsKey(aprobarPresupuestoToolStripMenuItem.Tag.ToString()))
                     this.aprobarPresupuestoToolStripMenuItem.Text = Traducciones[aprobarPresupuestoToolStripMenuItem.Tag.ToString()].Texto;
 
-                if (aprobaci√≥nComercialToolStripMenuItem.Tag != null && Traducciones.ContainsKey(aprobaci√≥nComercialToolStripMenuItem.Tag.ToString()))
-                    this.aprobaci√≥nComercialToolStripMenuItem.Text = Traducciones[aprobaci√≥nComercialToolStripMenuItem.Tag.ToString()].Texto;
+                if (aprobaciÛnComercialToolStripMenuItem.Tag != null && Traducciones.ContainsKey(aprobaciÛnComercialToolStripMenuItem.Tag.ToString()))
+                    this.aprobaciÛnComercialToolStripMenuItem.Text = Traducciones[aprobaciÛnComercialToolStripMenuItem.Tag.ToString()].Texto;
 
 
                 if (toolStripStatusLabel1.Tag != null && Traducciones.ContainsKey(toolStripStatusLabel1.Tag.ToString()))
@@ -117,11 +117,11 @@ namespace UI
                 if (metricasToolStripMenuItem.Tag != null && Traducciones.ContainsKey(metricasToolStripMenuItem.Tag.ToString()))
                     this.metricasToolStripMenuItem.Text = Traducciones[metricasToolStripMenuItem.Tag.ToString()].Texto;
 
-                if (gesti√≥nDeClientesToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gesti√≥nDeClientesToolStripMenuItem.Tag.ToString()))
-                    this.gesti√≥nDeClientesToolStripMenuItem.Text = Traducciones[gesti√≥nDeClientesToolStripMenuItem.Tag.ToString()].Texto;
+                if (gestiÛnDeClientesToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gestiÛnDeClientesToolStripMenuItem.Tag.ToString()))
+                    this.gestiÛnDeClientesToolStripMenuItem.Text = Traducciones[gestiÛnDeClientesToolStripMenuItem.Tag.ToString()].Texto;
 
-                if (gesti√≥nDeProductosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gesti√≥nDeProductosToolStripMenuItem.Tag.ToString()))
-                    this.gesti√≥nDeProductosToolStripMenuItem.Text = Traducciones[gesti√≥nDeProductosToolStripMenuItem.Tag.ToString()].Texto;
+                if (gestiÛnDeProductosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gestiÛnDeProductosToolStripMenuItem.Tag.ToString()))
+                    this.gestiÛnDeProductosToolStripMenuItem.Text = Traducciones[gestiÛnDeProductosToolStripMenuItem.Tag.ToString()].Texto;
 
                 if (ajustesDeStockToolStripMenuItem.Tag != null && Traducciones.ContainsKey(ajustesDeStockToolStripMenuItem.Tag.ToString()))
                     this.ajustesDeStockToolStripMenuItem.Text = Traducciones[ajustesDeStockToolStripMenuItem.Tag.ToString()].Texto;
@@ -193,7 +193,7 @@ namespace UI
         }
         
 
-        private void iniciarSesi√≥nToolStripMenuItem_Click(object sender, EventArgs e)
+        private void iniciarSesiÛnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLogin frmlogin = new FormLogin();
             frmlogin.MdiParent = this;
@@ -235,8 +235,8 @@ namespace UI
         public void ValidarFormulario() // Deshabilitar menu cuando no hay ususarios logueado
         
         {
-            this.iniciarSesi√≥nToolStripMenuItem.Enabled = !SesionSingleton.Instancia.IsLogged();
-            this.cerrarSesi√≥nToolStripMenuItem.Enabled= SesionSingleton.Instancia.IsLogged();
+            this.iniciarSesiÛnToolStripMenuItem.Enabled = !SesionSingleton.Instancia.IsLogged();
+            this.cerrarSesiÛnToolStripMenuItem.Enabled= SesionSingleton.Instancia.IsLogged();
             this.administradorToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.presupuestosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
             this.pedidosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsLogged();
@@ -250,28 +250,28 @@ namespace UI
 
          
         }
-        public void ValidarPermisos () // Habilitar menu seg√∫n permisos de usuario logueado
+        public void ValidarPermisos () // Habilitar menu seg˙n permisos de usuario logueado
         
         {
             this.usuariosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoA); // ABM Usuarios
             this.permisosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoB); // Perfiles de Acceso
             this.permisoPorUsuarioToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoC); // Asignacion de Perfil a Usuarios
-            this.idiomaYTraduccionesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoJ); // Gesti√≥n de Idiomas y Traduciones
+            this.idiomaYTraduccionesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoJ); // GestiÛn de Idiomas y Traduciones
             this.emitirPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoD); // Emitir Presupuestos
             this.aprobarPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoE); // Aprobacion Tecnica
-            this.aprobaci√≥nComercialToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoF); // Aprobacion Comercial
-            this.gesti√≥nDeProductosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoL); // ABM Productos
+            this.aprobaciÛnComercialToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoF); // Aprobacion Comercial
+            this.gestiÛnDeProductosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoL); // ABM Productos
             this.ajustesDeStockToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoN); // Ajustes de Stock
-            this.presupuestosToolStripMenuItem1.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoM); // Ver m√©tricas, indicadores
-            this.gesti√≥nDeClientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoK); // ABM Clientes
-            this.gestionDePedidosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoO); // Gesti√≥n Pedidos
-            this.bit√°coraToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoP); // Bitacora
+            this.presupuestosToolStripMenuItem1.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoM); // Ver mÈtricas, indicadores
+            this.gestiÛnDeClientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoK); // ABM Clientes
+            this.gestionDePedidosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoO); // GestiÛn Pedidos
+            this.bit·coraToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoP); // Bitacora
             this.backupToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoQ); // Backup
 
         }
-        private void cerrarSesi√≥nToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cerrarSesiÛnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Est√° seguro que desea cerrar la sesi√≥n?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Est· seguro que desea cerrar la sesiÛn?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 bllUsuario.Logut();
                 while (ActiveMdiChild != null)
@@ -298,7 +298,7 @@ namespace UI
             frmPerfUs.Show();
         }
 
-        private void aprobaci√≥nComercialToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aprobaciÛnComercialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPresupuestoAnalisisComercial frmCom = new FormPresupuestoAnalisisComercial();
             frmCom.MdiParent = this;
@@ -316,7 +316,7 @@ namespace UI
 
         }
 
-        private void sesi√≥nToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sesiÛnToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -357,7 +357,7 @@ namespace UI
 
         }
 
-        private void gesti√≥nDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gestiÛnDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormClienteGestionar frmGesCli = new FormClienteGestionar();
             frmGesCli.MdiParent = this;
@@ -371,14 +371,14 @@ namespace UI
             frmPrg.Show();
         }
 
-        private void gesti√≥nDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gestiÛnDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormProductoGestion frmGesProd = new FormProductoGestion();
             frmGesProd.MdiParent = this;
             frmGesProd.Show();
         }
 
-        private void bit√°coraToolStripMenuItem_Click(object sender, EventArgs e)
+        private void bit·coraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormBitacora fBit = new FormBitacora();
             fBit.MdiParent = this;

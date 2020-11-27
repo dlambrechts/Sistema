@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,14 +14,14 @@ using Servicios.Bitacora;
 
 namespace UI
 {
-    public partial class FormLogin : Form,IIdiomaObserver
+    public partial class FormLogin : Form, IIdiomaObserver
     {
         public FormLogin()
         {
             InitializeComponent();
             Traducir();
         }
-        BitacoraBLL bllAct = new BitacoraBLL();
+        private Servicios.Bitacora.BitacoraBLL bllAct = new BitacoraBLL();
         
 
         public void UpdateLanguage(IdiomaBE idioma)
@@ -38,10 +38,10 @@ namespace UI
 
             var Traducciones = TraductorBLL.ObtenerTraducciones(Idioma);
 
-            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr√° traducciones, por lo tanto es necesario consultar si es null
+            if (Traducciones != null) // Al crear un idioma nuevo y utilizarlo no habr· traducciones, por lo tanto es necesario consultar si es null
             {
 
-                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // T√≠tulo del form
+                if (this.Tag != null && Traducciones.ContainsKey(this.Tag.ToString()))  // TÌtulo del form
                     this.Text = Traducciones[this.Tag.ToString()].Texto;
 
                 foreach (Control x in this.Controls) // Todos los controles

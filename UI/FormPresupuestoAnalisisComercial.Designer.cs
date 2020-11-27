@@ -1,6 +1,6 @@
-Ôªønamespace UI
+namespace UI
 {
-    partial class FormPresupuestoAnalisisComercial
+    public partial class FormPresupuestoAnalisisComercial
     {
         /// <summary>
         /// Required designer variable.
@@ -105,7 +105,7 @@
             this.radioPendientes.Size = new System.Drawing.Size(150, 17);
             this.radioPendientes.TabIndex = 1;
             this.radioPendientes.TabStop = true;
-            this.radioPendientes.Text = "Pendientes de Aprobaci√≥n";
+            this.radioPendientes.Text = "Pendientes de AprobaciÛn";
             this.radioPendientes.UseVisualStyleBackColor = true;
             this.radioPendientes.CheckedChanged += new System.EventHandler(this.radioPendientes_CheckedChanged_1);
             // 
@@ -148,7 +148,7 @@
             this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "FormPresupuestoAnalisisComercial";
             this.helpProvider1.SetShowHelp(this, true);
-            this.Text = "An√°lisis Comercial de Presupuestos";
+            this.Text = "An·lisis Comercial de Presupuestos";
             this.Load += new System.EventHandler(this.FormPresupuestoAnalisisComercial_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

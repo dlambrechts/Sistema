@@ -1,6 +1,6 @@
-﻿namespace UI
+namespace UI
 {
-    partial class FormPedidoGestion
+    public partial class FormPedidoGestion
     {
         /// <summary>
         /// Required designer variable.

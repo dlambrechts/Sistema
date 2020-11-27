@@ -1,6 +1,6 @@
-ï»¿namespace UI
+namespace UI
 {
-    partial class FormIdioma
+    public partial class FormIdioma
     {
         /// <summary>
         /// Required designer variable.
@@ -112,7 +112,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "DescripciÃ³n";
+            this.label3.Text = "Descripción";
             // 
             // checkBoxDefault
             // 
@@ -194,7 +194,7 @@
             this.ClientSize = new System.Drawing.Size(339, 289);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormIdioma";
-            this.Text = "GestiÃ³n de Idiomas";
+            this.Text = "Gestión de Idiomas";
             this.Load += new System.EventHandler(this.FormIdioma_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

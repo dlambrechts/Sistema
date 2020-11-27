@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +19,8 @@ namespace UI
             InitializeComponent();
         }
 
-        public PedidoBE Pedido;
-        PedidoBLL bllP = new PedidoBLL();
+        public BE.PedidoBE Pedido;
+        private BLL.PedidoBLL bllP = new PedidoBLL();
 
         private void FormPedidoEditar_Load(object sender, EventArgs e)
         {
@@ -44,7 +44,7 @@ namespace UI
 
         private void buttonAct_Click(object sender, EventArgs e)
         {
-            DialogResult Respuesta = MessageBox.Show("Confirma Edición del Pedido?", "Editar Pedido", MessageBoxButtons.YesNo);
+            DialogResult Respuesta = MessageBox.Show("Confirma Edici�n del Pedido?", "Editar Pedido", MessageBoxButtons.YesNo);
 
             if (Respuesta == DialogResult.Yes)
             {

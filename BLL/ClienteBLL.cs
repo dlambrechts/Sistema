@@ -1,4 +1,4 @@
-ï»¿using BE;
+using BE;
 using DAL;
 using System;
 using System.Collections.Generic;
@@ -12,11 +12,11 @@ namespace BLL
 {
     public class ClienteBLL
     {
-        ClienteDAL dCliente = new ClienteDAL();
-        BitacoraBLL bllBit = new BitacoraBLL();
-        BitacoraTipoActividad tipo = new BitacoraTipoActividad();
+        private DAL.ClienteDAL dCliente = new ClienteDAL();
+        private Servicios.Bitacora.BitacoraBLL bllBit = new BitacoraBLL();
+        private Servicios.Bitacora.BitacoraTipoActividad tipo = new BitacoraTipoActividad();
 
-        public ClienteBE SeleccionarPorId(int Id) 
+        public BE.ClienteBE SeleccionarPorId(int Id) 
         
         {          
             return dCliente.SeleccionarPorId(Id);
@@ -51,7 +51,7 @@ namespace BLL
             BitacoraActividadBE nActividad = new BitacoraActividadBE();
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se agregÃ³ el Cliente " + Id;
+            nActividad.Detalle = "Se agregó el Cliente " + Id;
             bllBit.NuevaActividad(nActividad);
         }
 
@@ -65,7 +65,7 @@ namespace BLL
             BitacoraActividadBE nActividad = new BitacoraActividadBE();
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se modificÃ³ el Cliente " + nCliente.Id;
+            nActividad.Detalle = "Se modificó el Cliente " + nCliente.Id;
             bllBit.NuevaActividad(nActividad);
         }
 
@@ -86,7 +86,7 @@ namespace BLL
 
         }
 
-        public ClienteVersionCambiosBE ControlCambios(ClienteBE Anterior, ClienteBE Nuevo) // Aqui se compara el objeto anterior con el nuevo para identificar los cambios y registrar el versionado
+        public BE.ClienteVersionCambiosBE ControlCambios(ClienteBE Anterior, ClienteBE Nuevo) // Aqui se compara el objeto anterior con el nuevo para identificar los cambios y registrar el versionado
         
         {
             ClienteVersionCambiosBE Cambios = new ClienteVersionCambiosBE();
@@ -112,7 +112,7 @@ namespace BLL
             BitacoraActividadBE nActividad = new BitacoraActividadBE();
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);
-            nActividad.Detalle = "Se eliminÃ³ el Cliente " + eCli.Id;
+            nActividad.Detalle = "Se eliminó el Cliente " + eCli.Id;
             bllBit.NuevaActividad(nActividad);
         }
 
@@ -150,14 +150,14 @@ namespace BLL
 
         }
 
-        public ClienteVersionBE ObtenerVersionPorIdVersion(ClienteVersionBE Vers)
+        public BE.ClienteVersionBE ObtenerVersionPorIdVersion(ClienteVersionBE Vers)
 
         {
             return dCliente.ObtenerVersionPorIdVersion(Vers);
 
         }
 
-        public ClienteVersionCambiosBE ObtenerCamposAfectadorEnVersion(ClienteVersionBE Vers)
+        public BE.ClienteVersionCambiosBE ObtenerCamposAfectadorEnVersion(ClienteVersionBE Vers)
         
         {
             return dCliente.ObtenerCamposAfectadorEnVersion(Vers);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +11,8 @@ namespace BLL
 {
     public class PedidoBLL
     {
-        PedidoDAL pDal = new PedidoDAL();
-        PresupuestoDAL presDal = new PresupuestoDAL();
+        private DAL.PedidoDAL pDal = new PedidoDAL();
+        private DAL.PresupuestoDAL presDal = new PresupuestoDAL();
         public List<PedidoBE> ListarPedidos()
 
         {
@@ -26,7 +26,7 @@ namespace BLL
             PresupuestoEstadoBE nEstado = new Finalizado();
             presDal.ActualizarEstado(Pedido.Presupuesto, nEstado);
         }
-        public PedidoBE PresupuestoToPedido (PresupuestoBE Pres)  // Crear el Pedido en Base a un Presupesto
+        public BE.PedidoBE PresupuestoToPedido(PresupuestoBE Pres)  // Crear el Pedido en Base a un Presupesto
         
         {
             PresupuestoBLL presBLL = new PresupuestoBLL();

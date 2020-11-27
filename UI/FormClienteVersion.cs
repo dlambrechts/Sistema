@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,9 +19,9 @@ namespace UI
             InitializeComponent();
         }
 
-        public ClienteBE Cli = new ClienteBE();
-        ClienteBLL bllCli = new ClienteBLL();
-        ClienteVersionBE selVer;
+        public BE.ClienteBE Cli = new ClienteBE();
+        private BLL.ClienteBLL bllCli = new ClienteBLL();
+        private BE.ClienteVersionBE selVer;
         private void FormClienteVersion_Load(object sender, EventArgs e)
         {
             CargarGrillaVersiones();
@@ -98,13 +98,13 @@ namespace UI
 
                 {
                     bllCli.NuevaVersion(bllCli.SeleccionarPorId(Cli.Id), selVer.Cliente);
-                    MessageBox.Show("VersiÃ³n Restaurada");
+                    MessageBox.Show("Versión Restaurada");
                     this.Close();
                 }
 
             }
 
-            else { MessageBox.Show("Debe seleccionar una versiÃ³n"); }
+            else { MessageBox.Show("Debe seleccionar una versión"); }
         }
     }
     
