@@ -176,6 +176,21 @@ namespace UI
 
                 }
             }
-        }   
+        }
+
+        private void buttonVer_Click(object sender, EventArgs e)
+        {
+            if (beCli.RazonSocial == null) { MessageBox.Show("Debe seleccionar un Cliente"); }
+
+            else
+            {
+
+                FormClienteVer frmVer = new FormClienteVer();
+                frmVer.cliente = beCli;
+                frmVer.MdiParent = this.ParentForm;
+                frmVer.Show();
+
+            }
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace BE
 
         private PresupuestoEstadoBE _Estado;
 
-        public List<PresupuestoItemBE> _Items;
+        private List<PresupuestoItemBE> _Items;
         public PresupuestoBE(ClienteBE _cliente) 
         
         {
@@ -32,7 +32,8 @@ namespace BE
         public ClienteBE Cliente { get { return this._Cliente; } }
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
-        public DateTime FechaValidez { get; set; }   
+        public DateTime FechaValidez { get; set; }
+        public PresupuestoEstadoBE Estado { get { return this._Estado; } }
         public int PorcDescuento { get; set; }
         public decimal Descuento { get; set; }
         public decimal Iva { get; set; }
@@ -67,7 +68,6 @@ namespace BE
 
         [XmlIgnoreAttribute]
         public List<PresupuestoItemBE> Items { get { return _Items; } }
-        public PresupuestoEstadoBE Estado { get { return this._Estado; } }
         public void ActualizarCliente (ClienteBE NuevoCliente) { this._Cliente = NuevoCliente; }
 
         public PresupuestoBE() { } // Constructor vacío para serializar XML

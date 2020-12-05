@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteBE.cs" />
-    <Compile Include="ClienteTipoBE.cs" />
     <Compile Include="ClienteVersionCambiosBE.cs" />
     <Compile Include="ClienteVersionBE.cs" />
     <Compile Include="IdiomaBE.cs" />
@@ -68,8 +67,6 @@
     <Compile Include="PresupuestoItemBE.cs" />
     <Compile Include="PresupuestoTipoAprobacionBE.cs" />
     <Compile Include="ProductoBE.cs" />
-    <Compile Include="ProductoTipoBE.cs" />
-    <Compile Include="ProductoUnidadMedidaBE.cs" />
     <Compile Include="UsuarioBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

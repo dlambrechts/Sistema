@@ -124,7 +124,7 @@ namespace UI
         {
             ProductoBE tempProd = new ProductoBE();
             tempProd = (ProductoBE)comboProducto.SelectedItem;
-            MessageBox.Show("La cantidad Actual para " + tempProd.Descripcion + " es: " + tempProd.Stock + " " + tempProd.UnidadMedida);
+            MessageBox.Show("La cantidad Actual para " + tempProd.Descripcion + " es: " + tempProd.Stock + " " );
         }
 
         private void buttonQuitarItem_Click(object sender, EventArgs e)
@@ -158,8 +158,6 @@ namespace UI
                     nCli= (ClienteBE)comboCliente.SelectedItem;
                     ePresupuesto.ActualizarCliente(nCli);
                     ePresupuesto.Vendedor = SesionSingleton.Instancia.Usuario;
-                    PresupuestoEstadoBE nEstado = new ApComPend();
-                    ePresupuesto.ActualizarEstado(nEstado);                                // Al editar vuelve a estar pendiente de Aprobación Técnica
                     ePresupuesto.FechaEntrega = dateTimePicker1.Value;
                     ePresupuesto.FechaValidez = dateTimePickerVal.Value;
                     ePresupuesto.PorcDescuento = Convert.ToInt32(comboDescuento.Text);

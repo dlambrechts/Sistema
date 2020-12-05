@@ -185,7 +185,7 @@ namespace UI
         {
             ProductoBE tempProd = new ProductoBE();
             tempProd =(ProductoBE)comboProducto.SelectedItem;
-            MessageBox.Show("La cantidad Actual para " + tempProd.Descripcion + " es: " + tempProd.Stock + " " + tempProd.UnidadMedida);
+            MessageBox.Show("La cantidad Actual para " + tempProd.Descripcion + " es: " + tempProd.Stock + " " );
         }
 
         private void buttonQuitarItem_Click(object sender, EventArgs e)

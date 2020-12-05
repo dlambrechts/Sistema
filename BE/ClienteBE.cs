@@ -28,12 +28,6 @@ namespace BE
         public bool Activo { get; set; }
 
         [XmlIgnoreAttribute]
-        public ClienteTipoBE Tipo { get { return tipo; } }
-
-        [XmlIgnoreAttribute]
-        public ClienteTipoBE tipo = new ClienteTipoBE();
-
-        [XmlIgnoreAttribute]
         public UsuarioBE UsuarioCreacion = new UsuarioBE();
         public UsuarioBE _UsuarioCreacion { get { return UsuarioCreacion; } }
         [XmlIgnoreAttribute]

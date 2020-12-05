@@ -17,19 +17,13 @@ namespace UI
         public FormClienteEditar()
         {
             InitializeComponent();
-            CompletarTipos();      
-        }
+         }
 
         private BLL.ClienteBLL bllCli = new ClienteBLL();
 
         public BE.ClienteBE Cli = new ClienteBE();
 
-        public void CompletarTipos()
 
-        {
-            comboTipo.DataSource = null;
-            comboTipo.DataSource = bllCli.ListarTipoCliente();
-        }
         private void FormClienteEditar_Load(object sender, EventArgs e)
         {
             textRazon.Text = Cli.RazonSocial;
@@ -37,10 +31,8 @@ namespace UI
             textCP.Text = Convert.ToString(Cli.CodigoPostal);
             textTel.Text = Cli.Telefono;
             textMail.Text = Cli.Mail;
-            comboTipo.SelectedIndex = comboTipo.FindStringExact(Cli.Tipo.Tipo);
             textCuit.Text = Cli.Cuit;
             textContacto.Text = Cli.Contacto;
-
             checkBox1.Checked = Cli.Activo;
         }
 
@@ -66,7 +58,6 @@ namespace UI
                 eCli.CodigoPostal = Convert.ToInt32(textCP.Text);
                 eCli.Telefono = textTel.Text;
                 eCli.Mail = textMail.Text;
-                eCli.tipo = (ClienteTipoBE)comboTipo.SelectedItem;
                 eCli.Cuit = textCuit.Text;
                 eCli.Contacto = textContacto.Text;
 

@@ -49,9 +49,11 @@ namespace UI
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(9, 73);
+            this.groupBox1.Location = new System.Drawing.Point(14, 112);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(939, 412);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(1408, 634);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Tag = "Presupuestos";
@@ -64,12 +66,13 @@ namespace UI
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 29);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(925, 387);
+            this.dataGridView1.Size = new System.Drawing.Size(1388, 595);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -82,9 +85,11 @@ namespace UI
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(9, 13);
+            this.groupBox2.Location = new System.Drawing.Point(14, 20);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(633, 54);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Size = new System.Drawing.Size(950, 83);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "Acciones";
@@ -92,19 +97,21 @@ namespace UI
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(506, 20);
+            this.button2.Location = new System.Drawing.Point(759, 31);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 23);
+            this.button2.Size = new System.Drawing.Size(135, 35);
             this.button2.TabIndex = 7;
-            this.button2.Text = "Serializar XML";
+            this.button2.Text = "Exportar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonLayout
             // 
-            this.buttonLayout.Location = new System.Drawing.Point(425, 20);
+            this.buttonLayout.Location = new System.Drawing.Point(638, 31);
+            this.buttonLayout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLayout.Name = "buttonLayout";
-            this.buttonLayout.Size = new System.Drawing.Size(75, 23);
+            this.buttonLayout.Size = new System.Drawing.Size(112, 35);
             this.buttonLayout.TabIndex = 6;
             this.buttonLayout.Tag = "Layout";
             this.buttonLayout.Text = "Layout";
@@ -113,9 +120,10 @@ namespace UI
             // 
             // buttonCierre
             // 
-            this.buttonCierre.Location = new System.Drawing.Point(263, 20);
+            this.buttonCierre.Location = new System.Drawing.Point(394, 31);
+            this.buttonCierre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonCierre.Name = "buttonCierre";
-            this.buttonCierre.Size = new System.Drawing.Size(75, 23);
+            this.buttonCierre.Size = new System.Drawing.Size(112, 35);
             this.buttonCierre.TabIndex = 5;
             this.buttonCierre.Tag = "Cierre";
             this.buttonCierre.Text = "Cierre";
@@ -124,9 +132,10 @@ namespace UI
             // 
             // buttonEditar
             // 
-            this.buttonEditar.Location = new System.Drawing.Point(181, 20);
+            this.buttonEditar.Location = new System.Drawing.Point(272, 31);
+            this.buttonEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonEditar.Name = "buttonEditar";
-            this.buttonEditar.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditar.Size = new System.Drawing.Size(112, 35);
             this.buttonEditar.TabIndex = 4;
             this.buttonEditar.Tag = "Editar";
             this.buttonEditar.Text = "Editar";
@@ -135,9 +144,10 @@ namespace UI
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(344, 20);
+            this.button4.Location = new System.Drawing.Point(516, 31);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(112, 35);
             this.button4.TabIndex = 3;
             this.button4.Tag = "Eliminar";
             this.button4.Text = "Eliminar";
@@ -146,9 +156,10 @@ namespace UI
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(100, 20);
+            this.button3.Location = new System.Drawing.Point(150, 31);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(112, 35);
             this.button3.TabIndex = 2;
             this.button3.Tag = "Visualizar";
             this.button3.Text = "Visualizar";
@@ -157,9 +168,10 @@ namespace UI
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(18, 20);
+            this.button1.Location = new System.Drawing.Point(27, 31);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(112, 35);
             this.button1.TabIndex = 0;
             this.button1.Tag = "Nuevo";
             this.button1.Text = "Nuevo";
@@ -172,14 +184,15 @@ namespace UI
             // 
             // FormPresupuestoGestion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 497);
+            this.ClientSize = new System.Drawing.Size(1440, 765);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.HelpButton = true;
             this.helpGestionPresup.SetHelpKeyword(this, "Presup");
             this.helpGestionPresup.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormPresupuestoGestion";
             this.helpGestionPresup.SetShowHelp(this, true);
             this.Tag = "Gestión de presupuestos";

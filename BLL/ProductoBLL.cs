@@ -16,16 +16,7 @@ namespace BLL
         private DAL.ProductoDAL dProd = new ProductoDAL();
         private Servicios.Bitacora.BitacoraBLL bllBit = new BitacoraBLL();
         private Servicios.Bitacora.BitacoraTipoActividad tipo = new BitacoraTipoActividad();
-        public List<ProductoUnidadMedidaBE> ListarUnidadesMedida()
-        {         
-            return dProd.ListarUnidadesMedida();
-        }
 
-        public List<ProductoTipoBE> ListarTipoProducto() 
-        
-        {           
-            return dProd.ListarTipoProducto();
-        }
        public List<ProductoBE> ListarProductos() 
         
         {            

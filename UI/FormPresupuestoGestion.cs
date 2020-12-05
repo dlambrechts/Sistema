@@ -218,7 +218,7 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult Respuesta = MessageBox.Show("¿Generar Serialización XML de Presupuestos?", "Generar XML", MessageBoxButtons.YesNo);
+            DialogResult Respuesta = MessageBox.Show("¿Generar Archivo XML de Presupuestos?", "Generar XML", MessageBoxButtons.YesNo);
 
             if (Respuesta == DialogResult.Yes)
 

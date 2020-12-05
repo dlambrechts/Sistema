@@ -96,7 +96,6 @@ namespace BLL
             Cambios.CodigoPostal = !(int.Equals(Anterior.CodigoPostal, Nuevo.CodigoPostal));
             Cambios.Telefono = !(string.Equals(Anterior.Telefono.Trim(), Nuevo.Telefono.Trim()));
             Cambios.Mail = !(string.Equals(Anterior.Mail.Trim(), Nuevo.Mail.Trim()));
-            Cambios.Tipo = !(string.Equals(Anterior.Tipo.Id.Trim(), Nuevo.Tipo.Id.Trim()));
             Cambios.Cuit = !(string.Equals(Anterior.Cuit.Trim(), Nuevo.Cuit.Trim()));
             Cambios.Contacto = !(string.Equals(Anterior.Contacto.Trim(), Nuevo.Contacto.Trim()));
             Cambios.Activo = !(string.Equals(Anterior.Activo, Nuevo.Activo));
@@ -116,13 +115,6 @@ namespace BLL
             bllBit.NuevaActividad(nActividad);
         }
 
-        public List<ClienteTipoBE> ListarTipoCliente()
-
-        {
-            ClienteDAL CliDal = new ClienteDAL();
-            return CliDal.ListarTipoCliente();
-
-        }
         public bool ExisteClienteEnPresupuesto(ClienteBE Cli)
 
         {

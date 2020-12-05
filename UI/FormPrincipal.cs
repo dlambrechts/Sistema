@@ -123,8 +123,7 @@ namespace UI
                 if (gestiónDeProductosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gestiónDeProductosToolStripMenuItem.Tag.ToString()))
                     this.gestiónDeProductosToolStripMenuItem.Text = Traducciones[gestiónDeProductosToolStripMenuItem.Tag.ToString()].Texto;
 
-                if (ajustesDeStockToolStripMenuItem.Tag != null && Traducciones.ContainsKey(ajustesDeStockToolStripMenuItem.Tag.ToString()))
-                    this.ajustesDeStockToolStripMenuItem.Text = Traducciones[ajustesDeStockToolStripMenuItem.Tag.ToString()].Texto;
+
 
                 if (gestionDePedidosToolStripMenuItem.Tag != null && Traducciones.ContainsKey(gestionDePedidosToolStripMenuItem.Tag.ToString()))
                     this.gestionDePedidosToolStripMenuItem.Text = Traducciones[gestionDePedidosToolStripMenuItem.Tag.ToString()].Texto;
@@ -261,7 +260,6 @@ namespace UI
             this.aprobarPresupuestoToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoE); // Aprobacion Tecnica
             this.aprobaciónComercialToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoF); // Aprobacion Comercial
             this.gestiónDeProductosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoL); // ABM Productos
-            this.ajustesDeStockToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoN); // Ajustes de Stock
             this.presupuestosToolStripMenuItem1.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoM); // Ver métricas, indicadores
             this.gestiónDeClientesToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoK); // ABM Clientes
             this.gestionDePedidosToolStripMenuItem.Enabled = SesionSingleton.Instancia.IsInRole(PerfilTipoPermisoBE.PermisoO); // Gestión Pedidos

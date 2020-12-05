@@ -75,7 +75,7 @@ namespace UI
             this.dataGridViewAprob.DataSource = hist;
 
             this.dataGridViewAprob.Columns[0].Visible = false;
-            this.dataGridViewAprob.Columns[2].HeaderText = "Aprobador";
+
            
 
         }

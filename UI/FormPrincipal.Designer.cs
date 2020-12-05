@@ -43,7 +43,6 @@ namespace UI
             this.gestionDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónDeProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajustesDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.administradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +75,8 @@ namespace UI
             this.administradorToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1200, 25);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -88,7 +88,7 @@ namespace UI
             this.cerrarSesiónToolStripMenuItem,
             this.idiomaToolStripMenuItem});
             this.sesiónToolStripMenuItem.Name = "sesiónToolStripMenuItem";
-            this.sesiónToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.sesiónToolStripMenuItem.Size = new System.Drawing.Size(53, 19);
             this.sesiónToolStripMenuItem.Tag = "Sesion";
             this.sesiónToolStripMenuItem.Text = "Sesion";
             this.sesiónToolStripMenuItem.Click += new System.EventHandler(this.sesiónToolStripMenuItem_Click);
@@ -123,7 +123,7 @@ namespace UI
             this.aprobarPresupuestoToolStripMenuItem,
             this.aprobaciónComercialToolStripMenuItem});
             this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
-            this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(89, 19);
             this.presupuestosToolStripMenuItem.Tag = "Presupuestos";
             this.presupuestosToolStripMenuItem.Text = "Presupuestos";
             // 
@@ -156,7 +156,7 @@ namespace UI
             this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestiónDeClientesToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(61, 19);
             this.clientesToolStripMenuItem.Tag = "Clientes";
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
@@ -173,7 +173,7 @@ namespace UI
             this.pedidosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionDePedidosToolStripMenuItem});
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(61, 19);
             this.pedidosToolStripMenuItem.Tag = "Pedidos";
             this.pedidosToolStripMenuItem.Text = "Pedidos";
             // 
@@ -188,10 +188,9 @@ namespace UI
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestiónDeProductosToolStripMenuItem,
-            this.ajustesDeStockToolStripMenuItem});
+            this.gestiónDeProductosToolStripMenuItem});
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(73, 19);
             this.productosToolStripMenuItem.Tag = "Productos";
             this.productosToolStripMenuItem.Text = "Productos";
             // 
@@ -203,26 +202,19 @@ namespace UI
             this.gestiónDeProductosToolStripMenuItem.Text = "Gestion de Productos";
             this.gestiónDeProductosToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeProductosToolStripMenuItem_Click);
             // 
-            // ajustesDeStockToolStripMenuItem
-            // 
-            this.ajustesDeStockToolStripMenuItem.Name = "ajustesDeStockToolStripMenuItem";
-            this.ajustesDeStockToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.ajustesDeStockToolStripMenuItem.Tag = "Ajustes de Stock";
-            this.ajustesDeStockToolStripMenuItem.Text = "Ajustes de Stock";
-            // 
             // metricasToolStripMenuItem
             // 
             this.metricasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.presupuestosToolStripMenuItem1});
             this.metricasToolStripMenuItem.Name = "metricasToolStripMenuItem";
-            this.metricasToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.metricasToolStripMenuItem.Size = new System.Drawing.Size(65, 19);
             this.metricasToolStripMenuItem.Tag = "Indicadores";
             this.metricasToolStripMenuItem.Text = "Reportes";
             // 
             // presupuestosToolStripMenuItem1
             // 
             this.presupuestosToolStripMenuItem1.Name = "presupuestosToolStripMenuItem1";
-            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
             this.presupuestosToolStripMenuItem1.Tag = "Ventas Perdidas";
             this.presupuestosToolStripMenuItem1.Text = "Ventas Perdidas";
             this.presupuestosToolStripMenuItem1.Click += new System.EventHandler(this.presupuestosToolStripMenuItem1_Click);
@@ -237,7 +229,7 @@ namespace UI
             this.bitácoraToolStripMenuItem,
             this.backupToolStripMenuItem});
             this.administradorToolStripMenuItem.Name = "administradorToolStripMenuItem";
-            this.administradorToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.administradorToolStripMenuItem.Size = new System.Drawing.Size(95, 19);
             this.administradorToolStripMenuItem.Tag = "Administrador";
             this.administradorToolStripMenuItem.Text = "Administrador";
             this.administradorToolStripMenuItem.Click += new System.EventHandler(this.administradorToolStripMenuItem_Click);
@@ -321,9 +313,10 @@ namespace UI
             this.toolStripStatusLabel1,
             this.dots,
             this.toolStripStatusLabel2});
-            this.BarraDeEstado.Location = new System.Drawing.Point(0, 428);
+            this.BarraDeEstado.Location = new System.Drawing.Point(0, 670);
             this.BarraDeEstado.Name = "BarraDeEstado";
-            this.BarraDeEstado.Size = new System.Drawing.Size(800, 22);
+            this.BarraDeEstado.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
+            this.BarraDeEstado.Size = new System.Drawing.Size(1200, 22);
             this.BarraDeEstado.TabIndex = 2;
             this.BarraDeEstado.Text = "statusStrip1";
             this.BarraDeEstado.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
@@ -352,13 +345,14 @@ namespace UI
             // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.BarraDeEstado);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormPrincipal";
             this.Tag = "Nombre del sistema";
             this.Text = "Sistema de Gestión y Seguimiento de Ventas";
@@ -402,7 +396,6 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem gestiónDeClientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestiónDeProductosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ajustesDeStockToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem metricasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bitácoraToolStripMenuItem;

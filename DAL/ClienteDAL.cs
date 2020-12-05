@@ -33,12 +33,16 @@ namespace DAL
                     oCliente.CodigoPostal = Convert.ToInt32(Item["CodigoPostal"]);
                     oCliente.Telefono = Item["Telefono"].ToString().Trim();
                     oCliente.Mail = Item["Mail"].ToString().Trim();
-                    oCliente.Tipo.Id = Item["Tipo"].ToString().Trim();
-                    oCliente.Tipo.Tipo = Item["Tipo"].ToString().Trim();
                     oCliente.Cuit = Item["Cuit"].ToString().Trim();
                     oCliente.Contacto = Item["Contacto"].ToString().Trim();
                     oCliente.Activo = Convert.ToBoolean(Item["Activo"]);
+                    oCliente.UsuarioCreacion.Id = Convert.ToInt32(Item["UsuarioCreacion"]);
+                    oCliente.FechaCreacion = Convert.ToDateTime(Item["FechaCreacion"]);
 
+                    if (Item["UsuarioModificacion"] != DBNull.Value) { 
+                    oCliente.UsuarioModificacion.Id = Convert.ToInt32(Item["UsuarioModificacion"]);
+                    oCliente.FechaModificacion = Convert.ToDateTime(Item["FechaModificacion"]);
+                    }
                 }
 
             }
@@ -63,17 +67,15 @@ namespace DAL
                     oCli.RazonSocial = Convert.ToString(Item[1]).Trim();
                     oCli.Direccion = Convert.ToString(Item[2]).Trim();
                     oCli.CodigoPostal = Convert.ToInt32(Item[3]);
-                    oCli.Telefono= Convert.ToString(Item[4]).Trim();
-                    oCli.Mail = Convert.ToString(Item[5]).Trim();
-                    oCli.Tipo.Id = Convert.ToString(Item[6]).Trim();
-                    oCli.Tipo.Tipo = Convert.ToString(Item[7]).Trim();
-                    oCli.Cuit = Convert.ToString(Item[8]).Trim();
-                    oCli.Contacto = Convert.ToString(Item[9]).Trim();                   
-                    oCli.Activo = Convert.ToBoolean(Item[10]);
-                    oCli.UsuarioCreacion.Id = Convert.ToInt32(Item[11]);
-                    oCli.FechaCreacion = Convert.ToDateTime(Item[12]);
-                    if (Item[13]!=DBNull.Value) { oCli.UsuarioModificacion.Id = Convert.ToInt32(Item[13]); }
-                    if (Item[14]!= DBNull.Value) { oCli.FechaModificacion = Convert.ToDateTime(Item[14]); }
+                    oCli.Telefono= Convert.ToString(Item["Telefono"]).Trim();
+                    oCli.Mail = Convert.ToString(Item["Mail"]).Trim();
+                    oCli.Cuit = Convert.ToString(Item["Cuit"]).Trim();
+                    oCli.Contacto = Convert.ToString(Item["Contacto"]).Trim();                   
+                    oCli.Activo = Convert.ToBoolean(Item["Activo"]);
+                    oCli.UsuarioCreacion.Id = Convert.ToInt32(Item["UsuarioCreacion"]);
+                    oCli.FechaCreacion = Convert.ToDateTime(Item["FechaCreacion"]);
+                    if (Item["UsuarioModificacion"]!=DBNull.Value) { oCli.UsuarioModificacion.Id = Convert.ToInt32(Item["UsuarioModificacion"]); }
+                    if (Item["FechaModificacion"] != DBNull.Value) { oCli.FechaModificacion = Convert.ToDateTime(Item["FechaModificacion"]); }
 
                     ListaClientes.Add(oCli);
                 }
@@ -91,7 +93,6 @@ namespace DAL
             Parametros.Add("@CodigoPostal", nCli.CodigoPostal);
             Parametros.Add("@Tel", nCli.Telefono);
             Parametros.Add("@Mail", nCli.Mail);
-            Parametros.Add("@Tipo", nCli.Tipo.Id);
             Parametros.Add("@Cuit", nCli.Cuit);
             Parametros.Add("@Contacto", nCli.Contacto);
             Parametros.Add("@UsuarioIns", nCli._UsuarioCreacion.Id);
@@ -112,7 +113,6 @@ namespace DAL
             Parametros.Add("@CodigoPostal", nCli.CodigoPostal);
             Parametros.Add("@Tel", nCli.Telefono);
             Parametros.Add("@Mail", nCli.Mail);
-            Parametros.Add("@Tipo", nCli.Tipo.Id);
             Parametros.Add("@Cuit", nCli.Cuit);
             Parametros.Add("@Contacto", nCli.Contacto);
             Parametros.Add("@Activo", nCli.Activo);
@@ -140,7 +140,6 @@ namespace DAL
             Parametros.Add("@CodigoPostal", Version.Cliente.CodigoPostal);
             Parametros.Add("@Tel", Version.Cliente.Telefono);
             Parametros.Add("@Mail", Version.Cliente.Mail);
-            Parametros.Add("@Tipo", Version.Cliente.Tipo.Id);
             Parametros.Add("@Cuit", Version.Cliente.Cuit);
             Parametros.Add("@Contacto", Version.Cliente.Contacto);
             Parametros.Add("@Activo", Version.Cliente.Activo);
@@ -162,7 +161,6 @@ namespace DAL
             ParametrosCampos.Add("@FlagCodigoPostal", Version.Cambios.CodigoPostal);
             ParametrosCampos.Add("@FlagTel", Version.Cambios.Telefono);
             ParametrosCampos.Add("@FlagMail", Version.Cambios.Mail);
-            ParametrosCampos.Add("@FlagTipo", Version.Cambios.Tipo);
             ParametrosCampos.Add("@FlagCuit", Version.Cambios.Cuit);
             ParametrosCampos.Add("@FlagContacto", Version.Cambios.Contacto);
             ParametrosCampos.Add("@FlagActivo", Version.Cambios.Activo);
@@ -181,31 +179,6 @@ namespace DAL
             AccesoDB.Escribir("sp_EliminarCliente", Parametros);
         }
 
-        public List<ClienteTipoBE> ListarTipoCliente()
-
-        {
-            List<ClienteTipoBE> TiposCliente = new List<ClienteTipoBE>();
-
-            Acceso AccesoDB = new Acceso();
-            DataSet DS = new DataSet();
-            DS = AccesoDB.LeerDatos("sp_ListaClienteTipo", null);
-
-            if (DS.Tables[0].Rows.Count > 0)
-            {
-                foreach (DataRow Item in DS.Tables[0].Rows)
-                {
-                    ClienteTipoBE oTipo = new ClienteTipoBE();
-
-                    oTipo.Id = Convert.ToString(Item[0]).Trim();
-                    oTipo.Tipo = Convert.ToString(Item[1]).Trim();
-
-
-                    TiposCliente.Add(oTipo);
-                }
-
-            }
-            return TiposCliente;
-        }
 
         public List<ClienteVersionBE> ListarVersionesClientePorId (ClienteBE Cli)
 
@@ -252,22 +225,20 @@ namespace DAL
             {
                 DataTable Tabla = DS.Tables[0];
 
-                    CliVer.RazonSocial = Convert.ToString(Tabla.Rows[0][2]);
-                    CliVer.Direccion = Convert.ToString(Tabla.Rows[0][3]);
-                    CliVer.CodigoPostal = Convert.ToInt32(Tabla.Rows[0][4]);
-                    CliVer.Telefono = Convert.ToString(Tabla.Rows[0][5]);
-                    CliVer.Mail = Convert.ToString(Tabla.Rows[0][6]);
-                    CliVer.tipo.Id = Convert.ToString(Tabla.Rows[0][7]);
-                    CliVer.tipo.Tipo = Convert.ToString(Tabla.Rows[0][8]);
-                    CliVer.Cuit = Convert.ToString(Tabla.Rows[0][9]);
-                    CliVer.Contacto = Convert.ToString(Tabla.Rows[0][10]);
+                    CliVer.RazonSocial = Convert.ToString(Tabla.Rows[0]["RazonSocial"]);
+                    CliVer.Direccion = Convert.ToString(Tabla.Rows[0]["Direccion"]);
+                    CliVer.CodigoPostal = Convert.ToInt32(Tabla.Rows[0]["CodigoPostal"]);
+                    CliVer.Telefono = Convert.ToString(Tabla.Rows[0]["Telefono"]);
+                    CliVer.Mail = Convert.ToString(Tabla.Rows[0]["Mail"]);
+                    CliVer.Cuit = Convert.ToString(Tabla.Rows[0]["Cuit"]);
+                    CliVer.Contacto = Convert.ToString(Tabla.Rows[0]["Contacto"]);
                     CliVer.Activo = Convert.ToBoolean(Tabla.Rows[0]["Activo"]);
-                    if (Tabla.Rows[0][11] != DBNull.Value) { CliVer.FechaModificacion = Convert.ToDateTime(Tabla.Rows[0][11]); }
-                    CliVer.Id = Convert.ToInt32(Tabla.Rows[0][12]);
+                    if (Tabla.Rows[0]["FechaModificacion"] != DBNull.Value) { CliVer.FechaModificacion = Convert.ToDateTime(Tabla.Rows[0]["FechaModificacion"]); }
+                    CliVer.Id = Convert.ToInt32(Tabla.Rows[0]["Cliente"]);
 
                     ClienteVersionBE Version = new ClienteVersionBE(CliVer, Vers.UsuarioVersion);
                     Version.IdVersion = Vers.IdVersion;
-                    Version.Fecha = Convert.ToDateTime(Tabla.Rows[0][1]);
+                    Version.Fecha = Convert.ToDateTime(Tabla.Rows[0]["Fecha"]);
 
                 return Version;
             }
@@ -292,15 +263,14 @@ namespace DAL
                 foreach (DataRow Item in DS.Tables[0].Rows)
                 {
                    
-                   Cambios.RazonSocial = Convert.ToBoolean(Item[1]);
-                   Cambios.Direccion = Convert.ToBoolean(Item[2]);
-                   Cambios.CodigoPostal = Convert.ToBoolean(Item[3]);
-                   Cambios.Telefono = Convert.ToBoolean(Item[4]);
-                   Cambios.Mail = Convert.ToBoolean(Item[5]);
-                   Cambios.Tipo = Convert.ToBoolean(Item[6]);
-                   Cambios.Cuit = Convert.ToBoolean(Item[7]);
-                   Cambios.Contacto = Convert.ToBoolean(Item[8]);
-                   Cambios.Activo = Convert.ToBoolean(Item[9]);
+                   Cambios.RazonSocial = Convert.ToBoolean(Item["RazonSocial"]);
+                   Cambios.Direccion = Convert.ToBoolean(Item["Direccion"]);
+                   Cambios.CodigoPostal = Convert.ToBoolean(Item["CodigoPostal"]);
+                   Cambios.Telefono = Convert.ToBoolean(Item["Telefono"]);
+                   Cambios.Mail = Convert.ToBoolean(Item["Mail"]);
+                   Cambios.Cuit = Convert.ToBoolean(Item["Cuit"]);
+                   Cambios.Contacto = Convert.ToBoolean(Item["Contacto"]);
+                   Cambios.Activo = Convert.ToBoolean(Item["Activo"]);
                 }
             }
             return Cambios;

@@ -78,7 +78,8 @@ namespace BLL
         public void EditarPresupuesto(PresupuestoBE nPresupuesto)
 
         {
-            
+            PresupuestoEstadoBE nEstado = new ApTecPend();
+            nPresupuesto.ActualizarEstado(nEstado);                                // Al editar vuelve a estar pendiente de Aprobación Técnica
             dPresup.EditarPresupuesto(nPresupuesto);
             tipo = bllBit.ListarTipos().First(item => item.Tipo == "Mensaje");
             nActividad.SetTipo(tipo);

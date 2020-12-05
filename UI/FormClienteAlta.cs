@@ -17,16 +17,11 @@ namespace UI
         public FormClienteAlta()
         {
             InitializeComponent();
-            CompletarTipos();
+
        
         }
         private BLL.ClienteBLL bllCli = new ClienteBLL();
-        public void CompletarTipos() 
-        
-        {
-            comboTipo.DataSource = null;
-            comboTipo.DataSource = bllCli.ListarTipoCliente();
-        }
+
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             if (textRazon.Text=="" || textCuit.Text=="" || textCP.Text=="" || textMail.Text=="")
@@ -47,9 +42,6 @@ namespace UI
                 nCliente.CodigoPostal = Convert.ToInt32(textCP.Text);
                 nCliente.Telefono = textTel.Text;
                 nCliente.Mail = textMail.Text;
-                ClienteTipoBE ntipo = new ClienteTipoBE();
-                ntipo = (ClienteTipoBE)comboTipo.SelectedItem;
-                nCliente.tipo.Id = ntipo.Id;
                 nCliente.Cuit = textCuit.Text;
                 nCliente.Contacto = textContacto.Text;
                 
