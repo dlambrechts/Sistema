@@ -16,7 +16,8 @@ namespace BE
     {
         [XmlElement("Num_Presupuesto")]
         public int Id { get; set; }
-        private ClienteBE _Cliente { get; set; }
+
+        private ClienteBE _Cliente;
 
         private PresupuestoEstadoBE _Estado;
 
@@ -33,6 +34,7 @@ namespace BE
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaValidez { get; set; }
+
         public PresupuestoEstadoBE Estado { get { return this._Estado; } }
         public int PorcDescuento { get; set; }
         public decimal Descuento { get; set; }

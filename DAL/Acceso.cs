@@ -82,7 +82,7 @@ namespace DAL
 
             catch (Exception ex)
             {
-               
+                string Mensaje = ex.Message;
                 Transaccion.Rollback();  
             }
 
@@ -110,7 +110,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-
+                string Mensaje = ex.Message;
             }
             finally
             {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
@@ -21,6 +22,14 @@ namespace BLL
         
         {            
             return dProd.ListarProductos();
+        }
+
+        public List<ProductoBE> ListarProductosActivos()
+
+        {
+            List<ProductoBE> Activos = new List<ProductoBE>(dProd.ListarProductos());
+            Activos = Activos.Where(x => x.Activo == true).ToList();
+            return Activos;
         }
 
         public void AltaProducto (ProductoBE nProd)

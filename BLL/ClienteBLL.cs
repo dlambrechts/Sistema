@@ -36,11 +36,19 @@ namespace BLL
 
             }    
 
-            return Lista;
-
-            
+            return Lista;           
 
         }
+
+        public List<ClienteBE> ListarClientesActivos()
+
+        {
+            List<ClienteBE> Activos = new List<ClienteBE>(dCliente.ListarClientes());
+            Activos = Activos.Where(x => x.Activo == true).ToList();
+            return Activos;
+
+        }
+
         public void InsertarCliente (ClienteBE nCliente)
 
         {

@@ -42,14 +42,14 @@ namespace UI
         {
             ClienteBLL bllCli = new ClienteBLL();
             comboCliente.DataSource = null;
-            comboCliente.DataSource = bllCli.ListarClientes();
+            comboCliente.DataSource = bllCli.ListarClientesActivos();
         }
 
         public void ObtenerProductos()
         {
             ProductoBLL bllProd = new ProductoBLL();
             comboProducto.DataSource = null;
-            comboProducto.DataSource = bllProd.ListarProductos();
+            comboProducto.DataSource = bllProd.ListarProductosActivos();
         }
 
         public void CargarDatosCabecera()
