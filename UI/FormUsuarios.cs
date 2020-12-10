@@ -45,8 +45,11 @@ namespace UI
                         oUsuario.Mail = textMail.Text.Trim();
                         oUsuario.Password = Encriptador.Hash(textPass1.Text);
                         oUsuario.Idioma = (IdiomaBE)comboIdioma.SelectedItem;
-
-                        bUsuario.Alta(oUsuario);
+                        if (bUsuario.ExisteUsuario(oUsuario) == false)
+                        {
+                            bUsuario.Alta(oUsuario);
+                        }
+                        else MessageBox.Show("Ya existe un usuario con el mail ingresado");
                     }
 
                     catch  (Exception ex) {MessageBox.Show(ex.Message);}
@@ -70,6 +73,8 @@ namespace UI
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = bUsuario.ListarUsuarios();
+            dataGridView1.Columns["Password"].Visible = false;
+            dataGridView1.Columns["dvh"].Visible = false;
 
         }
 

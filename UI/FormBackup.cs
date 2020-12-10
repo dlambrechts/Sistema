@@ -87,11 +87,17 @@ namespace UI
 
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
+            try { 
             Backup bkp = new Backup();
-
             bkp.NuevoBackup(Directorio);
             CargarBackups();
+                MessageBox.Show("Backup Realizado correctamente");
+            }
 
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message); 
+            }
         }
 
         private void buttonRestaurar_Click(object sender, EventArgs e)
@@ -108,6 +114,7 @@ namespace UI
                 if (listBox1.SelectedItem==null) 
                 
                 {
+
                     MessageBox.Show("Debe seleccionar un backup del listado");
                 }
 
@@ -121,10 +128,18 @@ namespace UI
                     if (Respuesta == DialogResult.Yes) 
                     
                     {
-                        Backup bkp = new Backup();
-                        string Path = Directorio + listBox1.SelectedItem.ToString();
-                        bkp.Restaurar(Path);
+                        try {
+                            Backup bkp = new Backup();
+                            string Path = Directorio + listBox1.SelectedItem.ToString();
+                            bkp.Restaurar(Path);
+                            MessageBox.Show("Restauración completada");
+                        }
+
+                        catch (Exception ex) 
                         
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
 
                     }
 

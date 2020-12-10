@@ -34,13 +34,15 @@ namespace BE
         public DateTime FechaEmision { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaValidez { get; set; }
-
         public PresupuestoEstadoBE Estado { get { return this._Estado; } }
         public int PorcDescuento { get; set; }
         public decimal Descuento { get; set; }
         public decimal Iva { get; set; }
         public decimal Total { get; set; }
-        public string Observaciones { get; set; }        
+        public string Observaciones { get; set; }
+
+        [XmlIgnoreAttribute]
+        public List<PresupuestoItemBE> Items { get { return _Items; } }
         public void ActualizarEstado (PresupuestoEstadoBE NuevoEstado) { this._Estado = NuevoEstado;}
         public bool ExisteItem (ProductoBE Prod){return this.Items.Exists(x => x.Producto.Id == Prod.Id);}
         public void AgregarItems(ProductoBE Prod, int Cant)
@@ -63,15 +65,13 @@ namespace BE
                 this._Items.Remove(ItemRemover);
             }
         }
+
+        public void ActualizarCliente(ClienteBE NuevoCliente) { this._Cliente = NuevoCliente; }
         public override string ToString()
         {
             return "Presupuesto N° " + Id + "  Cliente: " + _Cliente.RazonSocial;
         }
-
-        [XmlIgnoreAttribute]
-        public List<PresupuestoItemBE> Items { get { return _Items; } }
-        public void ActualizarCliente (ClienteBE NuevoCliente) { this._Cliente = NuevoCliente; }
-
+        
         public PresupuestoBE() { } // Constructor vacío para serializar XML
     }
 }

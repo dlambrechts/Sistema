@@ -119,6 +119,14 @@ namespace BLL
             SesionSingleton.Instancia.Logout();
         }
 
+        public bool ExisteUsuario(UsuarioBE us) 
+        
+        {
+            List<UsuarioBE> Lista = new List<UsuarioBE>(ListarUsuarios());
+
+            return Lista.Exists(x => x.Mail == us.Mail);
+        }
+
     
     }
 }

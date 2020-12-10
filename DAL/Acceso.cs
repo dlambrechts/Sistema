@@ -82,8 +82,9 @@ namespace DAL
 
             catch (Exception ex)
             {
-                string Mensaje = ex.Message;
-                Transaccion.Rollback();  
+                
+                Transaccion.Rollback();
+                throw new Exception(ex.Message);
             }
 
             finally
@@ -110,7 +111,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                string Mensaje = ex.Message;
+                throw new Exception(ex.Message);
             }
             finally
             {
